@@ -19,7 +19,7 @@ public class UserService {
   }
 
   public User findUserByID(int inputID){
-    return new User(3,"","");
+    return new User(3,"","",2);
   }
 
 
