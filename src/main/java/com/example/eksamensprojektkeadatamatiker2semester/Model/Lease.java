@@ -9,10 +9,10 @@ public class Lease {
     private Car car;
     private User userID;
     private int leasePeriodInDays;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private int startDate;
+    private int endDate;
 
-    public Lease(String firstName, String lastName, int leaseID, Car car, User userID, int leasePeriodInDays, LocalDate startDate, LocalDate endDate) {
+    public Lease(String firstName, String lastName, int leaseID, Car car, User userID, int leasePeriodInDays, int startDate, int endDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.leaseID = leaseID;
@@ -71,19 +71,19 @@ public class Lease {
         this.leasePeriodInDays = leasePeriodInDays;
     }
 
-    public LocalDate getStartDate() {
+    public int getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(int startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public int getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(int endDate) {
         this.endDate = endDate;
     }
 }
