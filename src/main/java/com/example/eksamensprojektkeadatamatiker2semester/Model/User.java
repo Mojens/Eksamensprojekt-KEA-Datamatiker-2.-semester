@@ -7,11 +7,13 @@ public class User {
   private int userID;
   private String password;
   private String username;
+  private int type;
 
-  public User(int userID, String password, String username) {
+  public User(int userID, String password, String username, int type) {
     this.userID = userID;
     this.password = password;
     this.username = username;
+    this.type = type;
   }
 
   public int getUserID() {
@@ -36,5 +38,13 @@ public class User {
 
   public void setUsername(String username) {
     this.username = username;
+  }
+
+  public int getType() {
+    return type;
+  }
+
+  public void setType(int type) {
+    this.type = type;
   }
 }
