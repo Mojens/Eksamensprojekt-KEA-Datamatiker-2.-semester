@@ -4,21 +4,21 @@ package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
 public class User {
 
-  private String userID;
+  private int userID;
   private String password;
   private String username;
 
-  public User(String userID, String password, String username) {
+  public User(int userID, String password, String username) {
     this.userID = userID;
     this.password = password;
     this.username = username;
   }
 
-  public String getUserID() {
+  public int getUserID() {
     return userID;
   }
 
-  public void setUserID(String userID) {
+  public void setUserID(int userID) {
     this.userID = userID;
   }
 
