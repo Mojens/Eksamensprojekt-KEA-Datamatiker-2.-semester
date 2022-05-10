@@ -4,9 +4,7 @@ import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionManager;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 @Repository
 public class UserRepository {
@@ -34,5 +32,28 @@ public class UserRepository {
     }
   }
 
+  //Find specific user object by input
+  public User findUserByUserName(String inputUserName){
+
+    final String QUERY = "SELECT * FROM UserLogin WHERE userName = '"+inputUserName+"'";
+    User loginUser = null;
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+      preparedStatement.setString(1,inputUserName);
+      ResultSet resultSet = preparedStatement.executeQuery(QUERY);
+
+      while (resultSet.next()) {
+        int userID = resultSet.getInt(1);
+        String userName = resultSet.getString(2);
+        String password = resultSet.getString(3);
+        int  type= resultSet.getInt(4);
+        loginUser = new User(userID,userName,password,type);
+      }
+    } catch (SQLException e) {
+      System.out.println("Could not find user");
+      e.printStackTrace();
+    }
+    return loginUser;
+  }
 
 }

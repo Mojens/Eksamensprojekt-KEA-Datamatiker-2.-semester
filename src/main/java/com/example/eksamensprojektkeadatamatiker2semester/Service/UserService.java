@@ -18,8 +18,12 @@ public class UserService {
     return false;
   }
 
-  public User findUserByID(int inputID){
-    return new User(3,"","",2);
+  public boolean validLogin(String userName, String password){
+    return false;
+  }
+
+  public int checkTypeByUser(User user){
+    return user.getType();
   }
 
 
