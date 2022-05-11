@@ -24,7 +24,7 @@ public class UserService {
 
   public String checkTypeByUser(String type){
     if (Integer.parseInt(type) == 1){
-      return "redirect:/registrerLejeAftaler/";
+      return "redirect:/registrerLejeAftaler";
     }else if (Integer.parseInt(type) == 2){
       return "redirect:/registrerFejlOgMangel";
     }else if (Integer.parseInt(type) == 3){
@@ -32,7 +32,7 @@ public class UserService {
     }else if (Integer.parseInt(type) == 4){
       return "redirect:/admin";
     }
-    return null;
+    return "redirect:/login";
   }
 
 

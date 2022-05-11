@@ -14,15 +14,35 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class HomeController {
   UserService userService;
+  UserRepository userRepository;
 
-  @GetMapping("/")
-  public String index(HttpSession httpSession){
-    httpSession.getAttribute("userName");
-    if (httpSession.getAttribute("userName") != null){
-      userService.checkTypeByUser((String) httpSession.getAttribute("userName"));
-    }
-    return "login";
+  public HomeController(UserService userService, UserRepository userRepository){
+    this.userService = userService;
+    this.userRepository = userRepository;
   }
+
+  @GetMapping("/registrerLejeAftaler")
+  public String registrerLejeAftaler(HttpSession httpSession){
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null){
+     currentPage = "/registrerLejeAftaler";
+    }else if (httpSession.getAttribute("userName") == null){
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
+
+  @GetMapping("/registrerFejlOgMangel")
+  public String registrerFejlOgMangel(HttpSession httpSession){
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null){
+      currentPage = "/registrerFejlOgMangel";
+    }else if (httpSession.getAttribute("userName") == null){
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
+
 
   @GetMapping("/logout")
   public String logOut(HttpSession httpSession){
@@ -30,4 +50,16 @@ public class HomeController {
     return "redirect:/login";
   }
 
+  @GetMapping("/login")
+  public String login(){
+    return "login";
+  }
+
+  @GetMapping("/admin")
+  public String admin(HttpSession httpSession){
+    if (httpSession.getAttribute("userName") != null){
+      return userService.checkTypeByUser((String) httpSession.getAttribute("userName"));
+    }
+    return "login";
+  }
 }

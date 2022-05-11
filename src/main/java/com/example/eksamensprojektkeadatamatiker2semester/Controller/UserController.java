@@ -10,13 +10,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 
 @Controller
 public class UserController {
 
   UserRepository userRepository;
   UserService userService;
+
+  public UserController(UserRepository userRepository,UserService userService){
+    this.userRepository = userRepository;
+    this.userService = userService;
+  }
 
   @PostMapping("/login")
 public String loginValidation(@RequestParam("userName") String userName,
@@ -27,13 +31,13 @@ public String loginValidation(@RequestParam("userName") String userName,
     boolean isPasswordValid = userService.isPasswordValid(loggedUser,password);
     if (isPasswordValid){
       Cookie cookieUser = new Cookie("userName",userName);
-      Cookie cookieType = new Cookie("cookieType",String.valueOf(loggedUser.getType()));
+      Cookie cookieType = new Cookie("user",String.valueOf(loggedUser));
       httpSession.setAttribute("userName",cookieUser);
-      httpSession.setAttribute("type", cookieType);
-      return userService.checkTypeByUser(cookieType.getValue());
-    }
+      httpSession.setAttribute("user", loggedUser);
+      return userService.checkTypeByUser(String.valueOf(loggedUser.getType()));
+    }else
 model.addAttribute("Failed Login", "Failed login");
-  return "/login";
+  return "/redirect:/login";
 }
 
 
