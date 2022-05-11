@@ -1,25 +1,35 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
 public class Car {
-
-    private String stelNummer;
     private int vognNummer;
-    private int price;
+    private String stelNummer;
     private String brand;
     private String model;
+    private double price;
     private boolean isLeased;
 
-    public Car(String stelNummer, int vognNummer, int price, String brand, String model, boolean isLeased) {
-        this.stelNummer = stelNummer;
+    private int leaseID;
+
+    public Car(int vognNummer, String stelNummer, String brand, String model, double price, boolean isLeased, int leaseID) {
         this.vognNummer = vognNummer;
-        this.price = price;
+        this.stelNummer = stelNummer;
         this.brand = brand;
         this.model = model;
+        this.price = price;
         this.isLeased = isLeased;
+        this.leaseID = leaseID;
     }
 
     public Car() {
 
+    }
+
+    public int getLeaseID() {
+        return leaseID;
+    }
+
+    public void setLeaseID(int leaseID) {
+        this.leaseID = leaseID;
     }
 
     public String getStelNummer() {
@@ -38,11 +48,11 @@ public class Car {
         this.vognNummer = vognNummer;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
