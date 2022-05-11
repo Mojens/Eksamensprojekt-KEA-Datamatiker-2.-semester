@@ -30,6 +30,7 @@ public class UserService {
     }
     return "redirect:/login";
   }
+
   public String validateUserAccess(String type){
     if (Integer.parseInt(type) == 1 || Integer.parseInt(type) == 4){
       return "/registrerLejeAftaler";
