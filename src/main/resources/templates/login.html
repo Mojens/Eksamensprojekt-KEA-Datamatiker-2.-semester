@@ -19,21 +19,30 @@
 <form   class="modal-content animate"
         action="/login"
         method="post">
+
     <div class="imgcontainer">
-        <img th:src="@{../CSS/images/Logo-250x250.png}" alt="Avatar" class="avatar">
+        <img th:src="@{../CSS/images/logo-symbol_2_b9b3ka.png}" alt="Avatar" class="avatar">
+    </div>
+    <div class="header">
+    <h1 class="h1">
+        Velkommen
+    </h1>
+        <p class="p-text">
+            Log på for at fortsætte til Medarbejder portalen.
+        </p>
     </div>
     <div class="container">
-        <label class="header">userName</label>
-        <input class="input-field" type="text" placeholder="Enter userName" name="userName" required>
 
-        <label class="header">Password</label>
-        <input class="input-field" type="text" placeholder="Enter Password" name="password" required>
+        <input class="input-field" type="text" placeholder="Brugernavn" name="userName" required>
+
+
+        <input class="input-field" type="text" placeholder="Adgangskode" name="password" required>
 
         <button class="submit-button" type="submit">Log ind</button>
     </div>
-    <div class="container" style="background-color:#f1f1f1">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
+    <div class="container">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Fortryd</button>
+        <span class="psw"><a href="#">Har du glemt din adgangskode?</a></span>
     </div>
 </form>
 </div>
