@@ -1,17 +1,26 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
-import java.util.ArrayList;
-
 public class DamageReport {
     private int damageReportID;
-    private int userID;
+
+    private int employeeID;
     private int leaseID;
+    private int vognNummer;
 
 
-    public DamageReport(int damageReportID, int userID, int leaseID) {
+    public DamageReport(int damageReportID, int userID, int leaseID, int vognNummer) {
         this.damageReportID = damageReportID;
-        this.userID = userID;
+        this.employeeID = userID;
         this.leaseID = leaseID;
+        this.vognNummer = vognNummer;
+    }
+
+    public int getVognNummer() {
+        return vognNummer;
+    }
+
+    public void setVognNummer(int vognNummer) {
+        this.vognNummer = vognNummer;
     }
 
     public DamageReport() {
@@ -25,12 +34,12 @@ public class DamageReport {
         this.damageReportID = damageReportID;
     }
 
-    public int getUserID() {
-        return userID;
+    public int getEmployeeID() {
+        return employeeID;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setEmployeeID(int employeeID) {
+        this.employeeID = employeeID;
     }
 
     public int getLeaseID() {

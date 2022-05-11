@@ -18,7 +18,6 @@ public class DamageReportRepository {
         connection = ConnectionManager.getConnection();
     }
 
-
     public List<DamageReport> showAllDamageReports(){
         List<DamageReport> reportList = new ArrayList<>();
         final String SQL_SHOW_REPORT = "SELECT * FROM DamageReport";
@@ -29,10 +28,11 @@ public class DamageReportRepository {
 
             while(rs.next()){
                 int damageReportID = rs.getInt(1);
-                int userID = rs.getInt(2);
+                int employeeID = rs.getInt(2);
                 int leaseID = rs.getInt(3);
+                int vognNummer = rs.getInt(4);
 
-                reportList.add(new DamageReport(damageReportID,userID,leaseID));
+                reportList.add(new DamageReport(damageReportID,employeeID,leaseID,vognNummer));
 
             }
             ps.close();
@@ -42,6 +42,43 @@ public class DamageReportRepository {
             e.printStackTrace();
         }
         return reportList;
+
+    }
+
+    public List<DamageReport> showCompleteDamageReportByLeaseID(int leaseID){
+        List<DamageReport> completeReportList = new ArrayList<>();
+        final String SQL_SHOW_REPORT = "SELECT SpecificDamage.DamageReport_damageReportID, Cars.vognNummer," +
+                "Cars.stelNummer,Cars.brand,Cars.model,Cars.price, Employee.firstName, Employee.lastName," +
+                "Leases.leaseID,Leases.customerFirstName,Leases.customerLastName,Leases.leasePeriodInDays," +
+                "Leases.startDate,Leases.endDate,SpecificDamage.specificDamageID,SpecificDamage.title," +
+                "SpecificDamage.description,SpecificDamage.picture,SpecificDamage.price," +
+                "FROM DamageReport" +
+                "JOIN SpecificDamage ON SpecificDamage.DamageReport_damageReportID = DamageReport.damageReportID" +
+                "JOIN Leases ON Leases.leaseID = DamageReport.Leases_leaseID" +
+                "JOIN Cars ON Cars.vognNummer = DamageReport.Cars_vognNummer" +
+                "JOIN Employee ON Employee.EmployeeID = DamageReport.Employee_employeeID" +
+                "WHERE Leases.leaseID = '"+leaseID+"'";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_SHOW_REPORT);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                int damageReportID = rs.getInt(1);
+                int employeeID = rs.getInt(2);
+                int leaseid = rs.getInt(3);
+                int vognNummer = rs.getInt(4);
+
+
+                completeReportList.add(new DamageReport(damageReportID,employeeID,leaseid,vognNummer));
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Kunne ikke finde nogle skader");
+            e.printStackTrace();
+        }
+        return completeReportList;
 
     }
 
@@ -55,10 +92,11 @@ public class DamageReportRepository {
 
             while(rs.next()){
                 int damageReportID = rs.getInt(1);
-                int userID = rs.getInt(2);
+                int employeeID = rs.getInt(2);
                 int leaseID = rs.getInt(3);
+                int vognNummer = rs.getInt(4);
 
-                reportList.add(new DamageReport(damageReportID,userID,leaseID));
+                reportList.add(new DamageReport(damageReportID,employeeID,leaseID,vognNummer));
 
             }
             ps.close();
@@ -73,14 +111,15 @@ public class DamageReportRepository {
 
     public void addDamageReport(DamageReport damageReport){
 
-        final String SQL_ADD_QUERY = "INSERT INTO DamageReport(DamageReportID,UserLogin_userID,Leases_leaseID)";
+        final String SQL_ADD_QUERY = "INSERT INTO DamageReport(DamageReportID,UserLogin_userID,Leases_leaseID,Cars_vognNummer) VALUES(?,?,?,?)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_ADD_QUERY);
 
             ps.setInt(1,damageReport.getDamageReportID());
-            ps.setInt(2,damageReport.getUserID());
+            ps.setInt(2,damageReport.getEmployeeID());
             ps.setInt(3,damageReport.getLeaseID());
+            ps.setInt(4,damageReport.getVognNummer());
 
             ps.executeUpdate();
 
@@ -107,13 +146,14 @@ public class DamageReportRepository {
     }
 
     public void editDamageReport(DamageReport dr){
-        final String SQL_EDIT = "UPDATE DamageReport SET UserLogin_userID = ?, Leases_leaseID = ?";
+        final String SQL_EDIT = "UPDATE DamageReport SET UserLogin_userID = ?, Leases_leaseID = ?,Cars_vognNummer = ?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_EDIT);
 
-            ps.setInt(1,dr.getUserID());
+            ps.setInt(1,dr.getEmployeeID());
             ps.setInt(2,dr.getLeaseID());
+            ps.setInt(3,dr.getVognNummer());
 
             ps.executeUpdate();
 
