@@ -22,8 +22,17 @@ public class UserService {
     return false;
   }
 
-  public int checkTypeByUser(User user){
-    return user.getType();
+  public String checkTypeByUser(String type){
+    if (Integer.parseInt(type) == 1){
+      return "redirect:/registerLejeAftaler/";
+    }else if (Integer.parseInt(type) == 2){
+      return "redirect:/registerFejlOgMangel";
+    }else if (Integer.parseInt(type) == 3){
+      return "redirect:/showKPI";
+    }else if (Integer.parseInt(type) == 4){
+      return "redirect:/admin";
+    }
+    return null;
   }
 
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 @Controller
 public class UserController {
@@ -26,10 +27,12 @@ public String loginValidation(@RequestParam("userName") String userName,
     boolean isPasswordValid = userService.isPasswordValid(loggedUser,password);
     if (isPasswordValid){
       Cookie cookieUser = new Cookie("userName",userName);
+      Cookie cookieType = new Cookie("cookieType",String.valueOf(loggedUser.getType()));
       httpSession.setAttribute("userName",cookieUser);
-      return "";
+      httpSession.setAttribute("type", cookieType);
+      return userService.checkTypeByUser(cookieType.getValue());
     }
-
-  return "";
+model.addAttribute("Failed Login", "Failed login");
+  return "/login";
 }
 }
