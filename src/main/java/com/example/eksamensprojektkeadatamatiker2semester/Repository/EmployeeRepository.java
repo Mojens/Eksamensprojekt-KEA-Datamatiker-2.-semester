@@ -87,4 +87,8 @@ public class EmployeeRepository {
     }
 
   }
+
+  public void addNewEmployee(){
+
+  }
 }
