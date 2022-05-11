@@ -53,7 +53,7 @@ public class User {
   public void setType(int type) {
     this.type = type;
   }
-
+//Lavet en toString for at tjekke om user bliver created, eller om hvilket user der er logget ind
   @Override
   public String toString() {
     return "User{" +
