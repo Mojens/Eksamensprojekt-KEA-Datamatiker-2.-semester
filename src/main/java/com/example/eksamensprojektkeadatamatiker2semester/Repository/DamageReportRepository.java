@@ -1,7 +1,6 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
 import com.example.eksamensprojektkeadatamatiker2semester.Model.DamageReport;
-import com.example.eksamensprojektkeadatamatiker2semester.Model.SpecificDamage;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionManager;
 import org.springframework.stereotype.Repository;
 
