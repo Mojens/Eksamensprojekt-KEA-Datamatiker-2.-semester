@@ -3,24 +3,29 @@ package com.example.eksamensprojektkeadatamatiker2semester.Model;
 import java.time.LocalDate;
 
 public class Lease {
+    private int leaseID;
     private String firstName;
     private String lastName;
-    private int leaseID;
-    private Car car;
-    private User userID;
     private int leasePeriodInDays;
+    private int userID;
+    private int vognNummer;
+
     private int startDate;
     private int endDate;
 
-    public Lease(String firstName, String lastName, int leaseID, Car car, User userID, int leasePeriodInDays, int startDate, int endDate) {
+
+    public Lease(int leaseID, String firstName, String lastName, int leasePeriodInDays, int userID, int vognNummer, int startDate, int endDate) {
+        this.leaseID = leaseID;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.leaseID = leaseID;
-        this.car = car;
-        this.userID = userID;
         this.leasePeriodInDays = leasePeriodInDays;
+        this.userID = userID;
+        this.vognNummer = vognNummer;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    public Lease() {
     }
 
     public String getFirstName() {
@@ -47,19 +52,19 @@ public class Lease {
         this.leaseID = leaseID;
     }
 
-    public Car getCar() {
-        return car;
+    public int getVognNummer() {
+        return vognNummer;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setVognNummer(int vognNummer) {
+        this.vognNummer = vognNummer;
     }
 
-    public User getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(User userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 
