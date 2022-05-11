@@ -35,4 +35,13 @@ public String loginValidation(@RequestParam("userName") String userName,
 model.addAttribute("Failed Login", "Failed login");
   return "/login";
 }
+
+
+@PostMapping("/createUser")
+public String createUser(@RequestParam("userName") String userName,
+                         @RequestParam("password") String password,
+                         @RequestParam("Type") int type){
+    userRepository.createNewUser(new User(password,userName,type));
+return "redirect:/admin";
+}
 }

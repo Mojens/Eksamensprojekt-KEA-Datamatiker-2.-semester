@@ -18,7 +18,6 @@ public class HomeController {
   @GetMapping("/")
   public String index(HttpSession httpSession){
     httpSession.getAttribute("userName");
-    httpSession.getAttribute("type");
     if (httpSession.getAttribute("userName") != null){
       userService.checkTypeByUser((String) httpSession.getAttribute("userName"));
     }
