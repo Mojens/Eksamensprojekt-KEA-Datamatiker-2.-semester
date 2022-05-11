@@ -39,7 +39,9 @@ public class SpecificDamageRepository {
               int leaseID = rs.getInt(7);
 
               specificDamageList.add(new SpecificDamage(specificDamageID,price,description,picture,title,damageReportID,leaseID));
+
             }
+            ps.close();
 
         } catch (SQLException e) {
             System.out.println("Kunne ikke finde nogle skader");
@@ -68,6 +70,7 @@ public class SpecificDamageRepository {
 
                 reportList.add(new SpecificDamage(specificDamageID,price,description,picture,title,damageReportID,leaseID));
             }
+            ps.close();
 
         } catch (SQLException e) {
             System.out.println("Kunne ikke finde nogle skader");
