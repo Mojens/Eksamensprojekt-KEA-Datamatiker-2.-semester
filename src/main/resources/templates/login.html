@@ -1,15 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/main.css">
+    <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
-<body>
-<form
+<body onload="document.getElementById('id01').style.display='block'">
+<div th:replace="nav.fragment"></div>
+
+
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'"
+        class="close" title="Close Modal">&times;</span>
+
+<form   class="modal-content animate"
         action="/login"
-        method="post"
-        class="form-control">
-    <div class="container-small-page">
+        method="post">
+    <div class="imgcontainer">
+        <img th:src="@{../CSS/images/Logo-250x250.png}" alt="Avatar" class="avatar">
+    </div>
+    <div class="container">
         <label class="header">userName</label>
         <input class="input-field" type="text" placeholder="Enter userName" name="userName" required>
 
@@ -18,7 +31,22 @@
 
         <button class="submit-button" type="submit">Log ind</button>
     </div>
-
+    <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
 </form>
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 </body>
 </html>
