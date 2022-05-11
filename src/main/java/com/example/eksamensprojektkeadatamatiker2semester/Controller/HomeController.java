@@ -25,7 +25,8 @@ public class HomeController {
   public String registrerLejeAftaler(HttpSession httpSession){
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null){
-     currentPage = "/registrerLejeAftaler";
+      User loggedUser = (User) httpSession.getAttribute("user");
+     currentPage = userService.validateUserAccess(String.valueOf(loggedUser.getType()));
     }else if (httpSession.getAttribute("userName") == null){
       currentPage = "/login";
     }
@@ -36,7 +37,8 @@ public class HomeController {
   public String registrerFejlOgMangel(HttpSession httpSession){
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null){
-      currentPage = "/registrerFejlOgMangel";
+      User loggedUser = (User) httpSession.getAttribute("user");
+      currentPage = userService.validateUserAccess(String.valueOf(loggedUser.getType()));
     }else if (httpSession.getAttribute("userName") == null){
       currentPage = "/login";
     }
