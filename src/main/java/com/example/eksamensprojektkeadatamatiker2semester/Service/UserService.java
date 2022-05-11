@@ -18,10 +18,6 @@ public class UserService {
     return false;
   }
 
-  public boolean validLogin(String userName, String password){
-    return false;
-  }
-
   public String checkTypeByUser(String type){
     if (Integer.parseInt(type) == 1 || Integer.parseInt(type) == 4){
       return "redirect:/registrerLejeAftaler";
