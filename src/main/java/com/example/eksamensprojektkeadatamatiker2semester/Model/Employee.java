@@ -7,9 +7,9 @@ public class Employee {
     private String phoneNumber;
     private int employeeID;
     private String eMail;
-    private User userID;
+    private int userID;
 
-    public Employee(String firstName, String lastName, String phoneNumber, int employeeID, String eMail, User userID) {
+    public Employee(String firstName, String lastName, String phoneNumber, int employeeID, String eMail, int userID) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -61,11 +61,11 @@ public class Employee {
         this.eMail = eMail;
     }
 
-    public User getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(User userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 }

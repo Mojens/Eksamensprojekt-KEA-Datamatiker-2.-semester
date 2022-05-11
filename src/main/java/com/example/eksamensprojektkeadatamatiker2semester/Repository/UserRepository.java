@@ -41,14 +41,13 @@ public class UserRepository {
     User loginUser = null;
     try {
       PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
-      preparedStatement.setString(1,inputUserName);
       ResultSet resultSet = preparedStatement.executeQuery(QUERY);
 
       while (resultSet.next()) {
         int userID = resultSet.getInt(1);
         String userName = resultSet.getString(2);
         String password = resultSet.getString(3);
-        int  type= resultSet.getInt(4);
+        int type= resultSet.getInt(4);
         loginUser = new User(userID,userName,password,type);
       }
     } catch (SQLException e) {
@@ -81,4 +80,5 @@ public class UserRepository {
     }
     return userList;
   }
+
 }
