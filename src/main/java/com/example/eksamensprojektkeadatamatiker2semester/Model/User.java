@@ -16,6 +16,12 @@ public class User {
     this.type = type;
   }
 
+  public User(String password, String username, int type) {
+    this.password = password;
+    this.username = username;
+    this.type = type;
+  }
+
   public int getUserID() {
     return userID;
   }

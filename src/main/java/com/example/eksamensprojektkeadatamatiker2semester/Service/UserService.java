@@ -18,8 +18,21 @@ public class UserService {
     return false;
   }
 
-  public User findUserByID(int inputID){
-    return new User(3,"","",2);
+  public boolean validLogin(String userName, String password){
+    return false;
+  }
+
+  public String checkTypeByUser(String type){
+    if (Integer.parseInt(type) == 1){
+      return "redirect:/registrerLejeAftaler/";
+    }else if (Integer.parseInt(type) == 2){
+      return "redirect:/registrerFejlOgMangel";
+    }else if (Integer.parseInt(type) == 3){
+      return "redirect:/showKPI";
+    }else if (Integer.parseInt(type) == 4){
+      return "redirect:/admin";
+    }
+    return null;
   }
 
 
