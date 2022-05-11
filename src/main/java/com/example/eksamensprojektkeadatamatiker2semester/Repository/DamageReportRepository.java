@@ -14,7 +14,7 @@ public class DamageReportRepository {
     public DamageReportRepository(){
         connection = ConnectionManager.getConnection();
     }
-
+/*
     public DamageReport addDamageReport(DamageReport damageReport){
 
         final String SQL_ADD_QUERY = "INSERT INTO DamageReport(DamageReportID,)";
@@ -27,4 +27,6 @@ public class DamageReportRepository {
         }
 
     }
+
+ */
 }

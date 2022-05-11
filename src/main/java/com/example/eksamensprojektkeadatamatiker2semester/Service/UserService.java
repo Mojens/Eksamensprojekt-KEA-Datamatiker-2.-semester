@@ -32,11 +32,11 @@ public class UserService {
   }
 
   public String validateUserAccess(String type){
-    if (Integer.parseInt(type) == 1 || Integer.parseInt(type) == 4){
+    if (Integer.parseInt(type) == 1 ){
       return "/registrerLejeAftaler";
-    }else if (Integer.parseInt(type) == 2 || Integer.parseInt(type) == 4){
+    }else if (Integer.parseInt(type) == 2){
       return "/registrerFejlOgMangel";
-    }else if (Integer.parseInt(type) == 3 || Integer.parseInt(type) == 4){
+    }else if (Integer.parseInt(type) == 3 ){
       return "/showKPI";
     }else if (Integer.parseInt(type) == 4){
       return "/admin";

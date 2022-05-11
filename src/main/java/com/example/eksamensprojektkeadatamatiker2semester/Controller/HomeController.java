@@ -59,9 +59,13 @@ public class HomeController {
 
   @GetMapping("/admin")
   public String admin(HttpSession httpSession){
+    String currentPage = null;
     if (httpSession.getAttribute("userName") != null){
-      return userService.checkTypeByUser((String) httpSession.getAttribute("userName"));
+      User loggedUser = (User) httpSession.getAttribute("user");
+      currentPage = userService.validateUserAccess(String.valueOf(loggedUser.getType()));
+    }else if (httpSession.getAttribute("userName") == null){
+      currentPage = "/login";
     }
-    return "login";
+    return currentPage;
   }
 }

@@ -72,9 +72,19 @@ public class EmployeeRepository {
   return employee;
   }
 
-  public void deleteEmployee(){
+  //Delete employee from employee table and userLogin table with inner join
+  public void deleteEmployeeByID(int inputUserID){
+    final String QUERYDELETE = "DELETE UserLogin,Employee FROM UserLogin INNER JOIN Employee ON UserLogin.userID = Employee.UserLogin_userID and UserLogin_userID = "+"'"+inputUserID+"'";
+    try{
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERYDELETE);
+      //Da vi har sat foreign key på update at den skal cascade og ikke restrict
+      preparedStatement.executeUpdate();
+      preparedStatement.close();
+
+    }catch (SQLException e){
+      System.out.println("kunne ikke slette Medarbejder fra valgte UserID");
+      e.printStackTrace();
+    }
 
   }
-
-
 }
