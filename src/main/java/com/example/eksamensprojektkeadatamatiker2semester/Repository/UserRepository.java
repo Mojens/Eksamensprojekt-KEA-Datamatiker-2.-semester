@@ -5,6 +5,8 @@ import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionMana
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class UserRepository {
@@ -56,4 +58,27 @@ public class UserRepository {
     return loginUser;
   }
 
+  //Show all the created users in DB
+  public List<User> showAllUsers() {
+    List<User> userList = new ArrayList<>();
+    final String QUERY = "SELECT * FROM UserLogin";
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+      ResultSet resultSet = preparedStatement.executeQuery();
+      while (resultSet.next()){
+        int userID = resultSet.getInt(1);
+        String userName = resultSet.getString(2);
+        String password = resultSet.getString(3);
+        int userType = resultSet.getInt(4);
+
+        userList.add(new User(userID,userName,password,userType));
+
+      }
+
+    } catch (SQLException e) {
+      System.out.println("Kunne ikke finde nogle brugere");
+      e.printStackTrace();
+    }
+    return userList;
+  }
 }
