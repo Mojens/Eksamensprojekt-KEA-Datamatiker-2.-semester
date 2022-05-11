@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/main.css">
+    <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/NavBar.css">
+</head>
+<body>
+<main class="Hero">
+    <div th:replace="nav.fragment"></div>
+        <div class="hero-backdrop">
+            <a href="/"><img th:src="@{../CSS/images/hero.png}" class="backdrop" alt="hero-backdrop"
+                             src="../static/CSS/images/hero.png"/></a>
+        </div>
+</main>
+</body>
+</html>
