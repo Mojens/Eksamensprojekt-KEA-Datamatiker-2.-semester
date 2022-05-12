@@ -1,6 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .Hero {
     height: 1080px;
+    width: 100%;
     background-color: #F2F2F2;
+}
+.hero-backdrop img{
+    width: 100%;
 }
 .modal {
     display: none; /* Hidden by default */
@@ -13,7 +23,7 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
+    padding-top: 200px;
 }
 
 /* Modal Content/Box */
@@ -21,7 +31,8 @@
     background-color: #fefefe;
     margin: 5px auto; /* 15% from the top and centered */
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 22%; /* Could be more or less, depending on screen size */
+    height: 72.5%;
 }
 
 /* The Close Button */
@@ -46,6 +57,14 @@
 .animate {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
+}
+.psw{
+    color: #317DAD;
+
+}
+.psw a{
+    color: #317DAD;
+    text-decoration: none;
 }
 
 @-webkit-keyframes animatezoom {
@@ -74,7 +93,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-    background-color: #04AA6D;
+    background-color: #1683AF;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -98,12 +117,12 @@ button:hover {
 /* Center the avatar image inside this container */
 .imgcontainer {
     text-align: center;
-    margin: 24px 0 12px 0;
+    margin: 44px 40px 22px 40px;
 }
 
 /* Avatar image */
 img.avatar {
-    width: 40%;
+    width: 20%;
     border-radius: 50%;
 }
 
@@ -127,4 +146,16 @@ span.psw {
     .cancelbtn {
         width: 100%;
     }
+}
+.header {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.p-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
