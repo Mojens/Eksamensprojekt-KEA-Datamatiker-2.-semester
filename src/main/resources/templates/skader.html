@@ -188,64 +188,38 @@
     </div>
 
 
-
-    <table>
+    <div class="damageReport">
+        <h2 class="inline-h2">Prisoverslag</h2>
+    </div>
+    <table class="price">
         <thead>
         <tr>
             <th>
-                #
-            </th>
-            <th>
-                Pris
-            </th>
-            <th>
-                Description
-            </th>
-            <th>
-                Picture
+                Skade
             </th>
             <th>
                 Title
             </th>
             <th>
-                DamageReportID
-            </th>
-            <th>
-                LeaseID
+                Pris
             </th>
         </tr>
         </thead>
         <tbody>
         <tr class="card" th:each="skade : ${specificDamage}">
-            <td>
-                <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual" th:text="${skade.damageReportID}"
-                   target="_blank"></a>
+            <td class="individual" th:text="${specificDamage.indexOf(skade)+1}">
             </td>
-            <td>
-                <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual" th:text="${skade.leaseID}"
-                   target="_blank"></a>
+            <td class="individual" th:text="${skade.title}">
             </td>
-            <td>
-                <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual" th:text="${skade.price}"
-                   target="_blank"></a>
-            </td>
-            <td>
-                <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual" th:text="${skade.title}"
-                   target="_blank"></a>
-            </td>
-            <td>
-                <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual" th:text="${skade.description}"
-                   target="_blank"></a>
-            </td>
-            <td>
-                <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual" th:text="${skade.picture}"
-                   target="_blank"></a>
-            </td>
-            <td>
-                <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual" th:text="${skade.damageID}"
-                   target="_blank"></a>
+            <td class="individual" th:text="${skade.price}">
             </td>
 
+        </tr>
+
+        <tr>
+            <th class="before" th:text="${damageReport.damageReportID}" ></th>
+            <th class="before-table">Total Pris</th>
+            <td class="individual-big" th:text="${sumTotal.sumTotal}"></td>
         </tr>
         </tbody>
     </table>

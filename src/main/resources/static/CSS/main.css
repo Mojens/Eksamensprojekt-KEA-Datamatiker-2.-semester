@@ -31,8 +31,8 @@ th {
     font-size: 14px;
     padding-top: 8px;
     padding-bottom: 8px;
-    background-color: #1C3D66;
-    color: white;
+    background-color: #317DAD;
+    color: #ffffff;
 
 }
 
@@ -82,7 +82,13 @@ table {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     margin: 0;
 }
-
+.price {
+    table-layout: fixed;
+    width: 47.5%;
+    margin-left: 10px;
+    margin-top: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
 .three-tables-container {
     width: 100%;
     display: flex;
@@ -120,6 +126,24 @@ a.individual {
     align-items: center;
     width: 100%;
     height: 40px;
+}
+.individual {
+    text-align: center;
+}
+.individual-big {
+    font-size: 18px;
+    text-align: start;
+    padding-left: 30px;
+}
+
+.individual-big::before{
+    content: "DKK ";
+    display: inline;
+    justify-content: start;
+
+    color: #2f2f2d;
+    font-size: 14px;
+    line-height: 1;
 }
 
 .Hero {
@@ -501,4 +525,16 @@ input::-webkit-file-upload-button:hover {
 .inline-noMargin {
     margin-top: 40px;
     display: inline;
+}
+.before{
+    background-color: #112844;
+}
+.before-table{
+    background-color: #112844;
+}
+.before::before {
+    content: "Rapport #";
+    color: white;
+    font-size: 14px;
+    line-height: 1;
 }

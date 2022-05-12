@@ -11,6 +11,10 @@ public class SpecificDamage {
 
   private int leaseID;
 
+  private double sumTotal;
+
+
+
   private int damageReportID;
 
 
@@ -22,6 +26,22 @@ public class SpecificDamage {
     this.title = title;
     this.leaseID = leaseID;
     this.damageReportID = damageReportID;
+  }
+
+  public SpecificDamage(double sumTotal){
+    this.sumTotal = sumTotal;
+  }
+
+  public SpecificDamage() {
+  }
+
+
+  public double getSumTotal() {
+    return sumTotal;
+  }
+
+  public void setSumTotal(double sumTotal) {
+    this.sumTotal = sumTotal;
   }
 
   @Transient

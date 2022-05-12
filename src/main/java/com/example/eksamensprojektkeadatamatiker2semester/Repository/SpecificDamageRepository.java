@@ -50,6 +50,29 @@ public class SpecificDamageRepository {
         return specificDamageList;
 
     }
+    public SpecificDamage sumPriceSpecificDamagesByID(int reportID){
+        SpecificDamage sum = new SpecificDamage();
+        final String SQL_SHOW_DAMAGE = "SELECT SUM(price) FROM SpecificDamage WHERE DamageReport_damageReportID = '"+reportID+"'";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_SHOW_DAMAGE);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                double sumTotal = rs.getDouble(1);
+
+                sum.setSumTotal(sumTotal);
+
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            System.out.println("Kunne ikke finde nogle skader");
+            e.printStackTrace();
+        }
+        return sum;
+
+    }
 
     public List<SpecificDamage> findSpecificDamageByReportID(int reportID){
         List<SpecificDamage> reportList = new ArrayList<>();

@@ -49,11 +49,14 @@ public class DamageReportController {
         Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
         List<SpecificDamage> specificDamage = specificDamageRepository.findSpecificDamageByReportID(damageReport.getDamageReportID());
 
+        SpecificDamage sum = specificDamageRepository.sumPriceSpecificDamagesByID(id);
+
         model.addAttribute("car",car);
         model.addAttribute("lease",lease);
         model.addAttribute("damageReport",damageReport);
         model.addAttribute("employee",employee);
         model.addAttribute("specificDamage",specificDamage);
+        model.addAttribute("sumTotal",sum);
 
         return "/skader";
         //return controllerService.skader(httpSession);
