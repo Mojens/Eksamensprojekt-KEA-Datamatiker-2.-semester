@@ -333,50 +333,46 @@ span.psw {
 .inline {
     display: inline;
 }
+.inline-tag {
+    display: inline;
+    margin-bottom: 10px;
+}
 
 .container-cards {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin-top: 20px;
+
 }
 
 .container-cards .card {
     flex: 1;
     padding: 10px;
-    margin: 10px;
+    margin: 10px 10px 10px 0;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+
 }
 
-.container-cards .card:hover {
+
+.card-header-big img:hover {
     transition-duration: 0.5s;
     box-shadow: none;
-    background-color: #2D7BC6;
     -ms-transform: scale(1.06);
     transform: scale(1.06);
-
 }
 
 
 .card-header-big img {
     max-height: 300px;
-    max-width: 460px;
-    min-width: 460px;
+    max-width: 570px;
+    min-width: 570px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     object-fit: fill;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.card-header-small {
-    margin-top: 30px;
-}
+
 
 
 .card-body-big {
@@ -386,11 +382,12 @@ span.psw {
     padding: 10px;
     min-height: 175px;
     max-height: 175px;
-    max-width: 460px;
-    min-width: 460px;
-    background-color: #EDFBFF;
+    max-width: 570px;
+    min-width: 570px;
+    background-color: #ffffff;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .tag {
@@ -408,16 +405,25 @@ span.psw {
 .tag-teal {
     background-color: #2D7BC6;
 }
-
-
-.card-body p {
-    font-size: 14px;
-    margin: 0 0 auto;
+.tag-teal-second {
+    background-color: #FFD75E;
+    color: #2f2f2d;
+    margin-right: 2px;
 }
+.tag-teal-second::before {
+    content: "#";
+    display: inline;
+    justify-content: start;
+    color: #2f2f2d;
+    font-size: 14px;
+    line-height: 1;
+    background-color: #FFD75E;
+}
+
 
 .card-body-big p {
     font-size: 14px;
-    margin: 0 0 auto;
+    margin: 5px 0 auto;
 }
 input::-webkit-file-upload-button {
     margin-top: 10px;
@@ -428,7 +434,7 @@ input::-webkit-file-upload-button {
     background-color: #FFD75E;
     font-weight: bold;
     padding: 10px;
-    font-family: Inter, sans-serif;
+    font-family: OpenSans, sans-serif;
     border: 0;
     cursor: pointer;
     border-radius: 5px;
@@ -486,4 +492,13 @@ input::-webkit-file-upload-button:hover {
     color: #2f2f2d;
     font-size: 14px;
     line-height: 1;
+}
+.inline-h2 {
+    margin-top: 40px;
+    margin-left: 10px;
+    display: inline;
+}
+.inline-noMargin {
+    margin-top: 40px;
+    display: inline;
 }

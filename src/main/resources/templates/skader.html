@@ -151,8 +151,13 @@
         </table>
     </div>
 
+    <div class="damageReport">
+        <h2 class="inline-h2">Antal Individuelle Skader:</h2>
+        <h2 class="inline-noMargin" th:text="${specificDamage.size()}" ></h2>
+    </div>
 
     <div class="container-cards">
+
         <div th:each="damage : ${specificDamage}">
 
             <div class="card">
@@ -160,7 +165,11 @@
                  <img th:src="@{${'../'+damage.photosImagePath}}" alt="billed"/>
                 </div>
                 <div class="card-body-big">
+                    <div class="inline-tag">
+                    <span class="tag tag-teal-second" th:text="${specificDamage.indexOf(damage)+1}">title</span>
                     <span class="tag tag-teal" th:text="${damage.title}">title</span>
+
+                    </div>
                     <h4 class="h4-header" th:text="${damage.price}">DKK
                     </h4>
                     <p th:text="${damage.description}">
