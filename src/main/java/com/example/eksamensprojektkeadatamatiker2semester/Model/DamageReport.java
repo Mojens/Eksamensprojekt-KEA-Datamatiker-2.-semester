@@ -2,17 +2,16 @@ package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
 public class DamageReport {
     private int damageReportID;
-
-    private int employeeID;
     private int leaseID;
     private int vognNummer;
+    private int employeeID;
 
 
-    public DamageReport(int damageReportID, int userID, int leaseID, int vognNummer) {
+    public DamageReport(int damageReportID, int leaseID, int vognNummer, int employeeID) {
         this.damageReportID = damageReportID;
-        this.employeeID = userID;
         this.leaseID = leaseID;
         this.vognNummer = vognNummer;
+        this.employeeID = employeeID;
     }
 
     public DamageReport() {

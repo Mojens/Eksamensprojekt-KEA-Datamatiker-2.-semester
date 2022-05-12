@@ -29,11 +29,11 @@ public class DamageReportRepository {
 
             while(rs.next()){
                 int damageReportID = rs.getInt(1);
-                int employeeID = rs.getInt(2);
-                int leaseID = rs.getInt(3);
-                int vognNummer = rs.getInt(4);
+                int leaseID = rs.getInt(2);
+                int vognNummer = rs.getInt(3);
+                int employeeID = rs.getInt(4);
 
-                reportList.add(new DamageReport(damageReportID,employeeID,leaseID,vognNummer));
+                reportList.add(new DamageReport(damageReportID,leaseID,vognNummer,employeeID));
 
             }
             ps.close();
