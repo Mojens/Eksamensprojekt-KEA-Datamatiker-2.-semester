@@ -32,7 +32,6 @@ public class DamageReportController {
     public String showDamageReport(@PathVariable("id") int id, Model model){
 
         DamageReport damageReport = damageReportRepository.findReportByID(id);
-        //Car car = carRepository.findCarByID(damageReport.getVognNummer());
         Lease lease = leaseRepository.findLeaseByID(damageReport.getVognNummer());
         Car car = carRepository.findCarByID(lease.getLeaseID());
         Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
