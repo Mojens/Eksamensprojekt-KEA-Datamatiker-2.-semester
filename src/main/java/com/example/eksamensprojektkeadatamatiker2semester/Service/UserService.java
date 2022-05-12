@@ -19,11 +19,11 @@ public class UserService {
   }
 
   public String checkTypeByUser(String type){
-    if (Integer.parseInt(type) == 1 || Integer.parseInt(type) == 4){
+    if (Integer.parseInt(type) == 1 ){
       return "redirect:/registrerLejeAftaler";
-    }else if (Integer.parseInt(type) == 2 || Integer.parseInt(type) == 4){
+    }else if (Integer.parseInt(type) == 2){
       return "redirect:/registrerFejlOgMangel";
-    }else if (Integer.parseInt(type) == 3 || Integer.parseInt(type) == 4){
+    }else if (Integer.parseInt(type) == 3){
       return "redirect:/showKPI";
     }else if (Integer.parseInt(type) == 4){
       return "redirect:/admin";
@@ -31,17 +31,39 @@ public class UserService {
     return "redirect:/login";
   }
 
-  public String validateUserAccess(String type){
-    if (Integer.parseInt(type) == 1 ){
-      return "/registrerLejeAftaler";
-    }else if (Integer.parseInt(type) == 2){
-      return "/registrerFejlOgMangel";
-    }else if (Integer.parseInt(type) == 3 ){
-      return "/showKPI";
-    }else if (Integer.parseInt(type) == 4){
-      return "/admin";
+  public String validateUserForTypeOne(int type) {
+    String currentPage;
+    if (type == 1 || type == 4) {
+      currentPage = "/registrerLejeAftaler";
+      return currentPage;
     }
     return "/login";
   }
 
+  public String validateUserForTypeTwo(int type) {
+    String currentPage;
+    if (type == 2 || type == 4) {
+      currentPage = "/registrerFejlOgMangel";
+      return currentPage;
+    }
+    return "/login";
+  }
+
+  public String validateUserForTypeThree(int type) {
+    String currentPage;
+    if (type == 3 || type == 4) {
+      currentPage = "/showKPI";
+      return currentPage;
+    }
+    return "/login";
+  }
+
+  public String validateUserForTypeFour(int type) {
+    String currentPage;
+    if (type == 4) {
+      currentPage = "/admin";
+      return currentPage;
+    }
+    return "/login";
+  }
 }

@@ -26,7 +26,12 @@ public class HomeController {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null){
       User loggedUser = (User) httpSession.getAttribute("user");
-     currentPage = userService.validateUserAccess(String.valueOf(loggedUser.getType()));
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 1 || loggedUser.getType() == 4){
+        currentPage = "/registrerLejeAftaler";
+      }else if (loggedUser.getType() != 1 || loggedUser.getType() !=4){
+        currentPage = "/login";
+      }
     }else if (httpSession.getAttribute("userName") == null){
       currentPage = "/login";
     }
@@ -38,7 +43,46 @@ public class HomeController {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null){
       User loggedUser = (User) httpSession.getAttribute("user");
-      currentPage = userService.validateUserAccess(String.valueOf(loggedUser.getType()));
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 2 || loggedUser.getType() == 4){
+        currentPage = "/registrerFejlOgMangel";
+      }else if (loggedUser.getType() != 2 || loggedUser.getType() !=4){
+        currentPage = "/login";
+      }
+    }else if (httpSession.getAttribute("userName") == null){
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
+
+  @GetMapping("/admin")
+  public String admin(HttpSession httpSession){
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null){
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 4){
+        currentPage = "/admin";
+      }else if (loggedUser.getType() !=4){
+        currentPage = "/login";
+      }
+    }else if (httpSession.getAttribute("userName") == null){
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
+
+  @GetMapping("/showKPI")
+  public String showKPI(HttpSession httpSession){
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null){
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 3 || loggedUser.getType() == 4){
+        currentPage = "/showKPI";
+      }else if (loggedUser.getType() != 3 || loggedUser.getType() !=4){
+        currentPage = "/login";
+      }
     }else if (httpSession.getAttribute("userName") == null){
       currentPage = "/login";
     }
@@ -57,15 +101,5 @@ public class HomeController {
     return "login";
   }
 
-  @GetMapping("/admin")
-  public String admin(HttpSession httpSession){
-    String currentPage = null;
-    if (httpSession.getAttribute("userName") != null){
-      User loggedUser = (User) httpSession.getAttribute("user");
-      currentPage = userService.validateUserAccess(String.valueOf(loggedUser.getType()));
-    }else if (httpSession.getAttribute("userName") == null){
-      currentPage = "/login";
-    }
-    return currentPage;
-  }
+
 }
