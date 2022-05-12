@@ -1,5 +1,7 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
+import java.beans.Transient;
+
 public class SpecificDamage {
   private double price;
   private String description;
@@ -20,6 +22,13 @@ public class SpecificDamage {
     this.title = title;
     this.leaseID = leaseID;
     this.damageReportID = damageReportID;
+  }
+
+  @Transient
+  public String getPhotosImagePath() {
+    if (picture == null || picture.isEmpty()) return "user-photos/" + "default.jpg";
+
+    return "user-photos" + "/" + picture;
   }
 
   public int getLeaseID() {

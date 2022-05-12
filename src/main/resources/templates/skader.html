@@ -156,9 +156,9 @@
         <div th:each="damage : ${specificDamage}">
 
             <div class="card">
-               <!-- <div class="card-header-big">
+               <div class="card-header-big">
                  <img th:src="@{${'../'+damage.photosImagePath}}" alt="billed"/>
-                </div>-->
+                </div>
                 <div class="card-body-big">
                     <span class="tag tag-teal" th:text="${damage.title}">title</span>
                     <h4 class="h4-header" th:text="${damage.price}">DKK
