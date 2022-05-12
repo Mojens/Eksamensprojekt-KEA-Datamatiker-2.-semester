@@ -17,35 +17,42 @@ public class UserController {
   UserRepository userRepository;
   UserService userService;
 
-  public UserController(UserRepository userRepository,UserService userService){
+  public UserController(UserRepository userRepository, UserService userService) {
     this.userRepository = userRepository;
     this.userService = userService;
   }
 
   @PostMapping("/login")
-public String loginValidation(@RequestParam("userName") String userName,
-                              @RequestParam("password") String password,
-                              HttpSession httpSession,
-                              Model model){
+  public String loginValidation(@RequestParam("userName") String userName,
+                                @RequestParam("password") String password,
+                                HttpSession httpSession,
+                                Model model) {
     User loggedUser = userRepository.findUserByUserName(userName);
-    boolean isPasswordValid = userService.isPasswordValid(loggedUser,password);
-    if (isPasswordValid){
-      Cookie cookieUser = new Cookie("userName",userName);
-      Cookie cookieType = new Cookie("user",String.valueOf(loggedUser));
-      httpSession.setAttribute("userName",cookieUser);
+    boolean isPasswordValid = userService.isPasswordValid(loggedUser, password);
+    if (isPasswordValid) {
+      Cookie cookieUser = new Cookie("userName", userName);
+      Cookie cookieType = new Cookie("user", String.valueOf(loggedUser));
+      httpSession.setAttribute("userName", cookieUser);
       httpSession.setAttribute("user", loggedUser);
+      model.addAttribute("userID", loggedUser.getType());
       return userService.checkTypeByUser(String.valueOf(loggedUser.getType()));
-    }else
-model.addAttribute("Failed Login", "Failed login");
-  return "/redirect:/login";
-}
+    } else
+      model.addAttribute("Failed Login", "Failed login");
+    return "/redirect:/login";
+  }
 
 
-@PostMapping("/createUser")
-public String createUser(@RequestParam("userName") String userName,
-                         @RequestParam("password") String password,
-                         @RequestParam("Type") int type){
-    userRepository.createNewUser(new User(password,userName,type));
-return "redirect:/admin";
-}
+  @PostMapping("/createUser")
+  public String createUser(@RequestParam("userName") String userName,
+                           @RequestParam("password") String password,
+                           @RequestParam("Type") int type) {
+    userRepository.createNewUser(new User(password, userName, type));
+    return "redirect:/admin";
+  }
+
+  @PostMapping("/logout")
+  public String logOutFunction(HttpSession httpSession) {
+    httpSession.removeAttribute("userName");
+    return "redirect:/login";
+  }
 }

@@ -1,55 +1,44 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Controller;
 
-import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
-import com.example.eksamensprojektkeadatamatiker2semester.Repository.UserRepository;
-import com.example.eksamensprojektkeadatamatiker2semester.Service.UserService;
+
+import com.example.eksamensprojektkeadatamatiker2semester.Service.ControllerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
-  UserService userService;
-  UserRepository userRepository;
+  ControllerService controllerService;
 
-  public HomeController(UserService userService, UserRepository userRepository){
-    this.userService = userService;
-    this.userRepository = userRepository;
+  public HomeController(ControllerService controllerService){
+    this.controllerService = controllerService;
   }
 
   @GetMapping("/registrerLejeAftaler")
   public String registrerLejeAftaler(HttpSession httpSession){
-    String currentPage = null;
-    if (httpSession.getAttribute("userName") != null){
-      User loggedUser = (User) httpSession.getAttribute("user");
-     currentPage = userService.validateUserAccess(String.valueOf(loggedUser.getType()));
-    }else if (httpSession.getAttribute("userName") == null){
-      currentPage = "/login";
-    }
-    return currentPage;
+    return controllerService.registrerLejeAftaler(httpSession);
   }
 
   @GetMapping("/registrerFejlOgMangel")
   public String registrerFejlOgMangel(HttpSession httpSession){
-    String currentPage = null;
-    if (httpSession.getAttribute("userName") != null){
-      User loggedUser = (User) httpSession.getAttribute("user");
-      currentPage = userService.validateUserAccess(String.valueOf(loggedUser.getType()));
-    }else if (httpSession.getAttribute("userName") == null){
-      currentPage = "/login";
-    }
-    return currentPage;
+    return controllerService.registrerFejlOgMangel(httpSession);
   }
 
+  @GetMapping("/showKPI")
+  public String showKPI(HttpSession httpSession){
+    return controllerService.showKPI(httpSession);
+  }
+
+  @GetMapping("/admin")
+  public String admin(HttpSession httpSession){
+    return controllerService.admin(httpSession);
+  }
 
   @GetMapping("/logout")
   public String logOut(HttpSession httpSession){
     httpSession.removeAttribute("userName");
-    return "redirect:/login";
+    return "/login";
   }
 
   @GetMapping("/login")
@@ -57,20 +46,5 @@ public class HomeController {
     return "login";
   }
 
-  @GetMapping("/")
-  public String index(){
-    return "login";
-  }
 
-  @GetMapping("/admin")
-  public String admin(HttpSession httpSession){
-    String currentPage = null;
-    if (httpSession.getAttribute("userName") != null){
-      User loggedUser = (User) httpSession.getAttribute("user");
-      currentPage = userService.validateUserAccess(String.valueOf(loggedUser.getType()));
-    }else if (httpSession.getAttribute("userName") == null){
-      currentPage = "/login";
-    }
-    return currentPage;
-  }
 }
