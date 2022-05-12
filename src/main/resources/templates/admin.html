@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<h2>Slet en medarbejder</h2>
 <form
         action="/deleteEmployee"
         method="post">
@@ -16,6 +16,40 @@
 
     </div>
 </form>
+<h2>Opret medarbejder</h2>
+<form
+        action="/addEmployee"
+        method="post">
+    <div class="container">
+        <label>Indtast Fornavn</label>
+        <input type="text" placeholder="Fornavn" name="firstName">
+        <br><br>
+        <label>Indtast efterNavn</label>
+        <input type="text" placeholder="Indtast her" name="lastName">
+        <br><br>
+        <label>Indtast E-Mail</label>
+        <input type="text" placeholder="test@mail.dk" name="eMail">
+        <br><br>
+        <label>Indtast telefonnummer</label>
+        <input type="text" placeholder="+45 34323336" name="phoneNumber">
+        <br><br>
+        <label>Indtast Brugernavn</label>
+        <input type="text" placeholder="Moha135h" name="userName">
+        <br><br>
+        <label>Indtast Adgangskode</label>
+        <input type="text" placeholder="TestKode123" name="password">
+        <br><br>
+        <label>Vælg type medarbejder</label>
+        <select name="type">
+            <option value="1">Registrerings Medarbejder</option>
+            <option value="2">Skade- Registrerings Medarbejder</option>
+            <option value="3">ForretningsUdvikler</option>
+            <option value="4">Administrator</option>
+        </select>
+        <br><br>
+        <button type="submit">opret Medarbejder</button>
 
+    </div>
+</form>
 </body>
 </html>

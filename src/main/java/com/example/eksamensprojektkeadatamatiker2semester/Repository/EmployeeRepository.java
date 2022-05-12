@@ -88,7 +88,24 @@ public class EmployeeRepository {
 
   }
 
-  public void addNewEmployee(){
+  public void addNewEmployee(Employee employee){
+    final String QUERY = "INSERT INTO Employee (EmployeeID, firstName, lastName, phoneNumber, eMail, UserLogin_userID) VALUES (?, ?, ?, ?, ?, ?)";
+    try{
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+
+      preparedStatement.setInt(1, employee.getEmployeeID());
+      preparedStatement.setString(2, employee.getFirstName());
+      preparedStatement.setString(3, employee.getLastName());
+      preparedStatement.setString(4, employee.getPhoneNumber());
+      preparedStatement.setString(5,employee.geteMail());
+      preparedStatement.setInt(6,employee.getUserID());
+
+      preparedStatement.executeUpdate();
+
+    }catch(SQLException e){
+      System.out.println("Kan ikke oprette bruger");
+      e.printStackTrace();
+    }
 
   }
 }

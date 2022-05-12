@@ -18,6 +18,14 @@ public class Employee {
         this.userID = userID;
     }
 
+    public Employee(String firstName, String lastName, String phoneNumber, String eMail, int userID) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.eMail = eMail;
+        this.userID = userID;
+    }
+
     public Employee() {
     }
 
