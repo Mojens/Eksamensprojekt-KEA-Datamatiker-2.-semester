@@ -8,19 +8,16 @@ public class Lease {
     private String lastName;
     private int leasePeriodInDays;
     private int userID;
-    private int vognNummer;
-
     private int startDate;
     private int endDate;
 
 
-    public Lease(int leaseID, String firstName, String lastName, int leasePeriodInDays, int userID, int vognNummer, int startDate, int endDate) {
+    public Lease(int leaseID, String firstName, String lastName, int leasePeriodInDays, int userID, int startDate, int endDate) {
         this.leaseID = leaseID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.leasePeriodInDays = leasePeriodInDays;
         this.userID = userID;
-        this.vognNummer = vognNummer;
         this.startDate = startDate;
         this.endDate = endDate;
     }
@@ -50,14 +47,6 @@ public class Lease {
 
     public void setLeaseID(int leaseID) {
         this.leaseID = leaseID;
-    }
-
-    public int getVognNummer() {
-        return vognNummer;
-    }
-
-    public void setVognNummer(int vognNummer) {
-        this.vognNummer = vognNummer;
     }
 
     public int getUserID() {

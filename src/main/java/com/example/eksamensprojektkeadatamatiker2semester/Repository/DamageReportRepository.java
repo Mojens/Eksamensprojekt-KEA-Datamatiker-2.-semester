@@ -1,6 +1,7 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
 import com.example.eksamensprojektkeadatamatiker2semester.Model.DamageReport;
+import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionManager;
 import org.springframework.stereotype.Repository;
 
@@ -82,8 +83,8 @@ public class DamageReportRepository {
 
     }
 
-    public List<DamageReport> findReportByID(int reportID){
-        List<DamageReport> reportList = new ArrayList<>();
+    public DamageReport findReportByID(int reportID){
+        DamageReport report = new DamageReport();
         final String SQL_SHOW_REPORT = "SELECT * FROM DamageReport WHERE damageReportID = '"+reportID+"'";
 
         try {
@@ -96,7 +97,10 @@ public class DamageReportRepository {
                 int leaseID = rs.getInt(3);
                 int vognNummer = rs.getInt(4);
 
-                reportList.add(new DamageReport(damageReportID,employeeID,leaseID,vognNummer));
+               report.setDamageReportID(damageReportID);
+               report.setEmployeeID(employeeID);
+               report.setLeaseID(leaseID);
+               report.setVognNummer(vognNummer);
 
             }
             ps.close();
@@ -105,9 +109,10 @@ public class DamageReportRepository {
             System.out.println("Kunne ikke finde nogle skader");
             e.printStackTrace();
         }
-        return reportList;
-
+        return report;
     }
+
+
 
     public void addDamageReport(DamageReport damageReport){
 

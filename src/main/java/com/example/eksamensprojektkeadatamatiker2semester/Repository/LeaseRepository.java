@@ -32,11 +32,10 @@ public class LeaseRepository {
                 String lastName = rs.getString(3);
                 int leasePeriodInDays = rs.getInt(4);
                 int userID = rs.getInt(5);
-                int vognNummer = rs.getInt(6);
-                int startDate = rs.getInt(7);
-                int endDate = rs.getInt(8);
+                int startDate = rs.getInt(6);
+                int endDate = rs.getInt(7);
 
-                leasesList.add(new Lease(leaseID, firstName, lastName, leasePeriodInDays,userID,vognNummer,startDate,endDate));
+                leasesList.add(new Lease(leaseID, firstName, lastName, leasePeriodInDays,userID,startDate,endDate));
 
             }
             ps.close();
@@ -48,8 +47,8 @@ public class LeaseRepository {
 
     }
 
-    public List<Lease> findLeaseByID(int id){
-        List<Lease> leasesList = new ArrayList<>();
+    public Lease findLeaseByID(int id){
+        Lease leases = new Lease();
         final String SQL_SHOW_LEASES = "SELECT * FROM Leases WHERE leaseID = '"+id+"'";
 
         try {
@@ -62,11 +61,16 @@ public class LeaseRepository {
                 String lastName = rs.getString(3);
                 int leasePeriodInDays = rs.getInt(4);
                 int userID = rs.getInt(5);
-                int vognNummer = rs.getInt(6);
-                int startDate = rs.getInt(7);
-                int endDate = rs.getInt(8);
+                int startDate = rs.getInt(6);
+                int endDate = rs.getInt(7);
 
-                leasesList.add(new Lease(leaseID, firstName, lastName, leasePeriodInDays,userID,vognNummer,startDate,endDate));
+                leases.setLeaseID(leaseID);
+                leases.setFirstName(firstName);
+                leases.setLastName(lastName);
+                leases.setLeasePeriodInDays(leasePeriodInDays);
+                leases.setUserID(userID);
+                leases.setStartDate(startDate);
+                leases.setEndDate(endDate);
 
             }
             ps.close();
@@ -74,12 +78,12 @@ public class LeaseRepository {
             System.out.println("Kunne ikke finde den lease");
             e.printStackTrace();
         }
-        return leasesList;
+        return leases;
 
     }
 
     public void addLease(Lease lease){
-        final String SQL_ADD_QUERY = "INSERT INTO Leases(leaseID,customerFirstName,customerLastName,leasePeriodInDays,UserLogin_userID,Cars_vognNummer,startDate,endDate) VALUES(?,?,?,?,?,?,?,?)";
+        final String SQL_ADD_QUERY = "INSERT INTO Leases(leaseID,customerFirstName,customerLastName,leasePeriodInDays,UserLogin_userID,startDate,endDate) VALUES(?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_ADD_QUERY);
@@ -88,9 +92,8 @@ public class LeaseRepository {
             ps.setString(3,lease.getLastName());
             ps.setInt(4,lease.getLeasePeriodInDays());
             ps.setInt(5,lease.getUserID());
-            ps.setInt(6,lease.getVognNummer());
-            ps.setInt(7,lease.getStartDate());
-            ps.setInt(8,lease.getEndDate());
+            ps.setInt(6,lease.getStartDate());
+            ps.setInt(7,lease.getEndDate());
 
             ps.executeUpdate();
 
@@ -119,7 +122,7 @@ public class LeaseRepository {
     }
 
     public void editLease(Lease lease){
-        final String SQL_EDIT = "UPDATE Leases SET customerFirstName = ?, customerLastName = ?, leasePeriodInDays = ?, UserLogin_userID = ?, Cars_vognNummer = ?, startDate = ?, endDate = ?";
+        final String SQL_EDIT = "UPDATE Leases SET customerFirstName = ?, customerLastName = ?, leasePeriodInDays = ?, UserLogin_userID = ?, startDate = ?, endDate = ?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_EDIT);
@@ -128,9 +131,8 @@ public class LeaseRepository {
             ps.setString(2,lease.getLastName());
             ps.setInt(3,lease.getLeasePeriodInDays());
             ps.setInt(4,lease.getUserID());
-            ps.setInt(5,lease.getVognNummer());
-            ps.setInt(6,lease.getStartDate());
-            ps.setInt(7,lease.getEndDate());
+            ps.setInt(5,lease.getStartDate());
+            ps.setInt(6,lease.getEndDate());
 
             ps.executeUpdate();
 

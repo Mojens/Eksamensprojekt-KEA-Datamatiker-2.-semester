@@ -47,7 +47,7 @@ public class EmployeeRepository {
 
   //find specific employee by user ID
   public Employee findEmployeeByUserID(int inputUserID){
-  Employee employee = null;
+  Employee employee = new Employee();
   final String QUERY = "SELECT * FROM Employee WHERE UserLogin_userID = "+"'"+inputUserID+"'";
   try{
     PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
@@ -61,7 +61,13 @@ public class EmployeeRepository {
       String eMail = resultSet.getString(5);
       int userID = resultSet.getInt(6);
 
-      employee = new Employee(firstName,lastName,phoneNumber,employeeID,eMail,userID);
+      employee.setEmployeeID(employeeID);
+      employee.setFirstName(firstName);
+      employee.setLastName(lastName);
+      employee.setPhoneNumber(phoneNumber);
+      employee.seteMail(eMail);
+      employee.setUserID(userID);
+
     }
     preparedStatement.close();
 

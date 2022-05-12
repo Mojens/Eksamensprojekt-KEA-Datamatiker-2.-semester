@@ -34,10 +34,10 @@ public class CarRepository {
                 String brand = rs.getString(3);
                 String model = rs.getString(4);
                 double price = rs.getDouble(5);
-                boolean isLeased = rs.getBoolean(6);
-                int leaseID = rs.getInt(7);
+                int isLeased = rs.getInt(6);
 
-                carList.add(new Car(vognNummer,stelNummer,brand,model,price,isLeased,leaseID));
+
+                carList.add(new Car(vognNummer,stelNummer,brand,model,price,isLeased));
 
             }
             ps.close();
@@ -49,8 +49,8 @@ public class CarRepository {
 
     }
 
-    public List<Car> findCarByID(int id){
-        List<Car> carByIDList = new ArrayList<>();
+    public Car findCarByID(int id){
+        Car car = new Car();
         final String SQL_SHOW_CAR = "SELECT * FROM Cars WHERE vognNummer = '"+id+"'";
 
         try {
@@ -63,10 +63,14 @@ public class CarRepository {
                 String brand = rs.getString(3);
                 String model = rs.getString(4);
                 double price = rs.getDouble(5);
-                boolean isLeased = rs.getBoolean(6);
-                int leaseID = rs.getInt(7);
+                int isLeased = rs.getInt(6);
 
-                 carByIDList.add(new Car(vognNummer,stelNummer,brand,model,price,isLeased,leaseID));
+               car.setVognNummer(vognNummer);
+               car.setStelNummer(stelNummer);
+               car.setBrand(brand);
+               car.setModel(model);
+               car.setPrice(price);
+               car.setLeased(isLeased);
 
             }
             ps.close();
@@ -74,12 +78,12 @@ public class CarRepository {
             System.out.println("Kunne ikke finde bilen");
             e.printStackTrace();
         }
-        return carByIDList;
+        return car;
 
     }
 
     public void addCar(Car car){
-        final String SQL_ADD_QUERY = "INSERT INTO Cars(vognNummer,stelNummer,brand,model,price,isLeased,Leases_leaseID) VALUES(?,?,?,?,?,?,?)";
+        final String SQL_ADD_QUERY = "INSERT INTO Cars(vognNummer,stelNummer,brand,model,price,isLeased) VALUES(?,?,?,?,?,?)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_ADD_QUERY);
@@ -89,8 +93,8 @@ public class CarRepository {
             ps.setString(3,car.getBrand());
             ps.setString(4,car.getModel());
             ps.setDouble(5,car.getPrice());
-            ps.setBoolean(6,car.isLeased());
-            ps.setInt(7,car.getLeaseID());
+            ps.setInt(6,car.isLeased());
+
 
             ps.executeUpdate();
 
@@ -118,7 +122,7 @@ public class CarRepository {
     }
 
     public void editCar(Car car){
-        final String SQL_EDIT = "UPDATE Cars SET stelNummer = ?, brand = ?, model = ?, price = ?, isLeased = ?, Leases_leaseID = ?";
+        final String SQL_EDIT = "UPDATE Cars SET stelNummer = ?, brand = ?, model = ?, price = ?, isLeased = ?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_EDIT);
@@ -127,8 +131,8 @@ public class CarRepository {
             ps.setString(2,car.getBrand());
             ps.setString(3,car.getModel());
             ps.setDouble(4,car.getPrice());
-            ps.setBoolean(5,car.isLeased());
-            ps.setInt(6,car.getLeaseID());
+            ps.setInt(5,car.isLeased());
+
 
             ps.executeUpdate();
 

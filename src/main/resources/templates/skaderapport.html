@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>SkadeRapport</title>
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/main.css">
+    <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/NavBar.css">
+</head>
+<body>
+<div th:replace="nav.fragment"></div>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col">#
+        </th>
+        <th scope="col">
+            Name
+        </th>
+        <th scope="col">
+            Speed
+        </th>
+        <th scope="col">
+            Sp Defence
+        </th>
+        <th scope="col">
+            Sp Attack
+        </th>
+        <th scope="col">
+            Defence
+        </th>
+        <th scope="col">
+            Attack
+        </th>
+        <th scope="col">
+            HP
+        </th>
+        <th scope="col">
+            Pri Type
+        </th>
+        <th scope="col">
+            Sec Type
+        </th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Image</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="card">
+        <td >
+            <a th:href="@{/{id}(id=${damageReport.damageReportID})}" class="individual"  th:text="${damageReport.damageReportID}" target="_blank" ></a>
+        </td>
+        <td>
+            <a th:href="@{/{id}(id=${car.vognNummer})}" class="individual"  th:text="${car.vognNummer}" target="_blank" ></a>
+        </td>
+        <td >
+            <a th:href="@{/{id}(id=${car.stelNummer})}" class="individual"  th:text="${car.stelNummer}" target="_blank" ></a>
+        </td>
+        <td >
+            <a th:href="@{/{id}(id=${car.brand})}" class="individual"  th:text="${car.brand}" target="_blank" ></a>
+        </td>
+        <td >
+            <a th:href="@{/{id}(id=${car.model})}" class="individual"  th:text="${car.model}" target="_blank" ></a>
+        </td>
+        <td >
+            <a th:href="@{/{id}(id=${car.price})}" class="individual"  th:text="${car.price}" target="_blank" ></a>
+        </td>
+
+        <td >
+            <a th:href="@{/{id}(id=${lease.firstName})}" class="individual"  th:text="${lease.firstName}" target="_blank" ></a>
+        </td>
+        <td >
+            <a th:href="@{/{id}(id=${lease.lastName})}" class="individual"  th:text="${lease.lastName}" target="_blank" ></a>
+        </td>
+        <td >
+            <a th:href="@{/{id}(id=${lease.startDate})}" class="individual"  th:text="${lease.startDate}" target="_blank" ></a>
+        </td>
+        <td >
+            <a th:href="@{/{id}(id=${lease.startDate})}" class="individual"  th:text="${lease.startDate}" target="_blank" ></a>
+        </td>
+        <td >
+            <a th:href="@{/{id}(id=${lease.endDate})}" class="individual"  th:text="${lease.endDate}" target="_blank" ></a>
+        </td>
+        <td >
+            <a th:href="@{/{id}(id=${lease.leasePeriodInDays})}" class="individual"  th:text="${lease.leasePeriodInDays}" target="_blank" ></a>
+        </td>
+        <td >
+            <a th:href="@{/{id}(id=${employee.employeeID})}" class="individual"  th:text="${employee.employeeID}" target="_blank" ></a>
+        </td>
+        <td >
+            <a th:href="@{/{id}(id=${employee.firstName})}" class="individual"  th:text="${employee.firstName}" target="_blank" ></a>
+        </td>
+        <td >
+            <a th:href="@{/{id}(id=${employee.lastName})}" class="individual"  th:text="${employee.lastName}" target="_blank" ></a>
+        </td>
+
+        <td >
+            <a th:href="@{/{id}(id=${employee.eMail})}" class="individual"  th:text="${employee.eMail}" target="_blank" ></a>
+        </td>
+        <td >
+            <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual"  th:text="${employee.phoneNumber}" target="_blank" ></a>
+        </td>
+        <table>
+            <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    Pris
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Picture
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    DamageReportID
+                </th>
+                <th>
+                    LeaseID
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="card" th:each="skade : ${specificDamage}">
+                <td >
+                    <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual"  th:text="${skade.damageReportID}" target="_blank" ></a>
+                </td>
+                <td >
+                    <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual"  th:text="${skade.leaseID}" target="_blank" ></a>
+                </td>
+                <td >
+                    <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual"  th:text="${skade.price}" target="_blank" ></a>
+                </td>
+                <td >
+                    <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual"  th:text="${skade.title}" target="_blank" ></a>
+                </td>
+                <td >
+                    <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual"  th:text="${skade.description}" target="_blank" ></a>
+                </td>
+                <td >
+                    <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual"  th:text="${skade.picture}" target="_blank" ></a>
+                </td>
+                <td >
+                    <a th:href="@{/{id}(id=${employee.phoneNumber})}" class="individual"  th:text="${skade.damageID}" target="_blank" ></a>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>

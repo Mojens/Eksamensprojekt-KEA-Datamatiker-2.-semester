@@ -6,31 +6,25 @@ public class Car {
     private String brand;
     private String model;
     private double price;
-    private boolean isLeased;
+    private int isLeased;
 
-    private int leaseID;
 
-    public Car(int vognNummer, String stelNummer, String brand, String model, double price, boolean isLeased, int leaseID) {
+
+    public Car(int vognNummer, String stelNummer, String brand, String model, double price, int isLeased) {
         this.vognNummer = vognNummer;
         this.stelNummer = stelNummer;
         this.brand = brand;
         this.model = model;
         this.price = price;
         this.isLeased = isLeased;
-        this.leaseID = leaseID;
+
     }
 
     public Car() {
 
     }
 
-    public int getLeaseID() {
-        return leaseID;
-    }
 
-    public void setLeaseID(int leaseID) {
-        this.leaseID = leaseID;
-    }
 
     public String getStelNummer() {
         return stelNummer;
@@ -72,11 +66,11 @@ public class Car {
         this.model = model;
     }
 
-    public boolean isLeased() {
+    public int isLeased() {
         return isLeased;
     }
 
-    public void setLeased(boolean leased) {
+    public void setLeased(int leased) {
         isLeased = leased;
     }
 }

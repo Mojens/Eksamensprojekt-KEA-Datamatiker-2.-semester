@@ -15,6 +15,9 @@ public class DamageReport {
         this.vognNummer = vognNummer;
     }
 
+    public DamageReport() {
+    }
+
     public int getVognNummer() {
         return vognNummer;
     }
@@ -23,8 +26,6 @@ public class DamageReport {
         this.vognNummer = vognNummer;
     }
 
-    public DamageReport() {
-    }
 
     public int getDamageReportID() {
         return damageReportID;
