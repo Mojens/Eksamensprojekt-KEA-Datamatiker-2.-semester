@@ -18,6 +18,7 @@ Nu skal man så indtaste nogle oplyser ind i noget der hedder Environmental vari
 - value til user er fra efter // til den næste : i din url
 4. Tilføjer derefter passoword
 - value til password er fra efter : som kom efter user til den næste @ i din url.
-5. Upload applikationen ind til heroku
+5. Upload applikationen fra denne git, ind til heroku
 - Hvis der skulle opstå problemer ved upload af applikationen kan i følge den guide: https://devcenter.heroku.com/articles/git#deploy-your-code
 ps. Hvis der skulle stødes på nogle problemer ved upload til heroku, gå venligst til denne side: https://help.heroku.com
+6. Tillykke du hoster nu vores projekt på din egen Heroku Konti
