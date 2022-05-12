@@ -151,6 +151,35 @@
         </table>
     </div>
 
+
+    <div class="container-cards">
+        <div th:each="damage : ${specificDamage}">
+
+            <div class="card">
+               <!-- <div class="card-header-big">
+                 <img th:src="@{${'../'+damage.photosImagePath}}" alt="billed"/>
+                </div>-->
+                <div class="card-body-big">
+                    <span class="tag tag-teal" th:text="${damage.title}">title</span>
+                    <h4 class="h4-header" th:text="${damage.price}">DKK
+                    </h4>
+                    <p th:text="${damage.description}">
+                    </p>
+                   <!-- <div class="button">
+                        <a th:href="@{/onsker/{wishListID}(wishListID=${onskelister.id})}"  class="button-small">SE ØNSKER</a>
+                        <a th:href="@{/sletonskeliste/{id}/{userID}(id=${onskelister.id},userID=${onskelister.userID})}" class="button-small-delete">SLET
+                            ØNSKELISTE</a>
+                    </div> -->
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
     <table>
         <thead>
         <tr>
