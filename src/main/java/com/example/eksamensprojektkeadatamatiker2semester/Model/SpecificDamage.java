@@ -8,13 +8,8 @@ public class SpecificDamage {
   private String picture;
   private int damageID;
   private String title;
-
   private int leaseID;
-
   private double sumTotal;
-
-
-
   private int damageReportID;
 
 
