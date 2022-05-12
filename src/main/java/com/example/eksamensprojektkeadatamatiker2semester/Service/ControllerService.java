@@ -39,6 +39,37 @@ public class ControllerService {
     }
     return currentPage;
   }
+  public String skader(HttpSession httpSession){
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null){
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 2 || loggedUser.getType() == 4){
+        currentPage = "/skader";
+      }else if (loggedUser.getType() != 2 || loggedUser.getType() !=4){
+        currentPage = "/login";
+      }
+    }else if (httpSession.getAttribute("userName") == null){
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
+
+  public String skadeRapport(HttpSession httpSession){
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null){
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 2 || loggedUser.getType() == 4){
+        currentPage = "/skaderapport";
+      }else if (loggedUser.getType() != 2 || loggedUser.getType() !=4){
+        currentPage = "/login";
+      }
+    }else if (httpSession.getAttribute("userName") == null){
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
 
   public String admin(HttpSession httpSession){
     String currentPage = null;
