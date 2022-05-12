@@ -16,6 +16,7 @@ public class UserRepository {
   }
 
   //Create a new user to the system from admin site
+  //We made it return a User Object beacuse to create a employee we need the auto created id as a foreign key in the other table
   public void createNewUser(User user){
     final String QUERY = "INSERT INTO UserLogin (userID, userName, password, userType) VALUES (?, ?, ?, ?)";
     try{
