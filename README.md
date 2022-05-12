@@ -1,4 +1,4 @@
-# Eksamensprojekt-KEA-Datamatiker-2.-semester
+# Eksamens projekt på KEA Datamatiker 2.semester
 Vi har lavet et intern adminstrativ system som hedder bilabonnement-portalen som er blevet efterspurgt af Bilabonnement A/S
 # Vil i hoste vores projekt ? så er der nogle krav
 1. hosting hos Heroku
