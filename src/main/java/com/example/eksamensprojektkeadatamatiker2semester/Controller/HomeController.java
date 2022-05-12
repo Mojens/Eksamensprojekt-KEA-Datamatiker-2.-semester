@@ -20,11 +20,6 @@ public class HomeController {
     return controllerService.registrerLejeAftaler(httpSession);
   }
 
-  @GetMapping("/registrerFejlOgMangel")
-  public String registrerFejlOgMangel(HttpSession httpSession){
-    return controllerService.registrerFejlOgMangel(httpSession);
-  }
-
   @GetMapping("/showKPI")
   public String showKPI(HttpSession httpSession){
     return controllerService.showKPI(httpSession);

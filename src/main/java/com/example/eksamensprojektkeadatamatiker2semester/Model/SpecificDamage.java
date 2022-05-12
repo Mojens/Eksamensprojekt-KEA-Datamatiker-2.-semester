@@ -30,6 +30,14 @@ public class SpecificDamage {
   public SpecificDamage() {
   }
 
+  public SpecificDamage(double price, String description, String picture, String title, int leaseID, int damageReportID) {
+    this.price = price;
+    this.description = description;
+    this.picture = picture;
+    this.title = title;
+    this.leaseID = leaseID;
+    this.damageReportID = damageReportID;
+  }
 
   public double getSumTotal() {
     return sumTotal;

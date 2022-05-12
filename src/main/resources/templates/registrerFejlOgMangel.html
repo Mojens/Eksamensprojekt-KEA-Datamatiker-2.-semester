@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Register Fejl og Mangler</title>
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/main.css">
+    <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
 <body>
+<h2>Opret medarbejder</h2>
+<form
+        th:action="@{/registrerFejlOgMangel/{damageReportID}/{leaseID}(damageReportID=${damageReport.damageReportID},leaseID=${specificDamage.leaseID})}"
+        enctype="multipart/form-data"
+        class="form-control"
+        method="post">
+    <div class="container-form-small">
+        <label>Fejl Og Mangler</label>
+        <input type="text" placeholder="title" name="title">
+
+        <label>Beskrivelse</label>
+        <input type="text" placeholder="Beskrivelse" name="description">
+
+        <label class="header">Billed</label>
+        <input type="file" name="image" accept="image/png, image/jpeg, image/jpg" />
+
+        <label>Indtast Brugernavn</label>
+        <input type="text" placeholder="pris pr skade" name="price">
+
+        <button class="submit-button-small" type="submit">Opret skade</button>
+
+    </div>
+</form>
+
 <h2> TEST fejl </h2>
 
 </body>
