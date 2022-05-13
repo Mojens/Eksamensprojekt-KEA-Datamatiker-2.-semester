@@ -5,14 +5,100 @@
     <title>Title</title>
 </head>
 <body>
-<tr th:each="Car : ${listOfLeasedCars}">
-    <td th:text="${Car.getVognNummer()}"></td>
-    <td th:text="${Car.getStelNummer()}"></td>
-    <td th:text="${Car.getBrand()}"></td>
-    <td th:text="${Car.getModel()}"></td>
-    <td th:text="${Car.getPrice()}"></td>
-</tr>
 
 
+<h1>Alle biler</h1>
+<details>
+    <summary>Se Alle biler</summary>
+<table class="allCars">
+    <thead>
+    <tr>
+        <th>
+            Vognnummer
+        </th>
+        <th>
+            Stelnummer
+        </th>
+        <th>
+            Bil mærke
+        </th>
+        <th>
+            Bil model
+        </th>
+        <th>
+            Bil pris
+        </th>
+        <th>
+            Status
+        </th>
+    </tr>
+    </thead>
+    <tr th:each="Car : ${allCars}">
+        <td th:text="${Car.getVognNummer()}">
+        </td>
+        <td th:text="${Car.getStelNummer()}">
+        </td>
+        <td th:text="${Car.getBrand()}">
+
+        </td>
+        <td th:text="${Car.getModel()}">
+
+        </td>
+        <td th:text="${Car.getPrice()}">
+
+        </td>
+    </tr>
+</table>
+</details>
+<h1>Alle udlejet biler</h1>
+<details>
+    <SUMMARY>se alle udlejet biler</SUMMARY>
+<table class="allLeasedCars">
+    <thead>
+    <tr>
+        <th>
+            Vognnummer
+        </th>
+        <th>
+            Stelnummer
+        </th>
+        <th>
+            Bil mærke
+        </th>
+        <th>
+            Bil model
+        </th>
+        <th>
+            Bil pris
+        </th>
+        <th>
+            Status
+        </th>
+    </tr>
+    </thead>
+    <tr th:each="Car : ${listOfLeasedCars}">
+        <td th:text="${Car.getVognNummer()}">
+        </td>
+        <td th:text="${Car.getStelNummer()}">
+        </td>
+        <td th:text="${Car.getBrand()}">
+
+        </td>
+        <td th:text="${Car.getModel()}">
+
+        </td>
+        <td th:text="${Car.getPrice()}">
+        </td>
+        <td>
+            <span th:if="${Car.isLeased() == '1'}">Udlejet</span>
+            <span th:if="${Car.isLeased() == '0'}">Ledig</span>
+        </td>
+    </tr>
+    </table>
+</details>
+<h1>Antal pris på udlejet biler</h1>
+<h2 th:text="${totalPriceOfLeasedCars}"></h2>
+<h1>Antal Biler udlejet</h1>
+<h2 th:text="${amountOfLeasedCars}"></h2>
 </body>
 </html>
