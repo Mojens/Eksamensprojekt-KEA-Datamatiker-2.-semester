@@ -24,7 +24,7 @@ public class ShowKPIController {
     this.carRepository = carRepository;
   }
 
-  @GetMapping("/showKPI")
+  @GetMapping("/dashboard")
   public String showKPI(Model model,
                         HttpSession httpSession){
     List<Car> leasedCars = showKPIRepository.addLeasedCarsToList();
@@ -35,7 +35,7 @@ public class ShowKPIController {
     model.addAttribute("totalPriceOfLeasedCars",totalPriceOfLeasedCars);
     model.addAttribute("amountOfLeasedCars",amountOfLeasedCars);
     model.addAttribute("allCars",allCars);
-    return "/showKPI";
+    return "dashboard";
   }
 
 

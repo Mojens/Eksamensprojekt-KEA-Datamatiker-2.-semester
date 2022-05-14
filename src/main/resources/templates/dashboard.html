@@ -5,10 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-
-
+<td th:text="${allCars.size()}"></td>
+<h2>Hvis en bil er udlejet vil status se således ud</h2>
+    <button style="background-color: red"></button>
+<h2>Hvis en bil er tilgængelig og kan udlejes ser status således ud</h2>
+    <button style="background-color: green"></button>
 <h1>Alle biler</h1>
 <details>
+    <h2>Antal Biler</h2>
+    <h3 th:text="${allCars.size()}"></h3>
     <summary>Se Alle biler</summary>
 <table class="allCars">
     <thead>
@@ -47,11 +52,19 @@
         <td th:text="${Car.getPrice()}">
 
         </td>
+        <td th:if="${Car.isLeased() == 1}">
+        <button style="background-color: red"></button>
+        </td>
+        <td th:if="${Car.isLeased() == 0}">
+            <button style="background-color: green"></button>
+        </td>
     </tr>
 </table>
 </details>
 <h1>Alle udlejet biler</h1>
 <details>
+    <h2>Antal Biler udlejet</h2>
+    <h3 th:text="${amountOfLeasedCars}"></h3>
     <SUMMARY>se alle udlejet biler</SUMMARY>
 <table class="allLeasedCars">
     <thead>
@@ -89,16 +102,16 @@
         </td>
         <td th:text="${Car.getPrice()}">
         </td>
-        <td>
-            <span th:if="${Car.isLeased() == '1'}">Udlejet</span>
-            <span th:if="${Car.isLeased() == '0'}">Ledig</span>
+        <td th:if="${Car.isLeased() == 1}">
+            <button style="background-color: red"></button>
+        </td>
+        <td th:if="${Car.isLeased() == 0}">
+            <button style="background-color: green"></button>
         </td>
     </tr>
     </table>
 </details>
 <h1>Antal pris på udlejet biler</h1>
 <h2 th:text="${totalPriceOfLeasedCars}"></h2>
-<h1>Antal Biler udlejet</h1>
-<h2 th:text="${amountOfLeasedCars}"></h2>
 </body>
 </html>
