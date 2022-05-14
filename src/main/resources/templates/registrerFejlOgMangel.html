@@ -11,11 +11,14 @@
 <body>
 <h2>Opret medarbejder</h2>
 <form
-        th:action="@{/registrerFejlOgMangel/{damageReportID}/{leaseID}(damageReportID=${damageReport.damageReportID},leaseID=${specificDamage.leaseID})}"
+        action="/fejl"
+        method="post"
         enctype="multipart/form-data"
-        class="form-control"
-        method="post">
+        class="form-control">
     <div class="container-form-small">
+        <label>Indtast Brugernavn</label>
+        <input type="text" placeholder="pris pr skade" name="price">
+
         <label>Fejl Og Mangler</label>
         <input type="text" placeholder="title" name="title">
 
@@ -25,8 +28,7 @@
         <label class="header">Billed</label>
         <input type="file" name="image" accept="image/png, image/jpeg, image/jpg" />
 
-        <label>Indtast Brugernavn</label>
-        <input type="text" placeholder="pris pr skade" name="price">
+
 
         <button class="submit-button-small" type="submit">Opret skade</button>
 

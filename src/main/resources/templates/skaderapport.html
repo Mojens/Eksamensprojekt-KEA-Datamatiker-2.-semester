@@ -34,22 +34,45 @@
     <tbody>
     <tr class="card" th:each="rapport : ${damageReports}">
         <td>
-            <a th:href="@{/skaderapport/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.damageReportID}" target="_blank" ></a>
+            <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.damageReportID}" target="_blank" ></a>
         </td>
         <td>
-            <a th:href="@{/skaderapport/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.leaseID}" target="_blank" ></a>
+            <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.leaseID}" target="_blank" ></a>
         </td>
         <td >
-            <a th:href="@{/skaderapport/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.vognNummer}" target="_blank" ></a>
+            <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.vognNummer}" target="_blank" ></a>
         </td>
         <td >
-            <a th:href="@{/skaderapport/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.employeeID}" target="_blank" ></a>
+            <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.employeeID}" target="_blank" ></a>
         </td>
-        <td class="row-update"><a class="link-row link" th:href="@{/skaderapport/{id}(id=${rapport.damageReportID})}">Se skadesrapport</a></td>
+        <td class="row-update"><a class="link-row link" th:href="@{/skader/{id}(id=${rapport.damageReportID})}">Se skadesrapport</a></td>
     </tr>
     </tbody>
 
 </table>
+
+    <form
+            th:object="${damageReportID}"
+            method="POST"
+            action="/skaderapport">
+        <div class="container-form-big">
+
+            <input class="input-field" type="hidden" name="damageReportID" th:value="${damageReportID}" />
+
+            <label class="header">Lejeaftale</label>
+            <input class="input-field" type="text" placeholder="Enter Title" name="lejeaftaleID" required/>
+
+            <label class="header">Vognummer</label>
+            <input class="input-field" type="text" placeholder="Enter description" name="vognNummer" required/>
+
+            <label class="header">Medarbejder</label>
+            <input class="input-field" type="text" placeholder="Enter description" name="employeeID" required/>
+
+
+            <button class="submit-button-small" type="submit">Opret SkadesRapport</button>
+        </div>
+
+    </form>
 </div>
 </body>
 </html>

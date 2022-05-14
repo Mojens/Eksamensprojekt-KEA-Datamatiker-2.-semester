@@ -1,19 +1,13 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Controller;
 
-import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
-import com.example.eksamensprojektkeadatamatiker2semester.Model.DamageReport;
-import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
-import com.example.eksamensprojektkeadatamatiker2semester.Model.SpecificDamage;
+import com.example.eksamensprojektkeadatamatiker2semester.Model.*;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.*;
 import com.example.eksamensprojektkeadatamatiker2semester.Service.ControllerService;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.FileUploadUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
@@ -41,32 +35,53 @@ public class SpecificDamageController {
         this.controllerService = controllerService;
     }
 
-    @PostMapping("/registrerFejlOgMangel/{damageReportID}/{leaseID}")
-    public String registrerFejlOgMangel(@PathVariable("damageReportID") int damageReportID,
-                                        @PathVariable("leaseID") int leaseID,
-                                        HttpSession httpSession,
-                                        @RequestParam("price")int price,
+    @GetMapping("/fejl")
+    public String viewPage(Model model){
+        DamageReport damageReport = new DamageReport();
+
+        model.addAttribute("damageReport",damageReport);
+        return "registrerFejlOgMangel";
+    }
+
+
+
+    @PostMapping("/fejl")
+    public String registrerFejlOgMangel(HttpSession httpSession,
+                                        @RequestParam("price") double price,
                                         @RequestParam("description")String description,
                                         @RequestParam("title") String title,
                                         @RequestParam(value = "image", required = false) MultipartFile multipartFile,
-                                        Model model) throws IOException {
+                                        Model model,
+                                        @ModelAttribute("model") DamageReport report) throws IOException {
 
-        DamageReport damageReport = damageReportRepository.findReportByID(damageReportID);
         SpecificDamage specificDamage = new SpecificDamage();
+        DamageReport dr = new DamageReport();
 
+        DamageReport damageReport = damageReportRepository.findReportByID(dr.getDamageReportID());
+        Lease lease = leaseRepository.findLeaseByID(damageReport.getVognNummer());
+        Car car = carRepository.findCarByID(lease.getLeaseID());
+        Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
 
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         specificDamage.setPicture(fileName);
 
+
+
         String uploadDir = "user-photos/";
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-        specificDamageRepository.addSpecificDamage(new SpecificDamage(price,description,fileName,title,leaseID,damageReportID));
 
+
+        specificDamageRepository.addSpecificDamage(new SpecificDamage(price,description,fileName,title, damageReport.getDamageReportID(),lease.getLeaseID()));
+
+
+        model.addAttribute("car",car);
+        model.addAttribute("lease",lease);
         model.addAttribute("damageReport",damageReport);
+        model.addAttribute("employee",employee);
         model.addAttribute("specificDamage",specificDamage);
 
 
-        return "/registrerFejlOgMangel";
+        return "redirect:/registrerFejlOgMangel";
         //return controllerService.registrerFejlOgMangel(httpSession);
     }
 

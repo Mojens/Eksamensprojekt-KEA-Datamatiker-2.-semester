@@ -14,6 +14,12 @@ public class DamageReport {
         this.employeeID = employeeID;
     }
 
+    public DamageReport(int leaseID, int vognNummer, int employeeID) {
+        this.leaseID = leaseID;
+        this.vognNummer = vognNummer;
+        this.employeeID = employeeID;
+    }
+
     public DamageReport() {
     }
 

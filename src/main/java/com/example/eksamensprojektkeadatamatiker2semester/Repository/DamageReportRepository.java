@@ -116,15 +116,15 @@ public class DamageReportRepository {
 
     public void addDamageReport(DamageReport damageReport){
 
-        final String SQL_ADD_QUERY = "INSERT INTO DamageReport(DamageReportID,UserLogin_userID,Leases_leaseID,Cars_vognNummer) VALUES(?,?,?,?)";
+        final String SQL_ADD_QUERY = "INSERT INTO DamageReport(DamageReportID,Leases_leaseID,Cars_vognNummer,Employee_employeeID) VALUES(?,?,?,?)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_ADD_QUERY);
 
             ps.setInt(1,damageReport.getDamageReportID());
-            ps.setInt(2,damageReport.getEmployeeID());
-            ps.setInt(3,damageReport.getLeaseID());
-            ps.setInt(4,damageReport.getVognNummer());
+            ps.setInt(2,damageReport.getLeaseID());
+            ps.setInt(3,damageReport.getVognNummer());
+            ps.setInt(4,damageReport.getEmployeeID());
 
             ps.executeUpdate();
 
