@@ -10,47 +10,56 @@
 </head>
 <body onload="document.getElementById('id01').style.display='block'">
 <div th:replace="nav.fragment"></div>
-
+<div class="hero-backdrop">
+    <a href="/"><img th:src="@{../CSS/images/hero.png}" class="backdrop" alt="hero-backdrop"
+                     src="../static/CSS/images/hero.png"/></a>
+</div>
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'"
         class="close" title="Close Modal">&times;</span>
 
-<form   class="modal-content animate"
-        action="/login"
-        method="post">
+    <form class="modal-content animate"
+          action="/login"
+          method="post">
 
-    <div class="imgcontainer">
-        <img th:src="@{../CSS/images/logo-symbol_2_b9b3ka.png}" alt="Avatar" class="avatar">
-    </div>
-    <div class="header">
-    <h1 class="h1">
-        Velkommen
-    </h1>
-        <p class="p-text">
-            Log på for at fortsætte til Medarbejder portalen.
-        </p>
-    </div>
-    <div class="container">
+        <div class="imgcontainer">
+            <img th:src="@{../CSS/images/logo-symbol_2_b9b3ka.png}" alt="Avatar" class="avatar">
+        </div>
+        <div class="header">
+            <h1 class="h1">
+                Velkommen
+            </h1>
+            <p class="p-text">
+                Log på for at fortsætte til Medarbejder portalen.
+            </p>
+        </div>
+        <div class="container">
 
-        <input class="input-field" type="text" placeholder="Brugernavn" name="userName" required>
+            <!--        <input class="input-field" type="text" placeholder="Brugernavn" name="userName" required>-->
+            <!--        <input class="input-field" type="text" placeholder="Adgangskode" name="password" required>-->
 
-
-        <input class="input-field" type="text" placeholder="Adgangskode" name="password" required>
-
-        <button class="submit-button" type="submit">Log ind</button>
-    </div>
-    <div class="container">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Fortryd</button>
-        <span class="psw"><a href="#">Har du glemt din adgangskode?</a></span>
-    </div>
-</form>
+            <div class="floating">
+                <input id="input__username" class="floating__input" name="username" required type="text"
+                       placeholder="Username"/>
+                <label for="input__username" class="floating__label" data-content="E-mailadresse">
+            </div>
+            <div class="floating">
+                <input id="input__password" class="floating__input" name="password" required type="text"
+                       placeholder="Password"/>
+                <label for="input__password" class="floating__label" data-content="Adgangskode">
+                    <div class="psw-container">
+                        <span class="psw"><a href="#">Har du glemt din adgangskode?</a></span>
+                    </div>
+                    <button class="submit-button" type="submit">Log ind</button>
+            </div>
+    </form>
 </div>
 <script>
     // Get the modal
     var modal = document.getElementById('id01');
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
