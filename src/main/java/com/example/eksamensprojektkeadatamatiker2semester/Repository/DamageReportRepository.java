@@ -93,10 +93,9 @@ public class DamageReportRepository {
 
             while(rs.next()){
                 int damageReportID = rs.getInt(1);
-                int employeeID = rs.getInt(2);
-                int leaseID = rs.getInt(3);
-                int vognNummer = rs.getInt(4);
-
+                int leaseID = rs.getInt(2);
+                int vognNummer = rs.getInt(3);
+                int employeeID = rs.getInt(4);
                report.setDamageReportID(damageReportID);
                report.setEmployeeID(employeeID);
                report.setLeaseID(leaseID);
@@ -112,9 +111,9 @@ public class DamageReportRepository {
         return report;
     }
 
-    public List<DamageReport> findReportByIDAsList(int reportID){
+    public List<DamageReport> findReportByLast(){
        List <DamageReport> report = new ArrayList<>();
-        final String SQL_SHOW_REPORT = "SELECT * FROM DamageReport WHERE damageReportID = '"+reportID+"'";
+        final String SQL_SHOW_REPORT = "SELECT * FROM DamageReport ORDER BY damageReportID desc";
 
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_SHOW_REPORT);

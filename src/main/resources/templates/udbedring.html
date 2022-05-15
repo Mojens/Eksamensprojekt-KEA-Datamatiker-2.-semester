@@ -117,6 +117,24 @@
             </thead>
         </table>
 </div>
+
+    <form
+            method="POST"
+            th:action="@{/skaderapport}">
+        <div class="container-form-big">
+
+
+            <input class="input-field" type="hidden" name="lejeaftaleID" th:value="${lease.leaseID}" >
+
+            <input class="input-field" type="hidden" name="vognNummer" th:value="${car.vognNummer}" >
+
+            <input class="input-field" type="hidden" name="employeeID" th:value="${employee.userID}" >
+
+
+            <button class="submit-button-small" type="submit">Opret SkadesRapport</button>
+        </div>
+
+    </form>
 </div>
 </body>
 </html>

@@ -55,4 +55,6 @@ public class DamageReport {
     public void setLeaseID(int leaseID) {
         this.leaseID = leaseID;
     }
+
+
 }
