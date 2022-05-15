@@ -12,6 +12,7 @@
 <div th:replace="nav.fragment"></div>
 
 <div class="container-rapport">
+
     <h1>Alle Skadessrapporter</h1>
 <table>
     <thead>
@@ -52,12 +53,10 @@
 </table>
 
     <form
-            th:object="${damageReportID}"
             method="POST"
-            action="/skaderapport">
+            th:action="@{/skaderapport}">
         <div class="container-form-big">
 
-            <input class="input-field" type="hidden" name="damageReportID" th:value="${damageReportID}" />
 
             <label class="header">Lejeaftale</label>
             <input class="input-field" type="text" placeholder="Enter Title" name="lejeaftaleID" required/>

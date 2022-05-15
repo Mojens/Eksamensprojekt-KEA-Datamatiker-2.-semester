@@ -40,13 +40,12 @@ public class SpecificDamageController {
         DamageReport damageReport = new DamageReport();
 
         model.addAttribute("damageReport",damageReport);
-        return "registrerFejlOgMangel";
+        return "/registrerFejlOgMangel";
     }
-
-
 
     @PostMapping("/fejl")
     public String registrerFejlOgMangel(HttpSession httpSession,
+
                                         @RequestParam("price") double price,
                                         @RequestParam("description")String description,
                                         @RequestParam("title") String title,
@@ -65,14 +64,10 @@ public class SpecificDamageController {
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         specificDamage.setPicture(fileName);
 
-
-
         String uploadDir = "user-photos/";
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
-
         specificDamageRepository.addSpecificDamage(new SpecificDamage(price,description,fileName,title, damageReport.getDamageReportID(),lease.getLeaseID()));
-
 
         model.addAttribute("car",car);
         model.addAttribute("lease",lease);
@@ -81,7 +76,7 @@ public class SpecificDamageController {
         model.addAttribute("specificDamage",specificDamage);
 
 
-        return "redirect:/registrerFejlOgMangel";
+        return "redirect:/skader";
         //return controllerService.registrerFejlOgMangel(httpSession);
     }
 

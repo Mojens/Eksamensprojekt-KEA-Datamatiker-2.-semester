@@ -112,6 +112,32 @@ public class DamageReportRepository {
         return report;
     }
 
+    public List<DamageReport> findReportByIDAsList(int reportID){
+       List <DamageReport> report = new ArrayList<>();
+        final String SQL_SHOW_REPORT = "SELECT * FROM DamageReport WHERE damageReportID = '"+reportID+"'";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_SHOW_REPORT);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                int damageReportID = rs.getInt(1);
+                int leaseID = rs.getInt(2);
+                int vognNummer = rs.getInt(3);
+                int employeeID = rs.getInt(4);
+
+                report.add(new DamageReport(damageReportID,leaseID,vognNummer,employeeID));
+
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            System.out.println("Kunne ikke finde nogle skader");
+            e.printStackTrace();
+        }
+        return report;
+    }
+
 
 
     public void addDamageReport(DamageReport damageReport){

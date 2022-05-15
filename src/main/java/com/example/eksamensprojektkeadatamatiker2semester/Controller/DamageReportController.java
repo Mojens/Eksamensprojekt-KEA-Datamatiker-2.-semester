@@ -36,18 +36,60 @@ public class DamageReportController {
     @GetMapping("/skaderapport")
     public String showAllDamageReports(HttpSession httpSession, Model model){
 
-        List<DamageReport> damageReports = damageReportRepository.showAllDamageReports();
+
+        List <DamageReport> damageReports = damageReportRepository.showAllDamageReports();
+        model.addAttribute("damageReports",damageReports);
+        return "/skaderapport";
+        //return controllerService.skadeRapport(httpSession);
+    }
+
+    @GetMapping("/findlease")
+    public String findLeaseToMakeDamageReport(HttpSession httpSession, Model model,String keyword){
+
+        if (keyword!=null){
+            List<Lease> list = leaseRepository.findLeaseByIDAsList(Integer.parseInt(keyword));
+
+            model.addAttribute("list",list);
+
+        } else {
+            List<Lease> list = leaseRepository.showAllLeases();
+            model.addAttribute("list",list);
+
+        }
+
+        return "/findlease";
+        //return controllerService.skadeRapport(httpSession);
+    }
+
+    @GetMapping("/udbedring/{id}")
+    public String showCarsAndLeases(@PathVariable("id") int id, HttpSession httpSession, Model model){
+
+        CarsLeases carsLeases = leaseRepository.findLeaseAndCarByID(id);
+        Lease lease = leaseRepository.findLeaseByID(carsLeases.getCarID());
+        Car car = carRepository.findCarByID(lease.getLeaseID());
+
+        model.addAttribute("carLeases",carsLeases);
+        model.addAttribute("lease",lease);
+        model.addAttribute("car",car);
+
+        return "/udbedring";
+        //return controllerService.skadeRapport(httpSession);
+    }
+
+    @GetMapping("/skaderapport/{id}")
+    public String showOneDamageReport(@PathVariable("id") int id, Model model){
+
+        DamageReport damageReports = damageReportRepository.findReportByID(id);
         model.addAttribute("damageReports",damageReports);
         return "/skaderapport";
         //return controllerService.skadeRapport(httpSession);
     }
 
     @PostMapping("/skaderapport")
-    public String addDamageReport(@RequestParam("damageReportID") int damageReportID,
-                                  @RequestParam("lejeaftaleID") int lejeaftaleID,
+    public String addDamageReport(@RequestParam("lejeaftaleID") int lejeaftaleID,
                                   @RequestParam("vognNummer")int vognNummer,
                                   @RequestParam("employeeID")int employeeID,
-                                  Model model){
+                                  Model model,HttpSession httpSession){
 
         DamageReport dr = new DamageReport();
         DamageReport damageReport = damageReportRepository.findReportByID(dr.getDamageReportID());
@@ -55,18 +97,17 @@ public class DamageReportController {
         Car car = carRepository.findCarByID(lease.getLeaseID());
         Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
 
-        dr.setDamageReportID(damageReportID);
 
         damageReportRepository.addDamageReport(new DamageReport(lejeaftaleID,vognNummer,employeeID));
 
-        DamageReport createdDamageReport = damageReportRepository.findReportByID(dr.getDamageReportID());
+        DamageReport createdDamageReport = damageReportRepository.findReportByID(damageReport.getDamageReportID());
 
         model.addAttribute("car",car);
         model.addAttribute("lease",lease);
         model.addAttribute("damageReport",damageReport);
         model.addAttribute("employee",employee);
 
-        return "redirect:/skaderapport/" +damageReportID;
+        return "redirect:/skaderapport";
 
     }
 
@@ -93,7 +134,7 @@ public class DamageReportController {
         //return controllerService.skader(httpSession);
     }
 
-    @GetMapping("/skaderapport/{id}")
+    /*@GetMapping("/skaderapport/{id}")
     public String showDamageReport(@PathVariable("id") int id, Model model, HttpSession httpSession){
 
         DamageReport damageReport = damageReportRepository.findReportByID(id);
@@ -114,7 +155,7 @@ public class DamageReportController {
 
         return "/skaderapport";
         //return controllerService.skader(httpSession);
-    }
+    }*/
 
 
 
