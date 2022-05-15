@@ -1,5 +1,36 @@
 # Eksamens projekt på KEA Datamatiker 2.semester
 Vi har lavet et intern adminstrativ system som hedder bilabonnement-portalen som er blevet efterspurgt af Bilabonnement A/S
+# Importer repository fra github
+1. Kopier github link :https://github.com/Mojens/Eksamensprojekt-KEA-Datamatiker-2.-semester.git
+2. åben IntelliJ
+3. Gå til file/new/projekt from version control
+4. Indsæt link i Url 
+5. aflsut ved at klikke på knappen clone
+#Opsætning af database i MySQL
+1. i MySQL klik på create new schema
+2. Navngiv skemaet bilabonnementer
+3. klik Apply og derefter Apply igen
+4. Klik på iconet i ventre hjørne new SQl tab og insæt database informationerne (SKAL INSÆTTES HER)
+5. klik nu på lyn iconet for at loade tablesne
+6. Du skulle nu kunne se alle tables i schema
+# Opsætning af database i intellij
+1. Klik på knappen Database oppe i højre hjørne 
+2. Klik på plus iconet
+3. Gå til datasource/Mysql
+4. Ret User til dit root navn på din MySQL server
+5. I Password skal du indskrive dit password til din MySQL server
+6. Ret Database til hvad du har navngivet den importerede database
+7. Indsæt jdbc:mysql://localhost:3306/bilabonnementer i URL, hvis du har valgt en anden port skal linket rettes til denne, ligeså hvis du har navngivet din database anderledes.
+8. Aflut ved at klikke på Apply.
+9. Naviger til Run/Edit configurations
+10. Klik på Enviroment for at udvide menuen
+11. Klik derefter på iconet til højre for Enviroment variables.
+12. Tilføj en variable ved at klikke på plus tegnet oppe i venstre hjørne
+13. Første variable skal navn gives URl og value er samme link fra step 7.
+14. Derefter skal der oprettes en user med value som er dit root navn på din MySQL server
+15. Sidste variable er pwd og value er din kode til din mysql server
+16. Aflut ved at klikke OK.
+17. Repositoriet kan nu kørers localt
 # Vil i hoste vores projekt ? så er der nogle krav
 1. hosting hos Heroku
 2. En online database i MySQL (Man tilvælger en add on som hedder "ClearDB MySQL" )
