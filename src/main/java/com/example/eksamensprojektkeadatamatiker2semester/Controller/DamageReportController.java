@@ -127,7 +127,7 @@ public class DamageReportController {
     public String showDamageReportID(@PathVariable("id") int id, Model model, HttpSession httpSession){
 
         DamageReport damageReport = damageReportRepository.findReportByID(id);
-        System.out.println(damageReport.getDamageReportID());
+
         CarsLeases carsLeases = leaseRepository.findLeaseAndCarByID(damageReport.getDamageReportID());
 
         Lease lease = leaseRepository.findLeaseByID(damageReport.getLeaseID());
@@ -136,11 +136,6 @@ public class DamageReportController {
         Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
         List<SpecificDamage> specificDamage = specificDamageRepository.findSpecificDamageByReportID(damageReport.getDamageReportID());
 
-        System.out.println(carsLeases.getLeaseID());
-        System.out.println(carsLeases.getCarID());
-        System.out.println(lease.getLeaseID());
-        System.out.println(car.getVognNummer());
-        System.out.println(employee.getEmployeeID());
 
         SpecificDamage sum = specificDamageRepository.sumPriceSpecificDamagesByID(id);
 

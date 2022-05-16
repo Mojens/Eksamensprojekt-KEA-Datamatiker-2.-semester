@@ -183,7 +183,32 @@
 
             </div>
         </div>
+        <form
+                action="/fejl"
+                method="post"
+                enctype="multipart/form-data"
+                class="form-control">
+            <div class="container-form-small">
 
+
+                <label>Fejl Og Mangler</label>
+                <input type="text" placeholder="title" name="title">
+
+                <label>Beskrivelse</label>
+                <input type="text" placeholder="Beskrivelse" name="description">
+
+                <label>Indtast Pris</label>
+                <input type="text" placeholder="pris pr skade" name="price">
+
+                <label class="header">Billed</label>
+                <input type="file" name="image" accept="image/png, image/jpeg, image/jpg" />
+
+
+
+                <button class="submit-button-small" type="submit">Opret skade</button>
+
+            </div>
+        </form>
 
     </div>
 
