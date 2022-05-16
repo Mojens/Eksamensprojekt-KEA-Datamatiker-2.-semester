@@ -1,6 +1,7 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Service;
 
 import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +15,7 @@ public class UserService {
     return false;
   }
 
+
   //Check type by user for redirection after the login
   public String checkTypeByUser(String type){
     if (Integer.parseInt(type) == 1 ){
@@ -21,7 +23,7 @@ public class UserService {
     }else if (Integer.parseInt(type) == 2){
       return "redirect:/registrerFejlOgMangel";
     }else if (Integer.parseInt(type) == 3){
-      return "redirect:/showKPI";
+      return "redirect:/dashboard";
     }else if (Integer.parseInt(type) == 4){
       return "redirect:/admin";
     }

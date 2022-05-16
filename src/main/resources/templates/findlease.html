@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Fejl og Mangler</title>
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/main.css">
+    <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/NavBar.css">
+</head>
+<body>
+<div th:replace="nav.fragment"></div>
+
+<div class="container-rapport">
+    <h1>Skade og udbedring</h1>
+    <form
+            method="get"
+            th:action="@{/findlease/}">
+        <div class="container-form-big">
+
+            <input type="text" name="keyword" th:value="${keyword}" placeholder="Find lejeaftale" size="50">
+
+
+            <button class="submit-button-small" type="submit">Søg efter lejeaftale</button>
+        </div>
+
+    </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">
+                Lejeaftale ID
+            </th>
+            <th scope="col">
+                Fornavn
+            </th>
+            <th scope="col">
+                Efternavn
+            </th>
+            <th scope="col">
+                Lejeaftale periode
+            </th>
+            <th scope="col">
+                Start Dato
+            </th>
+            <th scope="col">
+                Slut Dato
+            </th>
+            <th scope="col">Se rapporten</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="card" th:each="l : ${list}" th:field="${l}">
+            <td class="individual" th:text="${l.leaseID}">
+            </td>
+            <td class="individual" th:text="${l.firstName}">
+            </td>
+            <td class="individual" th:text="${l.lastName}">
+            </td>
+            <td class="individual" th:text="${l.leasePeriodInDays}">
+            </td>
+            <td class="individual" th:text="${l.startDate}">
+            </td>
+            <td class="individual" th:text="${l.endDate}">
+            <td class="individual"><a class="individual" th:href="@{/udbedring/{id}(id=${l.leaseID})}">Se lejeaftale</a></td>
+
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -7,6 +7,7 @@ import com.example.eksamensprojektkeadatamatiker2semester.Repository.UserReposit
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.security.crypto.bcrypt.*;
 
 @Controller
 public class EmployeeController {
@@ -35,7 +36,8 @@ public class EmployeeController {
                             @RequestParam("lastName") String lastName,
                             @RequestParam("phoneNumber") String phoneNumber,
                             @RequestParam("eMail") String eMail){
-    userRepository.createNewUser(new User(password,userName,type));
+    String bCryptPassword = BCrypt.hashpw(password,BCrypt.gensalt());
+    userRepository.createNewUser(new User(bCryptPassword,userName,type));
     User createdUser = userRepository.findUserByUserName(userName);
     employeeRepository.addNewEmployee(new Employee(firstName,lastName,phoneNumber,eMail,createdUser.getUserID()));
 
