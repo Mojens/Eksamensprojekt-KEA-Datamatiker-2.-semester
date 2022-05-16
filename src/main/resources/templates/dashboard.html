@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<td th:text="${allCars.size()}"></td>
+<h2>Hvis en bil er udlejet vil status se således ud</h2>
+    <button style="background-color: red"></button>
+<h2>Hvis en bil er tilgængelig og kan udlejes ser status således ud</h2>
+    <button style="background-color: green"></button>
+<h1>Alle biler</h1>
+<details>
+    <h2>Antal Biler</h2>
+    <h3 th:text="${allCars.size()}"></h3>
+    <summary>Se Alle biler</summary>
+<table class="allCars">
+    <thead>
+    <tr>
+        <th>
+            Vognnummer
+        </th>
+        <th>
+            Stelnummer
+        </th>
+        <th>
+            Bil mærke
+        </th>
+        <th>
+            Bil model
+        </th>
+        <th>
+            Bil pris
+        </th>
+        <th>
+            Status
+        </th>
+    </tr>
+    </thead>
+    <tr th:each="Car : ${allCars}">
+        <td th:text="${Car.getVognNummer()}">
+        </td>
+        <td th:text="${Car.getStelNummer()}">
+        </td>
+        <td th:text="${Car.getBrand()}">
+
+        </td>
+        <td th:text="${Car.getModel()}">
+
+        </td>
+        <td th:text="${Car.getPrice()}">
+
+        </td>
+        <td th:if="${Car.isLeased() == 1}">
+        <button style="background-color: red"></button>
+        </td>
+        <td th:if="${Car.isLeased() == 0}">
+            <button style="background-color: green"></button>
+        </td>
+    </tr>
+</table>
+</details>
+<h1>Alle udlejet biler</h1>
+<details>
+    <h2>Antal Biler udlejet</h2>
+    <h3 th:text="${amountOfLeasedCars}"></h3>
+    <SUMMARY>se alle udlejet biler</SUMMARY>
+<table class="allLeasedCars">
+    <thead>
+    <tr>
+        <th>
+            Vognnummer
+        </th>
+        <th>
+            Stelnummer
+        </th>
+        <th>
+            Bil mærke
+        </th>
+        <th>
+            Bil model
+        </th>
+        <th>
+            Bil pris
+        </th>
+        <th>
+            Status
+        </th>
+    </tr>
+    </thead>
+    <tr th:each="Car : ${listOfLeasedCars}">
+        <td th:text="${Car.getVognNummer()}">
+        </td>
+        <td th:text="${Car.getStelNummer()}">
+        </td>
+        <td th:text="${Car.getBrand()}">
+
+        </td>
+        <td th:text="${Car.getModel()}">
+
+        </td>
+        <td th:text="${Car.getPrice()}">
+        </td>
+        <td th:if="${Car.isLeased() == 1}">
+            <button style="background-color: red"></button>
+        </td>
+        <td th:if="${Car.isLeased() == 0}">
+            <button style="background-color: green"></button>
+        </td>
+    </tr>
+    </table>
+</details>
+<h1>Antal pris på udlejet biler</h1>
+<h2 th:text="${totalPriceOfLeasedCars}"></h2>
+</body>
+</html>

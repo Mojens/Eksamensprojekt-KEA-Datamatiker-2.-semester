@@ -24,12 +24,6 @@ public class HomeController {
   public String registrerFejlOgMangel(HttpSession httpSession){
     return controllerService.registrerFejlOgMangel(httpSession);
   }
-
-  @GetMapping("/showKPI")
-  public String showKPI(HttpSession httpSession){
-    return controllerService.showKPI(httpSession);
-  }
-
   @GetMapping("/admin")
   public String admin(HttpSession httpSession){
     return controllerService.admin(httpSession);
