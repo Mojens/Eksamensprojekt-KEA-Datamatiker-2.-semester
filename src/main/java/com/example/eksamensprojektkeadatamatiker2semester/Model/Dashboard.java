@@ -1,15 +1,15 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
-public class ShowKPI {
+public class Dashboard {
     private Car car;
     private Lease lease;
 
-    public ShowKPI(Car car, Lease lease) {
+    public Dashboard(Car car, Lease lease) {
         this.car = car;
         this.lease = lease;
     }
 
-    public ShowKPI() {
+    public Dashboard() {
     }
 
     public Car getCar() {

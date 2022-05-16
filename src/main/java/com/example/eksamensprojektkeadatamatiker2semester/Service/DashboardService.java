@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ShowKPIService {
+public class DashboardService {
 
   //Tjekker hvormange car objecter der er leased ud fra en liste
   public int howManyisLeased(List<Car> leasedCars){

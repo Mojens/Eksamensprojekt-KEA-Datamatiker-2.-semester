@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ShowKPIRepository {
+public class DashboardRepository {
     Connection connection;
 
-    public ShowKPIRepository(){
+    public DashboardRepository(){
         connection = ConnectionManager.getConnection();
     }
 
