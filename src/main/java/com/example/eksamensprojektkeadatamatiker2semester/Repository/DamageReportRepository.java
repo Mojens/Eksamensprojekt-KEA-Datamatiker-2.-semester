@@ -93,10 +93,9 @@ public class DamageReportRepository {
 
             while(rs.next()){
                 int damageReportID = rs.getInt(1);
-                int employeeID = rs.getInt(2);
-                int leaseID = rs.getInt(3);
-                int vognNummer = rs.getInt(4);
-
+                int leaseID = rs.getInt(2);
+                int vognNummer = rs.getInt(3);
+                int employeeID = rs.getInt(4);
                report.setDamageReportID(damageReportID);
                report.setEmployeeID(employeeID);
                report.setLeaseID(leaseID);
@@ -112,19 +111,45 @@ public class DamageReportRepository {
         return report;
     }
 
+    public List<DamageReport> findReportByLast(){
+       List <DamageReport> report = new ArrayList<>();
+        final String SQL_SHOW_REPORT = "SELECT * FROM DamageReport ORDER BY damageReportID desc";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_SHOW_REPORT);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                int damageReportID = rs.getInt(1);
+                int leaseID = rs.getInt(2);
+                int vognNummer = rs.getInt(3);
+                int employeeID = rs.getInt(4);
+
+                report.add(new DamageReport(damageReportID,leaseID,vognNummer,employeeID));
+
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            System.out.println("Kunne ikke finde nogle skader");
+            e.printStackTrace();
+        }
+        return report;
+    }
+
 
 
     public void addDamageReport(DamageReport damageReport){
 
-        final String SQL_ADD_QUERY = "INSERT INTO DamageReport(DamageReportID,UserLogin_userID,Leases_leaseID,Cars_vognNummer) VALUES(?,?,?,?)";
+        final String SQL_ADD_QUERY = "INSERT INTO DamageReport(DamageReportID,Leases_leaseID,Cars_vognNummer,Employee_employeeID) VALUES(?,?,?,?)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_ADD_QUERY);
 
             ps.setInt(1,damageReport.getDamageReportID());
-            ps.setInt(2,damageReport.getEmployeeID());
-            ps.setInt(3,damageReport.getLeaseID());
-            ps.setInt(4,damageReport.getVognNummer());
+            ps.setInt(2,damageReport.getLeaseID());
+            ps.setInt(3,damageReport.getVognNummer());
+            ps.setInt(4,damageReport.getEmployeeID());
 
             ps.executeUpdate();
 

@@ -12,6 +12,7 @@
 <div th:replace="nav.fragment"></div>
 
 <div class="container-rapport">
+
     <h1>Alle Skadessrapporter</h1>
 <table>
     <thead>
@@ -34,22 +35,23 @@
     <tbody>
     <tr class="card" th:each="rapport : ${damageReports}">
         <td>
-            <a th:href="@{/skaderapport/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.damageReportID}" target="_blank" ></a>
+            <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.damageReportID}" target="_blank" ></a>
         </td>
         <td>
-            <a th:href="@{/skaderapport/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.leaseID}" target="_blank" ></a>
+            <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.leaseID}" target="_blank" ></a>
         </td>
         <td >
-            <a th:href="@{/skaderapport/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.vognNummer}" target="_blank" ></a>
+            <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.vognNummer}" target="_blank" ></a>
         </td>
         <td >
-            <a th:href="@{/skaderapport/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.employeeID}" target="_blank" ></a>
+            <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.employeeID}" target="_blank" ></a>
         </td>
-        <td class="row-update"><a class="link-row link" th:href="@{/skaderapport/{id}(id=${rapport.damageReportID})}">Se skadesrapport</a></td>
+        <td class="row-update"><a class="link-row link" th:href="@{/skader/{id}(id=${rapport.damageReportID})}">Se skadesrapport</a></td>
     </tr>
     </tbody>
 
 </table>
+
 </div>
 </body>
 </html>

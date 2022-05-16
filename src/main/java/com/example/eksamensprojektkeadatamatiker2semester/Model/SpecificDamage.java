@@ -3,30 +3,28 @@ package com.example.eksamensprojektkeadatamatiker2semester.Model;
 import java.beans.Transient;
 
 public class SpecificDamage {
+  private int damageID;
   private double price;
   private String description;
   private String picture;
-  private int damageID;
   private String title;
-
+  private int damageReportID;
   private int leaseID;
 
   private double sumTotal;
 
 
-
-  private int damageReportID;
-
-
-  public SpecificDamage(int damageReportID,double price, String description, String picture, String title, int damageID, int leaseID) {
+  public SpecificDamage(int damageID, double price, String description, String picture, String title, int damageReportID, int leaseID) {
+    this.damageID = damageID;
     this.price = price;
     this.description = description;
     this.picture = picture;
-    this.damageID = damageID;
     this.title = title;
-    this.leaseID = leaseID;
     this.damageReportID = damageReportID;
+    this.leaseID = leaseID;
   }
+
+
 
   public SpecificDamage(double sumTotal){
     this.sumTotal = sumTotal;
@@ -35,6 +33,14 @@ public class SpecificDamage {
   public SpecificDamage() {
   }
 
+  public SpecificDamage(double price, String description, String picture, String title, int damageReportID, int leaseID) {
+    this.price = price;
+    this.description = description;
+    this.picture = picture;
+    this.title = title;
+    this.damageReportID = damageReportID;
+    this.leaseID = leaseID;
+  }
 
   public double getSumTotal() {
     return sumTotal;

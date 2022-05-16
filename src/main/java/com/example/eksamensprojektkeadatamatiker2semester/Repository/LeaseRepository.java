@@ -1,5 +1,6 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
+import com.example.eksamensprojektkeadatamatiker2semester.Model.CarsLeases;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionManager;
 import org.springframework.stereotype.Repository;
@@ -71,6 +72,62 @@ public class LeaseRepository {
                 leases.setUserID(userID);
                 leases.setStartDate(startDate);
                 leases.setEndDate(endDate);
+
+            }
+            ps.close();
+        } catch (SQLException e) {
+            System.out.println("Kunne ikke finde den lease");
+            e.printStackTrace();
+        }
+        return leases;
+
+    }
+
+    public CarsLeases findLeaseAndCarByID(int id){
+        CarsLeases carsLeases = new CarsLeases();
+        final String SQL_SHOW_LEASES = "SELECT * FROM CarsLeases WHERE Leases_leaseID = '"+id+"'";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_SHOW_LEASES);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int ID = rs.getInt(1);
+                int carID = rs.getInt(2);
+                int leaseID = rs.getInt(3);
+
+                carsLeases.setLeaseID(ID);
+                carsLeases.setCarID(carID);
+                carsLeases.setLeaseID(leaseID);
+
+            }
+            ps.close();
+        } catch (SQLException e) {
+            System.out.println("Kunne ikke finde den lease");
+            e.printStackTrace();
+        }
+        return carsLeases;
+
+    }
+
+    public List <Lease> findLeaseByIDAsList(int id){
+        List<Lease>  leases = new ArrayList<>();
+        final String SQL_SHOW_LEASES = "SELECT * FROM Leases WHERE leaseID = '"+id+"'";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_SHOW_LEASES);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int leaseID = rs.getInt(1);
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+                int leasePeriodInDays = rs.getInt(4);
+                int userID = rs.getInt(5);
+                int startDate = rs.getInt(6);
+                int endDate = rs.getInt(7);
+
+                leases.add(new Lease(leaseID,firstName, lastName, leasePeriodInDays,userID,startDate,endDate));
 
             }
             ps.close();

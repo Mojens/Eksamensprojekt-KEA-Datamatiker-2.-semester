@@ -110,7 +110,7 @@ public class SpecificDamageRepository {
 
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_ADD_QUERY);
-            ps.setInt(1,specificDamage.getDamageReportID());
+            ps.setInt(1,specificDamage.getDamageID());
             ps.setDouble(2,specificDamage.getPrice());
             ps.setString(3,specificDamage.getDescription());
             ps.setString(4,specificDamage.getPicture());
