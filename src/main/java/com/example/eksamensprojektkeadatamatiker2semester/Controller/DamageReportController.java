@@ -27,7 +27,9 @@ public class DamageReportController {
     ControllerService controllerService;
 
 
-    public DamageReportController(EmployeeRepository employeeRepository, CarRepository carRepository, SpecificDamageRepository specificDamageRepository, DamageReportRepository damageReportRepository, LeaseRepository leaseRepository, ControllerService controllerService) {
+    public DamageReportController(EmployeeRepository employeeRepository, CarRepository carRepository,
+                                  SpecificDamageRepository specificDamageRepository, DamageReportRepository damageReportRepository,
+                                  LeaseRepository leaseRepository, ControllerService controllerService) {
         this.employeeRepository = employeeRepository;
         this.carRepository = carRepository;
         this.specificDamageRepository = specificDamageRepository;
@@ -38,7 +40,6 @@ public class DamageReportController {
 
     @GetMapping("/skaderapport")
     public String showAllDamageReports(HttpSession httpSession, Model model){
-
 
         List <DamageReport> damageReports = damageReportRepository.showAllDamageReports();
         model.addAttribute("damageReports",damageReports);
