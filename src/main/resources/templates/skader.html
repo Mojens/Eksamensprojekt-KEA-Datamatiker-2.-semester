@@ -184,7 +184,7 @@
             </div>
         </div>
         <form
-                action="/fejl"
+                th:action="@{/fejl/{id}(id=${damageReport.damageReportID})}"
                 method="post"
                 enctype="multipart/form-data"
                 class="form-control">
@@ -202,8 +202,6 @@
 
                 <label class="header">Billed</label>
                 <input type="file" name="image" accept="image/png, image/jpeg, image/jpg" />
-
-
 
                 <button class="submit-button-small" type="submit">Opret skade</button>
 
