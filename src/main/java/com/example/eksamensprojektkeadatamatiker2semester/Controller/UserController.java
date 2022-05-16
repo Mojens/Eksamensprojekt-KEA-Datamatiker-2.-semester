@@ -3,6 +3,7 @@ package com.example.eksamensprojektkeadatamatiker2semester.Controller;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.UserRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Service.UserService;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +30,7 @@ public class UserController {
                                 Model model) {
     User loggedUser = userRepository.findUserByUserName(userName);
     boolean isPasswordValid = userService.isPasswordValid(loggedUser, password);
+    //BCrypt.checkpw(password,loggedUser.getPassword() Dette skal indtastet når alle har lavet en bruger med krypt
     if (isPasswordValid) {
       Cookie cookieUser = new Cookie("userName", userName);
       Cookie cookieType = new Cookie("user", String.valueOf(loggedUser));
