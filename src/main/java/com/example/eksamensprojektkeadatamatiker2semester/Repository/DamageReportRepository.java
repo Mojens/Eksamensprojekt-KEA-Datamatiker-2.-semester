@@ -46,6 +46,36 @@ public class DamageReportRepository {
 
     }
 
+    public DamageReport checkIfExists(int lease,int car){
+        DamageReport check = new DamageReport();
+        final String SQL_SHOW_REPORT = "SELECT DamageReportID, Leases_leaseID, Cars_vognNummer FROM DamageReport WHERE Leases_leaseID = '"+lease+"'" +
+                "AND Cars_vognNummer = '"+car+"'";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_SHOW_REPORT);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                int damageReportID = rs.getInt(1);
+                int leaseID = rs.getInt(2);
+                int vognNummer = rs.getInt(3);
+
+                check.setDamageReportID(damageReportID);
+                check.setLeaseID(leaseID);
+                check.setVognNummer(vognNummer);
+
+
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            System.out.println("Kunne ikke finde nogle skader");
+            e.printStackTrace();
+        }
+        return check;
+
+    }
+
     public List<DamageReport> showCompleteDamageReportByLeaseID(int leaseID){
         List<DamageReport> completeReportList = new ArrayList<>();
         final String SQL_SHOW_REPORT = "SELECT SpecificDamage.DamageReport_damageReportID, Cars.vognNummer," +

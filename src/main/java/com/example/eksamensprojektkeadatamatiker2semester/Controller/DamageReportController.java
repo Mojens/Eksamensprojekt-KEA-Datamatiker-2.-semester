@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -104,21 +105,26 @@ public class DamageReportController {
         Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
 
 
+        DamageReport checkIfExists = damageReportRepository.checkIfExists(lejeaftaleID,vognNummer);
 
-        damageReportRepository.addDamageReport(new DamageReport(lejeaftaleID,vognNummer,employeeID));
+        if (checkIfExists.getDamageReportID()==0){
+            damageReportRepository.addDamageReport(new DamageReport(lejeaftaleID,vognNummer,employeeID));
+        }
 
         List <DamageReport> createdDamageReport = damageReportRepository.findReportByLast();
 
         int id = createdDamageReport.get(0).getDamageReportID();
-
 
         model.addAttribute("car",car);
         model.addAttribute("lease",lease);
         model.addAttribute("damageReport",damageReport);
 
         model.addAttribute("employee",employee);
-
-        return "redirect:/skader/"+id;
+        if (checkIfExists.getDamageReportID()==0){
+            return "redirect:/skader/"+id;
+        } else {
+            return "redirect:/skader/"+checkIfExists.getDamageReportID();
+        }
 
     }
 
