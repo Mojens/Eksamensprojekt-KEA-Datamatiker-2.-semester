@@ -1,8 +1,10 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
 import com.example.eksamensprojektkeadatamatiker2semester.Model.CarsLeases;
+import com.example.eksamensprojektkeadatamatiker2semester.Model.DamageReport;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionManager;
+import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -161,6 +163,36 @@ public class LeaseRepository {
             e.printStackTrace();
         }
 
+    }
+
+    public List<Lease> findLeaseByLast(){
+        List <Lease> leases = new ArrayList<>();
+        final String SQL_SHOW_REPORT = "SELECT * FROM Leases ORDER BY leaseID desc";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_SHOW_REPORT);
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                int leaseID = rs.getInt(1);
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+                int leasePeriodInDays = rs.getInt(4);
+                int userID = rs.getInt(5);
+                LocalDate startDate = rs.getDate(6).toLocalDate();
+                LocalDate endDate = rs.getDate(7).toLocalDate();
+
+
+                leases.add(new Lease(leaseID,firstName,lastName,leasePeriodInDays,userID,startDate,endDate));
+
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            System.out.println("Kunne ikke finde nogle skader");
+            e.printStackTrace();
+        }
+        return leases;
     }
 
     public void deleteLease(int id){

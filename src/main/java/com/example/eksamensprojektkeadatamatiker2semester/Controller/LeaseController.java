@@ -28,11 +28,13 @@ public class LeaseController {
     UserRepository userRepository;
     LeaseService leaseService;
 
+    CarsLeasesRepository carsLeasesRepository;
+
 
     public LeaseController(EmployeeRepository employeeRepository, CarRepository carRepository,
                            SpecificDamageRepository specificDamageRepository, DamageReportRepository damageReportRepository,
                            LeaseRepository leaseRepository, ControllerService controllerService,
-                           UserRepository userRepository, LeaseService leaseService) {
+                           UserRepository userRepository, LeaseService leaseService,CarsLeasesRepository carsLeasesRepository) {
         this.employeeRepository = employeeRepository;
         this.carRepository = carRepository;
         this.specificDamageRepository = specificDamageRepository;
@@ -41,6 +43,7 @@ public class LeaseController {
         this.controllerService = controllerService;
         this.userRepository = userRepository;
         this.leaseService = leaseService;
+        this.carsLeasesRepository = carsLeasesRepository;
     }
 
     @GetMapping("/allelejeaftaler")
@@ -115,9 +118,11 @@ public class LeaseController {
         System.out.println(user);
         Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
         System.out.println(employee);
+        List<Car> listOfAvaibleCars = carRepository.showAllAvaibleCars();
 
 
         model.addAttribute("user",user);
+        model.addAttribute("listOfAvaibleCars",listOfAvaibleCars);
 
         return "/opretlejeaftale";
     }
@@ -129,6 +134,7 @@ public class LeaseController {
                            @RequestParam("leasePeriod")int leasePeriod,
                            @RequestParam("startDate") String startDate,
                            @RequestParam("endDate") String endDate,
+                           @RequestParam("vognNummer") int vognNummer,
                            Model model, HttpSession httpSession){
 
 
@@ -140,9 +146,19 @@ public class LeaseController {
         LocalDate startDateLD = leaseService.convertToLocalDate(startDate);
         LocalDate endDateLD = leaseService.convertToLocalDate(endDate);
 
-
-
         leaseRepository.addLease(new Lease(firstName,lastName,leasePeriod,user.getUserID(),startDateLD,endDateLD));
+
+        List<Lease> listOfLeases = leaseRepository.findLeaseByLast();
+
+        int leaseID = listOfLeases.get(0).getLeaseID();
+
+        CarsLeases newCarLease = new CarsLeases(vognNummer,leaseID);
+
+        carsLeasesRepository.addCarsLease(newCarLease);
+
+        carsLeasesRepository.isLeased(vognNummer);
+
+
 
         model.addAttribute("user",user);
         model.addAttribute("employee",employee);

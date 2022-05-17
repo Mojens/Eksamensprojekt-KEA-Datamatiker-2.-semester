@@ -73,4 +73,11 @@ public class Car {
     public void setLeased(int leased) {
         isLeased = leased;
     }
+
+    @Override
+    public String toString() {
+        return vognNummer +
+            ", " + brand +
+            ", " + model;
+    }
 }

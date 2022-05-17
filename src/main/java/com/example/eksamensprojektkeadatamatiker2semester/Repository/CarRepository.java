@@ -49,6 +49,35 @@ public class CarRepository {
 
     }
 
+    public List<Car> showAllAvaibleCars(){
+        List<Car> carList = new ArrayList<>();
+        final String SQL_SHOW_CAR = "SELECT * FROM Cars WHERE isLeased= '0'";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_SHOW_CAR);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int vognNummer = rs.getInt(1);
+                String stelNummer = rs.getString(2);
+                String brand = rs.getString(3);
+                String model = rs.getString(4);
+                double price = rs.getDouble(5);
+                int isLeased = rs.getInt(6);
+
+
+                carList.add(new Car(vognNummer,stelNummer,brand,model,price,isLeased));
+
+            }
+            ps.close();
+        } catch (SQLException e) {
+            System.out.println("Kunne ikke finde nogle biler");
+            e.printStackTrace();
+        }
+        return carList;
+
+    }
+
     public Car findCarByID(int id){
         Car car = new Car();
         final String SQL_SHOW_CAR = "SELECT * FROM Cars WHERE vognNummer = '"+id+"'";
