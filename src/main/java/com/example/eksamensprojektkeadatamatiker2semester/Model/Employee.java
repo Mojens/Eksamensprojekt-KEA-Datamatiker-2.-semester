@@ -1,5 +1,10 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
+import com.example.eksamensprojektkeadatamatiker2semester.Repository.UserRepository;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Employee {
 
     private String firstName;
@@ -8,7 +13,6 @@ public class Employee {
     private int employeeID;
     private String eMail;
     private int userID;
-
 
     public Employee(String firstName, String lastName, String phoneNumber, int employeeID, String eMail, int userID) {
         this.firstName = firstName;
@@ -80,8 +84,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return
-            firstName +" "+lastName;
+        return firstName +" "+lastName;
     }
 
 }
