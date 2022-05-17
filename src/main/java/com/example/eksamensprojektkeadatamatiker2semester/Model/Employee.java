@@ -1,10 +1,5 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
-import com.example.eksamensprojektkeadatamatiker2semester.Repository.UserRepository;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Employee {
 
     private String firstName;
