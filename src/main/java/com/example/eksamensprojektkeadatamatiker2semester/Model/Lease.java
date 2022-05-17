@@ -1,5 +1,6 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
+import java.util.Date;
 import java.time.LocalDate;
 
 public class Lease {
@@ -8,12 +9,21 @@ public class Lease {
     private String lastName;
     private int leasePeriodInDays;
     private int userID;
-    private int startDate;
-    private int endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
 
 
-    public Lease(int leaseID, String firstName, String lastName, int leasePeriodInDays, int userID, int startDate, int endDate) {
+    public Lease(int leaseID, String firstName, String lastName, int leasePeriodInDays, int userID, LocalDate startDate, LocalDate endDate) {
         this.leaseID = leaseID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.leasePeriodInDays = leasePeriodInDays;
+        this.userID = userID;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public Lease(String firstName, String lastName, int leasePeriodInDays, int userID, LocalDate startDate, LocalDate endDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.leasePeriodInDays = leasePeriodInDays;
@@ -65,19 +75,19 @@ public class Lease {
         this.leasePeriodInDays = leasePeriodInDays;
     }
 
-    public int getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(int startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public int getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(int endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 }

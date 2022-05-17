@@ -19,7 +19,7 @@ public class UserService {
   //Check type by user for redirection after the login
   public String checkTypeByUser(String type){
     if (Integer.parseInt(type) == 1 ){
-      return "redirect:/registrerLejeAftaler";
+      return "redirect:/opretlejeaftale";
     }else if (Integer.parseInt(type) == 2){
       return "redirect:/registrerFejlOgMangel";
     }else if (Integer.parseInt(type) == 3){

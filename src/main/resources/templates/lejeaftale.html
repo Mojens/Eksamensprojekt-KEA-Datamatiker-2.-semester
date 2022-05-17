@@ -3,20 +3,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Register Fejl og Mangler</title>
+    <title>Lejeaftale</title>
     <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="../static/CSS/main.css">
     <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
 <body>
-<div th:replace="skade.fragment"></div>
+<div th:replace="lejeaftale.fragment"></div>
 
 <div class="container-rapport">
-    <h1>Skade og udbedring</h1>
+    <h1>Lejeaftale</h1>
     <form
             method="get"
-            th:action="@{/findlease/}">
+            th:action="@{/findlejeaftale/}">
         <div class="container-form-big">
 
             <input type="text" name="keyword" th:value="${keyword}" placeholder="Find lejeaftale" size="50">
@@ -64,7 +64,7 @@
             <td class="individual" th:text="${l.startDate}">
             </td>
             <td class="individual" th:text="${l.endDate}">
-            <td class="individual"><a class="individual" th:href="@{/udbedring/{id}(id=${l.leaseID})}">Opret rapport</a></td>
+            <td class="individual"><a class="individual" th:href="@{/seaftale/{id}(id=${l.leaseID})}">Se lejeaftale</a></td>
 
         </tr>
         </tbody>

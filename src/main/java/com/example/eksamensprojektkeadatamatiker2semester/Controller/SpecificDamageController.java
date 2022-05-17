@@ -43,9 +43,9 @@ public class SpecificDamageController {
         return "/registrerFejlOgMangel";
     }
 
-    @PostMapping("/fejl")
+    @PostMapping("/fejl/{id}")
     public String registrerFejlOgMangel(HttpSession httpSession,
-
+                                        @PathVariable("id")int id,
                                         @RequestParam("price") double price,
                                         @RequestParam("description")String description,
                                         @RequestParam("title") String title,
@@ -56,27 +56,37 @@ public class SpecificDamageController {
         SpecificDamage specificDamage = new SpecificDamage();
         DamageReport dr = new DamageReport();
 
-        DamageReport damageReport = damageReportRepository.findReportByID(dr.getDamageReportID());
+        DamageReport damageReport = damageReportRepository.findReportByID(id);
         Lease lease = leaseRepository.findLeaseByID(damageReport.getVognNummer());
         Car car = carRepository.findCarByID(lease.getLeaseID());
         Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
 
+        Lease leaseID = leaseRepository.findLeaseByID(damageReport.getLeaseID());
+
+
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         specificDamage.setPicture(fileName);
 
-        String uploadDir = "user-photos/";
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 
-        specificDamageRepository.addSpecificDamage(new SpecificDamage(price,description,fileName,title, damageReport.getDamageReportID(),lease.getLeaseID()));
+        String newPicture = fileName.replaceAll("\\s","");
+
+
+        String uploadDir = "user-photos/";
+        FileUploadUtil.saveFile(uploadDir, newPicture, multipartFile);
+        System.out.println(fileName);
+
+
+        specificDamageRepository.addSpecificDamage(new SpecificDamage(price,description,newPicture,title, damageReport.getDamageReportID(),lease.getLeaseID()));
 
         model.addAttribute("car",car);
         model.addAttribute("lease",lease);
+        model.addAttribute("leaseID",leaseID);
         model.addAttribute("damageReport",damageReport);
         model.addAttribute("employee",employee);
         model.addAttribute("specificDamage",specificDamage);
 
 
-        return "redirect:/skader";
+        return "redirect:/skader/"+id;
         //return controllerService.registrerFejlOgMangel(httpSession);
     }
 

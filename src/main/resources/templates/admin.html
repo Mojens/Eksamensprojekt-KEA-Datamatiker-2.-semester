@@ -14,6 +14,25 @@
                      src="../static/CSS/images/hero.png"/></a>
 </div>
 <body>
+
+<form
+        action="/changePassword"
+        method="post">
+    <div class="container">
+        <label>Vælg medarbejder</label>
+        <select name="employeeUserID">
+            <option th:each="Employee : ${listOfEmployees}"
+                    th:text="${Employee}"
+                    th:value="${Employee.getUserID()}"></option>
+        </select>
+        <br><br/>
+        <label>User ID</label>
+        <input type="text" placeholder="skriv nye adgangskode" name="newPassword">
+        <button type="submit">Skift adgangskode</button>
+        </table>
+    </div>
+</form>
+
 <h2>Slet en medarbejder</h2>
 <form
         action="/deleteEmployee"

@@ -1,5 +1,6 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
+import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionManager;
 import org.springframework.stereotype.Repository;
@@ -58,6 +59,50 @@ public class UserRepository {
     return loginUser;
   }
 
+  public User findUserByEmployee(Employee employee){
+
+    final String QUERY = "SELECT * FROM UserLogin WHERE userID = '"+employee.getUserID()+"'";
+    User loginUser = null;
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+      ResultSet resultSet = preparedStatement.executeQuery(QUERY);
+
+      while (resultSet.next()) {
+        int userID = resultSet.getInt(1);
+        String userName = resultSet.getString(2);
+        String password = resultSet.getString(3);
+        int type= resultSet.getInt(4);
+        loginUser = new User(userID,userName,password,type);
+      }
+    } catch (SQLException e) {
+      System.out.println("Could not find user");
+      e.printStackTrace();
+    }
+    return loginUser;
+  }
+
+  public User findUserByID(int id){
+
+    final String QUERY = "SELECT * FROM UserLogin WHERE userID = '"+id+"'";
+    User loginUser = null;
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+      ResultSet resultSet = preparedStatement.executeQuery(QUERY);
+
+      while (resultSet.next()) {
+        int userID = resultSet.getInt(1);
+        String userName = resultSet.getString(2);
+        String password = resultSet.getString(3);
+        int type= resultSet.getInt(4);
+        loginUser = new User(userID,userName,password,type);
+      }
+    } catch (SQLException e) {
+      System.out.println("Could not find user");
+      e.printStackTrace();
+    }
+    return loginUser;
+  }
+
   //Show all the created users in DB
   public List<User> showAllUsers() {
     List<User> userList = new ArrayList<>();
@@ -82,4 +127,15 @@ public class UserRepository {
     return userList;
   }
 
+  public void changePassword(String inputUserName,String newPassword, User user){
+    final String QUERY = "UPDATE UserLogin SET password = "+"'"+ newPassword + "'"+ " WHERE userName = "+"'" + inputUserName + "'";
+    try{
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+      preparedStatement.executeUpdate();
+
+    }catch (SQLException e){
+      System.out.println("Kunne ikke ");
+      e.printStackTrace();
+    }
+  }
 }

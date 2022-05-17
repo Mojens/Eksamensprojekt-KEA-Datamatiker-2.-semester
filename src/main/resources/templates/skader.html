@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
 <body>
-<div th:replace="nav.fragment"></div>
+<div th:replace="skade.fragment"></div>
 <div class="container-rapport">
 
     <div class="damageReport">
@@ -184,26 +184,24 @@
             </div>
         </div>
         <form
-                action="/fejl"
+                th:action="@{/fejl/{id}(id=${damageReport.damageReportID})}"
                 method="post"
                 enctype="multipart/form-data"
                 class="form-control">
             <div class="container-form-small">
 
 
-                <label>Fejl Og Mangler</label>
+                <label class="label-header">Fejl Og Mangler</label>
                 <input type="text" placeholder="title" name="title">
 
-                <label>Beskrivelse</label>
+                <label class="label-header">Beskrivelse</label>
                 <input type="text" placeholder="Beskrivelse" name="description">
 
-                <label>Indtast Pris</label>
+                <label class="label-header">Indtast Pris</label>
                 <input type="text" placeholder="pris pr skade" name="price">
 
-                <label class="header">Billed</label>
+                <label class="label-header">Billed</label>
                 <input type="file" name="image" accept="image/png, image/jpeg, image/jpg" />
-
-
 
                 <button class="submit-button-small" type="submit">Opret skade</button>
 

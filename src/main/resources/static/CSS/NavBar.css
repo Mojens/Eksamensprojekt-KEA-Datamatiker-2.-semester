@@ -4,7 +4,7 @@
     overflow: hidden;
     text-decoration: none;
     color: #FFFFFF;
-    font-size: 21px;
+    font-size: 18px;
     font-family: Opensans-regular,sans-serif;
     letter-spacing: 2px;
     align-items: center;
@@ -13,12 +13,13 @@
     box-sizing: border-box;
     height: 90px;
     font-weight: Bold;
+    width: 100%;
 }
 
 
 #navbar a:hover {
     background-color: #FFFFFF;
-    color: white;
+    color: #1a1919;
     transition-duration: .3s;
     border-radius: 2px;
 }
@@ -42,6 +43,22 @@
     justify-content: start;
     margin-right: 1100px;
 
+}
+.logo-left-nav {
+    display: flex;
+    justify-content: start;
+    margin-right: 500px;
+
+}
+.logo-left-skade {
+    display: flex;
+    justify-content: start;
+    margin-right: 650px;
+
+}
+.navigation{
+    display: flex;
+    justify-content: end;
 }
 
 

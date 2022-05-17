@@ -54,6 +54,12 @@ public class SpecificDamage {
   public String getPhotosImagePath() {
     if (picture == null || picture.isEmpty()) return "user-photos/" + "default.jpg";
 
+    String newPicture = "";
+    if (picture.contains(" ")){
+      newPicture = picture.replaceAll("\\s","");
+      return "user-photos" + "/" + newPicture;
+    }
+
     return "user-photos" + "/" + picture;
   }
 

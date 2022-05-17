@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8">
+  <title>Lejeaftale</title>
+  <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+  <link rel="stylesheet" href="../static/CSS/main.css">
+  <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+  <link rel="stylesheet" href="../static/CSS/NavBar.css">
+</head>
+<body>
+<div th:replace="lejeaftale.fragment"></div>
+<div class="container-rapport">
+
+  <div class="damageReport">
+    <h1 class="inline">Lejeaftale #</h1>
+    <h1 class="inline" th:text="${lease.leaseID}" ></h1>
+  </div>
+
+
+  <div class="three-tables-container">
+    <table class="reverse">
+      <thead>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Lejeaftale ID
+        </th>
+        <td class="skade" th:text="${lease.leaseID}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Kunde Fornavn
+        </th>
+        <td class="skade" th:text="${lease.firstName}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Kunde Efternavn
+        </th>
+        <td class="skade" th:text="${lease.lastName}">
+        </td>
+      </tr>
+      <tr>
+        <th class="th" scope="col">
+          Lejeaftale I dage
+        </th>
+        <td class="skade" th:text="${lease.leasePeriodInDays}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Start Dato
+        </th>
+        <td class="skade" th:text="${lease.startDate}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Slut Dato
+        </th>
+        <td class="skade" th:text="${lease.endDate}">
+        </td>
+      </tr>
+
+      </thead>
+
+    </table>
+
+    <table class="reverse">
+      <thead>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Vognnummer
+        </th>
+        <td class="skade" th:text="${car.vognNummer}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Stelnummer
+        </th>
+        <td class="skade" th:text="${car.stelNummer}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Mærke
+        </th>
+        <td class="skade" th:text="${car.brand}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Model
+        </th>
+        <td class="skade" th:text="${car.model}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Pris
+        </th>
+        <td class="skade" th:text="${car.price}">
+        </td>
+      </tr>
+
+      </thead>
+    </table>
+
+
+  </div>
+
+
+
+</div>
+</body>
+</html>
