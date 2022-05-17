@@ -17,6 +17,7 @@
 }
 
 
+
 #navbar a:hover {
     background-color: #FFFFFF;
     color: #1a1919;
@@ -44,6 +45,11 @@
     margin-right: 1100px;
 
 }
+.logo-left-admin {
+    display: flex;
+    justify-content: start;
+    margin-right: 550px;
+}
 .logo-left-nav {
     display: flex;
     justify-content: start;
@@ -70,6 +76,7 @@
 .small-nav-logo{
     width: 350px;
 }
+
 
 
 

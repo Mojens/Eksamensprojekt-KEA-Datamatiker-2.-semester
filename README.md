@@ -8,11 +8,10 @@ Vi har lavet et intern adminstrativ system som hedder bilabonnement-portalen som
 5. aflsut ved at klikke på knappen clone
 #Opsætning af database i MySQL
 1. i MySQL klik på create new schema
-2. Navngiv skemaet bilabonnementer
+2. Navngiv skemaet bilabonnement
 3. klik Apply og derefter Apply igen
-4. Klik på iconet i ventre hjørne new SQl tab og insæt database informationerne (SKAL INSÆTTES HER)
-5. klik nu på lyn iconet for at loade tablesne
-6. Du skulle nu kunne se alle tables i schema
+4. Åben den vedlagte fil i MySQL (MySQL-Generated-Data.sql) og apply
+5. Du har nu en sql server med data
 # Opsætning af database i intellij
 1. Klik på knappen Database oppe i højre hjørne 
 2. Klik på plus iconet
