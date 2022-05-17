@@ -5,6 +5,7 @@ import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.EmployeeRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.UserRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Service.UserService;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -73,7 +74,7 @@ public class UserController {
     System.out.println(selectedEmployee);
     User selectedUser = userRepository.findUserByEmployee(selectedEmployee);
     System.out.println(selectedUser);
-    String bCryptPassword = BCrypt.hashpw(newPassword,BCrypt.gensalt());
+    String bCryptPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
     System.out.println(bCryptPassword);
     userRepository.changePassword(selectedUser.getUsername(),bCryptPassword,selectedUser);
     return "redirect:/admin";
