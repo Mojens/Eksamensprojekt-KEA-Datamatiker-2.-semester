@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
 <body>
-<div th:replace="nav.fragment"></div>
+<div th:replace="lejeaftale.fragment"></div>
 
 <div class="container-rapport">
     <h1>Lejeaftale</h1>
     <form
             method="get"
-            th:action="@{/lejeaftale/}">
+            th:action="@{/findlejeaftale/}">
         <div class="container-form-big">
 
             <input type="text" name="keyword" th:value="${keyword}" placeholder="Find lejeaftale" size="50">
