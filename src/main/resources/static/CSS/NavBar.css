@@ -50,6 +50,12 @@
     margin-right: 500px;
 
 }
+.logo-left-skade {
+    display: flex;
+    justify-content: start;
+    margin-right: 650px;
+
+}
 .navigation{
     display: flex;
     justify-content: end;
