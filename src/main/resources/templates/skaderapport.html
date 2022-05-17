@@ -9,7 +9,22 @@
     <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
 <body>
-<div th:replace="skade.fragment"></div>
+<nav class="navi-section">
+    <div class="navbar" id="navbar">
+        <div class="logo-left-skade">
+            <a href="/findlease"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                      src="../static/CSS/images/Logo-250x250.png"/></a>
+        </div>
+        <div class="navigation">
+            <a href="../findlease">Opret SkadeRapport</a>
+            <a href="../skaderapport">Alle Skadesrapporter</a>
+        </div>
+        <div class="name-logout">
+            <a class="navi-username" th:text="${user.username}" ></a>
+            <a href="../logout" class="login-button">Logud</a>
+        </div>
+    </div>
+</nav>
 
 <div class="container-rapport">
 

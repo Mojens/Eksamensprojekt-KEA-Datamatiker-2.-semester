@@ -22,10 +22,7 @@ body {
     width: 1200px;
     margin: 60px auto;
 }
-body{
-    background-color: #F2F2F2;
-    font-family: OpenSans-regular;
-}
+
 .container-form-small {
     padding: 30px;
     min-height: 480px;

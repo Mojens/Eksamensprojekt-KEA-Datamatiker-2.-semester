@@ -1,7 +1,7 @@
-<nav th:fragment="lejeaftale" class="navi-section">
+<nav th:fragment="lejeaftale" class="navi-section" xmlns:layout="http://www.w3.org/1999/xhtml">
 <div class="navbar" id="navbar">
     <div class="logo-left-nav">
-        <a href="/"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+        <a href="/opretlejeaftale"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
                          src="../static/CSS/images/Logo-250x250.png"/></a>
     </div>
     <div class="navigation">
@@ -9,6 +9,7 @@
     <a href="../allelejeaftaler">Alle Lejeaftaler</a>
     <a href="../findlejeaftale" >Find Lejeaftale</a>
     <a href="../logout" class="login-button">Logud</a>
+        <p th:fragment="userName" ></p>
     </div>
 </div>
 </nav>

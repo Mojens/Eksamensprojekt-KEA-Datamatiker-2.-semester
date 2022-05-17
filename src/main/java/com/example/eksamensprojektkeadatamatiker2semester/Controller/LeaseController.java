@@ -51,9 +51,12 @@ public class LeaseController {
 
         List<Lease> lease = leaseRepository.showAllLeases();
         model.addAttribute("lease",lease);
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user",user);
         return "/allelejeaftaler";
         //return controllerService.skadeRapport(httpSession);
     }
+
 
     @GetMapping("/lejeaftale/{id}")
     public String showSpecificLease(@PathVariable("id") int id, Model model, HttpSession httpSession){
@@ -65,7 +68,8 @@ public class LeaseController {
         Lease lease = leaseRepository.findLeaseByID(carsLeases.getLeaseID());
 
         Car car = carRepository.findCarByID(carsLeases.getCarID());
-
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user",user);
 
         model.addAttribute("car",car);
         model.addAttribute("lease",lease);
@@ -77,6 +81,9 @@ public class LeaseController {
 
     @GetMapping("/findlejeaftale")
     public String findLeaseToMakeDamageReport(HttpSession httpSession, Model model,String keyword){
+
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user",user);
 
         if (keyword!=null){
             List<Lease> list = leaseRepository.findLeaseByIDAsList(Integer.parseInt(keyword));
@@ -95,6 +102,9 @@ public class LeaseController {
 
     @GetMapping("/seaftale/{id}")
     public String showCarsAndLeases(@PathVariable("id") int id, HttpSession httpSession, Model model){
+
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user",user);
 
 
         CarsLeases carsLeases = leaseRepository.findLeaseAndCarByID(id);

@@ -40,7 +40,8 @@ public class DamageReportController {
 
     @GetMapping("/skaderapport")
     public String showAllDamageReports(HttpSession httpSession, Model model){
-
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user",user);
         List <DamageReport> damageReports = damageReportRepository.showAllDamageReports();
         model.addAttribute("damageReports",damageReports);
         return "/skaderapport";
@@ -49,7 +50,8 @@ public class DamageReportController {
 
     @GetMapping("/findlease")
     public String findLeaseToMakeDamageReport(HttpSession httpSession, Model model,String keyword){
-
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user",user);
         if (keyword!=null){
             List<Lease> list = leaseRepository.findLeaseByIDAsList(Integer.parseInt(keyword));
 
@@ -67,7 +69,8 @@ public class DamageReportController {
 
     @GetMapping("/udbedring/{id}")
     public String showCarsAndLeases(@PathVariable("id") int id, HttpSession httpSession, Model model){
-
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user",user);
 
         CarsLeases carsLeases = leaseRepository.findLeaseAndCarByID(id);
         Lease lease = leaseRepository.findLeaseByID(carsLeases.getLeaseID());
@@ -85,8 +88,9 @@ public class DamageReportController {
     }
 
     @GetMapping("/skaderapport/{id}")
-    public String showOneDamageReport(@PathVariable("id") int id, Model model){
-
+    public String showOneDamageReport(@PathVariable("id") int id, Model model,HttpSession httpSession){
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user",user);
         DamageReport damageReports = damageReportRepository.findReportByID(id);
         model.addAttribute("damageReports",damageReports);
         return "/skaderapport";
@@ -145,7 +149,8 @@ public class DamageReportController {
 
 
         SpecificDamage sum = specificDamageRepository.sumPriceSpecificDamagesByID(id);
-
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user",user);
 
         model.addAttribute("car",car);
         model.addAttribute("lease",lease);

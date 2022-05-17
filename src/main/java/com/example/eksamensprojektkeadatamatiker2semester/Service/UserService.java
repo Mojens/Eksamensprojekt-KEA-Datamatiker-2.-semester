@@ -21,7 +21,7 @@ public class UserService {
     if (Integer.parseInt(type) == 1 ){
       return "redirect:/opretlejeaftale";
     }else if (Integer.parseInt(type) == 2){
-      return "redirect:/registrerFejlOgMangel";
+      return "redirect:/findlease";
     }else if (Integer.parseInt(type) == 3){
       return "redirect:/dashboard";
     }else if (Integer.parseInt(type) == 4){
