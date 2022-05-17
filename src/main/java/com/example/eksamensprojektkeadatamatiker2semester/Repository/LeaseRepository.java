@@ -5,10 +5,8 @@ import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionManager;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +31,8 @@ public class LeaseRepository {
                 String lastName = rs.getString(3);
                 int leasePeriodInDays = rs.getInt(4);
                 int userID = rs.getInt(5);
-                int startDate = rs.getInt(6);
-                int endDate = rs.getInt(7);
+                LocalDate startDate = rs.getDate(6).toLocalDate();
+                LocalDate endDate = rs.getDate(7).toLocalDate();
 
                 leasesList.add(new Lease(leaseID, firstName, lastName, leasePeriodInDays,userID,startDate,endDate));
 
@@ -62,8 +60,8 @@ public class LeaseRepository {
                 String lastName = rs.getString(3);
                 int leasePeriodInDays = rs.getInt(4);
                 int userID = rs.getInt(5);
-                int startDate = rs.getInt(6);
-                int endDate = rs.getInt(7);
+                LocalDate startDate = rs.getDate(6).toLocalDate();
+                LocalDate endDate = rs.getDate(7).toLocalDate();
 
                 leases.setLeaseID(leaseID);
                 leases.setFirstName(firstName);
@@ -124,8 +122,8 @@ public class LeaseRepository {
                 String lastName = rs.getString(3);
                 int leasePeriodInDays = rs.getInt(4);
                 int userID = rs.getInt(5);
-                int startDate = rs.getInt(6);
-                int endDate = rs.getInt(7);
+                LocalDate startDate = rs.getDate(6).toLocalDate();
+                LocalDate endDate = rs.getDate(7).toLocalDate();
 
                 leases.add(new Lease(leaseID,firstName, lastName, leasePeriodInDays,userID,startDate,endDate));
 
@@ -149,8 +147,12 @@ public class LeaseRepository {
             ps.setString(3,lease.getLastName());
             ps.setInt(4,lease.getLeasePeriodInDays());
             ps.setInt(5,lease.getUserID());
-            ps.setInt(6,lease.getStartDate());
-            ps.setInt(7,lease.getEndDate());
+
+            Date sqlStartDate = Date.valueOf(lease.getStartDate());
+            Date sqlEndDate = Date.valueOf(lease.getEndDate());
+
+            ps.setDate(6,sqlStartDate);
+            ps.setDate(7,sqlEndDate);
 
             ps.executeUpdate();
 
@@ -188,8 +190,10 @@ public class LeaseRepository {
             ps.setString(2,lease.getLastName());
             ps.setInt(3,lease.getLeasePeriodInDays());
             ps.setInt(4,lease.getUserID());
-            ps.setInt(5,lease.getStartDate());
-            ps.setInt(6,lease.getEndDate());
+            Date sqlStartDate = Date.valueOf(lease.getStartDate());
+            Date sqlEndDate = Date.valueOf(lease.getEndDate());
+            ps.setDate(5,sqlStartDate);
+            ps.setDate(6,sqlEndDate);
 
             ps.executeUpdate();
 
