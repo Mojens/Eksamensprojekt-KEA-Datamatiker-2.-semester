@@ -9,6 +9,7 @@ public class Employee {
     private String eMail;
     private int userID;
 
+
     public Employee(String firstName, String lastName, String phoneNumber, int employeeID, String eMail, int userID) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -76,4 +77,11 @@ public class Employee {
     public void setUserID(int userID) {
         this.userID = userID;
     }
+
+    @Override
+    public String toString() {
+        return
+            firstName +" "+lastName;
+    }
+
 }
