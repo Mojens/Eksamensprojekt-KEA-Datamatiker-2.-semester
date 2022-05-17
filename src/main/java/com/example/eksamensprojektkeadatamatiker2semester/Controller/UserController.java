@@ -29,7 +29,9 @@ public class UserController {
                                 HttpSession httpSession,
                                 Model model) {
     User loggedUser = userRepository.findUserByUserName(userName);
+    System.out.println(loggedUser);
     boolean isPasswordValid = userService.isPasswordValid(loggedUser, password);
+    System.out.println(isPasswordValid);
     //BCrypt.checkpw(password,loggedUser.getPassword() Dette skal indtastet når alle har lavet en bruger med krypt
     if (isPasswordValid) {
       Cookie cookieUser = new Cookie("userName", userName);

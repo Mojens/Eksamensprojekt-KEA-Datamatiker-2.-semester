@@ -112,10 +112,12 @@ public class LeaseController {
     @GetMapping("/opretlejeaftale")
     public String viewOpretlejeaftale(Model model, HttpSession httpSession){
         User user = (User) httpSession.getAttribute("user");
+        System.out.println(user);
         Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
+        System.out.println(employee);
+
 
         model.addAttribute("user",user);
-        model.addAttribute("employee",employee);
 
         return "/opretlejeaftale";
     }
@@ -125,19 +127,20 @@ public class LeaseController {
     public String addLease(@RequestParam("firstName")String firstName,
                            @RequestParam("lastName")String lastName,
                            @RequestParam("leasePeriod")int leasePeriod,
-                           @RequestParam("userID")int userID,
                            @RequestParam("startDate") String startDate,
                            @RequestParam("endDate") String endDate,
                            Model model, HttpSession httpSession){
 
 
         User user = (User) httpSession.getAttribute("user");
+        System.out.println(user);
         Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
-
-        user.setUserID(employee.getUserID());
+        System.out.println(employee);
 
         LocalDate startDateLD = leaseService.convertToLocalDate(startDate);
         LocalDate endDateLD = leaseService.convertToLocalDate(endDate);
+
+
 
         leaseRepository.addLease(new Lease(firstName,lastName,leasePeriod,user.getUserID(),startDateLD,endDateLD));
 
