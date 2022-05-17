@@ -76,4 +76,10 @@ public class Employee {
     public void setUserID(int userID) {
         this.userID = userID;
     }
+
+    @Override
+    public String toString() {
+        return firstName +" "+lastName;
+    }
+
 }
