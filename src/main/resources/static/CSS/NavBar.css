@@ -66,6 +66,11 @@
     display: flex;
     justify-content: end;
 }
+.logo-left-admin {
+    display: flex;
+    justify-content: start;
+    margin-right: 550px;
+}
 
 
 /* Page content */
