@@ -156,6 +156,8 @@ public class LeaseController {
 
         carsLeasesRepository.addCarsLease(newCarLease);
 
+        carsLeasesRepository.isLeased(vognNummer);
+
 
 
         model.addAttribute("user",user);

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Queue;
+
 @Repository
 public class CarsLeasesRepository {
   Connection connection;
@@ -31,6 +33,31 @@ public class CarsLeasesRepository {
           System.out.println("Kunne ikke tilføje til CarsLeases");
           e.printStackTrace();
         }
+  }
+
+  public void isLeased(int inputVognNummer) {
+    final String QUERY = "UPDATE Cars SET isLeased = 1 WHERE vognNummer = "+"'"+inputVognNummer+"'";
+try {
+  PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+  preparedStatement.executeUpdate();
+
+}catch (SQLException e){
+  System.out.println("Kunne ikke ændre status til leased");
+  e.printStackTrace();
+}
+
+  }
+
+  public void isNotLeased(int inputVognNummer){
+    final String QUERY = "UPDATE Cars SET isLeased = 0 WHERE vognNummer = "+"'"+inputVognNummer+"'";
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+      preparedStatement.executeUpdate();
+
+    }catch (SQLException e){
+      System.out.println("Kunne ikke ændre status til leased");
+      e.printStackTrace();
+    }
   }
 
 }
