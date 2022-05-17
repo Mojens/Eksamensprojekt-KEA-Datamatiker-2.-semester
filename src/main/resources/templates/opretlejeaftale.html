@@ -30,12 +30,18 @@
             <label class="label-header">Periode</label>
             <input type="text" placeholder="Lejeperiode" name="leasePeriod">
 
-
             <label class="label-header">Start Dato</label>
             <input type="date" placeholder="start dato" name="startDate">
 
             <label class="label-header">Slut Dato</label>
             <input type="date" placeholder="slut dato" name="endDate">
+
+            <label class="label-header">Tilgængelige biler</label>
+            <select name="vognNummer">
+                <option th:each="Car : ${listOfAvaibleCars}"
+                        th:text="${Car}"
+                        th:value="${Car.getVognNummer()}"></option>
+            </select>
 
 
             <button class="submit-button-small" type="submit">Opret lejeaftale</button>

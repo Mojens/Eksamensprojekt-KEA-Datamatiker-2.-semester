@@ -12,6 +12,11 @@ public class CarsLeases {
         this.leaseID = leaseID;
     }
 
+    public CarsLeases(int carID, int leaseID) {
+        this.carID = carID;
+        this.leaseID = leaseID;
+    }
+
     public CarsLeases() {
     }
 
