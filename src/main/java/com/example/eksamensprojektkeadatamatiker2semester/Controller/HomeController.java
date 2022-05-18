@@ -23,15 +23,6 @@ public class HomeController {
     this.employeeRepository = employeeRepository;
   }
 
-  @GetMapping("/registrerLejeAftaler")
-  public String registrerLejeAftaler(HttpSession httpSession){
-    return controllerService.registrerLejeAftaler(httpSession);
-  }
-
-  @GetMapping("/registrerFejlOgMangel")
-  public String registrerFejlOgMangel(HttpSession httpSession){
-    return controllerService.registrerFejlOgMangel(httpSession);
-  }
   @GetMapping("/admin")
   public String admin(HttpSession httpSession,
                       Model model){

@@ -42,7 +42,8 @@ public class DashboardController {
     model.addAttribute("totalPriceOfLeasedCars", totalPriceOfLeasedCars);
     model.addAttribute("amountOfLeasedCars", amountOfLeasedCars);
     model.addAttribute("allCars", allCars);
-    return "dashboard";
+
+    return controllerService.dashboard(httpSession);
   }
 
 

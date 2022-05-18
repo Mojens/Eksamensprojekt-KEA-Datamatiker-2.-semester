@@ -7,14 +7,74 @@ import javax.servlet.http.HttpSession;
 
 @Service
 public class ControllerService {
-
-  public String registrerLejeAftaler(HttpSession httpSession) {
+// Type 1
+  public String opretLejeAftaler(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
       System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
-        currentPage = "/registrerLejeAftaler";
+        currentPage = "/opretlejeaftale";
+      } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
+        currentPage = "/login";
+      }
+    } else if (httpSession.getAttribute("userName") == null) {
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
+  public String alleLejeAftaler(HttpSession httpSession) {
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null) {
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
+        currentPage = "/allelejeaftaler";
+      } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
+        currentPage = "/login";
+      }
+    } else if (httpSession.getAttribute("userName") == null) {
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
+  public String aftaler(HttpSession httpSession) {
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null) {
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
+        currentPage = "/aftale";
+      } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
+        currentPage = "/login";
+      }
+    } else if (httpSession.getAttribute("userName") == null) {
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
+  public String lejeAftaler(HttpSession httpSession) {
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null) {
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
+        currentPage = "/lejeaftale";
+      } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
+        currentPage = "/login";
+      }
+    } else if (httpSession.getAttribute("userName") == null) {
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
+  public String seAftale(HttpSession httpSession) {
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null) {
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
+        currentPage = "/seaftale";
       } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
         currentPage = "/login";
       }
@@ -24,13 +84,14 @@ public class ControllerService {
     return currentPage;
   }
 
-  public String registrerFejlOgMangel(HttpSession httpSession) {
+  //Type 2
+  public String udbedring(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
       System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
-        currentPage = "/registrerFejlOgMangel";
+        currentPage = "/udbedring";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
         currentPage = "/login";
       }
@@ -39,7 +100,21 @@ public class ControllerService {
     }
     return currentPage;
   }
-
+  public String findLease(HttpSession httpSession) {
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null) {
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
+        currentPage = "/findlease";
+      } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
+        currentPage = "/login";
+      }
+    } else if (httpSession.getAttribute("userName") == null) {
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
   public String skader(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -55,7 +130,21 @@ public class ControllerService {
     }
     return currentPage;
   }
-
+  public String registrerFejlOgMangler(HttpSession httpSession) {
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null) {
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
+        currentPage = "/registrerFejlOgMangel";
+      } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
+        currentPage = "/login";
+      }
+    } else if (httpSession.getAttribute("userName") == null) {
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
   public String skadeRapport(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -71,7 +160,7 @@ public class ControllerService {
     }
     return currentPage;
   }
-
+//Type 4
   public String admin(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -88,6 +177,7 @@ public class ControllerService {
     return currentPage;
   }
 
+  //Type 3
   public String dashboard(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
