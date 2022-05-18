@@ -1,5 +1,24 @@
 # Eksamens projekt på KEA Datamatiker 2.semester
-Vi har lavet et intern adminstrativ system som hedder bilabonnement-portalen som er blevet efterspurgt af Bilabonnement A/S
+Vi har lavet et intern adminstrativ system som hedder bilabonnement-portalen som er blevet efterspurgt af Bilabonnement A/S. Dette system har vi lavet i forbindelse med vores 2.semester eksamen.
+Vi er 3 i vores gruppe:
+
+---------------------------
+- Mohammad Adel Murtada
+- GitHub brugernavn: Mojens
+- https://github.com/mojens
+
+---------------------------
+ - Simon Igild
+- GitHub brugernavn: Chinesethunder
+- https://github.com/chinesethunder
+
+----------------------------------
+- Malthe Holm Karlsson
+- GitHub brugernavn: IfMalthereturnawesome
+- https://github.com/ifmalthereturnawesome/
+
+------------------------------------------
+
 # Importer repository fra github
 1. Kopier github link :https://github.com/Mojens/Eksamensprojekt-KEA-Datamatiker-2.-semester.git
 2. åben IntelliJ
