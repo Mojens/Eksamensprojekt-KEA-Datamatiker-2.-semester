@@ -101,7 +101,7 @@
             </td>
             <td class="row-update"><a class="link-row link" th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}">Se
                 Lejeaftale</a></td>
-            <td class="row-update"><a class="link-row link" th:href="@{/sletaftale/{id}(id=${leje.leaseID})}">Slet
+            <td class="row-update"><a class="link-row link" th:href="@{/sletaftale/{leaseID}(leaseID=${leje.leaseID})}" >Slet
                 Lejeaftale</a></td>
         </tr>
         </tbody>
