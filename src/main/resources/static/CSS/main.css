@@ -19,8 +19,20 @@ body {
 }
 
 .container-rapport {
-    width: 1200px;
-    margin: 60px auto;
+    width: 1300px;
+    margin: 20px auto;
+    padding: 3% 15%;
+    z-index: 3;
+    position: relative;
+    background-color: #F2F2F2;
+}
+.container-dashboard {
+    width: 1300px;
+    margin: 20px auto;
+    padding: 3% 3%;
+    z-index: 3;
+    position: relative;
+    background-color: #F2F2F2;
 }
 
 .container-form-small {
@@ -86,7 +98,7 @@ tr:nth-child(odd) {
 
 table {
     table-layout: fixed;
-    width: 70%;
+    width: 100%;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 

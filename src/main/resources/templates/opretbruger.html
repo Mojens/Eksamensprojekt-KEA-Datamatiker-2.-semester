@@ -16,6 +16,9 @@
                                   src="../static/CSS/images/Logo-250x250.png"/></a>
         </div>
         <div class="name-logout">
+            <a th:if="${user.type==4}" href="../skiftkode" >Skift Kode </a>
+            <a th:if="${user.type==4}" href="../sletbruger" >Slet Bruger </a>
+            <a th:if="${user.type==4}" href="../opretbruger" >Opret Bruger </a>
             <a class="navi-username" th:text="${user.username}"></a>
             <a href="../logout" class="login-button">Logud</a>
         </div>
@@ -30,7 +33,7 @@
             <a th:if="${user.type==4}" href="../dashboard">Dashboard</a>
             <a th:if="${user.type==4}" href="../opretlejeaftale">Lejeaftaler</a>
             <a th:if="${user.type==4}" href="../findlease">Skadesrapport</a>
-            <a th:if="${user.type==4}" href="../admin">Håndter bruger </a>
+            <a th:if="${user.type==4}" href="../opretbruger" >Håndter bruger </a>
         </div>
     </div>
 </nav>
@@ -39,7 +42,7 @@
          src="../static/CSS/images/hero.png"/>
 </div>
 <div class="form-container">
-    <h2>Opret medarbejder</h2>
+    <h1>Opret medarbejder</h1>
     <form
             action="/addEmployee"
             method="post">

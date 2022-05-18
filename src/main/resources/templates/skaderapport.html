@@ -32,11 +32,14 @@
             <a th:if="${user.type==4}" href="../dashboard">Dashboard</a>
             <a th:if="${user.type==4}" href="../opretlejeaftale" >Lejeaftaler</a>
             <a th:if="${user.type==4}" href="../findlease" >Skadesrapport</a>
-            <a th:if="${user.type==4}" href="../admin" >Håndter bruger </a>
+            <a th:if="${user.type==4}" href="../opretbruger" >Håndter bruger </a>
         </div>
     </div>
 </nav>
-
+<div class="hero-backdrop">
+    <img th:src="@{../CSS/images/hero.png}" class="backdrop" alt="hero-backdrop"
+         src="../static/CSS/images/hero.png"/>
+</div>
 <div class="container-rapport">
 
     <h1>Alle Skadessrapporter</h1>
