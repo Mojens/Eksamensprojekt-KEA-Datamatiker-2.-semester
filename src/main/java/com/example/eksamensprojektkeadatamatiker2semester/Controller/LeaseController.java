@@ -173,7 +173,7 @@ public class LeaseController {
 
     }
 
-    @PostMapping("/sletaftale/{leaseID}")
+    @GetMapping("/sletaftale/{leaseID}")
     public String deleteEmployee(@PathVariable("leaseID") int leaseID) {
         CarsLeases selectedCarLease;
         //Skifter status på car fra 1 til 0
