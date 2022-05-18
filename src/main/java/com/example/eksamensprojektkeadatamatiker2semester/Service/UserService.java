@@ -8,23 +8,23 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
   //Checks password
-  public boolean isPasswordValid(User user, String inputPassword) {
-    if (inputPassword.equals(user.getPassword())) {
+  public boolean isPasswordValid(User user, String inputPassword){
+    if (inputPassword.equals(user.getPassword())){
       return true;
-    } else
-      return false;
+    }else
+    return false;
   }
 
 
   //Check type by user for redirection after the login
-  public String checkTypeByUser(String type) {
-    if (Integer.parseInt(type) == 1) {
+  public String checkTypeByUser(String type){
+    if (Integer.parseInt(type) == 1 ){
       return "redirect:/opretlejeaftale";
-    } else if (Integer.parseInt(type) == 2) {
-      return "redirect:/registrerFejlOgMangel";
-    } else if (Integer.parseInt(type) == 3) {
+    }else if (Integer.parseInt(type) == 2){
+      return "redirect:/findlease";
+    }else if (Integer.parseInt(type) == 3){
       return "redirect:/dashboard";
-    } else if (Integer.parseInt(type) == 4) {
+    }else if (Integer.parseInt(type) == 4){
       return "redirect:/admin";
     }
     return "redirect:/login";

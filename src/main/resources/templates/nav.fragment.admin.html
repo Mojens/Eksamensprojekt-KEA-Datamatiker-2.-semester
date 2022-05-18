@@ -1,11 +1,16 @@
+<nav th:fragment="skade" class="navi-section">
 <div class="navbar" id="navbar">
     <div class="logo-left-admin">
-        <img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
-             src="../static/CSS/images/Logo-250x250.png"/>
+        <a href="/admin"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                  src="../static/CSS/images/Logo-250x250.png"/></a>
     </div>
-    <a href="../login" class="login-button">Dashboard</a>
-    <a href="../opretlejeaftale" class="login-button">Lejeaftaler</a>
-    <a href="../findlease" class="login-button">Skadesrapport</a>
-    <a href="../login" class="login-button">Slet</a>
-    <a href="../login" class="login-button">Logud</a>
+    <div class="navigation">
+    <a href="../dashboard">Dashboard</a>
+    <a href="../opretlejeaftale" >Lejeaftaler</a>
+    <a href="../findlease" >Skadesrapport</a>
+    <a href="../admin" >Håndter bruger </a>
+
+    <a href="../logout" >Logud</a>
+    </div>
 </div>
+</nav>

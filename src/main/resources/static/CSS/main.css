@@ -23,11 +23,6 @@ body {
     margin: 60px auto;
 }
 
-body {
-    background-color: #F2F2F2;
-    font-family: OpenSans-regular;
-}
-
 .container-form-small {
     padding: 30px;
     min-height: 480px;
@@ -39,7 +34,6 @@ body {
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-
 .form-control {
     display: flex;
     flex-direction: column;
@@ -101,7 +95,6 @@ table {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     margin: 0;
 }
-
 .price {
     table-layout: fixed;
     width: 47.5%;
@@ -109,7 +102,6 @@ table {
     margin-top: 20px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-
 .three-tables-container {
     width: 100%;
     display: flex;
@@ -148,18 +140,16 @@ a.individual {
     width: 100%;
     height: 40px;
 }
-
 .individual {
     text-align: center;
 }
-
 .individual-big {
     font-size: 18px;
     text-align: start;
     padding-left: 30px;
 }
 
-.individual-big::before {
+.individual-big::before{
     content: "DKK ";
     display: inline;
     justify-content: start;
@@ -174,8 +164,7 @@ a.individual {
     z-index: 0;
     position: absolute;
 }
-
-.form-container {
+.form-container{
     margin-right: 15%;
     margin-left: 15%;
     padding-right: 15%;
@@ -344,7 +333,6 @@ span.psw {
     justify-content: center;
     align-items: center;
 }
-
 .label-header {
     display: flex;
     justify-content: start;
@@ -359,7 +347,6 @@ span.psw {
     align-items: center;
     padding: 20px;
 }
-
 /* hovering login taget fra:
 https://dev.to/adrianbdesigns/let-s-create-a-floating-label-input-with-html-and-css-only-4mo8?fbclid=IwAR3_MrZt3XsPBpbg5jFlxz1nqcvQ12EOZ_eV-aR_O19aOjJNBo61GVxqfRY*/
 :root {
@@ -494,7 +481,6 @@ https://dev.to/adrianbdesigns/let-s-create-a-floating-label-input-with-html-and-
 .inline {
     display: inline;
 }
-
 .inline-tag {
     display: inline;
     margin-bottom: 10px;
@@ -536,6 +522,7 @@ https://dev.to/adrianbdesigns/let-s-create-a-floating-label-input-with-html-and-
 }
 
 
+
 .card-body-big {
     display: flex;
     flex-direction: column;
@@ -566,13 +553,11 @@ https://dev.to/adrianbdesigns/let-s-create-a-floating-label-input-with-html-and-
 .tag-teal {
     background-color: #2D7BC6;
 }
-
 .tag-teal-second {
     background-color: #FFD75E;
     color: #2f2f2d;
     margin-right: 2px;
 }
-
 .tag-teal-second::before {
     content: "#";
     display: inline;
@@ -588,7 +573,6 @@ https://dev.to/adrianbdesigns/let-s-create-a-floating-label-input-with-html-and-
     font-size: 14px;
     margin: 5px 0 auto;
 }
-
 input::-webkit-file-upload-button {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -640,7 +624,6 @@ input::-webkit-file-upload-button:hover {
 .button {
     margin-bottom: 5px;
 }
-
 .h4-header::after {
     content: ",-";
     display: inline;
@@ -658,40 +641,34 @@ input::-webkit-file-upload-button:hover {
     font-size: 14px;
     line-height: 1;
 }
-
 .inline-h2 {
     margin-top: 40px;
     margin-left: 13px;
     display: inline;
 }
-
 .inline-noMargin {
     margin-top: 40px;
     display: inline;
 }
-
-.before {
+.before{
     background-color: #112844;
 }
-
-.before-table {
+.before-table{
     background-color: #112844;
 }
-
 .before::before {
     content: "Rapport #";
     color: white;
     font-size: 14px;
     line-height: 1;
 }
-
 .submit-button:hover {
     transition-duration: 0.3s;
     -ms-transform: scale(1.2);
     transform: scale(1.0);
 }
 
-.submit-button {
+.submit-button{
     margin-bottom: 20px;
 }
 

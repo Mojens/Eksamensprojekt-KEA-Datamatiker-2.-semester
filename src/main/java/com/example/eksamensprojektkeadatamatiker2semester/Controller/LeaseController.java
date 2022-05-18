@@ -19,150 +19,162 @@ import java.util.List;
 @Controller
 public class LeaseController {
 
-  EmployeeRepository employeeRepository;
-  CarRepository carRepository;
-  SpecificDamageRepository specificDamageRepository;
-  DamageReportRepository damageReportRepository;
-  LeaseRepository leaseRepository;
-  ControllerService controllerService;
-  UserRepository userRepository;
-  LeaseService leaseService;
+    EmployeeRepository employeeRepository;
+    CarRepository carRepository;
+    SpecificDamageRepository specificDamageRepository;
+    DamageReportRepository damageReportRepository;
+    LeaseRepository leaseRepository;
+    ControllerService controllerService;
+    UserRepository userRepository;
+    LeaseService leaseService;
 
-  CarsLeasesRepository carsLeasesRepository;
-
-
-  public LeaseController(EmployeeRepository employeeRepository, CarRepository carRepository,
-                         SpecificDamageRepository specificDamageRepository, DamageReportRepository damageReportRepository,
-                         LeaseRepository leaseRepository, ControllerService controllerService,
-                         UserRepository userRepository, LeaseService leaseService, CarsLeasesRepository carsLeasesRepository) {
-    this.employeeRepository = employeeRepository;
-    this.carRepository = carRepository;
-    this.specificDamageRepository = specificDamageRepository;
-    this.damageReportRepository = damageReportRepository;
-    this.leaseRepository = leaseRepository;
-    this.controllerService = controllerService;
-    this.userRepository = userRepository;
-    this.leaseService = leaseService;
-    this.carsLeasesRepository = carsLeasesRepository;
-  }
-
-  @GetMapping("/allelejeaftaler")
-  public String showAllLeases(HttpSession httpSession, Model model) {
-
-    List<Lease> lease = leaseRepository.showAllLeases();
-    model.addAttribute("lease", lease);
-    return "/allelejeaftaler";
-    //return controllerService.skadeRapport(httpSession);
-  }
-
-  @GetMapping("/lejeaftale/{id}")
-  public String showSpecificLease(@PathVariable("id") int id, Model model, HttpSession httpSession) {
+    CarsLeasesRepository carsLeasesRepository;
 
 
-    CarsLeases carsLeases = leaseRepository.findLeaseAndCarByID(id);
-
-    Lease lease = leaseRepository.findLeaseByID(carsLeases.getLeaseID());
-
-    Car car = carRepository.findCarByID(carsLeases.getCarID());
-
-
-    model.addAttribute("car", car);
-    model.addAttribute("lease", lease);
-
-
-    return "/aftale";
-    //return controllerService.skader(httpSession);
-  }
-
-  @GetMapping("/findlejeaftale")
-  public String findLeaseToMakeDamageReport(HttpSession httpSession, Model model, String keyword) {
-
-    if (keyword != null) {
-      List<Lease> list = leaseRepository.findLeaseByIDAsList(Integer.parseInt(keyword));
-
-      model.addAttribute("list", list);
-
-    } else {
-      List<Lease> list = leaseRepository.showAllLeases();
-      model.addAttribute("list", list);
-
+    public LeaseController(EmployeeRepository employeeRepository, CarRepository carRepository,
+                           SpecificDamageRepository specificDamageRepository, DamageReportRepository damageReportRepository,
+                           LeaseRepository leaseRepository, ControllerService controllerService,
+                           UserRepository userRepository, LeaseService leaseService,CarsLeasesRepository carsLeasesRepository) {
+        this.employeeRepository = employeeRepository;
+        this.carRepository = carRepository;
+        this.specificDamageRepository = specificDamageRepository;
+        this.damageReportRepository = damageReportRepository;
+        this.leaseRepository = leaseRepository;
+        this.controllerService = controllerService;
+        this.userRepository = userRepository;
+        this.leaseService = leaseService;
+        this.carsLeasesRepository = carsLeasesRepository;
     }
 
-    return "/lejeaftale";
-    //return controllerService.skadeRapport(httpSession);
-  }
+    @GetMapping("/allelejeaftaler")
+    public String showAllLeases(HttpSession httpSession, Model model){
 
-  @GetMapping("/seaftale/{id}")
-  public String showCarsAndLeases(@PathVariable("id") int id, HttpSession httpSession, Model model) {
-
-
-    CarsLeases carsLeases = leaseRepository.findLeaseAndCarByID(id);
-    Lease lease = leaseRepository.findLeaseByID(carsLeases.getLeaseID());
-    Car car = carRepository.findCarByID(carsLeases.getCarID());
-    Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
-
-    model.addAttribute("carLeases", carsLeases);
-    model.addAttribute("lease", lease);
-    model.addAttribute("car", car);
-    model.addAttribute("employee", employee);
+        List<Lease> lease = leaseRepository.showAllLeases();
+        model.addAttribute("lease",lease);
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user",user);
+        return "/allelejeaftaler";
+        //return controllerService.skadeRapport(httpSession);
+    }
 
 
-    return "/seaftale";
-    //return controllerService.skadeRapport(httpSession);
-  }
-
-  @GetMapping("/opretlejeaftale")
-  public String viewOpretlejeaftale(Model model, HttpSession httpSession) {
-    User user = (User) httpSession.getAttribute("user");
-    System.out.println(user);
-    Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
-    System.out.println(employee);
-    List<Car> listOfAvaibleCars = carRepository.showAllAvaibleCars();
+    @GetMapping("/lejeaftale/{id}")
+    public String showSpecificLease(@PathVariable("id") int id, Model model, HttpSession httpSession){
 
 
-    model.addAttribute("user", user);
-    model.addAttribute("listOfAvaibleCars", listOfAvaibleCars);
 
-    return "/opretlejeaftale";
-  }
+        CarsLeases carsLeases = leaseRepository.findLeaseAndCarByID(id);
 
+        Lease lease = leaseRepository.findLeaseByID(carsLeases.getLeaseID());
 
-  @PostMapping("/opretlejeaftale")
-  public String addLease(@RequestParam("firstName") String firstName,
-                         @RequestParam("lastName") String lastName,
-                         @RequestParam("leasePeriod") int leasePeriod,
-                         @RequestParam("startDate") String startDate,
-                         @RequestParam("endDate") String endDate,
-                         @RequestParam("vognNummer") int vognNummer,
-                         Model model, HttpSession httpSession) {
+        Car car = carRepository.findCarByID(carsLeases.getCarID());
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user",user);
+
+        model.addAttribute("car",car);
+        model.addAttribute("lease",lease);
 
 
-    User user = (User) httpSession.getAttribute("user");
-    System.out.println(user);
-    Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
-    System.out.println(employee);
+        return "/aftale";
+        //return controllerService.skader(httpSession);
+    }
 
-    LocalDate startDateLD = leaseService.convertToLocalDate(startDate);
-    LocalDate endDateLD = leaseService.convertToLocalDate(endDate);
+    @GetMapping("/findlejeaftale")
+    public String findLeaseToMakeDamageReport(HttpSession httpSession, Model model,String keyword){
 
-    leaseRepository.addLease(new Lease(firstName, lastName, leasePeriod, user.getUserID(), startDateLD, endDateLD));
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user",user);
 
-    List<Lease> listOfLeases = leaseRepository.findLeaseByLast();
+        if (keyword!=null){
+            List<Lease> list = leaseRepository.findLeaseByIDAsList(Integer.parseInt(keyword));
 
-    int leaseID = listOfLeases.get(0).getLeaseID();
+            model.addAttribute("list",list);
 
-    CarsLeases newCarLease = new CarsLeases(vognNummer, leaseID);
+        } else {
+            List<Lease> list = leaseRepository.showAllLeases();
+            model.addAttribute("list",list);
 
-    carsLeasesRepository.addCarsLease(newCarLease);
+        }
 
-    carsLeasesRepository.isLeased(vognNummer);
+        return "/lejeaftale";
+        //return controllerService.skadeRapport(httpSession);
+    }
+
+    @GetMapping("/seaftale/{id}")
+    public String showCarsAndLeases(@PathVariable("id") int id, HttpSession httpSession, Model model){
+
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user",user);
 
 
-    model.addAttribute("user", user);
-    model.addAttribute("employee", employee);
+        CarsLeases carsLeases = leaseRepository.findLeaseAndCarByID(id);
+        Lease lease = leaseRepository.findLeaseByID(carsLeases.getLeaseID());
+        Car car = carRepository.findCarByID(carsLeases.getCarID());
+        Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
 
-    return "redirect:/allelejeaftaler";
+        model.addAttribute("carLeases",carsLeases);
+        model.addAttribute("lease",lease);
+        model.addAttribute("car",car);
+        model.addAttribute("employee",employee);
 
-  }
+
+        return "/seaftale";
+        //return controllerService.skadeRapport(httpSession);
+    }
+
+    @GetMapping("/opretlejeaftale")
+    public String viewOpretlejeaftale(Model model, HttpSession httpSession){
+        User user = (User) httpSession.getAttribute("user");
+        System.out.println(user);
+        Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
+        System.out.println(employee);
+        List<Car> listOfAvaibleCars = carRepository.showAllAvaibleCars();
+
+
+        model.addAttribute("user",user);
+        model.addAttribute("listOfAvaibleCars",listOfAvaibleCars);
+
+        return "/opretlejeaftale";
+    }
+
+
+    @PostMapping("/opretlejeaftale")
+    public String addLease(@RequestParam("firstName")String firstName,
+                           @RequestParam("lastName")String lastName,
+                           @RequestParam("leasePeriod")int leasePeriod,
+                           @RequestParam("startDate") String startDate,
+                           @RequestParam("endDate") String endDate,
+                           @RequestParam("vognNummer") int vognNummer,
+                           Model model, HttpSession httpSession){
+
+
+        User user = (User) httpSession.getAttribute("user");
+        System.out.println(user);
+        Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
+        System.out.println(employee);
+
+        LocalDate startDateLD = leaseService.convertToLocalDate(startDate);
+        LocalDate endDateLD = leaseService.convertToLocalDate(endDate);
+
+        leaseRepository.addLease(new Lease(firstName,lastName,leasePeriod,user.getUserID(),startDateLD,endDateLD));
+
+        List<Lease> listOfLeases = leaseRepository.findLeaseByLast();
+
+        int leaseID = listOfLeases.get(0).getLeaseID();
+
+        CarsLeases newCarLease = new CarsLeases(vognNummer,leaseID);
+
+        carsLeasesRepository.addCarsLease(newCarLease);
+
+        carsLeasesRepository.isLeased(vognNummer);
+
+
+
+        model.addAttribute("user",user);
+        model.addAttribute("employee",employee);
+
+        return "redirect:/allelejeaftaler";
+
+    }
 
 }

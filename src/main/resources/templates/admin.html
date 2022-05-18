@@ -9,7 +9,24 @@
     <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
 <body>
-<div th:replace="nav.fragment.admin"></div>
+<nav class="navi-section">
+    <div class="navbar" id="navbar">
+        <div class="logo-left-admin">
+            <a href="/admin"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                  src="../static/CSS/images/Logo-250x250.png"/></a>
+        </div>
+        <div class="navigation">
+            <a href="../dashboard">Dashboard</a>
+            <a href="../opretlejeaftale" >Lejeaftaler</a>
+            <a href="../findlease" >Skadesrapport</a>
+            <a href="../admin" >Håndter bruger </a>
+        </div>
+            <div class="name-logout">
+                <a class="navi-username" th:text="${user.username}" ></a>
+                <a href="../logout" class="login-button">Logud</a>
+            </div>
+    </div>
+</nav>
 <div class="hero-backdrop">
     <img th:src="@{../CSS/images/hero.png}" class="backdrop" alt="hero-backdrop"
          src="../static/CSS/images/hero.png"/>

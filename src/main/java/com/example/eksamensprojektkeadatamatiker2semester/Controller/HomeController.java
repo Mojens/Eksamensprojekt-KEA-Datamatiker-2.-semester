@@ -2,6 +2,7 @@ package com.example.eksamensprojektkeadatamatiker2semester.Controller;
 
 
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
+import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.EmployeeRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Service.ControllerService;
 import org.springframework.stereotype.Controller;
@@ -34,6 +35,8 @@ public class HomeController {
   @GetMapping("/admin")
   public String admin(HttpSession httpSession,
                       Model model){
+    User user = (User) httpSession.getAttribute("user");
+    model.addAttribute("user",user);
     List<Employee> listOfEmployees = employeeRepository.showAllEmployees();
     model.addAttribute("listOfEmployees", listOfEmployees);
     return controllerService.admin(httpSession);

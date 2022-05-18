@@ -4,8 +4,8 @@
     overflow: hidden;
     text-decoration: none;
     color: #FFFFFF;
-    font-size: 18px;
-    font-family: Opensans-regular, sans-serif;
+    font-size: 17px;
+    font-family: OpenSans,sans-serif;
     letter-spacing: 2px;
     align-items: center;
     display: flex;
@@ -17,8 +17,9 @@
 }
 
 
+
 #navbar a:hover {
-    background-color: #FFFFFF;
+    background-color: #F2F2F2;
     color: #1a1919;
     transition-duration: .3s;
     border-radius: 2px;
@@ -31,7 +32,7 @@
     display: flex;
     color: black;
     text-align: center;
-    padding: 35px 60px 35px 0px;
+    padding: 35px 30px 35px 30px;
     text-decoration: none;
     position: relative;
 
@@ -44,36 +45,40 @@
     margin-right: 1100px;
 
 }
-
 .logo-left-admin {
     display: flex;
     justify-content: start;
-    margin-right: 550px;
+    margin-right: 300px;
 }
-
 .logo-left-nav {
     display: flex;
     justify-content: start;
-    margin-right: 500px;
+    margin-right: 450px;
 
 }
-
 .logo-left-skade {
     display: flex;
     justify-content: start;
-    margin-right: 650px;
+    margin-right: 600px;
 
 }
-
-.navigation {
+.navigation{
     display: flex;
     justify-content: end;
 }
-
 .logo-left-admin {
     display: flex;
     justify-content: start;
     margin-right: 550px;
+}
+
+.name-logout{
+    display: flex;
+    justify-content: center;
+}
+a.navi-username {
+    font-size: 13px;
+    color: #022633;
 }
 
 
@@ -82,7 +87,7 @@
     padding: 16px;
 }
 
-.small-nav-logo {
+.small-nav-logo{
     width: 350px;
 }
 

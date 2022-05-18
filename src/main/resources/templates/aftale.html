@@ -9,7 +9,24 @@
     <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
 <body>
-<div th:replace="lejeaftale.fragment"></div>
+<nav class="navi-section">
+  <div class="navbar" id="navbar">
+    <div class="logo-left-nav">
+      <a href="/opretlejeaftale"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                      src="../static/CSS/images/Logo-250x250.png"/></a>
+    </div>
+    <div class="navigation">
+      <a href="../opretlejeaftale">Opret Lejeaftale</a>
+      <a href="../allelejeaftaler">Alle Lejeaftaler</a>
+      <a href="../findlejeaftale" >Find Lejeaftale</a>
+    </div>
+    <div class="name-logout">
+      <a class="navi-username" th:text="${user.username}" ></a>
+      <a href="../logout" class="login-button">Logud</a>
+    </div>
+
+  </div>
+</nav>
 <div class="container-rapport">
 
     <div class="damageReport">
