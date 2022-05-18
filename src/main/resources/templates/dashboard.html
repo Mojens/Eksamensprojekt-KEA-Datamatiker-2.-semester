@@ -2,10 +2,29 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Dashboard</title>
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/main.css">
+    <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
 <body>
-<td th:text="${allCars.size()}"></td>
+<nav class="navi-section">
+    <div class="navbar" id="navbar">
+        <div class="logo-left-nav">
+            <a href="/dashboard"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                            src="../static/CSS/images/Logo-250x250.png"/></a>
+        </div>
+        <div class="navigation">
+            <a href="../dashboard">Se KPI</a>
+        </div>
+        <div class="name-logout">
+            <a class="navi-username" th:text="${user.username}" ></a>
+            <a href="../logout" class="login-button">Logud</a>
+        </div>
+
+    </div>
+</nav>
 <h2>Hvis en bil er udlejet vil status se således ud</h2>
 <button style="background-color: red"></button>
 <h2>Hvis en bil er tilgængelig og kan udlejes ser status således ud</h2>

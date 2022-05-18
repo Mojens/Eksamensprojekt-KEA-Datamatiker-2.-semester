@@ -1,6 +1,7 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Controller;
 
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
+import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.CarRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.DashboardRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Service.DashboardService;
@@ -28,6 +29,9 @@ public class DashboardController {
   @GetMapping("/dashboard")
   public String showKPI(Model model,
                         HttpSession httpSession) {
+
+    User user = (User) httpSession.getAttribute("user");
+    model.addAttribute("user",user);
     List<Car> leasedCars = dashboardRepository.addLeasedCarsToList();
     List<Car> allCars = carRepository.showAllCars();
     int amountOfLeasedCars = dashboardService.howManyisLeased(leasedCars);
