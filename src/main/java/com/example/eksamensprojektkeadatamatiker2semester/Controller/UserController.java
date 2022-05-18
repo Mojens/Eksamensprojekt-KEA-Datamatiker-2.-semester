@@ -77,7 +77,7 @@ public class UserController {
     String bCryptPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
     System.out.println(bCryptPassword);
     userRepository.changePassword(selectedUser.getUsername(), bCryptPassword, selectedUser);
-    return "redirect:/admin";
+    return "redirect:/skiftkode";
   }
 
 }

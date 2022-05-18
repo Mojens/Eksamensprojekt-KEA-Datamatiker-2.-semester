@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Slet bruger</title>
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/main.css">
+    <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/NavBar.css">
+</head>
+<body>
+<nav class="navi-section">
+    <div class="navbar" id="navbar">
+        <div class="logo-left-admin">
+            <a href="/admin"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                  src="../static/CSS/images/Logo-250x250.png"/></a>
+        </div>
+        <div class="name-logout">
+            <a class="navi-username" th:text="${user.username}"></a>
+            <a href="../logout" class="login-button">Logud</a>
+        </div>
+    </div>
+</nav>
+<nav th:if="${user.type==4}" class="navi-section-admin">
+    <div class="navbar" id="navbar-admin">
+        <div class="logo-left-admin">
+
+        </div>
+        <div class="navigation">
+            <a th:if="${user.type==4}" href="../dashboard">Dashboard</a>
+            <a th:if="${user.type==4}" href="../opretlejeaftale">Lejeaftaler</a>
+            <a th:if="${user.type==4}" href="../findlease">Skadesrapport</a>
+            <a th:if="${user.type==4}" href="../admin">Håndter bruger </a>
+        </div>
+    </div>
+</nav>
+<div class="hero-backdrop">
+    <img th:src="@{../CSS/images/hero.png}" class="backdrop" alt="hero-backdrop"
+         src="../static/CSS/images/hero.png"/>
+</div>
+<div class="form-container">
+    <h2>Slet en medarbejder</h2>
+    <form
+            action="/deleteEmployee"
+            method="post">
+        <div class="container">
+            <label>Vælg en medarbejder: </label>
+            <select name="userID">
+                <option th:each="Employee : ${listOfEmployees}"
+                        th:text="${Employee}"
+                        th:value="${Employee.getUserID()}"></option>
+            </select>
+        </div>
+        <br>
+        <label>Er du sikker?</label>
+        <input type="checkbox" required><br>
+        <button type="submit">Slet medarbejder</button>
+    </form>
+</div>
+</body>
+</html>

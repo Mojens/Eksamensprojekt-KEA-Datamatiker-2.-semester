@@ -162,13 +162,43 @@ public class ControllerService {
     return currentPage;
   }
 //Type 4
-  public String admin(HttpSession httpSession) {
+  public String opretBruger(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
       System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 4) {
-        currentPage = "/admin";
+        currentPage = "/opretbruger";
+      } else if (loggedUser.getType() != 4) {
+        currentPage = "/login";
+      }
+    } else if (httpSession.getAttribute("userName") == null) {
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
+  public String skiftKode(HttpSession httpSession) {
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null) {
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 4) {
+        currentPage = "/skiftkode";
+      } else if (loggedUser.getType() != 4) {
+        currentPage = "/login";
+      }
+    } else if (httpSession.getAttribute("userName") == null) {
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
+  public String sletBruger(HttpSession httpSession) {
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null) {
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 4) {
+        currentPage = "/sletbruger";
       } else if (loggedUser.getType() != 4) {
         currentPage = "/login";
       }

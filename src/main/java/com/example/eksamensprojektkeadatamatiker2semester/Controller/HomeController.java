@@ -23,14 +23,32 @@ public class HomeController {
     this.employeeRepository = employeeRepository;
   }
 
-  @GetMapping("/admin")
+  @GetMapping("/opretbruger")
   public String admin(HttpSession httpSession,
                       Model model){
     User user = (User) httpSession.getAttribute("user");
     model.addAttribute("user",user);
     List<Employee> listOfEmployees = employeeRepository.showAllEmployees();
     model.addAttribute("listOfEmployees", listOfEmployees);
-    return controllerService.admin(httpSession);
+    return controllerService.opretBruger(httpSession);
+  }
+  @GetMapping("/skiftkode")
+  public String skiftKode(HttpSession httpSession,
+                      Model model){
+    User user = (User) httpSession.getAttribute("user");
+    model.addAttribute("user",user);
+    List<Employee> listOfEmployees = employeeRepository.showAllEmployees();
+    model.addAttribute("listOfEmployees", listOfEmployees);
+    return controllerService.skiftKode(httpSession);
+  }
+  @GetMapping("/sletbruger")
+  public String sletBruger(HttpSession httpSession,
+                          Model model){
+    User user = (User) httpSession.getAttribute("user");
+    model.addAttribute("user",user);
+    List<Employee> listOfEmployees = employeeRepository.showAllEmployees();
+    model.addAttribute("listOfEmployees", listOfEmployees);
+    return controllerService.sletBruger(httpSession);
   }
 
   @GetMapping("/logout")

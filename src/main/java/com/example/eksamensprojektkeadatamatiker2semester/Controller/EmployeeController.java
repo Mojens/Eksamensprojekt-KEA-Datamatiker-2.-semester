@@ -28,7 +28,7 @@ public class EmployeeController {
   @PostMapping("/deleteEmployee")
   public String deleteEmployee(@RequestParam("userID") int userID) {
     employeeRepository.deleteEmployeeByID(userID);
-    return "redirect:/admin";
+    return "redirect:/sletbruger";
   }
 
   @PostMapping("/addEmployee")
