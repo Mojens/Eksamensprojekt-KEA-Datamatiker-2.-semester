@@ -70,6 +70,7 @@
                 Slut Dato
             </th>
             <th scope="col">Se rapporten</th>
+            <th scope="col">Slet rapporten</th>
         </tr>
         </thead>
         <tbody>
@@ -99,6 +100,8 @@
                    target="_blank"></a>
             </td>
             <td class="row-update"><a class="link-row link" th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}">Se
+                Lejeaftale</a></td>
+            <td class="row-update"><a class="link-row link" th:href="@{/sletaftale/{id}(id=${leje.leaseID})}">Slet
                 Lejeaftale</a></td>
         </tr>
         </tbody>

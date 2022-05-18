@@ -11,6 +11,7 @@ public class Lease {
   private int userID;
   private LocalDate startDate;
   private LocalDate endDate;
+  private LocalDate today = LocalDate.now();
 
 
   public Lease(int leaseID, String firstName, String lastName, int leasePeriodInDays, int userID, LocalDate startDate, LocalDate endDate) {
@@ -90,4 +91,20 @@ public class Lease {
   public void setEndDate(LocalDate endDate) {
     this.endDate = endDate;
   }
+
+  public LocalDate compareNowAndEndDate(){
+    int compareValue = today.compareTo(endDate);
+
+    if (compareValue > 0) {
+      System.out.println("today is latter than 4th-Jan-2022");
+    } else if (compareValue < 0) {
+      System.out.println("today is earlier than 4th-Jan-2022");
+    } else {
+      System.out.println("both dates are equal");
+    }
+    return endDate;
+  }
+
+
+
 }
