@@ -1,5 +1,6 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
+import java.time.chrono.ChronoLocalDate;
 import java.util.Date;
 import java.time.LocalDate;
 
@@ -92,17 +93,24 @@ public class Lease {
     this.endDate = endDate;
   }
 
-  public LocalDate compareNowAndEndDate(){
-    int compareValue = today.compareTo(endDate);
+  public int compareNowAndEndDate(LocalDate date){
+    int compareValue = today.compareTo(date);
+    System.out.println(compareValue);
+    System.out.println(today);
 
     if (compareValue > 0) {
-      System.out.println("today is latter than 4th-Jan-2022");
+      return 1;
+
     } else if (compareValue < 0) {
-      System.out.println("today is earlier than 4th-Jan-2022");
+      return 0;
+
+
     } else {
       System.out.println("both dates are equal");
+      return 1;
+
     }
-    return endDate;
+
   }
 
 

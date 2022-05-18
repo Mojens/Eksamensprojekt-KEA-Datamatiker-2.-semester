@@ -63,42 +63,42 @@
                 <th class="th" scope="col">
                     Lejeaftale ID
                 </th>
-                <td class="skade" th:text="${lease.leaseID}">
+                <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${lease.leaseID}">
                 </td>
             </tr>
             <tr class="tr">
                 <th class="th" scope="col">
                     Kunde Fornavn
                 </th>
-                <td class="skade" th:text="${lease.firstName}">
+                <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${lease.firstName}">
                 </td>
             </tr>
             <tr class="tr">
                 <th class="th" scope="col">
                     Kunde Efternavn
                 </th>
-                <td class="skade" th:text="${lease.lastName}">
+                <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${lease.lastName}">
                 </td>
             </tr>
             <tr>
                 <th class="th" scope="col">
                     Lejeaftale I dage
                 </th>
-                <td class="skade" th:text="${lease.leasePeriodInDays}">
+                <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${lease.leasePeriodInDays}">
                 </td>
             </tr>
             <tr class="tr">
                 <th class="th" scope="col">
                     Start Dato
                 </th>
-                <td class="skade" th:text="${lease.startDate}">
+                <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${lease.startDate}">
                 </td>
             </tr>
             <tr class="tr">
                 <th class="th" scope="col">
                     Slut Dato
                 </th>
-                <td class="skade" th:text="${lease.endDate}">
+                <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${lease.endDate}">
                 </td>
             </tr>
 

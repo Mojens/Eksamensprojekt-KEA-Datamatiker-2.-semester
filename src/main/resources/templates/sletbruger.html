@@ -48,15 +48,19 @@
             method="post">
         <div>
             <label>Vælg en medarbejder: </label>
-            <select name="userID">
-                <option th:each="Employee : ${listOfEmployees}"
-                        th:text="${Employee}"
-                        th:value="${Employee.getUserID()}"></option>
-            </select>
+            <label>
+                <select name="userID">
+                    <option th:each="Employee : ${listOfEmployees}"
+                            th:text="${Employee}"
+                            th:value="${Employee.getUserID()}"></option>
+                </select>
+            </label>
         </div>
-        <br>
+
         <label>Er du sikker?</label>
-        <input type="checkbox" required><br>
+        <label>
+            <input class="checkbox" type="checkbox" required>
+        </label>
         <button type="submit">Slet medarbejder</button>
     </form>
 </div>

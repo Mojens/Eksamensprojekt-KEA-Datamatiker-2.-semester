@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
-    <link rel="stylesheet" href="../static/CSS/main.css">
+
     <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="../static/CSS/NavBar.css">
+    <link th:href="@{/CSS/login.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/login.css">
 </head>
 <body onload="document.getElementById('id01').style.display='block'">
 <div th:replace="nav.fragment"></div>
@@ -44,18 +45,18 @@
                 <label for="input__username" class="floating__label" data-content="Brugernavn">
             </div>
             <div class="floating">
-                <input id="input__password" class="floating__input" name="password" required type="text"
+                <input id="input__password" class="floating__input" name="password" required type="password"
                        placeholder="Password"/>
                 <label for="input__password" class="floating__label" data-content="Adgangskode">
                     <div class="psw-container">
-                        <span class="psw"><a href="#">Har du glemt din adgangskode?</a></span>
+                        <p class="psw"><a href="#">Har du glemt din adgangskode?</a></p>
                     </div>
                     <div>
 
                     </div>
             </div>
     </form>
-    <button class="submit-button" type="submit">Log ind</button>
+    <button class="submit-button-login" type="submit">Log ind</button>
 </div>
 <script>
     // Get the modal

@@ -1,0 +1,333 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F2F2F2;
+    font-family: OpenSans-normal, sans-serif;
+}
+.hero-backdrop img {
+    width: 100%;
+    z-index: 0;
+    position: absolute;
+}
+
+@font-face {
+    font-family: OpenSans;
+    src: url("../fonts/OpenSans-Italic.ttf") format("ttf"),
+    url("../fonts/OpenSans-Light.ttf") format("ttf"),
+    url("../fonts/OpenSans-normal.ttf") format("ttf"),
+    url("../fonts/OpenSans-Regular.ttf") format("ttf")
+
+}
+.submit-button-login {
+    margin-top: 50px;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    padding-top: 200px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5px auto; /* 15% from the top and centered */
+
+    width: 22%; /* Could be more or less, depending on screen size */
+    height: 70%;
+    border-radius: 5px;
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 8px 24px;
+}
+
+/* The Close Button */
+.close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+.psw {
+    color: #317DAD;
+    align-items: start;
+    padding-right: 2%;
+
+
+}
+
+.psw a {
+    color: #01719f;
+    text-decoration: none;
+    opacity:1;
+    font-size: 14px;
+    font-weight: bold;
+    padding-left:2px;
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+form {
+    border: 3px solid #f1f1f1;
+}
+
+/* Full-width inputs */
+input[type=text]{
+    width: 100%;
+    display: inline-block;
+    border: 1px solid #ccc;
+}
+input[type=password]{
+    width: 100%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #1683AF;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+    text-align: center;
+    margin: 44px 40px 22px 40px;
+}
+
+/* Avatar image */
+img.avatar {
+    width: 20%;
+    border-radius: 50%;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px 36px 1px;
+}
+
+/* The "Forgot password" text */
+span.psw {
+    float: left;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+.header {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.label-header {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    padding-left: 2px;
+    margin-top: 5px;
+}
+
+.p-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px 10px;
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+/* hovering login taget fra:
+https://dev.to/adrianbdesigns/let-s-create-a-floating-label-input-with-html-and-css-only-4mo8?fbclid=IwAR3_MrZt3XsPBpbg5jFlxz1nqcvQ12EOZ_eV-aR_O19aOjJNBo61GVxqfRY*/
+:root {
+    --color__accent: #03415b;
+
+    --field__background: #f5f5f5;
+    --field__background--hover: #e9e9e9;
+    --input__border: rgb(16, 137, 185);
+    --input__border--hover: rgba(0, 0, 0, 0.62);
+    --label__color: #222;
+
+    --font__size: 16px;
+    --font__family: OpenSans-regular;
+}
+
+.floating {
+    margin-bottom: 1%;
+    transition: background-color 0.2s ease;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.floating__input {
+    padding: 1.8rem 1rem 0.6rem;
+    font-size: 1rem;
+    border-bottom: 0.1rem solid var(--input__border);
+    transition: border-color 0.2s ease;
+    caret-color: var(--color__accent);
+}
+
+.floating:hover .floating__input {
+    border-color: var(--input__border--hover);
+}
+
+.floating__input::placeholder {
+    color: rgba(0, 0, 0, 0);
+}
+
+.floating__label {
+    display: block;
+    position: relative;
+    max-height: 0;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.floating__label::before {
+    color: var(--label__color);
+    content: attr(data-content);
+    display: inline-block;
+    filter: blur(0);
+    backface-visibility: hidden;
+    transform-origin: left top;
+    transition: transform 0.2s ease;
+    left: 1rem;
+    position: relative;
+}
+
+.floating__label::after {
+    bottom: 1rem;
+    content: "";
+    height: 0.1rem;
+    position: absolute;
+    transition: transform 180ms cubic-bezier(0.6, 0, 0.2, 1),
+    opacity 180ms cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+    opacity: 0;
+    left: 0;
+    top: 100%;
+    margin-top: -0.1rem;
+    transform: scale3d(0, 1, 1);
+    width: 100%;
+    background-color: var(--color__accent);
+}
+
+.floating__input:focus + .floating__label::after {
+
+    color: var(--color__accent);
+    color: #02609d;
+    background-color: #FFFFFF;
+    padding-right:1px;
+    padding-left: 1px;
+}
+
+.floating__input:placeholder-shown + .floating__label::before {
+    transform: translate3d(0, -2.2rem, 0) scale3d(1, 1, 1);
+}
+
+.floating__label::before,
+.floating__input:focus + .floating__label::before {
+    transform: translate3d(0, -4.2rem, 0) scale3d(0.82, 0.82, 1);
+
+}
+
+.floating__input:focus + .floating__label::before {
+    color: var(--color__accent);
+    color: #02609d;
+    background-color: #FFFFFF;
+    padding-right:1px;
+    padding-left: 1px;
+}
+.floating__input:focus + .floating__label{
+    color: var(--color__accent);
+    color: #02609d;
+    background-color: #FFFFFF;
+    padding-right:1px;
+    padding-left: 1px;
+
+}
+#input__username{
+    font-size:16px;
+}
+#input__password{
+    font-size:16px;
+}
+
+.floating{
+    font-size: 17px;
+    opacity: 0.85;
+
+}

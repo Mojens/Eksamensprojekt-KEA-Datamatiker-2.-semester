@@ -49,6 +49,41 @@ public class LeaseRepository {
 
     }
 
+    public Lease showLeases(){
+        Lease leases = new Lease();
+        final String SQL_SHOW_LEASES = "SELECT * FROM Leases";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_SHOW_LEASES);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int leaseID = rs.getInt(1);
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+                int leasePeriodInDays = rs.getInt(4);
+                int userID = rs.getInt(5);
+                LocalDate startDate = rs.getDate(6).toLocalDate();
+                LocalDate endDate = rs.getDate(7).toLocalDate();
+
+                leases.setLeaseID(leaseID);
+                leases.setFirstName(firstName);
+                leases.setLastName(lastName);
+                leases.setLeasePeriodInDays(leasePeriodInDays);
+                leases.setUserID(userID);
+                leases.setStartDate(startDate);
+                leases.setEndDate(endDate);
+
+            }
+            ps.close();
+        } catch (SQLException e) {
+            System.out.println("Kunne ikke finde nogle leases");
+            e.printStackTrace();
+        }
+        return leases;
+
+    }
+
     public Lease findLeaseByID(int id){
         Lease leases = new Lease();
         final String SQL_SHOW_LEASES = "SELECT * FROM Leases WHERE leaseID = '"+id+"'";

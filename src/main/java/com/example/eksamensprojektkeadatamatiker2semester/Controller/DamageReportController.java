@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
 
 
 @Controller
@@ -52,13 +52,16 @@ public class DamageReportController {
     public String findLeaseToMakeDamageReport(HttpSession httpSession, Model model,String keyword){
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user",user);
-        if (keyword!=null){
+        if (keyword != null){
             List<Lease> list = leaseRepository.findLeaseByIDAsList(Integer.parseInt(keyword));
-
+            Lease checkEndDate = leaseRepository.showLeases();
+            model.addAttribute("checkEndDate",checkEndDate);
             model.addAttribute("list",list);
 
         } else {
             List<Lease> list = leaseRepository.showAllLeases();
+            Lease checkEndDate = leaseRepository.showLeases();
+            model.addAttribute("checkEndDate",checkEndDate);
             model.addAttribute("list",list);
 
         }
@@ -75,6 +78,9 @@ public class DamageReportController {
         Lease lease = leaseRepository.findLeaseByID(carsLeases.getLeaseID());
         Car car = carRepository.findCarByID(carsLeases.getCarID());
         Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
+
+        Lease checkEndDate = leaseRepository.showLeases();
+        model.addAttribute("checkEndDate",checkEndDate);
 
         model.addAttribute("carLeases",carsLeases);
         model.addAttribute("lease",lease);

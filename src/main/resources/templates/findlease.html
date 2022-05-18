@@ -83,18 +83,19 @@
         </thead>
         <tbody>
         <tr class="card" th:each="l : ${list}" th:field="${l}">
-            <td class="individual" th:text="${l.leaseID}">
+            <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"  class="individual" th:text="${l.leaseID}">
             </td>
-            <td class="individual" th:text="${l.firstName}">
+            <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual" th:text="${l.firstName}">
             </td>
-            <td class="individual" th:text="${l.lastName}">
+            <td  th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"  class="individual" th:text="${l.lastName}">
             </td>
-            <td class="individual" th:text="${l.leasePeriodInDays}">
+            <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual" th:text="${l.leasePeriodInDays}">
             </td>
-            <td class="individual" th:text="${l.startDate}">
+            <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual" th:text="${l.startDate}">
             </td>
-            <td class="individual" th:text="${l.endDate}">
-            <td class="individual"><a class="individual" th:href="@{/udbedring/{id}(id=${l.leaseID})}">Opret rapport</a>
+            <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual" th:text="${l.endDate}">
+
+            <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual"><a class="individual" th:href="@{/udbedring/{id}(id=${l.leaseID})}">Opret rapport</a>
             </td>
 
         </tr>
