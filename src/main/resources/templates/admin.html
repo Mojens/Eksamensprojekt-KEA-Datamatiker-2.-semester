@@ -39,12 +39,7 @@
          src="../static/CSS/images/hero.png"/>
 </div>
 <div class="form-container">
-    <h2>Slet en medarbejder</h2>
-    <form
-            action="/deleteEmployee"
-            method="post">
-
-
+    <h2>Skift AdgangsKode</h2>
         <form
                 action="/changePassword"
                 method="post">
@@ -56,7 +51,7 @@
                             th:value="${Employee.getUserID()}"></option>
                 </select>
                 <br><br/>
-                <label>User ID</label>
+                <label>Nye Adgangskode</label>
                 <input type="text" placeholder="skriv nye adgangskode" name="newPassword">
                 <button type="submit">Skift adgangskode</button>
                 </table>
@@ -71,6 +66,7 @@
                 <label>User ID</label>
                 <input type="text" placeholder="Enter User ID" name="userID">
                 <button type="submit">Slet medarbejder</button>
+            </div>
         </form>
         <h2>Opret medarbejder</h2>
         <form
