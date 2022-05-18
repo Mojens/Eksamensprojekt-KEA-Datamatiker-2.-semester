@@ -9,22 +9,36 @@
     <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
 <body>
+
 <nav class="navi-section">
     <div class="navbar" id="navbar">
-        <div class="logo-left-nav">
+        <div class="logo-left-kpi">
             <a href="/dashboard"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
                                             src="../static/CSS/images/Logo-250x250.png"/></a>
         </div>
-        <div class="navigation">
-            <a href="../dashboard">Se KPI</a>
-        </div>
+
         <div class="name-logout">
+            <a href="../dashboard">Se KPI</a>
             <a class="navi-username" th:text="${user.username}" ></a>
             <a href="../logout" class="login-button">Logud</a>
         </div>
 
     </div>
 </nav>
+<nav th:if="${user.type==4}" class="navi-section-admin">
+    <div class="navbar" id="navbar-admin">
+        <div class="logo-left-admin">
+
+        </div>
+        <div class="navigation">
+            <a th:if="${user.type==4}" href="../dashboard">Dashboard</a>
+            <a th:if="${user.type==4}" href="../opretlejeaftale" >Lejeaftaler</a>
+            <a th:if="${user.type==4}" href="../findlease" >Skadesrapport</a>
+            <a th:if="${user.type==4}" href="../admin" >Håndter bruger </a>
+        </div>
+    </div>
+</nav>
+<div class="container-rapport">
 <h2>Hvis en bil er udlejet vil status se således ud</h2>
 <button style="background-color: red"></button>
 <h2>Hvis en bil er tilgængelig og kan udlejes ser status således ud</h2>
@@ -132,5 +146,6 @@
 </details>
 <h1>Antal pris på udlejet biler</h1>
 <h2 th:text="${totalPriceOfLeasedCars}"></h2>
+</div>
 </body>
 </html>

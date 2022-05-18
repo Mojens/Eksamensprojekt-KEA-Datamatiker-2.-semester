@@ -9,14 +9,12 @@
     letter-spacing: 2px;
     align-items: center;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     box-sizing: border-box;
     height: 90px;
     font-weight: Bold;
     width: 100%;
 }
-
-
 
 #navbar a:hover {
     background-color: #F2F2F2;
@@ -28,8 +26,9 @@
 /* Navbar links */
 #navbar a {
     background-color: #FFFFFF;
-    float: left;
+    float: right;
     display: flex;
+    justify-content: flex-end;
     color: black;
     text-align: center;
     padding: 35px 30px 35px 30px;
@@ -37,44 +36,53 @@
     position: relative;
 
 }
-
-
-.logo-left {
+#navbar-admin {
+    background-color: #F2F2F2;
+    overflow: hidden;
+    text-decoration: none;
+    color: #1a1919;
+    font-size: 14px;
+    font-family: OpenSans,sans-serif;
+    letter-spacing: 2px;
+    align-items: end;
     display: flex;
-    justify-content: start;
-    margin-right: 1100px;
+    justify-content: end;
+    box-sizing: border-box;
+    height: 50px;
+    font-weight: Bold;
+    width: 100%;
+}
+
+#navbar-admin a:hover {
+    background-color: #F2F2F2;
+    color: #052833;
+    transition-duration: .3s;
+    border-radius: 2px;
+}
+
+/* Navbar links */
+#navbar-admin a {
+    background-color: #F2F2F2;
+    float: left;
+    display: flex;
+    color: #1a1919;
+    text-align: end;
+    padding: 16px 30px 15px 30px;
+    text-decoration: none;
+    position: relative;
 
 }
-.logo-left-admin {
-    display: flex;
-    justify-content: start;
-    margin-right: 300px;
-}
-.logo-left-nav {
-    display: flex;
-    justify-content: start;
-    margin-right: 450px;
 
-}
-.logo-left-skade {
-    display: flex;
-    justify-content: start;
-    margin-right: 600px;
 
-}
+
 .navigation{
     display: flex;
     justify-content: end;
 }
-.logo-left-admin {
-    display: flex;
-    justify-content: start;
-    margin-right: 550px;
-}
 
 .name-logout{
     display: flex;
-    justify-content: center;
+    justify-content: end;
 }
 a.navi-username {
     font-size: 13px;
@@ -89,6 +97,13 @@ a.navi-username {
 
 .small-nav-logo{
     width: 350px;
+    float: left;
+    display: flex;
+    justify-content: flex-start;
+}
+.login-button {
+    font-size: 13px;
+    color: #022633;
 }
 
 
