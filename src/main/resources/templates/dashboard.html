@@ -14,12 +14,12 @@
     <div class="navbar" id="navbar">
         <div class="logo-left-kpi">
             <a href="/dashboard"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
-                                            src="../static/CSS/images/Logo-250x250.png"/></a>
+                                      src="../static/CSS/images/Logo-250x250.png"/></a>
         </div>
 
         <div class="name-logout">
             <a href="../dashboard">Se KPI</a>
-            <a class="navi-username" th:text="${user.username}" ></a>
+            <a class="navi-username" th:text="${user.username}"></a>
             <a href="../logout" class="login-button">Logud</a>
         </div>
 
@@ -32,120 +32,141 @@
         </div>
         <div class="navigation">
             <a th:if="${user.type==4}" href="../dashboard">Dashboard</a>
-            <a th:if="${user.type==4}" href="../opretlejeaftale" >Lejeaftaler</a>
-            <a th:if="${user.type==4}" href="../findlease" >Skadesrapport</a>
-            <a th:if="${user.type==4}" href="../admin" >Håndter bruger </a>
+            <a th:if="${user.type==4}" href="../opretlejeaftale">Lejeaftaler</a>
+            <a th:if="${user.type==4}" href="../findlease">Skadesrapport</a>
+            <a th:if="${user.type==4}" href="../admin">Håndter bruger </a>
         </div>
     </div>
 </nav>
 <div class="container-rapport">
-<h2>Hvis en bil er udlejet vil status se således ud</h2>
-<button style="background-color: red"></button>
-<h2>Hvis en bil er tilgængelig og kan udlejes ser status således ud</h2>
-<button style="background-color: green"></button>
-<h1>Alle biler</h1>
-<details>
-    <h2>Antal Biler</h2>
-    <h3 th:text="${allCars.size()}"></h3>
-    <summary>Se Alle biler</summary>
-    <table class="allCars">
-        <thead>
-        <tr>
-            <th>
-                Vognnummer
-            </th>
-            <th>
-                Stelnummer
-            </th>
-            <th>
-                Bil mærke
-            </th>
-            <th>
-                Bil model
-            </th>
-            <th>
-                Bil pris
-            </th>
-            <th>
-                Status
-            </th>
-        </tr>
-        </thead>
-        <tr th:each="Car : ${allCars}">
-            <td th:text="${Car.getVognNummer()}">
-            </td>
-            <td th:text="${Car.getStelNummer()}">
-            </td>
-            <td th:text="${Car.getBrand()}">
+    <h1>Dashboard</h1>
 
-            </td>
-            <td th:text="${Car.getModel()}">
+    <div class="parent">
+        <div class="item-a">
+            <div class="a-container">
+                <h2 class="header-kpi">Udlejet</h2>
+                <div class="inline-kpi">
+                    <h1 class="big-header" th:text="${amountOfLeasedCars}">Alle biler</h1>
+                    <h1 class="big-header-last" th:text="${allCars.size()}"></h1>
+                </div>
+                <div class="inline">
 
-            </td>
-            <td th:text="${Car.getPrice()}">
+                    <details>
 
-            </td>
-            <td th:if="${Car.isLeased() == 1}">
-                <button style="background-color: red"></button>
-            </td>
-            <td th:if="${Car.isLeased() == 0}">
-                <button style="background-color: green"></button>
-            </td>
-        </tr>
-    </table>
-</details>
-<h1>Alle udlejet biler</h1>
-<details>
-    <h2>Antal Biler udlejet</h2>
-    <h3 th:text="${amountOfLeasedCars}"></h3>
-    <SUMMARY>se alle udlejet biler</SUMMARY>
-    <table class="allLeasedCars">
-        <thead>
-        <tr>
-            <th>
-                Vognnummer
-            </th>
-            <th>
-                Stelnummer
-            </th>
-            <th>
-                Bil mærke
-            </th>
-            <th>
-                Bil model
-            </th>
-            <th>
-                Bil pris
-            </th>
-            <th>
-                Status
-            </th>
-        </tr>
-        </thead>
-        <tr th:each="Car : ${listOfLeasedCars}">
-            <td th:text="${Car.getVognNummer()}">
-            </td>
-            <td th:text="${Car.getStelNummer()}">
-            </td>
-            <td th:text="${Car.getBrand()}">
+                        <SUMMARY>Udlejet biler</SUMMARY>
+                        <h6>Hvis bilen er udlejet er status rød</h6>
+                        <button style="background-color: red"></button>
+                        <h6>Hvis bilen er tilgængelig er status grøn</h6>
+                        <button style="background-color: green"></button>
+                        <table class="allCars">
+                            <thead>
+                            <tr>
+                                <th class="th-header">
+                                    Vognnummer
+                                </th>
+                                <th class="th-header">
+                                    Stelnummer
+                                </th>
+                                <th class="th-header">
+                                    Bil mærke
+                                </th>
+                                <th class="th-header">
+                                    Bil model
+                                </th>
+                                <th class="th-header">
+                                    Bil pris
+                                </th>
+                                <th class="th-header">
+                                    Status
+                                </th>
+                            </tr>
+                            </thead>
+                            <tr th:each="Car : ${listOfLeasedCars}">
+                                <td class="td" th:text="${Car.getVognNummer()}">
+                                </td>
+                                <td class="td" th:text="${Car.getStelNummer()}">
+                                </td>
+                                <td class="td" th:text="${Car.getBrand()}">
 
-            </td>
-            <td th:text="${Car.getModel()}">
+                                </td>
+                                <td class="td" th:text="${Car.getModel()}">
 
-            </td>
-            <td th:text="${Car.getPrice()}">
-            </td>
-            <td th:if="${Car.isLeased() == 1}">
-                <button style="background-color: red"></button>
-            </td>
-            <td th:if="${Car.isLeased() == 0}">
-                <button style="background-color: green"></button>
-            </td>
-        </tr>
-    </table>
-</details>
-<h1>Antal pris på udlejet biler</h1>
-<h2 th:text="${totalPriceOfLeasedCars}"></h2>
+                                </td>
+                                <td class="td" th:text="${#numbers.formatDecimal(Car.getPrice(),0,0)}">
+                                </td>
+                                <td class="td" th:if="${Car.isLeased() == 1}">
+                                    <button style="background-color: red"></button>
+                                </td>
+                                <td class="td" th:if="${Car.isLeased() == 0}">
+                                    <button style="background-color: green"></button>
+                                </td>
+                            </tr>
+                        </table>
+                    </details>
+                    <details>
+                        <summary>Alle biler</summary>
+                        <h6>Hvis bilen er udlejet er status rød</h6>
+                        <button style="background-color: red"></button>
+                        <h6>Hvis bilen er tilgængelig er status grøn</h6>
+                        <button style="background-color: green"></button>
+                        <table class="allCars">
+                            <thead>
+                            <tr>
+                                <th class="th-header">
+                                    Vognnummer
+                                </th>
+                                <th class="th-header">
+                                    Stelnummer
+                                </th>
+                                <th class="th-header">
+                                    Bil mærke
+                                </th>
+                                <th class="th-header">
+                                    Bil model
+                                </th>
+                                <th class="th-header">
+                                    Bil pris
+                                </th>
+                                <th class="th-header">
+                                    Status
+                                </th>
+                            </tr>
+                            </thead>
+                            <tr th:each="Car : ${allCars}">
+                                <td class="td" th:text="${Car.getVognNummer()}">
+                                </td>
+                                <td class="td" th:text="${Car.getStelNummer()}">
+                                </td>
+                                <td th:text="${Car.getBrand()}">
+
+                                </td>
+                                <td class="td" th:text="${Car.getModel()}">
+
+                                </td>
+                                <td class="td" th:text="${#numbers.formatDecimal(Car.getPrice(),0,0)}">
+
+                                </td>
+                                <td class="td" th:if="${Car.isLeased() == 1}">
+                                    <button style="background-color: red"></button>
+                                </td>
+                                <td class="td" th:if="${Car.isLeased() == 0}">
+                                    <button style="background-color: green"></button>
+                                </td>
+                            </tr>
+                        </table>
+                    </details>
+                </div>
+            </div>
+        </div>
+        <div class="item-b">
+            <div class="b-container">
+                <h2 class="header-kpi">Pris på udlejet</h2>
+                <div class="inline-kpi">
+                    <h1 class="big-header-kpi" th:text="${#numbers.formatDecimal(totalPriceOfLeasedCars,0,0)}"></h1>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
