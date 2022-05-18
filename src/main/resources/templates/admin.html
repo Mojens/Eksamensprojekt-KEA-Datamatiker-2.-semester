@@ -21,66 +21,66 @@
             method="post">
 
 
-<form
-        action="/changePassword"
-        method="post">
-    <div class="container">
-        <label>Vælg medarbejder</label>
-        <select name="employeeUserID">
-            <option th:each="Employee : ${listOfEmployees}"
-                    th:text="${Employee}"
-                    th:value="${Employee.getUserID()}"></option>
-        </select>
-        <br><br/>
-        <label>User ID</label>
-        <input type="text" placeholder="skriv nye adgangskode" name="newPassword">
-        <button type="submit">Skift adgangskode</button>
-        </table>
-    </div>
-</form>
+        <form
+                action="/changePassword"
+                method="post">
+            <div class="container">
+                <label>Vælg medarbejder</label>
+                <select name="employeeUserID">
+                    <option th:each="Employee : ${listOfEmployees}"
+                            th:text="${Employee}"
+                            th:value="${Employee.getUserID()}"></option>
+                </select>
+                <br><br/>
+                <label>User ID</label>
+                <input type="text" placeholder="skriv nye adgangskode" name="newPassword">
+                <button type="submit">Skift adgangskode</button>
+                </table>
+            </div>
+        </form>
 
-<h2>Slet en medarbejder</h2>
-<form
-        action="/deleteEmployee"
-        method="post">
-    <div class="container">
-        <label>User ID</label>
-        <input type="text" placeholder="Enter User ID" name="userID">
-        <button type="submit">Slet medarbejder</button>
-    </form>
-    <h2>Opret medarbejder</h2>
-    <form
-            action="/addEmployee"
-            method="post">
-        <div class="zindex">
-            <label>Indtast Fornavn</label>
-            <input type="text" placeholder="Fornavn" name="firstName">
-            <br><br>
-            <label>Indtast efterNavn</label>
-            <input type="text" placeholder="Indtast her" name="lastName">
-            <br><br>
-            <label>Indtast E-Mail</label>
-            <input type="text" placeholder="test@mail.dk" name="eMail">
-            <br><br>
-            <label>Indtast telefonnummer</label>
-            <input type="text" placeholder="+45 34323336" name="phoneNumber">
-            <br><br>
-            <label>Indtast Brugernavn</label>
-            <input type="text" placeholder="Moha135h" name="userName">
-            <br><br>
-            <label>Indtast Adgangskode</label>
-            <input type="text" placeholder="TestKode123" name="password">
-            <br><br>
-            <label>Vælg type medarbejder</label>
-            <select name="type">
-                <option value="1">Registrerings Medarbejder</option>
-                <option value="2">Skade- Registrerings Medarbejder</option>
-                <option value="3">ForretningsUdvikler</option>
-                <option value="4">Administrator</option>
-            </select>
-            <button type="submit">Opret medarbejder</button>
-        </div>
-    </form>
+        <h2>Slet en medarbejder</h2>
+        <form
+                action="/deleteEmployee"
+                method="post">
+            <div class="container">
+                <label>User ID</label>
+                <input type="text" placeholder="Enter User ID" name="userID">
+                <button type="submit">Slet medarbejder</button>
+        </form>
+        <h2>Opret medarbejder</h2>
+        <form
+                action="/addEmployee"
+                method="post">
+            <div class="zindex">
+                <label>Indtast Fornavn</label>
+                <input type="text" placeholder="Fornavn" name="firstName">
+                <br><br>
+                <label>Indtast efterNavn</label>
+                <input type="text" placeholder="Indtast her" name="lastName">
+                <br><br>
+                <label>Indtast E-Mail</label>
+                <input type="text" placeholder="test@mail.dk" name="eMail">
+                <br><br>
+                <label>Indtast telefonnummer</label>
+                <input type="text" placeholder="+45 34323336" name="phoneNumber">
+                <br><br>
+                <label>Indtast Brugernavn</label>
+                <input type="text" placeholder="Moha135h" name="userName">
+                <br><br>
+                <label>Indtast Adgangskode</label>
+                <input type="text" placeholder="TestKode123" name="password">
+                <br><br>
+                <label>Vælg type medarbejder</label>
+                <select name="type">
+                    <option value="1">Registrerings Medarbejder</option>
+                    <option value="2">Skade- Registrerings Medarbejder</option>
+                    <option value="3">ForretningsUdvikler</option>
+                    <option value="4">Administrator</option>
+                </select>
+                <button type="submit">Opret medarbejder</button>
+            </div>
+        </form>
 </div>
 
 

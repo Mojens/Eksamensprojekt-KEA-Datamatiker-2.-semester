@@ -16,80 +16,79 @@ import java.util.Objects;
 
 @Controller
 public class SpecificDamageController {
-    EmployeeRepository employeeRepository;
-    CarRepository carRepository;
-    SpecificDamageRepository specificDamageRepository;
-    DamageReportRepository damageReportRepository;
-    LeaseRepository leaseRepository;
-    ControllerService controllerService;
+  EmployeeRepository employeeRepository;
+  CarRepository carRepository;
+  SpecificDamageRepository specificDamageRepository;
+  DamageReportRepository damageReportRepository;
+  LeaseRepository leaseRepository;
+  ControllerService controllerService;
 
 
-    public SpecificDamageController(EmployeeRepository employeeRepository, CarRepository carRepository,
-                                    SpecificDamageRepository specificDamageRepository, DamageReportRepository damageReportRepository,
-                                    LeaseRepository leaseRepository, ControllerService controllerService) {
-        this.employeeRepository = employeeRepository;
-        this.carRepository = carRepository;
-        this.specificDamageRepository = specificDamageRepository;
-        this.damageReportRepository = damageReportRepository;
-        this.leaseRepository = leaseRepository;
-        this.controllerService = controllerService;
-    }
+  public SpecificDamageController(EmployeeRepository employeeRepository, CarRepository carRepository,
+                                  SpecificDamageRepository specificDamageRepository, DamageReportRepository damageReportRepository,
+                                  LeaseRepository leaseRepository, ControllerService controllerService) {
+    this.employeeRepository = employeeRepository;
+    this.carRepository = carRepository;
+    this.specificDamageRepository = specificDamageRepository;
+    this.damageReportRepository = damageReportRepository;
+    this.leaseRepository = leaseRepository;
+    this.controllerService = controllerService;
+  }
 
-    @GetMapping("/fejl")
-    public String viewPage(Model model){
-        DamageReport damageReport = new DamageReport();
+  @GetMapping("/fejl")
+  public String viewPage(Model model) {
+    DamageReport damageReport = new DamageReport();
 
-        model.addAttribute("damageReport",damageReport);
-        return "/registrerFejlOgMangel";
-    }
+    model.addAttribute("damageReport", damageReport);
+    return "/registrerFejlOgMangel";
+  }
 
-    @PostMapping("/fejl/{id}")
-    public String registrerFejlOgMangel(HttpSession httpSession,
-                                        @PathVariable("id")int id,
-                                        @RequestParam("price") double price,
-                                        @RequestParam("description")String description,
-                                        @RequestParam("title") String title,
-                                        @RequestParam(value = "image", required = false) MultipartFile multipartFile,
-                                        Model model,
-                                        @ModelAttribute("model") DamageReport report) throws IOException {
+  @PostMapping("/fejl/{id}")
+  public String registrerFejlOgMangel(HttpSession httpSession,
+                                      @PathVariable("id") int id,
+                                      @RequestParam("price") double price,
+                                      @RequestParam("description") String description,
+                                      @RequestParam("title") String title,
+                                      @RequestParam(value = "image", required = false) MultipartFile multipartFile,
+                                      Model model,
+                                      @ModelAttribute("model") DamageReport report) throws IOException {
 
-        SpecificDamage specificDamage = new SpecificDamage();
-        DamageReport dr = new DamageReport();
+    SpecificDamage specificDamage = new SpecificDamage();
+    DamageReport dr = new DamageReport();
 
-        DamageReport damageReport = damageReportRepository.findReportByID(id);
-        Lease lease = leaseRepository.findLeaseByID(damageReport.getVognNummer());
-        Car car = carRepository.findCarByID(lease.getLeaseID());
-        Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
+    DamageReport damageReport = damageReportRepository.findReportByID(id);
+    Lease lease = leaseRepository.findLeaseByID(damageReport.getVognNummer());
+    Car car = carRepository.findCarByID(lease.getLeaseID());
+    Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
 
-        Lease leaseID = leaseRepository.findLeaseByID(damageReport.getLeaseID());
-
-
-        String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-        specificDamage.setPicture(fileName);
+    Lease leaseID = leaseRepository.findLeaseByID(damageReport.getLeaseID());
 
 
-        String newPicture = fileName.replaceAll("\\s","");
+    String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+    specificDamage.setPicture(fileName);
 
 
-        String uploadDir = "user-photos/";
-        FileUploadUtil.saveFile(uploadDir, newPicture, multipartFile);
-        System.out.println(fileName);
+    String newPicture = fileName.replaceAll("\\s", "");
 
 
-        specificDamageRepository.addSpecificDamage(new SpecificDamage(price,description,newPicture,title, damageReport.getDamageReportID(),lease.getLeaseID()));
-
-        model.addAttribute("car",car);
-        model.addAttribute("lease",lease);
-        model.addAttribute("leaseID",leaseID);
-        model.addAttribute("damageReport",damageReport);
-        model.addAttribute("employee",employee);
-        model.addAttribute("specificDamage",specificDamage);
+    String uploadDir = "user-photos/";
+    FileUploadUtil.saveFile(uploadDir, newPicture, multipartFile);
+    System.out.println(fileName);
 
 
-        return "redirect:/skader/"+id;
-        //return controllerService.registrerFejlOgMangel(httpSession);
-    }
+    specificDamageRepository.addSpecificDamage(new SpecificDamage(price, description, newPicture, title, damageReport.getDamageReportID(), lease.getLeaseID()));
 
+    model.addAttribute("car", car);
+    model.addAttribute("lease", lease);
+    model.addAttribute("leaseID", leaseID);
+    model.addAttribute("damageReport", damageReport);
+    model.addAttribute("employee", employee);
+    model.addAttribute("specificDamage", specificDamage);
+
+
+    return "redirect:/skader/" + id;
+    //return controllerService.registrerFejlOgMangel(httpSession);
+  }
 
 
 }

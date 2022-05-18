@@ -13,48 +13,48 @@ import java.util.Queue;
 public class CarsLeasesRepository {
   Connection connection;
 
-  public CarsLeasesRepository(){
+  public CarsLeasesRepository() {
     connection = ConnectionManager.getConnection();
   }
 
-  public void addCarsLease(CarsLeases carsLeases){
+  public void addCarsLease(CarsLeases carsLeases) {
     final String QUERY = "INSERT INTO  CarsLeases (id, Cars_vognNummer, Leases_leaseID) VALUES (?, ?, ?)";
-        try{
-          PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
 
-          preparedStatement.setInt(1, carsLeases.getId());
-          preparedStatement.setInt(2, carsLeases.getCarID());
-          preparedStatement.setInt(3, carsLeases.getLeaseID());
+      preparedStatement.setInt(1, carsLeases.getId());
+      preparedStatement.setInt(2, carsLeases.getCarID());
+      preparedStatement.setInt(3, carsLeases.getLeaseID());
 
-          preparedStatement.executeUpdate();
+      preparedStatement.executeUpdate();
 
 
-        }catch (SQLException e){
-          System.out.println("Kunne ikke tilføje til CarsLeases");
-          e.printStackTrace();
-        }
+    } catch (SQLException e) {
+      System.out.println("Kunne ikke tilføje til CarsLeases");
+      e.printStackTrace();
+    }
   }
 
   public void isLeased(int inputVognNummer) {
-    final String QUERY = "UPDATE Cars SET isLeased = 1 WHERE vognNummer = "+"'"+inputVognNummer+"'";
-try {
-  PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
-  preparedStatement.executeUpdate();
-
-}catch (SQLException e){
-  System.out.println("Kunne ikke ændre status til leased");
-  e.printStackTrace();
-}
-
-  }
-
-  public void isNotLeased(int inputVognNummer){
-    final String QUERY = "UPDATE Cars SET isLeased = 0 WHERE vognNummer = "+"'"+inputVognNummer+"'";
+    final String QUERY = "UPDATE Cars SET isLeased = 1 WHERE vognNummer = " + "'" + inputVognNummer + "'";
     try {
       PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
       preparedStatement.executeUpdate();
 
-    }catch (SQLException e){
+    } catch (SQLException e) {
+      System.out.println("Kunne ikke ændre status til leased");
+      e.printStackTrace();
+    }
+
+  }
+
+  public void isNotLeased(int inputVognNummer) {
+    final String QUERY = "UPDATE Cars SET isLeased = 0 WHERE vognNummer = " + "'" + inputVognNummer + "'";
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+      preparedStatement.executeUpdate();
+
+    } catch (SQLException e) {
       System.out.println("Kunne ikke ændre status til leased");
       e.printStackTrace();
     }

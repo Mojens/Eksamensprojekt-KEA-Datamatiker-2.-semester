@@ -16,9 +16,10 @@ public class DashboardController {
   DashboardRepository dashboardRepository;
   DashboardService dashboardService;
   CarRepository carRepository;
+
   public DashboardController(DashboardRepository dashboardRepository,
                              DashboardService dashboardService,
-                             CarRepository carRepository){
+                             CarRepository carRepository) {
     this.dashboardRepository = dashboardRepository;
     this.dashboardService = dashboardService;
     this.carRepository = carRepository;
@@ -26,18 +27,17 @@ public class DashboardController {
 
   @GetMapping("/dashboard")
   public String showKPI(Model model,
-                        HttpSession httpSession){
+                        HttpSession httpSession) {
     List<Car> leasedCars = dashboardRepository.addLeasedCarsToList();
     List<Car> allCars = carRepository.showAllCars();
     int amountOfLeasedCars = dashboardService.howManyisLeased(leasedCars);
     double totalPriceOfLeasedCars = dashboardService.totalPriceLeasedCar(leasedCars);
-    model.addAttribute("listOfLeasedCars",leasedCars);
-    model.addAttribute("totalPriceOfLeasedCars",totalPriceOfLeasedCars);
-    model.addAttribute("amountOfLeasedCars",amountOfLeasedCars);
-    model.addAttribute("allCars",allCars);
+    model.addAttribute("listOfLeasedCars", leasedCars);
+    model.addAttribute("totalPriceOfLeasedCars", totalPriceOfLeasedCars);
+    model.addAttribute("amountOfLeasedCars", amountOfLeasedCars);
+    model.addAttribute("allCars", allCars);
     return "dashboard";
   }
-
 
 
 }

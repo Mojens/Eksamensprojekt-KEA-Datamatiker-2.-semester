@@ -15,7 +15,7 @@ public class EmployeeController {
   UserRepository userRepository;
 
   public EmployeeController(EmployeeRepository employeeRepository,
-                            UserRepository userRepository){
+                            UserRepository userRepository) {
     this.employeeRepository = employeeRepository;
     this.userRepository = userRepository;
 
@@ -23,7 +23,7 @@ public class EmployeeController {
 
 
   @PostMapping("/deleteEmployee")
-  public String deleteEmployee(@RequestParam("userID") int userID){
+  public String deleteEmployee(@RequestParam("userID") int userID) {
     employeeRepository.deleteEmployeeByID(userID);
     return "redirect:/admin";
   }
@@ -35,11 +35,11 @@ public class EmployeeController {
                             @RequestParam("firstName") String firstName,
                             @RequestParam("lastName") String lastName,
                             @RequestParam("phoneNumber") String phoneNumber,
-                            @RequestParam("eMail") String eMail){
-    String bCryptPassword = BCrypt.hashpw(password,BCrypt.gensalt());
-    userRepository.createNewUser(new User(bCryptPassword,userName,type));
+                            @RequestParam("eMail") String eMail) {
+    String bCryptPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+    userRepository.createNewUser(new User(bCryptPassword, userName, type));
     User createdUser = userRepository.findUserByUserName(userName);
-    employeeRepository.addNewEmployee(new Employee(firstName,lastName,phoneNumber,eMail,createdUser.getUserID()));
+    employeeRepository.addNewEmployee(new Employee(firstName, lastName, phoneNumber, eMail, createdUser.getUserID()));
 
     return "redirect:/admin";
   }

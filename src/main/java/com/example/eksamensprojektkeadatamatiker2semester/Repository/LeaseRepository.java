@@ -15,7 +15,8 @@ import java.util.List;
 @Repository
 public class LeaseRepository {
     Connection connection;
-    public LeaseRepository(){
+
+    public LeaseRepository() {
         connection = ConnectionManager.getConnection();
     }
 

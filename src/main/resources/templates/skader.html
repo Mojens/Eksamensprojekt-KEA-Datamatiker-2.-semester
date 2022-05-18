@@ -14,7 +14,7 @@
 
     <div class="damageReport">
         <h1 class="inline">Skadesrapport #</h1>
-        <h1 class="inline" th:text="${damageReport.damageReportID}" ></h1>
+        <h1 class="inline" th:text="${damageReport.damageReportID}"></h1>
     </div>
 
 
@@ -153,7 +153,7 @@
 
     <div class="damageReport">
         <h2 class="inline-h2">Antal Individuelle Skader:</h2>
-        <h2 class="inline-noMargin" th:text="${specificDamage.size()}" ></h2>
+        <h2 class="inline-noMargin" th:text="${specificDamage.size()}"></h2>
     </div>
 
     <div class="container-cards">
@@ -161,24 +161,24 @@
         <div th:each="damage : ${specificDamage}">
 
             <div class="card">
-               <div class="card-header-big">
-                 <img th:src="@{${'../'+damage.photosImagePath}}" alt="billed"/>
+                <div class="card-header-big">
+                    <img th:src="@{${'../'+damage.photosImagePath}}" alt="billed"/>
                 </div>
                 <div class="card-body-big">
                     <div class="inline-tag">
-                    <span class="tag tag-teal-second" th:text="${specificDamage.indexOf(damage)+1}">title</span>
-                    <span class="tag tag-teal" th:text="${damage.title}">title</span>
+                        <span class="tag tag-teal-second" th:text="${specificDamage.indexOf(damage)+1}">title</span>
+                        <span class="tag tag-teal" th:text="${damage.title}">title</span>
 
                     </div>
                     <h4 class="h4-header" th:text="${damage.price}">DKK
                     </h4>
                     <p th:text="${damage.description}">
                     </p>
-                   <!-- <div class="button">
-                        <a th:href="@{/onsker/{wishListID}(wishListID=${onskelister.id})}"  class="button-small">SE ØNSKER</a>
-                        <a th:href="@{/sletonskeliste/{id}/{userID}(id=${onskelister.id},userID=${onskelister.userID})}" class="button-small-delete">SLET
-                            ØNSKELISTE</a>
-                    </div> -->
+                    <!-- <div class="button">
+                         <a th:href="@{/onsker/{wishListID}(wishListID=${onskelister.id})}"  class="button-small">SE ØNSKER</a>
+                         <a th:href="@{/sletonskeliste/{id}/{userID}(id=${onskelister.id},userID=${onskelister.userID})}" class="button-small-delete">SLET
+                             ØNSKELISTE</a>
+                     </div> -->
                 </div>
 
             </div>
@@ -201,7 +201,7 @@
                 <input type="text" placeholder="pris pr skade" name="price">
 
                 <label class="label-header">Billed</label>
-                <input type="file" name="image" accept="image/png, image/jpeg, image/jpg" />
+                <input type="file" name="image" accept="image/png, image/jpeg, image/jpg"/>
 
                 <button class="submit-button-small" type="submit">Opret skade</button>
 
@@ -240,7 +240,7 @@
         </tr>
 
         <tr>
-            <th class="before" th:text="${damageReport.damageReportID}" ></th>
+            <th class="before" th:text="${damageReport.damageReportID}"></th>
             <th class="before-table">Total Pris</th>
             <td class="individual-big" th:text="${sumTotal.sumTotal}"></td>
         </tr>

@@ -12,15 +12,16 @@ import java.util.List;
 @Repository
 public class UserRepository {
   Connection connection;
-  public UserRepository(){
+
+  public UserRepository() {
     connection = ConnectionManager.getConnection();
   }
 
   //Create a new user to the system from admin site
   //We made it return a User Object beacuse to create a employee we need the auto created id as a foreign key in the other table
-  public void createNewUser(User user){
+  public void createNewUser(User user) {
     final String QUERY = "INSERT INTO UserLogin (userID, userName, password, userType) VALUES (?, ?, ?, ?)";
-    try{
+    try {
       PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
 
       preparedStatement.setInt(1, user.getUserID());
@@ -30,16 +31,16 @@ public class UserRepository {
 
       preparedStatement.executeUpdate();
 
-    }catch(SQLException e){
+    } catch (SQLException e) {
       System.out.println("Kan ikke oprette bruger");
       e.printStackTrace();
     }
   }
 
   //Find specific user object by input
-  public User findUserByUserName(String inputUserName){
+  public User findUserByUserName(String inputUserName) {
 
-    final String QUERY = "SELECT * FROM UserLogin WHERE userName = '"+inputUserName+"'";
+    final String QUERY = "SELECT * FROM UserLogin WHERE userName = '" + inputUserName + "'";
     User loginUser = null;
     try {
       PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
@@ -49,8 +50,8 @@ public class UserRepository {
         int userID = resultSet.getInt(1);
         String userName = resultSet.getString(2);
         String password = resultSet.getString(3);
-        int type= resultSet.getInt(4);
-        loginUser = new User(userID,userName,password,type);
+        int type = resultSet.getInt(4);
+        loginUser = new User(userID, userName, password, type);
       }
     } catch (SQLException e) {
       System.out.println("Could not find user");
@@ -59,9 +60,9 @@ public class UserRepository {
     return loginUser;
   }
 
-  public User findUserByEmployee(Employee employee){
+  public User findUserByEmployee(Employee employee) {
 
-    final String QUERY = "SELECT * FROM UserLogin WHERE userID = '"+employee.getUserID()+"'";
+    final String QUERY = "SELECT * FROM UserLogin WHERE userID = '" + employee.getUserID() + "'";
     User loginUser = null;
     try {
       PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
@@ -71,8 +72,8 @@ public class UserRepository {
         int userID = resultSet.getInt(1);
         String userName = resultSet.getString(2);
         String password = resultSet.getString(3);
-        int type= resultSet.getInt(4);
-        loginUser = new User(userID,userName,password,type);
+        int type = resultSet.getInt(4);
+        loginUser = new User(userID, userName, password, type);
       }
     } catch (SQLException e) {
       System.out.println("Could not find user");
@@ -81,9 +82,9 @@ public class UserRepository {
     return loginUser;
   }
 
-  public User findUserByID(int id){
+  public User findUserByID(int id) {
 
-    final String QUERY = "SELECT * FROM UserLogin WHERE userID = '"+id+"'";
+    final String QUERY = "SELECT * FROM UserLogin WHERE userID = '" + id + "'";
     User loginUser = null;
     try {
       PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
@@ -93,8 +94,8 @@ public class UserRepository {
         int userID = resultSet.getInt(1);
         String userName = resultSet.getString(2);
         String password = resultSet.getString(3);
-        int type= resultSet.getInt(4);
-        loginUser = new User(userID,userName,password,type);
+        int type = resultSet.getInt(4);
+        loginUser = new User(userID, userName, password, type);
       }
     } catch (SQLException e) {
       System.out.println("Could not find user");
@@ -110,13 +111,13 @@ public class UserRepository {
     try {
       PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
       ResultSet resultSet = preparedStatement.executeQuery();
-      while (resultSet.next()){
+      while (resultSet.next()) {
         int userID = resultSet.getInt(1);
         String userName = resultSet.getString(2);
         String password = resultSet.getString(3);
         int userType = resultSet.getInt(4);
 
-        userList.add(new User(userID,userName,password,userType));
+        userList.add(new User(userID, userName, password, userType));
 
       }
 
@@ -127,13 +128,13 @@ public class UserRepository {
     return userList;
   }
 
-  public void changePassword(String inputUserName,String newPassword, User user){
-    final String QUERY = "UPDATE UserLogin SET password = "+"'"+ newPassword + "'"+ " WHERE userName = "+"'" + inputUserName + "'";
-    try{
+  public void changePassword(String inputUserName, String newPassword, User user) {
+    final String QUERY = "UPDATE UserLogin SET password = " + "'" + newPassword + "'" + " WHERE userName = " + "'" + inputUserName + "'";
+    try {
       PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
       preparedStatement.executeUpdate();
 
-    }catch (SQLException e){
+    } catch (SQLException e) {
       System.out.println("Kunne ikke ");
       e.printStackTrace();
     }

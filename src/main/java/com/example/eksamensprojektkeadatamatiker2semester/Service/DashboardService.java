@@ -9,25 +9,24 @@ import java.util.List;
 public class DashboardService {
 
   //Tjekker hvormange car objecter der er leased ud fra en liste
-  public int howManyisLeased(List<Car> leasedCars){
+  public int howManyisLeased(List<Car> leasedCars) {
     int amountOfLeased = 0;
-    for (Car c:
-         leasedCars) {
+    for (Car c :
+        leasedCars) {
       amountOfLeased = amountOfLeased + 1;
 
     }
     return amountOfLeased;
   }
 
-  public double totalPriceLeasedCar(List<Car> leasedCars){
+  public double totalPriceLeasedCar(List<Car> leasedCars) {
     double totalPrice = 0;
-    for (Car c:
-         leasedCars) {
-    totalPrice = totalPrice + c.getPrice();
+    for (Car c :
+        leasedCars) {
+      totalPrice = totalPrice + c.getPrice();
     }
     return totalPrice;
   }
-
 
 
 }

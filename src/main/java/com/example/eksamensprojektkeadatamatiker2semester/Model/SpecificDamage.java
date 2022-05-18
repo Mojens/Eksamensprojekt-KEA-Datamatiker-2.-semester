@@ -25,8 +25,7 @@ public class SpecificDamage {
   }
 
 
-
-  public SpecificDamage(double sumTotal){
+  public SpecificDamage(double sumTotal) {
     this.sumTotal = sumTotal;
   }
 
@@ -55,8 +54,8 @@ public class SpecificDamage {
     if (picture == null || picture.isEmpty()) return "user-photos/" + "default.jpg";
 
     String newPicture = "";
-    if (picture.contains(" ")){
-      newPicture = picture.replaceAll("\\s","");
+    if (picture.contains(" ")) {
+      newPicture = picture.replaceAll("\\s", "");
       return "user-photos" + "/" + newPicture;
     }
 
@@ -82,7 +81,6 @@ public class SpecificDamage {
   public double getPrice() {
     return price;
   }
-
 
 
   public void setPrice(double price) {

@@ -14,43 +14,48 @@
 <div class="container-rapport">
 
     <h1>Alle Skadessrapporter</h1>
-<table>
-    <thead>
-    <tr>
-        <th scope="col">
-            Skadesrapport ID
-        </th>
-        <th scope="col">
-            Lejeaftale ID
-        </th>
-        <th scope="col">
-            Vognnummer ID
-        </th>
-        <th scope="col">
-            Medarbejder ID
-        </th>
-        <th scope="col">Se rapporten</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="card" th:each="rapport : ${damageReports}">
-        <td>
-            <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.damageReportID}" target="_blank" ></a>
-        </td>
-        <td>
-            <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.leaseID}" target="_blank" ></a>
-        </td>
-        <td >
-            <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.vognNummer}" target="_blank" ></a>
-        </td>
-        <td >
-            <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"  th:text="${rapport.employeeID}" target="_blank" ></a>
-        </td>
-        <td class="row-update"><a class="link-row link" th:href="@{/skader/{id}(id=${rapport.damageReportID})}">Se skadesrapport</a></td>
-    </tr>
-    </tbody>
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">
+                Skadesrapport ID
+            </th>
+            <th scope="col">
+                Lejeaftale ID
+            </th>
+            <th scope="col">
+                Vognnummer ID
+            </th>
+            <th scope="col">
+                Medarbejder ID
+            </th>
+            <th scope="col">Se rapporten</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="card" th:each="rapport : ${damageReports}">
+            <td>
+                <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"
+                   th:text="${rapport.damageReportID}" target="_blank"></a>
+            </td>
+            <td>
+                <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"
+                   th:text="${rapport.leaseID}" target="_blank"></a>
+            </td>
+            <td>
+                <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"
+                   th:text="${rapport.vognNummer}" target="_blank"></a>
+            </td>
+            <td>
+                <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"
+                   th:text="${rapport.employeeID}" target="_blank"></a>
+            </td>
+            <td class="row-update"><a class="link-row link" th:href="@{/skader/{id}(id=${rapport.damageReportID})}">Se
+                skadesrapport</a></td>
+        </tr>
+        </tbody>
 
-</table>
+    </table>
 
 </div>
 </body>
