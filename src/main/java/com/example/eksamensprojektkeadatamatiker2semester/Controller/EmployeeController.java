@@ -4,6 +4,7 @@ import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.EmployeeRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.UserRepository;
+import com.example.eksamensprojektkeadatamatiker2semester.Service.ControllerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,11 +15,13 @@ public class EmployeeController {
   EmployeeRepository employeeRepository;
   UserRepository userRepository;
 
+  ControllerService controllerService;
   public EmployeeController(EmployeeRepository employeeRepository,
-                            UserRepository userRepository) {
+                            UserRepository userRepository,
+                            ControllerService controllerService) {
     this.employeeRepository = employeeRepository;
     this.userRepository = userRepository;
-
+    this.controllerService = controllerService;
   }
 
 

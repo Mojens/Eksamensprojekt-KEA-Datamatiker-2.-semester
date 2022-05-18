@@ -36,11 +36,11 @@ public class SpecificDamageController {
   }
 
   @GetMapping("/fejl")
-  public String viewPage(Model model) {
+  public String viewPage(Model model, HttpSession httpSession) {
     DamageReport damageReport = new DamageReport();
 
     model.addAttribute("damageReport", damageReport);
-    return "/registrerFejlOgMangel";
+    return controllerService.registrerFejlOgMangler(httpSession);
   }
 
   @PostMapping("/fejl/{id}")

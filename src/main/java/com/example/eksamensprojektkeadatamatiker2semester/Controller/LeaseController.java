@@ -27,7 +27,6 @@ public class LeaseController {
     ControllerService controllerService;
     UserRepository userRepository;
     LeaseService leaseService;
-
     CarsLeasesRepository carsLeasesRepository;
 
 
@@ -53,8 +52,8 @@ public class LeaseController {
         model.addAttribute("lease",lease);
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user",user);
-        return "/allelejeaftaler";
-        //return controllerService.skadeRapport(httpSession);
+
+        return controllerService.alleLejeAftaler(httpSession);
     }
 
 
@@ -75,8 +74,7 @@ public class LeaseController {
         model.addAttribute("lease",lease);
 
 
-        return "/aftale";
-        //return controllerService.skader(httpSession);
+       return controllerService.aftaler(httpSession);
     }
 
     @GetMapping("/findlejeaftale")
@@ -96,8 +94,7 @@ public class LeaseController {
 
         }
 
-        return "/lejeaftale";
-        //return controllerService.skadeRapport(httpSession);
+        return controllerService.lejeAftaler(httpSession);
     }
 
     @GetMapping("/seaftale/{id}")
@@ -118,8 +115,7 @@ public class LeaseController {
         model.addAttribute("employee",employee);
 
 
-        return "/seaftale";
-        //return controllerService.skadeRapport(httpSession);
+        return controllerService.seAftale(httpSession);
     }
 
     @GetMapping("/opretlejeaftale")
@@ -134,7 +130,7 @@ public class LeaseController {
         model.addAttribute("user",user);
         model.addAttribute("listOfAvaibleCars",listOfAvaibleCars);
 
-        return "/opretlejeaftale";
+        return controllerService.opretLejeAftaler(httpSession);
     }
 
 

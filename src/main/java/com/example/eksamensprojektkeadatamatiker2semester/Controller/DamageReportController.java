@@ -44,8 +44,8 @@ public class DamageReportController {
         model.addAttribute("user",user);
         List <DamageReport> damageReports = damageReportRepository.showAllDamageReports();
         model.addAttribute("damageReports",damageReports);
-        return "/skaderapport";
-        //return controllerService.skadeRapport(httpSession);
+
+        return controllerService.skadeRapport(httpSession);
     }
 
     @GetMapping("/findlease")
@@ -63,8 +63,7 @@ public class DamageReportController {
 
         }
 
-        return "/findlease";
-        //return controllerService.skadeRapport(httpSession);
+        return controllerService.findLease(httpSession);
     }
 
     @GetMapping("/udbedring/{id}")
@@ -83,8 +82,7 @@ public class DamageReportController {
         model.addAttribute("employee",employee);
 
 
-        return "/udbedring";
-        //return controllerService.skadeRapport(httpSession);
+        return controllerService.udbedring(httpSession);
     }
 
     @GetMapping("/skaderapport/{id}")
@@ -93,8 +91,8 @@ public class DamageReportController {
         model.addAttribute("user",user);
         DamageReport damageReports = damageReportRepository.findReportByID(id);
         model.addAttribute("damageReports",damageReports);
-        return "/skaderapport";
-        //return controllerService.skadeRapport(httpSession);
+
+        return controllerService.skadeRapport(httpSession);
     }
 
     @PostMapping("/skaderapport")
@@ -160,8 +158,7 @@ public class DamageReportController {
         model.addAttribute("sumTotal",sum);
         model.addAttribute("damageReportID",id);
 
-        return "/skader";
-        //return controllerService.skader(httpSession);
+        return controllerService.skader(httpSession);
     }
 
 
