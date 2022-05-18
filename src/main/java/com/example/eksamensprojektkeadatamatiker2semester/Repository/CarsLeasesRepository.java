@@ -1,11 +1,13 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
 import com.example.eksamensprojektkeadatamatiker2semester.Model.CarsLeases;
+import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionManager;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Queue;
 
@@ -58,6 +60,32 @@ public class CarsLeasesRepository {
       System.out.println("Kunne ikke ændre status til leased");
       e.printStackTrace();
     }
+  }
+
+  public CarsLeases findCarsLeasesByLeaseID(int inputLeaseID){
+    CarsLeases carsLeases = new CarsLeases();
+    final String QUERY = "SELECT * FROM CarsLeases WHERE Leases_leaseID = " + "'" + inputLeaseID + "'";
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+      ResultSet resultSet = preparedStatement.executeQuery(QUERY);
+
+      while (resultSet.next()) {
+        int carLeasesID = resultSet.getInt(1);
+        int carID = resultSet.getInt(2);
+        int leaseID = resultSet.getInt(3);
+
+        carsLeases.setId(carLeasesID);
+        carsLeases.setCarID(carID);
+        carsLeases.setLeaseID(leaseID);
+
+      }
+      preparedStatement.close();
+
+    } catch (SQLException e) {
+      System.out.println("Kunne ikke finde en medarbejde med denne ID");
+      e.printStackTrace();
+    }
+    return carsLeases;
   }
 
 }

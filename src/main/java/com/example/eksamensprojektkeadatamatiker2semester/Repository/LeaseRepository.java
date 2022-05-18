@@ -195,24 +195,6 @@ public class LeaseRepository {
         }
         return leases;
     }
-
-    public void deleteLease(int id){
-        final String SQL_DELETE = "DELETE FROM Leases WHERE leaseID = ?";
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(SQL_DELETE);
-
-            ps.setInt(1,id);
-
-            ps.executeUpdate();
-
-        } catch (SQLException e) {
-            System.out.println("Kunne ikke slette leasen");
-            e.printStackTrace();
-        }
-
-    }
-
     public void editLease(Lease lease){
         final String SQL_EDIT = "UPDATE Leases SET customerFirstName = ?, customerLastName = ?, leasePeriodInDays = ?, UserLogin_userID = ?, startDate = ?, endDate = ?";
 
@@ -236,5 +218,17 @@ public class LeaseRepository {
         }
 
     }
+    public void deleteLeaseID(int inputLeaseID) {
+        final String QUERYDELETE = "DELETE Leases,CarsLeases FROM Leases INNER JOIN CarsLeases ON Leases.leaseID =  CarsLeases.Leases_leaseID AND Leases_leaseID = "+"'"+inputLeaseID+"'";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(QUERYDELETE);
+            //Da vi har sat foreign key på update at den skal cascade og ikke restrict
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
 
+        } catch (SQLException e) {
+            System.out.println("kunne ikke slette lease med denne ID");
+            e.printStackTrace();
+        }
+    }
 }

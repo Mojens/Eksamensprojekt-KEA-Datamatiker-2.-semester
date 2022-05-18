@@ -173,4 +173,15 @@ public class LeaseController {
 
     }
 
+    @PostMapping("/sletaftale")
+    public String deleteEmployee(@RequestParam("leaseID") int leaseID) {
+        CarsLeases selectedCarLease;
+        //Skifter status på car fra 1 til 0
+        selectedCarLease = carsLeasesRepository.findCarsLeasesByLeaseID(leaseID);
+        carsLeasesRepository.isNotLeased(selectedCarLease.getCarID());
+        //Sletter fra Leases og CarLeases
+        leaseRepository.deleteLeaseID(leaseID);
+
+        return "redirect:/allelejeaftaler";
+    }
 }
