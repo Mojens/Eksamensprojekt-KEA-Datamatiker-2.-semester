@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 @Service
 public class ControllerService {
+
 // Type 1
   public String opretLejeAftaler(HttpSession httpSession) {
     String currentPage = null;
