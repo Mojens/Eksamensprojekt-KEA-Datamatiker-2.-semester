@@ -14,6 +14,8 @@ public class Lease {
   private LocalDate endDate;
   private LocalDate today = LocalDate.now();
 
+  private int status;
+
 
   public Lease(int leaseID, String firstName, String lastName, int userID, LocalDate startDate, LocalDate endDate) {
     this.leaseID = leaseID;
@@ -106,6 +108,11 @@ public class Lease {
     return endDate.compareTo(startDate);
   }
 
+  public int getStatus() {
+    return status;
+  }
 
-
+  public void setStatus(int status) {
+    this.status = status;
+  }
 }

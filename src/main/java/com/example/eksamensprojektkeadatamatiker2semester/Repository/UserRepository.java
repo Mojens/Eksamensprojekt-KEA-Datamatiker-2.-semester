@@ -139,4 +139,19 @@ public class UserRepository {
       e.printStackTrace();
     }
   }
+
+  public void ChangeStatusUserByID(int inputUserID) {
+    final String QUERYDELETE = "UPDATE UserLogin SET UserLogin.status = 0 WHERE userID = "+"'"+inputUserID+"'";
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERYDELETE);
+      //Da vi har sat foreign key på update at den skal cascade og ikke restrict
+      preparedStatement.executeUpdate();
+      preparedStatement.close();
+
+    } catch (SQLException e) {
+      System.out.println("kunne ikke slette Medarbejder fra valgte UserID");
+      e.printStackTrace();
+    }
+
+  }
 }

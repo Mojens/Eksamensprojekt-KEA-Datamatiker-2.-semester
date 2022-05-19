@@ -9,6 +9,8 @@ public class Employee {
   private String eMail;
   private int userID;
 
+  private int status;
+
   public Employee(String firstName, String lastName, String phoneNumber, int employeeID, String eMail, int userID) {
     this.firstName = firstName;
     this.lastName = lastName;
@@ -16,6 +18,16 @@ public class Employee {
     this.employeeID = employeeID;
     this.eMail = eMail;
     this.userID = userID;
+  }
+
+  public Employee(String firstName, String lastName, String phoneNumber, int employeeID, String eMail, int userID, int status) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.phoneNumber = phoneNumber;
+    this.employeeID = employeeID;
+    this.eMail = eMail;
+    this.userID = userID;
+    this.status = status;
   }
 
   public Employee(String firstName, String lastName, String phoneNumber, String eMail, int userID) {
@@ -75,6 +87,14 @@ public class Employee {
 
   public void setUserID(int userID) {
     this.userID = userID;
+  }
+
+  public int getStatus() {
+    return status;
+  }
+
+  public void setStatus(int status) {
+    this.status = status;
   }
 
   @Override
