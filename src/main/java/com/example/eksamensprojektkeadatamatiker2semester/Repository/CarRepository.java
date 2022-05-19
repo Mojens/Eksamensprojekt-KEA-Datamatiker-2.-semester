@@ -111,7 +111,7 @@ public class CarRepository {
 
   }
 
-  public void addCar(Car car) {
+  public boolean addCar(Car car) {
     final String SQL_ADD_QUERY = "INSERT INTO Cars(vognNummer,stelNummer,brand,model,price,isLeased) VALUES(?,?,?,?,?,?)";
 
     try {
@@ -124,17 +124,19 @@ public class CarRepository {
       ps.setDouble(5, car.getPrice());
       ps.setInt(6, car.isLeased());
 
-
       ps.executeUpdate();
+
+      return true;
 
     } catch (SQLException e) {
       System.out.println("Kunne ikke oprette bilen");
       e.printStackTrace();
+      return false;
     }
 
   }
 
-  public void deleteCar(int id) {
+  public boolean deleteCar(int id) {
     final String SQL_DELETE = "DELETE FROM Cars WHERE vognNummer = ?";
 
     try {
@@ -143,31 +145,33 @@ public class CarRepository {
       ps.setInt(1, id);
 
       ps.executeUpdate();
+      return true;
 
     } catch (SQLException e) {
       System.out.println("Kunne ikke slette bilen");
       e.printStackTrace();
+      return false;
     }
   }
 
-  public void editCar(Car car) {
-    final String SQL_EDIT = "UPDATE Cars SET stelNummer = ?, brand = ?, model = ?, price = ?, isLeased = ?";
+  public boolean editCar(Car car, int id) {
+    final String SQL_EDIT = "UPDATE Cars SET brand = ?, model = ?, price = ?, isLeased = ? WHERE vognNummer = '"+id+"'";
 
     try {
       PreparedStatement ps = connection.prepareStatement(SQL_EDIT);
-
-      ps.setString(1, car.getStelNummer());
-      ps.setString(2, car.getBrand());
-      ps.setString(3, car.getModel());
-      ps.setDouble(4, car.getPrice());
-      ps.setInt(5, car.isLeased());
+      ps.setString(1, car.getBrand());
+      ps.setString(2, car.getModel());
+      ps.setDouble(3, car.getPrice());
+      ps.setInt(4, car.isLeased());
 
 
       ps.executeUpdate();
+      return true;
 
     } catch (SQLException e) {
       System.out.println("Kunne ikke opdatere bilen");
       e.printStackTrace();
+      return false;
     }
 
   }

@@ -19,6 +19,14 @@ public class Car {
 
   }
 
+  public Car(int vognNummer, String brand, String model, double price, int isLeased) {
+    this.vognNummer = vognNummer;
+    this.brand = brand;
+    this.model = model;
+    this.price = price;
+    this.isLeased = isLeased;
+  }
+
   public Car() {
 
   }
