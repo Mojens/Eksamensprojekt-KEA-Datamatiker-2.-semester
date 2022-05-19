@@ -89,7 +89,7 @@
             </td>
             <td>
                 <a th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" class="individual"
-                   th:text="${leje.leasePeriodInDays}" target="_blank"></a>
+                   th:text="${period.subtractDates(leje.startDate,leje.endDate)}" target="_blank"></a>
             </td>
             <td>
                 <a th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" class="individual" th:text="${leje.startDate}"

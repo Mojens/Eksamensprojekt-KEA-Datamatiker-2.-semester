@@ -91,7 +91,7 @@
             </td>
             <td class="individual" th:text="${l.lastName}">
             </td>
-            <td class="individual" th:text="${l.leasePeriodInDays}">
+            <td class="individual" th:text="${period.subtractDates(l.startDate,l.endDate)}">
             </td>
             <td class="individual" th:text="${l.startDate}">
             </td>

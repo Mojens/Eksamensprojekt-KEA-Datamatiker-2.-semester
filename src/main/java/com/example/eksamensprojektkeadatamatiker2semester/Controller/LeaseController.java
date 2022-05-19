@@ -49,6 +49,8 @@ public class LeaseController {
     public String showAllLeases(HttpSession httpSession, Model model){
 
         List<Lease> lease = leaseRepository.showAllLeases();
+        Lease period = leaseRepository.showLeases();
+        model.addAttribute("period",period);
         model.addAttribute("lease",lease);
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user",user);
@@ -67,6 +69,8 @@ public class LeaseController {
         Lease lease = leaseRepository.findLeaseByID(carsLeases.getLeaseID());
 
         Car car = carRepository.findCarByID(carsLeases.getCarID());
+        Lease period = leaseRepository.showLeases();
+        model.addAttribute("period",period);
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user",user);
 
@@ -82,6 +86,8 @@ public class LeaseController {
 
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user",user);
+        Lease period = leaseRepository.showLeases();
+        model.addAttribute("period",period);
 
         if (keyword!=null){
             List<Lease> list = leaseRepository.findLeaseByIDAsList(Integer.parseInt(keyword));
@@ -108,6 +114,8 @@ public class LeaseController {
         Lease lease = leaseRepository.findLeaseByID(carsLeases.getLeaseID());
         Car car = carRepository.findCarByID(carsLeases.getCarID());
         Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
+        Lease period = leaseRepository.showLeases();
+        model.addAttribute("period",period);
 
         model.addAttribute("carLeases",carsLeases);
         model.addAttribute("lease",lease);
@@ -127,6 +135,7 @@ public class LeaseController {
         List<Car> listOfAvaibleCars = carRepository.showAllAvaibleCars();
 
 
+
         model.addAttribute("user",user);
         model.addAttribute("listOfAvaibleCars",listOfAvaibleCars);
 
@@ -137,7 +146,6 @@ public class LeaseController {
     @PostMapping("/opretlejeaftale")
     public String addLease(@RequestParam("firstName")String firstName,
                            @RequestParam("lastName")String lastName,
-                           @RequestParam("leasePeriod")int leasePeriod,
                            @RequestParam("startDate") String startDate,
                            @RequestParam("endDate") String endDate,
                            @RequestParam("vognNummer") int vognNummer,
@@ -152,7 +160,7 @@ public class LeaseController {
         LocalDate startDateLD = leaseService.convertToLocalDate(startDate);
         LocalDate endDateLD = leaseService.convertToLocalDate(endDate);
 
-        leaseRepository.addLease(new Lease(firstName,lastName,leasePeriod,user.getUserID(),startDateLD,endDateLD));
+        leaseRepository.addLease(new Lease(firstName,lastName,user.getUserID(),startDateLD,endDateLD));
 
         List<Lease> listOfLeases = leaseRepository.findLeaseByLast();
 

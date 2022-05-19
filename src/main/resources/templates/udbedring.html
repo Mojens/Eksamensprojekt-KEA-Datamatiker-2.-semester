@@ -47,10 +47,7 @@
             method="get"
             th:action="@{/findlease/}">
         <div class="container-form-big">
-
             <input type="text" name="keyword" th:value="${keyword}" placeholder="Find lejeaftale" size="50">
-
-
             <button class="submit-button-small" type="submit">Søg efter lejeaftale</button>
         </div>
 
@@ -84,7 +81,7 @@
                 <th class="th" scope="col">
                     Lejeaftale I dage
                 </th>
-                <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${lease.leasePeriodInDays}">
+                <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${period.subtractDates(lease.startDate,lease.endDate)}">
                 </td>
             </tr>
             <tr class="tr">

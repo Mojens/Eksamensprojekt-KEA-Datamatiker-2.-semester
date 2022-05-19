@@ -1,6 +1,7 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
 import java.time.chrono.ChronoLocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.time.LocalDate;
 
@@ -8,27 +9,24 @@ public class Lease {
   private int leaseID;
   private String firstName;
   private String lastName;
-  private int leasePeriodInDays;
   private int userID;
   private LocalDate startDate;
   private LocalDate endDate;
   private LocalDate today = LocalDate.now();
 
 
-  public Lease(int leaseID, String firstName, String lastName, int leasePeriodInDays, int userID, LocalDate startDate, LocalDate endDate) {
+  public Lease(int leaseID, String firstName, String lastName, int userID, LocalDate startDate, LocalDate endDate) {
     this.leaseID = leaseID;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.leasePeriodInDays = leasePeriodInDays;
     this.userID = userID;
     this.startDate = startDate;
     this.endDate = endDate;
   }
 
-  public Lease(String firstName, String lastName, int leasePeriodInDays, int userID, LocalDate startDate, LocalDate endDate) {
+  public Lease(String firstName, String lastName, int userID, LocalDate startDate, LocalDate endDate) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.leasePeriodInDays = leasePeriodInDays;
     this.userID = userID;
     this.startDate = startDate;
     this.endDate = endDate;
@@ -69,14 +67,6 @@ public class Lease {
     this.userID = userID;
   }
 
-  public int getLeasePeriodInDays() {
-    return leasePeriodInDays;
-  }
-
-  public void setLeasePeriodInDays(int leasePeriodInDays) {
-    this.leasePeriodInDays = leasePeriodInDays;
-  }
-
   public LocalDate getStartDate() {
     return startDate;
   }
@@ -95,8 +85,6 @@ public class Lease {
 
   public int compareNowAndEndDate(LocalDate date){
     int compareValue = today.compareTo(date);
-    System.out.println(compareValue);
-    System.out.println(today);
 
     if (compareValue > 0) {
       return 1;
@@ -111,6 +99,11 @@ public class Lease {
 
     }
 
+  }
+
+  public long subtractDates(LocalDate startDate, LocalDate endDate){
+
+    return endDate.compareTo(startDate);
   }
 
 

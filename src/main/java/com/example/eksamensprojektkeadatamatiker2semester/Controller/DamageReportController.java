@@ -55,12 +55,16 @@ public class DamageReportController {
         if (keyword != null){
             List<Lease> list = leaseRepository.findLeaseByIDAsList(Integer.parseInt(keyword));
             Lease checkEndDate = leaseRepository.showLeases();
+            Lease period = leaseRepository.showLeases();
+            model.addAttribute("period",period);
             model.addAttribute("checkEndDate",checkEndDate);
             model.addAttribute("list",list);
 
         } else {
             List<Lease> list = leaseRepository.showAllLeases();
             Lease checkEndDate = leaseRepository.showLeases();
+            Lease period = leaseRepository.showLeases();
+            model.addAttribute("period",period);
             model.addAttribute("checkEndDate",checkEndDate);
             model.addAttribute("list",list);
 
@@ -80,6 +84,8 @@ public class DamageReportController {
         Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
 
         Lease checkEndDate = leaseRepository.showLeases();
+        Lease period = leaseRepository.showLeases();
+        model.addAttribute("period",period);
         model.addAttribute("checkEndDate",checkEndDate);
 
         model.addAttribute("carLeases",carsLeases);
@@ -96,6 +102,8 @@ public class DamageReportController {
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user",user);
         DamageReport damageReports = damageReportRepository.findReportByID(id);
+        Lease period = leaseRepository.showLeases();
+        model.addAttribute("period",period);
         model.addAttribute("damageReports",damageReports);
 
         return controllerService.skadeRapport(httpSession);
@@ -153,6 +161,8 @@ public class DamageReportController {
 
 
         SpecificDamage sum = specificDamageRepository.sumPriceSpecificDamagesByID(id);
+        Lease period = leaseRepository.showLeases();
+        model.addAttribute("period",period);
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user",user);
 

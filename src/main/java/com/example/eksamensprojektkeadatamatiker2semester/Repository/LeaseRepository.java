@@ -1,10 +1,8 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
 import com.example.eksamensprojektkeadatamatiker2semester.Model.CarsLeases;
-import com.example.eksamensprojektkeadatamatiker2semester.Model.DamageReport;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionManager;
-import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -32,12 +30,11 @@ public class LeaseRepository {
                 int leaseID = rs.getInt(1);
                 String firstName = rs.getString(2);
                 String lastName = rs.getString(3);
-                int leasePeriodInDays = rs.getInt(4);
-                int userID = rs.getInt(5);
-                LocalDate startDate = rs.getDate(6).toLocalDate();
-                LocalDate endDate = rs.getDate(7).toLocalDate();
+                int userID = rs.getInt(4);
+                LocalDate startDate = rs.getDate(5).toLocalDate();
+                LocalDate endDate = rs.getDate(6).toLocalDate();
 
-                leasesList.add(new Lease(leaseID, firstName, lastName, leasePeriodInDays,userID,startDate,endDate));
+                leasesList.add(new Lease(leaseID, firstName, lastName,userID,startDate,endDate));
 
             }
             ps.close();
@@ -61,15 +58,13 @@ public class LeaseRepository {
                 int leaseID = rs.getInt(1);
                 String firstName = rs.getString(2);
                 String lastName = rs.getString(3);
-                int leasePeriodInDays = rs.getInt(4);
-                int userID = rs.getInt(5);
-                LocalDate startDate = rs.getDate(6).toLocalDate();
-                LocalDate endDate = rs.getDate(7).toLocalDate();
+                int userID = rs.getInt(4);
+                LocalDate startDate = rs.getDate(5).toLocalDate();
+                LocalDate endDate = rs.getDate(6).toLocalDate();
 
                 leases.setLeaseID(leaseID);
                 leases.setFirstName(firstName);
                 leases.setLastName(lastName);
-                leases.setLeasePeriodInDays(leasePeriodInDays);
                 leases.setUserID(userID);
                 leases.setStartDate(startDate);
                 leases.setEndDate(endDate);
@@ -96,15 +91,13 @@ public class LeaseRepository {
                 int leaseID = rs.getInt(1);
                 String firstName = rs.getString(2);
                 String lastName = rs.getString(3);
-                int leasePeriodInDays = rs.getInt(4);
-                int userID = rs.getInt(5);
-                LocalDate startDate = rs.getDate(6).toLocalDate();
-                LocalDate endDate = rs.getDate(7).toLocalDate();
+                int userID = rs.getInt(4);
+                LocalDate startDate = rs.getDate(5).toLocalDate();
+                LocalDate endDate = rs.getDate(6).toLocalDate();
 
                 leases.setLeaseID(leaseID);
                 leases.setFirstName(firstName);
                 leases.setLastName(lastName);
-                leases.setLeasePeriodInDays(leasePeriodInDays);
                 leases.setUserID(userID);
                 leases.setStartDate(startDate);
                 leases.setEndDate(endDate);
@@ -158,12 +151,11 @@ public class LeaseRepository {
                 int leaseID = rs.getInt(1);
                 String firstName = rs.getString(2);
                 String lastName = rs.getString(3);
-                int leasePeriodInDays = rs.getInt(4);
-                int userID = rs.getInt(5);
-                LocalDate startDate = rs.getDate(6).toLocalDate();
-                LocalDate endDate = rs.getDate(7).toLocalDate();
+                int userID = rs.getInt(4);
+                LocalDate startDate = rs.getDate(5).toLocalDate();
+                LocalDate endDate = rs.getDate(6).toLocalDate();
 
-                leases.add(new Lease(leaseID,firstName, lastName, leasePeriodInDays,userID,startDate,endDate));
+                leases.add(new Lease(leaseID,firstName, lastName,userID,startDate,endDate));
 
             }
             ps.close();
@@ -176,21 +168,19 @@ public class LeaseRepository {
     }
 
     public void addLease(Lease lease){
-        final String SQL_ADD_QUERY = "INSERT INTO Leases(leaseID,customerFirstName,customerLastName,leasePeriodInDays,UserLogin_userID,startDate,endDate) VALUES(?,?,?,?,?,?,?)";
+        final String SQL_ADD_QUERY = "INSERT INTO Leases(leaseID,customerFirstName,customerLastName,UserLogin_userID,startDate,endDate) VALUES(?,?,?,?,?,?)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_ADD_QUERY);
             ps.setInt(1,lease.getLeaseID());
             ps.setString(2,lease.getFirstName());
             ps.setString(3,lease.getLastName());
-            ps.setInt(4,lease.getLeasePeriodInDays());
-            ps.setInt(5,lease.getUserID());
-
+            ps.setInt(4,lease.getUserID());
             Date sqlStartDate = Date.valueOf(lease.getStartDate());
             Date sqlEndDate = Date.valueOf(lease.getEndDate());
 
-            ps.setDate(6,sqlStartDate);
-            ps.setDate(7,sqlEndDate);
+            ps.setDate(5,sqlStartDate);
+            ps.setDate(6,sqlEndDate);
 
             ps.executeUpdate();
 
@@ -213,13 +203,12 @@ public class LeaseRepository {
                 int leaseID = rs.getInt(1);
                 String firstName = rs.getString(2);
                 String lastName = rs.getString(3);
-                int leasePeriodInDays = rs.getInt(4);
-                int userID = rs.getInt(5);
-                LocalDate startDate = rs.getDate(6).toLocalDate();
-                LocalDate endDate = rs.getDate(7).toLocalDate();
+                int userID = rs.getInt(4);
+                LocalDate startDate = rs.getDate(5).toLocalDate();
+                LocalDate endDate = rs.getDate(6).toLocalDate();
 
 
-                leases.add(new Lease(leaseID,firstName,lastName,leasePeriodInDays,userID,startDate,endDate));
+                leases.add(new Lease(leaseID,firstName,lastName,userID,startDate,endDate));
 
             }
             ps.close();
@@ -231,19 +220,18 @@ public class LeaseRepository {
         return leases;
     }
     public void editLease(Lease lease){
-        final String SQL_EDIT = "UPDATE Leases SET customerFirstName = ?, customerLastName = ?, leasePeriodInDays = ?, UserLogin_userID = ?, startDate = ?, endDate = ?";
+        final String SQL_EDIT = "UPDATE Leases SET customerFirstName = ?, customerLastName = ?, UserLogin_userID = ?, startDate = ?, endDate = ?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_EDIT);
 
             ps.setString(1,lease.getFirstName());
             ps.setString(2,lease.getLastName());
-            ps.setInt(3,lease.getLeasePeriodInDays());
-            ps.setInt(4,lease.getUserID());
+            ps.setInt(3,lease.getUserID());
             Date sqlStartDate = Date.valueOf(lease.getStartDate());
             Date sqlEndDate = Date.valueOf(lease.getEndDate());
-            ps.setDate(5,sqlStartDate);
-            ps.setDate(6,sqlEndDate);
+            ps.setDate(4,sqlStartDate);
+            ps.setDate(5,sqlEndDate);
 
             ps.executeUpdate();
 

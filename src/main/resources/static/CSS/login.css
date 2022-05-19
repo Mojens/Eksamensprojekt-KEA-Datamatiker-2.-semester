@@ -128,6 +128,17 @@ input[type=password]{
     border: 1px solid #ccc;
     margin-top: 10px;
 }
+.togglePassword{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    flex-grow: 0;
+}
 
 /* Set a style for all buttons */
 button {

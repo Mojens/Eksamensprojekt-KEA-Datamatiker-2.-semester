@@ -89,7 +89,7 @@
             </td>
             <td  th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"  class="individual" th:text="${l.lastName}">
             </td>
-            <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual" th:text="${l.leasePeriodInDays}">
+            <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual" th:text="${period.subtractDates(l.startDate,l.endDate)}">
             </td>
             <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual" th:text="${l.startDate}">
             </td>

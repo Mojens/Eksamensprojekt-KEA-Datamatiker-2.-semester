@@ -47,17 +47,28 @@
             <div class="floating">
                 <input id="input__password" class="floating__input" name="password" required type="password"
                        placeholder="Password"/>
-                <label for="input__password" class="floating__label" data-content="Adgangskode">
-                    <div class="psw-container">
-                        <p class="psw"><a href="#">Har du glemt din adgangskode?</a></p>
-                    </div>
-                    <div>
 
-                    </div>
+                <label for="input__password" class="floating__label" data-content="Adgangskode">
+                    <button class="togglePassword" type="button" onclick="myFunction()">Show Password </button>
+
+
+            </div>
+            <div class="psw-container">
+                <p class="psw"><a href="#">Har du glemt din adgangskode?</a></p>
             </div>
     </form>
     <button class="submit-button-login" type="submit">Log ind</button>
 </div>
+<script>
+    function myFunction() {
+        var x = document.getElementById("input__password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
 <script>
     // Get the modal
     var modal = document.getElementById('id01');
