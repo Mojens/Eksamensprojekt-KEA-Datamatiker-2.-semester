@@ -160,7 +160,7 @@ public class LeaseController {
         LocalDate startDateLD = leaseService.convertToLocalDate(startDate);
         LocalDate endDateLD = leaseService.convertToLocalDate(endDate);
 
-        leaseRepository.addLease(new Lease(firstName,lastName,user.getUserID(),startDateLD,endDateLD));
+        leaseRepository.addLease(new Lease(firstName,lastName,user.getUserID(),startDateLD,endDateLD,1));
 
         List<Lease> listOfLeases = leaseRepository.findLeaseByLast();
 
@@ -188,7 +188,7 @@ public class LeaseController {
         selectedCarLease = carsLeasesRepository.findCarsLeasesByLeaseID(leaseID);
         carsLeasesRepository.isNotLeased(selectedCarLease.getCarID());
         //Sletter fra Leases og CarLeases
-        leaseRepository.deleteLeaseID(leaseID);
+        leaseRepository.ChangeStatusLeaseByID(leaseID);
 
         return "redirect:/allelejeaftaler";
     }

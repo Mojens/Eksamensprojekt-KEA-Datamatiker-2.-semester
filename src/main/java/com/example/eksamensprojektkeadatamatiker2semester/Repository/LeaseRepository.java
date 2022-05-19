@@ -33,8 +33,9 @@ public class LeaseRepository {
                 int userID = rs.getInt(4);
                 LocalDate startDate = rs.getDate(5).toLocalDate();
                 LocalDate endDate = rs.getDate(6).toLocalDate();
+                int status = rs.getInt(7);
 
-                leasesList.add(new Lease(leaseID, firstName, lastName,userID,startDate,endDate));
+                leasesList.add(new Lease(leaseID, firstName, lastName,userID,startDate,endDate,status));
 
             }
             ps.close();
@@ -241,6 +242,7 @@ public class LeaseRepository {
         }
 
     }
+    /*
     public void deleteLeaseID(int inputLeaseID) {
         final String QUERYDELETE = "DELETE Leases,CarsLeases FROM Leases INNER JOIN CarsLeases ON Leases.leaseID =  CarsLeases.Leases_leaseID AND Leases_leaseID = "+"'"+inputLeaseID+"'";
         try {
@@ -254,4 +256,22 @@ public class LeaseRepository {
             e.printStackTrace();
         }
     }
+
+     */
+    public void ChangeStatusLeaseByID(int leaseID) {
+        final String QUERYDELETE = "UPDATE Leases SET Leases.status = 0 WHERE leaseID = "+"'"+leaseID+"'";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(QUERYDELETE);
+            //Da vi har sat foreign key på update at den skal cascade og ikke restrict
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            System.out.println("kunne ikke slette Medarbejder fra valgte UserID");
+            e.printStackTrace();
+        }
+
+    }
+
+
 }
