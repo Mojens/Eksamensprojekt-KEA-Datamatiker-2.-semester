@@ -23,7 +23,7 @@ body {
 
 }
 .submit-button-login {
-    margin-top: 50px;
+    margin-top: 30px;
     border-radius: 3px;
     font-size: 16px;
 }
@@ -121,12 +121,13 @@ input[type=text]{
     width: 100%;
     display: inline-block;
     border: 1px solid #ccc;
+
 }
 input[type=password]{
     width: 100%;
     display: inline-block;
     border: 1px solid #ccc;
-    margin-top: 10px;
+
 }
 .togglePassword{
     background-color: rgba(255, 255, 255, 0);
@@ -238,7 +239,7 @@ https://dev.to/adrianbdesigns/let-s-create-a-floating-label-input-with-html-and-
 }
 
 .floating {
-    margin-bottom: 1%;
+    margin-bottom: 5%;
     transition: background-color 0.2s ease;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -335,6 +336,16 @@ https://dev.to/adrianbdesigns/let-s-create-a-floating-label-input-with-html-and-
 }
 #input__password{
     font-size:16px;
+    position: relative;
+    min-width: 100%;
+}
+form i {
+    margin-left: 16%;
+    margin-top: 1.5%;
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+
 }
 
 .floating{
