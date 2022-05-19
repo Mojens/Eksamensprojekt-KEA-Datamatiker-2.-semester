@@ -14,6 +14,8 @@ public class Lease {
   private LocalDate endDate;
   private LocalDate today = LocalDate.now();
 
+  private int status;
+
 
   public Lease(int leaseID, String firstName, String lastName, int userID, LocalDate startDate, LocalDate endDate) {
     this.leaseID = leaseID;
@@ -22,6 +24,15 @@ public class Lease {
     this.userID = userID;
     this.startDate = startDate;
     this.endDate = endDate;
+  }
+  public Lease(int leaseID, String firstName, String lastName, int userID, LocalDate startDate, LocalDate endDate, int status) {
+    this.leaseID = leaseID;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.userID = userID;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.status = status;
   }
 
   public Lease(String firstName, String lastName, int userID, LocalDate startDate, LocalDate endDate) {
@@ -32,6 +43,14 @@ public class Lease {
     this.endDate = endDate;
   }
 
+  public Lease(String firstName, String lastName, int userID, LocalDate startDate, LocalDate endDate,int status) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.userID = userID;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.status = status;
+  }
   public Lease() {
   }
 
@@ -106,6 +125,11 @@ public class Lease {
     return endDate.compareTo(startDate);
   }
 
+  public int getStatus() {
+    return status;
+  }
 
-
+  public void setStatus(int status) {
+    this.status = status;
+  }
 }

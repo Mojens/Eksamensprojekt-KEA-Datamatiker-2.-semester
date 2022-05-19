@@ -7,12 +7,19 @@ public class User {
   private String password;
   private String username;
   private int type;
-
+  private int status;
   public User(int userID, String username, String password, int type) {
     this.userID = userID;
     this.password = password;
     this.username = username;
     this.type = type;
+  }
+
+  public User(String password, String username, int type, int status) {
+    this.password = password;
+    this.username = username;
+    this.type = type;
+    this.status = status;
   }
 
   public User(String password, String username, int type) {
@@ -54,6 +61,14 @@ public class User {
 
   public void setType(int type) {
     this.type = type;
+  }
+
+  public int getStatus() {
+    return status;
+  }
+
+  public void setStatus(int status) {
+    this.status = status;
   }
 
   //Lavet en toString for at tjekke om user bliver created, eller om hvilket user der er logget ind

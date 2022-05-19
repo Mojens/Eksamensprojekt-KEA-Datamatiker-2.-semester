@@ -51,6 +51,7 @@
             <label>
                 <select name="userID">
                     <option th:each="Employee : ${listOfEmployees}"
+                            th:if="${Employee.getStatus() == 1}"
                             th:text="${Employee}"
                             th:value="${Employee.getUserID()}"></option>
                 </select>

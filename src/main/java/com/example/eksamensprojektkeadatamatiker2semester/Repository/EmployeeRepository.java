@@ -34,8 +34,9 @@ public class EmployeeRepository {
         String phoneNumber = resultSet.getString(4);
         String eMail = resultSet.getString(5);
         int userID = resultSet.getInt(6);
+        int status = resultSet.getInt(7);
 
-        listOfEmployees.add(new Employee(firstName, lastName, phoneNumber, employeeID, eMail, userID));
+        listOfEmployees.add(new Employee(firstName, lastName, phoneNumber, employeeID, eMail, userID,status));
 
       }
       preparedStatement.close();
@@ -80,8 +81,8 @@ public class EmployeeRepository {
   }
 
   //Delete employee from employee table and userLogin table with inner join
-  public void deleteEmployeeByID(int inputUserID) {
-    final String QUERYDELETE = "DELETE UserLogin,Employee FROM UserLogin INNER JOIN Employee ON UserLogin.userID = Employee.UserLogin_userID and UserLogin_userID = " + "'" + inputUserID + "'";
+  public void ChangeStatusEmployeeByID(int inputUserID) {
+    final String QUERYDELETE = "UPDATE Employee SET Employee.status = 0 WHERE UserLogin_userID = "+"'"+inputUserID+"'";
     try {
       PreparedStatement preparedStatement = connection.prepareStatement(QUERYDELETE);
       //Da vi har sat foreign key på update at den skal cascade og ikke restrict
