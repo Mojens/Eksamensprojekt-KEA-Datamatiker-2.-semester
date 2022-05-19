@@ -15,6 +15,13 @@ public class User {
     this.type = type;
   }
 
+  public User(String password, String username, int type, int status) {
+    this.password = password;
+    this.username = username;
+    this.type = type;
+    this.status = status;
+  }
+
   public User(String password, String username, int type) {
     this.password = password;
     this.username = username;
