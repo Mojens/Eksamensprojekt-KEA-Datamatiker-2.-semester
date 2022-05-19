@@ -25,9 +25,11 @@ body {
     z-index: 3;
     position: relative;
     background-color: #F2F2F2;
+    height: 900px;
 }
 .container-dashboard {
     width: 1300px;
+    height: 900px;
     margin: 20px auto;
     padding: 3% 3%;
     z-index: 3;
@@ -205,6 +207,7 @@ a.individual {
     z-index: 3;
     position: relative;
     background-color: #F2F2F2;
+    height: 900px;
 }
 
 
