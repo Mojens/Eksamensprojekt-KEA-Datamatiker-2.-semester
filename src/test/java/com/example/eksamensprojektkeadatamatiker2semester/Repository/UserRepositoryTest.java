@@ -1,9 +1,11 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
-import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import org.junit.jupiter.api.Test;
+
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,6 +18,17 @@ class UserRepositoryTest {
     @Test
     void createNewUser() {
 
+        String[] userNames = {"Volvo", "BMW", "Ford", "test", "random", "user", "Mazda", "Tesla", "Honda", "Toyota",
+                "Audi", "Jeep", "Dodge", "Nissan", "Volvo", "Citroen", "Jaguar", "ad", "pokos", "malt"};
+        Random generator = new Random();
+        String randomIndex = String.valueOf(generator.nextInt(userNames.length));
+        int smallNumber = ThreadLocalRandom.current().nextInt(1, 999 + 1);
+        String newUserName = userNames[Integer.parseInt(randomIndex)] + smallNumber;
+        var userRepository = new UserRepository();
+
+        User user = (new User("newCode", newUserName, 4, 1));
+
+        assertTrue(userRepository.createNewUser(user));
 
     }
 
@@ -31,7 +44,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    void findUserByEmployee() {
+    void findUserByEmployeeID() {
 
         Employee employee = employeeRepository.findEmployeeByUserID(1);
 
@@ -54,10 +67,52 @@ class UserRepositoryTest {
     }*/
 
     @Test
-    void changePassword() {
+    void changePasswordOfUser() {
+
+        int smallNumber = ThreadLocalRandom.current().nextInt(1, 999999 + 1);
+        String userName = "leje";
+
+        User userBefore = userRepository.findUserByUserName(userName);
+
+        var user = new UserRepository();
+
+        user.changePassword(userName, String.valueOf(smallNumber), userBefore);
+        User userAfter = userRepository.findUserByUserName(userName);
+
+        assertNotEquals(userBefore.getPassword(), userAfter.getPassword());
+        assertEquals(userAfter.getUsername(), userBefore.getUsername());
     }
 
     @Test
-    void changeStatusUserByID() {
+    void changeStatusForUser_ByUserID() {
+
+        User userBefore = userRepository.findUserByID(2);
+        var user = new UserRepository();
+
+        user.ChangeStatusUserByID(2);
+
+
+        User userAfter = userRepository.findUserByID(2);
+
+        assertNotEquals(userBefore.getStatus(), userAfter.getStatus());
+        assertEquals(userBefore.getUserID(), userAfter.getUserID());
+        user.changeStatusForUserByIDToOne(2);
+
+
+    }
+
+    @Test
+    void changeStatusForUserByIDToOne() {
+
+        User userBefore = userRepository.findUserByID(2);
+        var user = new UserRepository();
+        user.ChangeStatusUserByID(2);
+
+        User userAfter = userRepository.findUserByID(2);
+
+        assertNotEquals(userBefore.getStatus(), userAfter.getStatus());
+        assertEquals(userBefore.getUserID(), userAfter.getUserID());
+        user.changeStatusForUserByIDToOne(2);
+
     }
 }

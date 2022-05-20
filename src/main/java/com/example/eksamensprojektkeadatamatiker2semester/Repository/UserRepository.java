@@ -19,7 +19,7 @@ public class UserRepository {
 
   //Create a new user to the system from admin site
   //We made it return a User Object beacuse to create a employee we need the auto created id as a foreign key in the other table
-  public void createNewUser(User user) {
+  public boolean createNewUser(User user) {
     final String QUERY = "INSERT INTO UserLogin (userID, userName, password, userType) VALUES (?, ?, ?, ?)";
     try {
       PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
@@ -30,10 +30,12 @@ public class UserRepository {
       preparedStatement.setInt(4, user.getType());
 
       preparedStatement.executeUpdate();
+      return true;
 
     } catch (SQLException e) {
       System.out.println("Kan ikke oprette bruger");
       e.printStackTrace();
+      return false;
     }
   }
 
@@ -95,7 +97,8 @@ public class UserRepository {
         String userName = resultSet.getString(2);
         String password = resultSet.getString(3);
         int type = resultSet.getInt(4);
-        loginUser = new User(userID, userName, password, type);
+        int status = resultSet.getInt(5);
+        loginUser = new User(userID, userName, password, type,status);
       }
     } catch (SQLException e) {
       System.out.println("Could not find user");
@@ -135,13 +138,27 @@ public class UserRepository {
       preparedStatement.executeUpdate();
 
     } catch (SQLException e) {
-      System.out.println("Kunne ikke ");
+      System.out.println("Kunne ikke skifte adgangskode ");
       e.printStackTrace();
     }
   }
 
   public void ChangeStatusUserByID(int inputUserID) {
     final String QUERYDELETE = "UPDATE UserLogin SET UserLogin.status = 0 WHERE userID = "+"'"+inputUserID+"'";
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERYDELETE);
+      //Da vi har sat foreign key på update at den skal cascade og ikke restrict
+      preparedStatement.executeUpdate();
+      preparedStatement.close();
+
+    } catch (SQLException e) {
+      System.out.println("kunne ikke slette Medarbejder fra valgte UserID");
+      e.printStackTrace();
+    }
+
+  }
+  public void changeStatusForUserByIDToOne(int inputUserID) {
+    final String QUERYDELETE = "UPDATE UserLogin SET UserLogin.status = 1 WHERE userID = "+"'"+inputUserID+"'";
     try {
       PreparedStatement preparedStatement = connection.prepareStatement(QUERYDELETE);
       //Da vi har sat foreign key på update at den skal cascade og ikke restrict
