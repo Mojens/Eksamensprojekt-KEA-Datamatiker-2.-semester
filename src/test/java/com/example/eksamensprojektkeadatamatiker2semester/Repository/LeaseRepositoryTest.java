@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LeaseRepositoryTest {
     LeaseRepository leaseRepository = new LeaseRepository();
-    CarRepository carRepository = new CarRepository();
 
     @Test
     void showAllLeases() {
