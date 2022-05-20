@@ -64,7 +64,7 @@ public class LeaseController {
 
 
 
-        CarsLeases carsLeases = leaseRepository.findLeaseAndCarByID(id);
+        CarsLeases carsLeases = carsLeasesRepository.findCarsLeasesByLeaseID(id);
 
         Lease lease = leaseRepository.findLeaseByID(carsLeases.getLeaseID());
 
@@ -110,7 +110,7 @@ public class LeaseController {
         model.addAttribute("user",user);
 
 
-        CarsLeases carsLeases = leaseRepository.findLeaseAndCarByID(id);
+        CarsLeases carsLeases = carsLeasesRepository.findCarsLeasesByLeaseID(id);
         Lease lease = leaseRepository.findLeaseByID(carsLeases.getLeaseID());
         Car car = carRepository.findCarByID(carsLeases.getCarID());
         Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());

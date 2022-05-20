@@ -95,6 +95,7 @@ public class LeaseRepository {
                 int userID = rs.getInt(4);
                 LocalDate startDate = rs.getDate(5).toLocalDate();
                 LocalDate endDate = rs.getDate(6).toLocalDate();
+                int status = rs.getInt(7);
 
                 leases.setLeaseID(leaseID);
                 leases.setFirstName(firstName);
@@ -102,6 +103,7 @@ public class LeaseRepository {
                 leases.setUserID(userID);
                 leases.setStartDate(startDate);
                 leases.setEndDate(endDate);
+                leases.setStatus(status);
 
             }
             ps.close();
@@ -110,33 +112,6 @@ public class LeaseRepository {
             e.printStackTrace();
         }
         return leases;
-
-    }
-
-    public CarsLeases findLeaseAndCarByID(int id){
-        CarsLeases carsLeases = new CarsLeases();
-        final String SQL_SHOW_LEASES = "SELECT * FROM CarsLeases WHERE Leases_leaseID = '"+id+"'";
-
-        try {
-            PreparedStatement ps = connection.prepareStatement(SQL_SHOW_LEASES);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                int ID = rs.getInt(1);
-                int carID = rs.getInt(2);
-                int leaseID = rs.getInt(3);
-
-                carsLeases.setLeaseID(ID);
-                carsLeases.setCarID(carID);
-                carsLeases.setLeaseID(leaseID);
-
-            }
-            ps.close();
-        } catch (SQLException e) {
-            System.out.println("Kunne ikke finde den lease");
-            e.printStackTrace();
-        }
-        return carsLeases;
 
     }
 
@@ -168,7 +143,7 @@ public class LeaseRepository {
 
     }
 
-    public void addLease(Lease lease){
+    public boolean addLease(Lease lease){
         final String SQL_ADD_QUERY = "INSERT INTO Leases(leaseID,customerFirstName,customerLastName,UserLogin_userID,startDate,endDate) VALUES(?,?,?,?,?,?)";
 
         try {
@@ -184,10 +159,12 @@ public class LeaseRepository {
             ps.setDate(6,sqlEndDate);
 
             ps.executeUpdate();
+            return true;
 
         } catch (SQLException e){
             System.out.println("Kunne ikke oprette en lease");
             e.printStackTrace();
+            return false;
         }
 
     }
@@ -220,8 +197,8 @@ public class LeaseRepository {
         }
         return leases;
     }
-    public void editLease(Lease lease){
-        final String SQL_EDIT = "UPDATE Leases SET customerFirstName = ?, customerLastName = ?, UserLogin_userID = ?, startDate = ?, endDate = ?";
+    public boolean editLease(Lease lease, int id){
+        final String SQL_EDIT = "UPDATE Leases SET customerFirstName = ?, customerLastName = ?, UserLogin_userID = ?, startDate = ?, endDate = ?, status = ? WHERE leaseID = '"+id+"'";
 
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_EDIT);
@@ -233,12 +210,15 @@ public class LeaseRepository {
             Date sqlEndDate = Date.valueOf(lease.getEndDate());
             ps.setDate(4,sqlStartDate);
             ps.setDate(5,sqlEndDate);
+            ps.setInt(6,lease.getStatus());
 
             ps.executeUpdate();
+            return true;
 
         } catch (SQLException e) {
             System.out.println("Kunne ikke opdatere leasen");
             e.printStackTrace();
+            return false;
         }
 
     }
@@ -260,6 +240,21 @@ public class LeaseRepository {
      */
     public void ChangeStatusLeaseByID(int leaseID) {
         final String QUERYDELETE = "UPDATE Leases SET Leases.status = 0 WHERE leaseID = "+"'"+leaseID+"'";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(QUERYDELETE);
+            //Da vi har sat foreign key på update at den skal cascade og ikke restrict
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+
+        } catch (SQLException e) {
+            System.out.println("kunne ikke slette Medarbejder fra valgte UserID");
+            e.printStackTrace();
+        }
+
+    }
+
+    public void changeStatusLeaseByIDToOne(int leaseID) {
+        final String QUERYDELETE = "UPDATE Leases SET Leases.status = 1 WHERE leaseID = "+"'"+leaseID+"'";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(QUERYDELETE);
             //Da vi har sat foreign key på update at den skal cascade og ikke restrict

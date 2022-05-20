@@ -25,17 +25,20 @@ public class DamageReportController {
     DamageReportRepository damageReportRepository;
     LeaseRepository leaseRepository;
     ControllerService controllerService;
+    CarsLeasesRepository carsLeasesRepository;
 
 
     public DamageReportController(EmployeeRepository employeeRepository, CarRepository carRepository,
-                                  SpecificDamageRepository specificDamageRepository, DamageReportRepository damageReportRepository,
-                                  LeaseRepository leaseRepository, ControllerService controllerService) {
+                                  SpecificDamageRepository specificDamageRepository,
+                                  DamageReportRepository damageReportRepository, LeaseRepository leaseRepository,
+                                  ControllerService controllerService, CarsLeasesRepository carsLeasesRepository) {
         this.employeeRepository = employeeRepository;
         this.carRepository = carRepository;
         this.specificDamageRepository = specificDamageRepository;
         this.damageReportRepository = damageReportRepository;
         this.leaseRepository = leaseRepository;
         this.controllerService = controllerService;
+        this.carsLeasesRepository = carsLeasesRepository;
     }
 
     @GetMapping("/skaderapport")
@@ -78,7 +81,7 @@ public class DamageReportController {
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user",user);
 
-        CarsLeases carsLeases = leaseRepository.findLeaseAndCarByID(id);
+        CarsLeases carsLeases = carsLeasesRepository.findCarsLeasesByLeaseID(id);
         Lease lease = leaseRepository.findLeaseByID(carsLeases.getLeaseID());
         Car car = carRepository.findCarByID(carsLeases.getCarID());
         Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
@@ -151,7 +154,7 @@ public class DamageReportController {
 
         DamageReport damageReport = damageReportRepository.findReportByID(id);
 
-        CarsLeases carsLeases = leaseRepository.findLeaseAndCarByID(damageReport.getDamageReportID());
+        //CarsLeases carsLeases = carsLeasesRepository.findCarsLeasesByLeaseID(damageReport.getDamageReportID());
 
         Lease lease = leaseRepository.findLeaseByID(damageReport.getLeaseID());
 
