@@ -62,6 +62,7 @@ public class EmployeeRepository {
         String phoneNumber = resultSet.getString(4);
         String eMail = resultSet.getString(5);
         int userID = resultSet.getInt(6);
+        int status = resultSet.getInt(7);
 
         employee.setEmployeeID(employeeID);
         employee.setFirstName(firstName);
@@ -69,6 +70,7 @@ public class EmployeeRepository {
         employee.setPhoneNumber(phoneNumber);
         employee.seteMail(eMail);
         employee.setUserID(userID);
+        employee.setStatus(status);
 
       }
       preparedStatement.close();
@@ -96,7 +98,22 @@ public class EmployeeRepository {
 
   }
 
-  public void addNewEmployee(Employee employee) {
+  public void changeStatusEmployeeByIDToOne(int inputUserID) {
+    final String QUERYDELETE = "UPDATE Employee SET Employee.status = 1 WHERE UserLogin_userID = "+"'"+inputUserID+"'";
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERYDELETE);
+      //Da vi har sat foreign key på update at den skal cascade og ikke restrict
+      preparedStatement.executeUpdate();
+      preparedStatement.close();
+
+    } catch (SQLException e) {
+      System.out.println("kunne ikke slette Medarbejder fra valgte UserID");
+      e.printStackTrace();
+    }
+
+  }
+
+  public boolean addNewEmployee(Employee employee) {
     final String QUERY = "INSERT INTO Employee (EmployeeID, firstName, lastName, phoneNumber, eMail, UserLogin_userID) VALUES (?, ?, ?, ?, ?, ?)";
     try {
       PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
@@ -109,10 +126,12 @@ public class EmployeeRepository {
       preparedStatement.setInt(6, employee.getUserID());
 
       preparedStatement.executeUpdate();
+      return true;
 
     } catch (SQLException e) {
       System.out.println("Kan ikke oprette bruger");
       e.printStackTrace();
+      return false;
     }
 
   }

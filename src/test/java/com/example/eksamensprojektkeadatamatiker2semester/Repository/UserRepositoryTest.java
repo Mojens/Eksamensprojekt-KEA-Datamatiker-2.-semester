@@ -18,8 +18,8 @@ class UserRepositoryTest {
     @Test
     void createNewUser() {
 
-        String[] userNames = {"Volvo", "BMW", "Ford", "test", "random", "user", "Mazda", "Tesla", "Honda", "Toyota",
-                "Audi", "Jeep", "Dodge", "Nissan", "Volvo", "Citroen", "Jaguar", "ad", "pokos", "malt"};
+        String[] userNames = {"Hasan", "Karl", "Hardy", "test", "random", "user", "Cay", "Lonne", "Ibrahim", "Malthe",
+                "Sofie", "Jeppe", "Dodger", "Nisse", "John", "Lasse", "Jakob", "Ann", "Pokos", "malt"};
         Random generator = new Random();
         String randomIndex = String.valueOf(generator.nextInt(userNames.length));
         int smallNumber = ThreadLocalRandom.current().nextInt(1, 999 + 1);
@@ -88,9 +88,7 @@ class UserRepositoryTest {
 
         User userBefore = userRepository.findUserByID(2);
         var user = new UserRepository();
-
         user.ChangeStatusUserByID(2);
-
 
         User userAfter = userRepository.findUserByID(2);
 
