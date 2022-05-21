@@ -1,7 +1,5 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
-
-import com.example.eksamensprojektkeadatamatiker2semester.Model.DamageReport;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.SpecificDamage;
 import org.junit.jupiter.api.Test;
 

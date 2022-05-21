@@ -1,17 +1,9 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
-
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
-
-import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
 import org.junit.jupiter.api.Test;
-
-
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
-
 import java.util.List;
-
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarRepositoryTest {
@@ -55,7 +47,7 @@ class CarRepositoryTest {
     }
 
     @Test
-    void findCarByLast(){
+    void findCarByLast() {
 
         List<Car> carList = carRepository.findCarByLast();
 
@@ -119,7 +111,6 @@ class CarRepositoryTest {
         assertTrue(firstCheck.size() > secondCheck.size());
         addCarTest();
     }
-
 
     @Test
     void editCar() {

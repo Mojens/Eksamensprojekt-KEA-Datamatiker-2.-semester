@@ -1,8 +1,4 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
-
-import java.time.chrono.ChronoLocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
 import java.time.LocalDate;
 
 public class Lease {
@@ -13,9 +9,7 @@ public class Lease {
   private LocalDate startDate;
   private LocalDate endDate;
   private LocalDate today = LocalDate.now();
-
   private int status;
-
 
   public Lease(int leaseID, String firstName, String lastName, int userID, LocalDate startDate, LocalDate endDate) {
     this.leaseID = leaseID;
@@ -51,6 +45,7 @@ public class Lease {
     this.endDate = endDate;
     this.status = status;
   }
+
   public Lease() {
   }
 
@@ -107,17 +102,12 @@ public class Lease {
 
     if (compareValue > 0) {
       return 1;
-
     } else if (compareValue < 0) {
       return 0;
-
-
     } else {
       System.out.println("both dates are equal");
       return 1;
-
     }
-
   }
 
   public long subtractDates(LocalDate startDate, LocalDate endDate){
