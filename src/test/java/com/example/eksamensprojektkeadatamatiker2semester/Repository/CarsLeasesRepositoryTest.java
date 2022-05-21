@@ -20,7 +20,7 @@ class CarsLeasesRepositoryTest {
         var lease = leaseRepository.findLeaseByID(3);
 
         CarsLeases carsLeases = new CarsLeases(car.getVognNummer(),lease.getLeaseID());
-
+ss
         carsLeasesRepository.addCarsLease(carsLeases);
 
         assertNotNull(carsLeases);
