@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,6 +110,35 @@ public class CarRepository {
     }
     return car;
 
+  }
+
+  public List<Car> findCarByLast(){
+    List <Car> car = new ArrayList<>();
+    final String SQL_SHOW_REPORT = "SELECT * FROM Cars ORDER BY vognNummer desc";
+
+    try {
+      PreparedStatement ps = connection.prepareStatement(SQL_SHOW_REPORT);
+      ResultSet rs = ps.executeQuery();
+
+      while(rs.next()){
+        int vognNummer = rs.getInt(1);
+        String stelNummer = rs.getString(2);
+        String brand = rs.getString(3);
+        String model = rs.getString(4);
+        double price = rs.getDouble(5);
+        int isLeased = rs.getInt(6);
+
+
+        car.add(new Car(vognNummer,stelNummer,brand,model,price,isLeased));
+
+      }
+      ps.close();
+
+    } catch (SQLException e) {
+      System.out.println("Kunne ikke finde nogle biler");
+      e.printStackTrace();
+    }
+    return car;
   }
 
   public boolean addCar(Car car) {

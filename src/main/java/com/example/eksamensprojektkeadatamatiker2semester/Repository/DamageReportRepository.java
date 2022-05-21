@@ -1,7 +1,5 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
-
 import com.example.eksamensprojektkeadatamatiker2semester.Model.DamageReport;
-import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionManager;
 import org.springframework.stereotype.Repository;
 
@@ -133,7 +131,7 @@ public class DamageReportRepository {
   }
 
 
-  public void addDamageReport(DamageReport damageReport) {
+  public boolean addDamageReport(DamageReport damageReport) {
 
     final String SQL_ADD_QUERY = "INSERT INTO DamageReport(DamageReportID,Leases_leaseID,Cars_vognNummer,Employee_employeeID) VALUES(?,?,?,?)";
 
@@ -146,14 +144,16 @@ public class DamageReportRepository {
       ps.setInt(4, damageReport.getEmployeeID());
 
       ps.executeUpdate();
+      return true;
 
     } catch (SQLException e) {
       System.out.println("Kunne ikke tilføje ny skaderapport");
+      return false;
     }
 
   }
 
-  public void deleteDamageReport(int reportID) {
+  public boolean deleteDamageReport(int reportID) {
     final String SQL_DELETE = "DELETE FROM DamageReport WHERE damageReportID = ?";
 
     try {
@@ -163,15 +163,18 @@ public class DamageReportRepository {
 
       ps.executeUpdate();
 
+      return true;
+
     } catch (SQLException e) {
       System.out.println("Kunne ikke slette skaderapporten");
       e.printStackTrace();
+      return false;
     }
 
   }
 
-  public void editDamageReport(DamageReport dr) {
-    final String SQL_EDIT = "UPDATE DamageReport SET UserLogin_userID = ?, Leases_leaseID = ?,Cars_vognNummer = ?";
+  public boolean editDamageReport(DamageReport dr, int id) {
+    final String SQL_EDIT = "UPDATE DamageReport SET Employee_EmployeeID = ?, Leases_leaseID = ?,Cars_vognNummer = ? WHERE damageReportID = '"+id+"'";
 
     try {
       PreparedStatement ps = connection.prepareStatement(SQL_EDIT);
@@ -181,10 +184,12 @@ public class DamageReportRepository {
       ps.setInt(3, dr.getVognNummer());
 
       ps.executeUpdate();
+      return true;
 
     } catch (SQLException e) {
       System.out.println("Kunne ikke opdatere skaderapporten");
       e.printStackTrace();
+      return false;
     }
 
   }

@@ -197,6 +197,7 @@ public class LeaseRepository {
         }
         return leases;
     }
+
     public boolean editLease(Lease lease, int id){
         final String SQL_EDIT = "UPDATE Leases SET customerFirstName = ?, customerLastName = ?, UserLogin_userID = ?, startDate = ?, endDate = ?, status = ? WHERE leaseID = '"+id+"'";
 

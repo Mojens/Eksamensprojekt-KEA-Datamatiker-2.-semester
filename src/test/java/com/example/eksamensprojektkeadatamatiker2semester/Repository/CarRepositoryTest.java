@@ -2,6 +2,7 @@ package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
 
+import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
 import org.junit.jupiter.api.Test;
 
 
@@ -54,6 +55,30 @@ class CarRepositoryTest {
     }
 
     @Test
+    void findCarByLast(){
+
+        List<Car> carList = carRepository.findCarByLast();
+
+        var car = carRepository.findCarByLast();
+
+        int lastCar = 0;
+        for (int i = 0; i < car.size(); i++) {
+            lastCar = car.get(13).getVognNummer();
+
+        }
+        Car cars = carRepository.findCarByID(lastCar);
+        int lastInList = cars.getVognNummer();
+
+        for (int i = 0; i < carList.size(); i++) {
+            assertNotNull(carList.get(i));
+            assertEquals(1, lastInList);
+
+        }
+
+
+    }
+
+    @Test
     void addCar() {
         String[] cars = {"Volvo", "BMW", "Ford", "Mazda", "Tesla", "Honda", "Toyota", "Audi", "Jeep", "Dodge", "Nissan", "Volvo", "Citroen", "Jaguar"};
         String[] model = {"C", "V", "X", "O", "MO", "XO", "Model", "R", "Speed", "QE", "E"};
@@ -84,15 +109,15 @@ class CarRepositoryTest {
             if (carRepository.findCarByID(i).getVognNummer() == 0) {
                 i = i + 1;
                 firstCheck.get(s).setVognNummer(i);
-            } else if (carRepository.findCarByID(i).getVognNummer() > 3) {
+            } else if (carRepository.findCarByID(i).getVognNummer() > 5) {
                 carRepository.deleteCar(i);
                 break;
             }
         }
 
         List<Car> secondCheck = carRepository.showAllCars();
-        addCarTest();
         assertTrue(firstCheck.size() > secondCheck.size());
+        addCarTest();
     }
 
 
