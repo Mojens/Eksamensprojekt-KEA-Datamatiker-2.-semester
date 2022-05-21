@@ -105,7 +105,7 @@ public class SpecificDamageRepository {
   }
 
 
-  public void addSpecificDamage(SpecificDamage specificDamage) {
+  public boolean addSpecificDamage(SpecificDamage specificDamage) {
     final String SQL_ADD_QUERY = "INSERT INTO SpecificDamage(specificDamageID,price,description,picture,title,DamageReport_damageReportID,Leases_leaseID) VALUES(?,?,?,?,?,?,?)";
 
     try {
@@ -120,9 +120,12 @@ public class SpecificDamageRepository {
 
       ps.executeUpdate();
 
+      return true;
+
     } catch (SQLException e) {
       System.out.println("Kunne ikke oprette nogen skade");
       e.printStackTrace();
+      return false;
     }
 
   }
@@ -144,8 +147,8 @@ public class SpecificDamageRepository {
 
   }
 
-  public void editSpecificDamage(SpecificDamage sd) {
-    final String SQL_EDIT = "UPDATE SpecificDamage SET price = ?, description = ?, picture = ?, title = ?, DamageReport_damageReportID = ?, Leases_leaseID = ?";
+  public boolean editSpecificDamage(SpecificDamage sd, int id) {
+    final String SQL_EDIT = "UPDATE SpecificDamage SET price = ?, description = ?, picture = ?, title = ?, DamageReport_damageReportID = ?, Leases_leaseID = ? WHERE specificDamageID = '" + id + "'";
 
     try {
       PreparedStatement ps = connection.prepareStatement(SQL_EDIT);
@@ -158,10 +161,12 @@ public class SpecificDamageRepository {
       ps.setInt(6, sd.getLeaseID());
 
       ps.executeUpdate();
+      return true;
 
     } catch (SQLException e) {
       System.out.println("Kunne ikke opdatere");
       e.printStackTrace();
+      return false;
     }
 
   }

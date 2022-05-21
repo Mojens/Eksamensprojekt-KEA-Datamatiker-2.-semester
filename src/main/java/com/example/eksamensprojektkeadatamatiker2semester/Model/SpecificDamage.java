@@ -13,7 +13,6 @@ public class SpecificDamage {
 
   private double sumTotal;
 
-
   public SpecificDamage(int damageID, double price, String description, String picture, String title, int damageReportID, int leaseID) {
     this.damageID = damageID;
     this.price = price;
