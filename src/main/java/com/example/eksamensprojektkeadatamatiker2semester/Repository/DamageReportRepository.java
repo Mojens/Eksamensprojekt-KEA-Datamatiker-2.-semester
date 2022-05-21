@@ -77,42 +77,6 @@ public class DamageReportRepository {
 
   }
 
-  public List<DamageReport> showCompleteDamageReportByLeaseID(int leaseID) {
-    List<DamageReport> completeReportList = new ArrayList<>();
-    final String SQL_SHOW_REPORT = "SELECT SpecificDamage.DamageReport_damageReportID, Cars.vognNummer," +
-        "Cars.stelNummer,Cars.brand,Cars.model,Cars.price, Employee.firstName, Employee.lastName," +
-        "Leases.leaseID,Leases.customerFirstName,Leases.customerLastName,Leases.leasePeriodInDays," +
-        "Leases.startDate,Leases.endDate,SpecificDamage.specificDamageID,SpecificDamage.title," +
-        "SpecificDamage.description,SpecificDamage.picture,SpecificDamage.price," +
-        "FROM DamageReport" +
-        "JOIN SpecificDamage ON SpecificDamage.DamageReport_damageReportID = DamageReport.damageReportID" +
-        "JOIN Leases ON Leases.leaseID = DamageReport.Leases_leaseID" +
-        "JOIN Cars ON Cars.vognNummer = DamageReport.Cars_vognNummer" +
-        "JOIN Employee ON Employee.EmployeeID = DamageReport.Employee_employeeID" +
-        "WHERE Leases.leaseID = '" + leaseID + "'";
-
-    try {
-      PreparedStatement ps = connection.prepareStatement(SQL_SHOW_REPORT);
-      ResultSet rs = ps.executeQuery();
-
-      while (rs.next()) {
-        int damageReportID = rs.getInt(1);
-        int employeeID = rs.getInt(2);
-        int leaseid = rs.getInt(3);
-        int vognNummer = rs.getInt(4);
-
-
-        completeReportList.add(new DamageReport(damageReportID, employeeID, leaseid, vognNummer));
-
-      }
-
-    } catch (SQLException e) {
-      System.out.println("Kunne ikke finde nogle skader");
-      e.printStackTrace();
-    }
-    return completeReportList;
-
-  }
 
   public DamageReport findReportByID(int reportID) {
     DamageReport report = new DamageReport();
