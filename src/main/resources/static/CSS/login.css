@@ -341,7 +341,7 @@ https://dev.to/adrianbdesigns/let-s-create-a-floating-label-input-with-html-and-
 }
 form i {
     margin-left: 16%;
-    margin-top: 1.5%;
+    margin-top: 1.1%;
     position: absolute;
     z-index: 2;
     cursor: pointer;
