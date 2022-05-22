@@ -12,10 +12,12 @@
 </head>
 <body onload="document.getElementById('id01').style.display='block'">
 <div th:replace="nav.fragment"></div>
+<div class="container-dashboard">
 <div class="hero-backdrop">
     <a href="/"><img th:src="@{../CSS/images/hero.png}" class="backdrop" alt="hero-backdrop"
                      src="../static/CSS/images/hero.png"/></a>
 </div>
+
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'"
         class="close" title="Close Modal">&times;</span>
@@ -84,5 +86,6 @@
         }
     }
 </script>
+</div>
 </body>
 </html>

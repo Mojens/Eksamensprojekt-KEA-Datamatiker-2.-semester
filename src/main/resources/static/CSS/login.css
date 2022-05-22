@@ -10,9 +10,11 @@ body {
 }
 .hero-backdrop img {
     width: 100%;
+    height: 80vh;
     z-index: 0;
     position: absolute;
 }
+
 
 @font-face {
     font-family: OpenSans;
@@ -365,10 +367,10 @@ https://dev.to/adrianbdesigns/let-s-create-a-floating-label-input-with-html-and-
 form i {
     margin-left: 16%;
     margin-top: 1.1%;
-    position: absolute;
+    position: fixed;
+    visibility: visible;
     z-index: 2;
     cursor: pointer;
-
 }
 
 .floating{
