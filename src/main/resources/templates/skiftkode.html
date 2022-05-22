@@ -43,7 +43,7 @@
 </div>
 <div class="form-container">
     <h1>Skift AdgangsKode</h1>
-    <form
+    <form   onsubmit="myFunction()"
             action="/changePassword"
             method="post">
         <div >
@@ -61,5 +61,12 @@
         </div>
     </form>
 </div>
+<script >
+    function myFunction() {
+
+        newPassword = document.forms[0].newPassword.value;
+        alert("Den nye kode er " + newPassword);
+    }
+</script>
 </body>
 </html>

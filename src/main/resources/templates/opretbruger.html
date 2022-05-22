@@ -45,7 +45,9 @@
     <h1>Opret medarbejder</h1>
     <form
             action="/addEmployee"
-            method="post">
+            onsubmit="myFunction()"
+            method="post"
+    >
         <div class="zindex">
             <label>Indtast Fornavn</label>
             <input type="text" placeholder="Fornavn" name="firstName">
@@ -76,8 +78,11 @@
         </div>
     </form>
 </div>
-</div>
-
-
+<script>
+    function myFunction() {
+        firstName = document.forms[0].firstName.value;
+        alert(firstName+" er oprettet");
+    }
+</script>
 </body>
 </html>

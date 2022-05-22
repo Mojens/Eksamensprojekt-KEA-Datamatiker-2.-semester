@@ -43,7 +43,7 @@
 </div>
 <div class="form-container">
     <h1>Slet en medarbejder</h1>
-    <form
+    <form   onsubmit="myFunction()"
             action="/deleteEmployee"
             method="post">
         <div>
@@ -65,5 +65,11 @@
         <button type="submit">Slet medarbejder</button>
     </form>
 </div>
+<script >
+    function myFunction() {
+        userID = document.forms[0].userID.value;
+        alert("Bruger "+ userID+" er nu slettet");
+    }
+</script>
 </body>
 </html>
