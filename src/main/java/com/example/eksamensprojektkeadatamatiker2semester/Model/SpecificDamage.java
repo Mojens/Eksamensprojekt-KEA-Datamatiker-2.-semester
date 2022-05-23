@@ -9,20 +9,20 @@ public class SpecificDamage {
   private String picture;
   private String title;
   private int damageReportID;
-  private int leaseID;
+
 
   private double sumTotal;
 
-  public SpecificDamage(int damageID, double price, String description, String picture, String title, int damageReportID, int leaseID) {
+
+
+  public SpecificDamage(int damageID, double price, String description, String picture, String title, int damageReportID) {
     this.damageID = damageID;
     this.price = price;
     this.description = description;
     this.picture = picture;
     this.title = title;
     this.damageReportID = damageReportID;
-    this.leaseID = leaseID;
   }
-
 
   public SpecificDamage(double sumTotal) {
     this.sumTotal = sumTotal;
@@ -31,13 +31,13 @@ public class SpecificDamage {
   public SpecificDamage() {
   }
 
-  public SpecificDamage(double price, String description, String picture, String title, int damageReportID, int leaseID) {
+  public SpecificDamage(double price, String description, String picture, String title, int damageReportID) {
     this.price = price;
     this.description = description;
     this.picture = picture;
     this.title = title;
     this.damageReportID = damageReportID;
-    this.leaseID = leaseID;
+
   }
 
   public double getSumTotal() {
@@ -61,13 +61,6 @@ public class SpecificDamage {
     return "user-photos" + "/" + picture;
   }
 
-  public int getLeaseID() {
-    return leaseID;
-  }
-
-  public void setLeaseID(int leaseID) {
-    this.leaseID = leaseID;
-  }
 
   public int getDamageReportID() {
     return damageReportID;

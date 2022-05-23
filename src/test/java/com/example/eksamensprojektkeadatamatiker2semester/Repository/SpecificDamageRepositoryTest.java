@@ -51,7 +51,7 @@ class SpecificDamageRepositoryTest {
     @Test
     void addSpecificDamage() {
 
-        SpecificDamage specificDamage = new SpecificDamage(11,5000,"Olie lækker, hul skal lappes","default.jpg","Olie læk",1,1);
+        SpecificDamage specificDamage = new SpecificDamage(11,5000,"Olie lækker, hul skal lappes","default.jpg","Olie læk",1);
 
         assertTrue(specificDamageRepository.addSpecificDamage(specificDamage));
         specificDamageRepository.deleteSpecificDamage(11);
@@ -68,7 +68,7 @@ class SpecificDamageRepositoryTest {
         List<SpecificDamage> secondCheck = specificDamageRepository.showAllSpecificDamages();
         assertTrue(firstCheck.size() > secondCheck.size());
 
-        SpecificDamage specificDamage = new SpecificDamage(10,5000,"Olie lækker, hul skal lappes","default.jpg","Olie læk",1,1);
+        SpecificDamage specificDamage = new SpecificDamage(10,5000,"Olie lækker, hul skal lappes","default.jpg","Olie læk",1);
         specificDamageRepository.addSpecificDamage(specificDamage);
 
 
@@ -77,7 +77,7 @@ class SpecificDamageRepositoryTest {
     @Test
     void editSpecificDamage() {
 
-        SpecificDamage updatedSpecificDamageReport = new SpecificDamage(2400,"Ridse i laken","default.jpg","Ridse i laken",2,2);
+        SpecificDamage updatedSpecificDamageReport = new SpecificDamage(2400,"Ridse i laken","default.jpg","Ridse i laken",2);
         assertTrue(specificDamageRepository.editSpecificDamage(updatedSpecificDamageReport,2));
 
     }

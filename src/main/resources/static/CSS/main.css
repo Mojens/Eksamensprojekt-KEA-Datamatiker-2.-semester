@@ -47,8 +47,8 @@ body,html{
     padding: 30px;
     min-height: 480px;
     max-height: 480px;
-    max-width: 570px;
-    min-width: 570px;
+    max-width: 530px;
+    min-width: 530px;
     background-color: #ffffff;
     margin: 10px 0 10px 10px;
     border-radius: 10px;
@@ -289,7 +289,6 @@ select{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-
 }
 
 .container-cards .card {
@@ -312,8 +311,8 @@ select{
 
 .card-header-big img {
     max-height: 300px;
-    max-width: 570px;
-    min-width: 570px;
+    max-width: 530px;
+    min-width: 530px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     object-fit: fill;
@@ -328,8 +327,8 @@ select{
     padding: 10px;
     min-height: 175px;
     max-height: 175px;
-    max-width: 570px;
-    min-width: 570px;
+    max-width: 530px;
+    min-width: 530px;
     background-color: #ffffff;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -499,7 +498,7 @@ input::-webkit-file-upload-button:hover {
     background-color: white;
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    max-width: 550px;
+    max-width: 530px;
 
 }
 
@@ -519,7 +518,7 @@ input::-webkit-file-upload-button:hover {
     background-color: white;
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    max-width: 550px;
+    max-width: 530px;
     max-height: 222px;
     min-height: 222px;
 

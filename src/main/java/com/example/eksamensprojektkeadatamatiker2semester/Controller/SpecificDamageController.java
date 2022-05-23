@@ -76,7 +76,7 @@ public class SpecificDamageController {
     System.out.println(fileName);
 
 
-    specificDamageRepository.addSpecificDamage(new SpecificDamage(price, description, newPicture, title, damageReport.getDamageReportID(), lease.getLeaseID()));
+    specificDamageRepository.addSpecificDamage(new SpecificDamage(price, description, newPicture, title, damageReport.getDamageReportID()));
 
     model.addAttribute("car", car);
     model.addAttribute("lease", lease);

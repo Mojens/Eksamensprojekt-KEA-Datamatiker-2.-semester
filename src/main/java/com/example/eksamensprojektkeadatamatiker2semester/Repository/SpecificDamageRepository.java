@@ -36,9 +36,9 @@ public class SpecificDamageRepository {
         String picture = rs.getString(4);
         String title = rs.getString(5);
         int damageReportID = rs.getInt(6);
-        int leaseID = rs.getInt(7);
 
-        specificDamageList.add(new SpecificDamage(specificDamageID, price, description, picture, title, damageReportID, leaseID));
+
+        specificDamageList.add(new SpecificDamage(specificDamageID, price, description, picture, title, damageReportID));
 
       }
       ps.close();
@@ -90,9 +90,9 @@ public class SpecificDamageRepository {
         String picture = rs.getString(4);
         String title = rs.getString(5);
         int damageReportID = rs.getInt(6);
-        int leaseID = rs.getInt(7);
 
-        reportList.add(new SpecificDamage(specificDamageID, price, description, picture, title, damageReportID, leaseID));
+
+        reportList.add(new SpecificDamage(specificDamageID, price, description, picture, title, damageReportID));
       }
       ps.close();
 
@@ -106,7 +106,7 @@ public class SpecificDamageRepository {
 
 
   public boolean addSpecificDamage(SpecificDamage specificDamage) {
-    final String SQL_ADD_QUERY = "INSERT INTO SpecificDamage(specificDamageID,price,description,picture,title,DamageReport_damageReportID,Leases_leaseID) VALUES(?,?,?,?,?,?,?)";
+    final String SQL_ADD_QUERY = "INSERT INTO SpecificDamage(specificDamageID,price,description,picture,title,DamageReport_damageReportID) VALUES(?,?,?,?,?,?)";
 
     try {
       PreparedStatement ps = connection.prepareStatement(SQL_ADD_QUERY);
@@ -116,7 +116,7 @@ public class SpecificDamageRepository {
       ps.setString(4, specificDamage.getPicture());
       ps.setString(5, specificDamage.getTitle());
       ps.setInt(6, specificDamage.getDamageReportID());
-      ps.setInt(7, specificDamage.getLeaseID());
+
 
       ps.executeUpdate();
 
@@ -148,7 +148,7 @@ public class SpecificDamageRepository {
   }
 
   public boolean editSpecificDamage(SpecificDamage sd, int id) {
-    final String SQL_EDIT = "UPDATE SpecificDamage SET price = ?, description = ?, picture = ?, title = ?, DamageReport_damageReportID = ?, Leases_leaseID = ? WHERE specificDamageID = '" + id + "'";
+    final String SQL_EDIT = "UPDATE SpecificDamage SET price = ?, description = ?, picture = ?, title = ?, DamageReport_damageReportID = ? WHERE specificDamageID = '" + id + "'";
 
     try {
       PreparedStatement ps = connection.prepareStatement(SQL_EDIT);
@@ -158,7 +158,7 @@ public class SpecificDamageRepository {
       ps.setString(3, sd.getPicture());
       ps.setString(4, sd.getTitle());
       ps.setInt(5, sd.getDamageReportID());
-      ps.setInt(6, sd.getLeaseID());
+
 
       ps.executeUpdate();
       return true;
