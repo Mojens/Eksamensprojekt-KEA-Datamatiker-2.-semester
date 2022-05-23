@@ -45,4 +45,26 @@ public class DashboardRepository {
     return leasedCars;
   }
 
+  public List<Car> brandModelList(){
+    List<Car> brandModelList = new ArrayList<>();
+    final String QUERY = "SELECT DISTINCT brand,model From Cars";
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+      ResultSet resultSet = preparedStatement.executeQuery(QUERY);
+      while (resultSet.next()) {
+        String brand = resultSet.getString(1);
+        String model = resultSet.getString(2);
+
+
+        brandModelList.add(new Car(brand, model));
+
+      }
+
+    } catch (SQLException e) {
+      System.out.print("Kunne ikke finde nogle udlejede biler");
+      e.printStackTrace();
+    }
+    return brandModelList;
+  }
+
 }

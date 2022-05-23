@@ -28,5 +28,18 @@ public class DashboardService {
     return totalPrice;
   }
 
+  public int howManyPerModel(List<Car> allCars, String model, String brand) {
+    int counter = 0;
+    for (Car c :
+        allCars) {
+      if (c.getModel().equals(model)) {
+        if (c.getBrand().equals(brand)) {
+          counter = counter + 1;
+        }
+      }
+    }
+
+    return 0;
+  }
 
 }

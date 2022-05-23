@@ -34,6 +34,11 @@ public class Car {
     this.isLeased = isLeased;
 
   }
+  public Car(String brand, String model) {
+    this.brand = brand;
+    this.model = model;
+
+  }
 
   public Car() {
 

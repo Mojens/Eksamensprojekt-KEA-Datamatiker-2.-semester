@@ -40,12 +40,16 @@ public class DashboardController {
     model.addAttribute("user",user);
     List<Car> leasedCars = dashboardRepository.addLeasedCarsToList();
     List<Car> allCars = carRepository.showAllCars();
+    List<Car> brandModel = dashboardRepository.brandModelList();
     int amountOfLeasedCars = dashboardService.howManyisLeased(leasedCars);
     double totalPriceOfLeasedCars = dashboardService.totalPriceLeasedCar(leasedCars);
+    DashboardService dashboardServices = new DashboardService();
+    model.addAttribute("DashboardService",dashboardServices);
     model.addAttribute("listOfLeasedCars", leasedCars);
     model.addAttribute("totalPriceOfLeasedCars", totalPriceOfLeasedCars);
     model.addAttribute("amountOfLeasedCars", amountOfLeasedCars);
     model.addAttribute("allCars", allCars);
+    model.addAttribute("brandModel",brandModel);
 
     return controllerService.dashboard(httpSession);
   }

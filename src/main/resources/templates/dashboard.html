@@ -161,6 +161,39 @@
                             </tr>
                         </table>
                     </details>
+                    <details>
+                        <summary>Udlejet pr enkelt bil</summary>
+                        <h6>Hvis bilen er udlejet er status rød</h6>
+                        <button style="background-color: red"></button>
+                        <h6>Hvis bilen er tilgængelig er status grøn</h6>
+                        <button style="background-color: green"></button>
+                        <table class="allCars">
+                            <thead>
+                            <tr>
+                                <th class="th-header">
+                                    Bil Mærke
+                                </th>
+                                <th class="th-header">
+                                    Bil Model
+                                </th>
+                                <th class="th-header">
+                                    Antal Udlejet
+                                </th>
+                                <th class="th-header">
+                                    Antal biler
+                                </th>
+                            </tr>
+                            </thead>
+                            <tr th:each="brandModel : ${brandModel}">
+                                <td class="td" th:text="${brandModel.getBrand()}">
+                                </td>
+                                <td class="td" th:text="${brandModel.getModel()}">
+                                </td>
+                                <td th:text="${DashboardService.howManyPerModel(listOfLeasedCars,brandModel.getModel(),brandModel.getBrand())}">
+                                </td>
+                            </tr>
+                        </table>
+                    </details>
                 </div>
             </div>
         </div>
