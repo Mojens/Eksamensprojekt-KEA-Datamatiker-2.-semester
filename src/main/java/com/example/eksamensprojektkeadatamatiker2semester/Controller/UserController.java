@@ -4,10 +4,12 @@ import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.EmployeeRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.UserRepository;
+import com.example.eksamensprojektkeadatamatiker2semester.Service.ControllerService;
 import com.example.eksamensprojektkeadatamatiker2semester.Service.UserService;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -22,12 +24,16 @@ public class UserController {
 
   EmployeeRepository employeeRepository;
 
+  ControllerService controllerService;
+
   public UserController(UserRepository userRepository,
                         UserService userService,
-                        EmployeeRepository employeeRepository) {
+                        EmployeeRepository employeeRepository,
+                        ControllerService controllerService) {
     this.userRepository = userRepository;
     this.userService = userService;
     this.employeeRepository = employeeRepository;
+    this.controllerService = controllerService;
   }
 
   @PostMapping("/login")
@@ -76,6 +82,17 @@ public class UserController {
     System.out.println(bCryptPassword);
     userRepository.changePassword(selectedUser.getUsername(), bCryptPassword, selectedUser);
     return "redirect:/skiftkode";
+  }
+
+  @GetMapping("/createCar")
+  public String viewCreateCar(HttpSession httpSession){
+
+    return controllerService.sletBruger(httpSession);
+  }
+
+  @PostMapping("/createCar")
+  public String createCar(){
+    return "";
   }
 
 }
