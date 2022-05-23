@@ -1,10 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Opret bruger</title>
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/main.css">
+    <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
 <body>
+<nav class="navi-section">
+    <div class="navbar" id="navbar">
+        <div class="logo-left-admin">
+            <a href="/opretbruger"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                        src="../static/CSS/images/Logo-250x250.png"/></a>
+        </div>
+        <div class="name-logout">
+            <a href="../createcar" >Registrer Køretøj</a>
+            <a href="../dashboard" >Se KPI</a>
+            <a class="navi-username" th:text="${user.username}"></a>
+            <a href="../logout" class="login-button">Logud</a>
+        </div>
+    </div>
+</nav>
+<nav th:if="${user.type==4}" class="navi-section-admin">
+    <div class="navbar" id="navbar-admin">
+        <div class="logo-left-admin">
 
+        </div>
+        <div class="navigation">
+            <a th:if="${user.type==4}" href="../dashboard">Dashboard</a>
+            <a th:if="${user.type==4}" href="../opretlejeaftale">Lejeaftaler</a>
+            <a th:if="${user.type==4}" href="../findlease">Skadesrapport</a>
+            <a th:if="${user.type==4}" href="../opretbruger" >Håndter bruger </a>
+        </div>
+    </div>
+</nav>
+<div class="hero-backdrop">
+    <img th:src="@{../CSS/images/hero.png}" class="backdrop" alt="hero-backdrop"
+         src="../static/CSS/images/hero.png"/>
+</div>
+<div class="form-container">
+    <h1>Registrer ny køretøj</h1>
+    <form
+            action="/createnewcar"
+            onsubmit="myFunction()"
+            method="post"
+    >
+        <div class="zindex">
+            <label>Indtast stelnummer</label>
+            <input type="text" placeholder="GYTH234M" name="stelnummer">
+
+            <label>Indtast Brand</label>
+            <input type="text" placeholder="fx. BMW, Mercedes, Opel" name="brand">
+
+            <label>Indtast Model</label>
+            <input type="text" placeholder="X5, C63 AMG" name="model">
+
+            <label>Indtast prisen</label>
+            <input type="text" placeholder="3000000" name="price">
+
+            <button type="submit">Registrer ny bil</button>
+        </div>
+    </form>
+</div>
+<script>
+    function myFunction() {
+        stelnummer = document.forms[0].stelnummer.value;
+        alert(stelnummer+" er oprettet");
+    }
+</script>
 </body>
 </html>

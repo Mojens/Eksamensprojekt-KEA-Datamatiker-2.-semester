@@ -26,6 +26,14 @@ public class Car {
     this.price = price;
     this.isLeased = isLeased;
   }
+  public Car(String stelNummer, String brand, String model, double price, int isLeased) {
+    this.stelNummer = stelNummer;
+    this.brand = brand;
+    this.model = model;
+    this.price = price;
+    this.isLeased = isLeased;
+
+  }
 
   public Car() {
 

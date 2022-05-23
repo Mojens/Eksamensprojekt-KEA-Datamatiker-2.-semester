@@ -1,6 +1,7 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
+import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionManager;
 import org.springframework.stereotype.Repository;
@@ -200,6 +201,30 @@ public class CarRepository {
 
     } catch (SQLException e) {
       System.out.println("Kunne ikke opdatere bilen");
+      e.printStackTrace();
+      return false;
+    }
+
+  }
+
+  public boolean createNewCar(Car car) {
+    final String QUERY = "INSERT INTO Cars (vognNummer, stelNummer, brand, model, price, isLeased) VALUES (?, ?, ?, ?, ?, ?)";
+
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+
+      preparedStatement.setInt(1, car.getVognNummer());
+      preparedStatement.setString(2, car.getStelNummer());
+      preparedStatement.setString(3, car.getBrand());
+      preparedStatement.setString(4, car.getModel());
+      preparedStatement.setDouble(5, car.getPrice());
+      preparedStatement.setInt(6, car.isLeased());
+
+      preparedStatement.executeUpdate();
+      return true;
+
+    } catch (SQLException e) {
+      System.out.println("Kan ikke oprette bruger");
       e.printStackTrace();
       return false;
     }
