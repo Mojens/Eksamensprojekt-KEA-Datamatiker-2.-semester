@@ -3,6 +3,7 @@ package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
+import com.example.eksamensprojektkeadatamatiker2semester.Model.SpecificDamage;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionManager;
 import org.springframework.stereotype.Repository;
 
@@ -228,6 +229,31 @@ public class CarRepository {
       e.printStackTrace();
       return false;
     }
+
+  }
+
+  public double sumPriceLeasedCars(String brandInput, String modelInput) {
+    double sum = 0;
+    final String SQL_SHOW_DAMAGE = "SELECT SUM(price) FROM Cars WHERE brand = "+"'"+brandInput+"'"+" AND model = "+"'"+modelInput+"'"+" AND isLeased = 1";
+
+    try {
+      PreparedStatement ps = connection.prepareStatement(SQL_SHOW_DAMAGE);
+      ResultSet rs = ps.executeQuery();
+
+      while (rs.next()) {
+        double sumTotal = rs.getDouble(1);
+
+        sum = sumTotal;
+
+      }
+      System.out.println(sum);
+      ps.close();
+
+    } catch (SQLException e) {
+      System.out.println("Kunne ikke finde nogle skader");
+      e.printStackTrace();
+    }
+    return sum;
 
   }
 }

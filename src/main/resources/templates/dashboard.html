@@ -174,7 +174,7 @@
         </div>
     </div>
         <h2>Udlejet pr enkelt bil</h2>
-        <h6>Hvis 75% eller over af specifk model og mærke er udlejet er status rød/h6>
+        <h6>Hvis 75% eller over af specifk model og mærke er udlejet er status rød</h6>
         <button style="background-color: red"></button>
         <h6>hvis 50% til 75% af specifik model og mærke er udlejet er status gul</h6>
         <button style="background-color: yellow"></button>
@@ -226,10 +226,10 @@
                 <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 4}">
                     <button style="background-color: green"></button>
                 </td>
+                <td th:text="${carRep.sumPriceLeasedCars(brandModels.getBrand(), brandModels.getModel())}">
+                </td>
             </tr>
         </table>
 </div>
-
-
 </body>
 </html>
