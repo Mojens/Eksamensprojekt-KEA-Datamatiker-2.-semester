@@ -198,10 +198,10 @@
                     Antal biler
                 </th>
                 <th class="th-header">
-                    Status
+                  DKK. pr. md.
                 </th>
                 <th class="th-header">
-                    Price
+                    Status
                 </th>
             </tr>
             </thead>
@@ -214,6 +214,8 @@
                 </td>
                 <td th:text="${DashboardService.howManyPerModel(allCars,brandModels.getModel(),brandModels.getBrand())}">
                 </td>
+                <td th:text="${#numbers.formatDecimal(carRep.sumPriceLeasedCars(brandModels.getBrand(), brandModels.getModel()),0,0)}">
+                </td>
                 <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 1}">
                     <button style="background-color: red"></button>
                 </td>
@@ -225,8 +227,6 @@
                 </td>
                 <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 4}">
                     <button style="background-color: green"></button>
-                </td>
-                <td th:text="${carRep.sumPriceLeasedCars(brandModels.getBrand(), brandModels.getModel())}">
                 </td>
             </tr>
         </table>
