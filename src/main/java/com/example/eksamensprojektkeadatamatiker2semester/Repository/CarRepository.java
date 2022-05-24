@@ -246,7 +246,6 @@ public class CarRepository {
         sum = sumTotal;
 
       }
-      System.out.println(sum);
       ps.close();
 
     } catch (SQLException e) {
