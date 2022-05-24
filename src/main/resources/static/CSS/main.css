@@ -554,6 +554,27 @@ input::-webkit-file-upload-button:hover {
     margin-top: 20px;
     padding: 20px;
 }
+.item-d {
+    grid-area: fourth;
+    align-self: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    max-width: 530px;
+    max-height: 222px;
+    min-height: 222px;
+
+}
+
+.d-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 20px;
+}
 
 .big-header {
     display: inline;
