@@ -30,16 +30,44 @@ public class DashboardService {
 
   public int howManyPerModel(List<Car> allCars, String model, String brand) {
     int counter = 0;
-    for (Car c :
-        allCars) {
-      if (c.getModel().equals(model)) {
-        if (c.getBrand().equals(brand)) {
+    for (Car c : allCars) {
+      if (c.getModel().equalsIgnoreCase(model.toLowerCase())) {
+        if (c.getBrand().equalsIgnoreCase(brand.toLowerCase())) {
           counter = counter + 1;
         }
       }
     }
+    return counter;
+  }
 
+  public int percentageStatus(List<Car> allCars, List<Car> allLeasedCars, String model, String brand) {
+    int carCounter = 0;
+    for (Car allCar : allCars) {
+      if (allCar.getModel().equalsIgnoreCase(model.toLowerCase())) {
+        if (allCar.getBrand().equalsIgnoreCase(brand.toLowerCase())) {
+          carCounter = carCounter + 1;
+        }
+      }
+    }
+    int countLeased = 0;
+    for (Car leasedCar : allLeasedCars) {
+      if (leasedCar.getModel().equalsIgnoreCase(model.toLowerCase())) {
+        if (leasedCar.getBrand().equalsIgnoreCase(brand.toLowerCase())) {
+          countLeased = countLeased + 1;
+        }
+      }
+    }
+    if (countLeased * 100 / carCounter <=25){
+      return 4;
+    }  else if (countLeased * 100 / carCounter > 25 && countLeased * 100 / carCounter  <= 50){
+      return 3;
+    } else if (countLeased * 100 / carCounter > 50 && countLeased * 100 / carCounter  <= 75){
+      return 2;
+    }else if (countLeased * 100 / carCounter > 75 && countLeased * 100 / carCounter  <= 100){
+      return 1;
+    }
     return 0;
   }
+
 
 }

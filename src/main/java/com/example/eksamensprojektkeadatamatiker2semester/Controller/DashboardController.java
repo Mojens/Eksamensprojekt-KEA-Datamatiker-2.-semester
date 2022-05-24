@@ -43,8 +43,8 @@ public class DashboardController {
     List<Car> brandModel = dashboardRepository.brandModelList();
     int amountOfLeasedCars = dashboardService.howManyisLeased(leasedCars);
     double totalPriceOfLeasedCars = dashboardService.totalPriceLeasedCar(leasedCars);
-    DashboardService dashboardServices = new DashboardService();
-    model.addAttribute("DashboardService",dashboardServices);
+    DashboardService dashboardServices1 = new DashboardService();
+    model.addAttribute("DashboardService",dashboardServices1);
     model.addAttribute("listOfLeasedCars", leasedCars);
     model.addAttribute("totalPriceOfLeasedCars", totalPriceOfLeasedCars);
     model.addAttribute("amountOfLeasedCars", amountOfLeasedCars);
