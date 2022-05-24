@@ -186,7 +186,7 @@
                         <td class="td-popular" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1}"
                             th:text="${#numbers.formatDecimal(carRep.sumPriceLeasedCars(bilModels.getBrand(), bilModels.getModel()),0,0)}">
                         </td>
-                        </td>
+
                         <td class="td-popular" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1}"
                                 th:text="${DashboardService.howManyPerModel(listOfLeasedCars,bilModels.getModel(),bilModels.getBrand())}">
                         </td>

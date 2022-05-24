@@ -576,6 +576,23 @@ input::-webkit-file-upload-button:hover {
     padding: 20px;
 }
 
+.popularCar {
+    table-layout: fixed;
+    width: 80%;
+    box-shadow: none;
+}
+
+.td-popular {
+
+}
+
+.one-row:first-child{
+    display: block;
+}
+.one-row:last-child{
+    display: none;
+}
+
 .big-header {
     display: inline;
     font-size: 66px;
@@ -697,9 +714,4 @@ input[type=file]{
     margin: 0;
 }
 
-.one-row:first-child{
-    display: block;
-}
-.one-row:last-child{
-    display: none;
-}
+
