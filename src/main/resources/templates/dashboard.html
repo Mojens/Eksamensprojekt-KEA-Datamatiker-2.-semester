@@ -172,7 +172,37 @@
                 </div>
             </div>
         </div>
+        <div class="item-c">
+            <div class="b-container">
+            <h2 class="header-kpi">Lavest Bil på lager</h2>
+                <table class="allCars">
+                    <tr  class="one-row" th:each="bilModels : ${brandModel}">
+                        <td     th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1}"
+                                th:text="${bilModels.getBrand()}">
+                        </td>
+                        <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1}"
+                            th:text="${bilModels.getModel()}">
+                        </td>
+                        <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1}"
+                            th:text="${#numbers.formatDecimal(carRep.sumPriceLeasedCars(bilModels.getBrand(), bilModels.getModel()),0,0)}">
+                        </td>
+                        </td>
+                        <td th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1}"
+                                th:text="${DashboardService.howManyPerModel(listOfLeasedCars,bilModels.getModel(),bilModels.getBrand())}">
+                        </td>
+                        <td th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1}"
+                                th:text="${DashboardService.howManyPerModel(allCars,bilModels.getModel(),bilModels.getBrand())}">
+                        </td>
+                        <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1}">
+                            <button style="background-color: red"></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
+    <br>
+    <br>
         <h2>Udlejet pr enkelt bil</h2>
         <h6>Hvis 75% eller over af specifk model og mærke er udlejet er status rød</h6>
         <button style="background-color: red"></button>

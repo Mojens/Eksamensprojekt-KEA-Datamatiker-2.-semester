@@ -3,6 +3,7 @@ package com.example.eksamensprojektkeadatamatiker2semester.Service;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -69,5 +70,6 @@ public class DashboardService {
     return 0;
   }
 
+  }
 
-}
+
