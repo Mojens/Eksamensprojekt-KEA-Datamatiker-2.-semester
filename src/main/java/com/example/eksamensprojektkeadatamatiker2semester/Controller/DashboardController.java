@@ -1,18 +1,16 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Controller;
 
-import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
-import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
-import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
-import com.example.eksamensprojektkeadatamatiker2semester.Repository.CarRepository;
-import com.example.eksamensprojektkeadatamatiker2semester.Repository.DashboardRepository;
-import com.example.eksamensprojektkeadatamatiker2semester.Repository.LeaseRepository;
+import com.example.eksamensprojektkeadatamatiker2semester.Model.*;
+import com.example.eksamensprojektkeadatamatiker2semester.Repository.*;
 import com.example.eksamensprojektkeadatamatiker2semester.Service.ControllerService;
 import com.example.eksamensprojektkeadatamatiker2semester.Service.DashboardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,15 +21,19 @@ public class DashboardController {
   CarRepository carRepository;
   LeaseRepository leaseRepository;
   ControllerService controllerService;
+  CarsLeasesRepository carsLeasesRepository;
+  EmployeeRepository employeeRepository;
 
   public DashboardController(DashboardRepository dashboardRepository, DashboardService dashboardService,
-                             CarRepository carRepository, LeaseRepository leaseRepository, ControllerService controllerService) {
+                             CarRepository carRepository, LeaseRepository leaseRepository, ControllerService controllerService,
+                             CarsLeasesRepository carsLeasesRepository, EmployeeRepository employeeRepository) {
     this.dashboardRepository = dashboardRepository;
     this.dashboardService = dashboardService;
     this.carRepository = carRepository;
     this.leaseRepository = leaseRepository;
     this.controllerService = controllerService;
-
+    this.carsLeasesRepository = carsLeasesRepository;
+    this.employeeRepository = employeeRepository;
   }
 
   @GetMapping("/dashboard")
@@ -64,11 +66,11 @@ public class DashboardController {
   }
 
   @GetMapping("/findretur")
-  public String findReturn(HttpSession httpSession, Model model, LocalDate keyword){
+  public String findReturn(HttpSession httpSession, Model model, String keyword){
     User user = (User) httpSession.getAttribute("user");
     model.addAttribute("user",user);
     if (keyword != null){
-      List<Lease> list = leaseRepository.findLeaseByIDAsList(Integer.parseInt(String.valueOf(keyword)));
+      List<Lease> list = leaseRepository.findLeaseByDateAsList(Date.valueOf(keyword).toLocalDate());
       Lease checkEndDate = leaseRepository.showLeases();
       Lease period = leaseRepository.showLeases();
       model.addAttribute("period",period);
@@ -85,7 +87,31 @@ public class DashboardController {
 
     }
 
-    return controllerService.findLease(httpSession);
+    return controllerService.findRetur(httpSession);
+  }
+
+  @GetMapping("/fundetretur/{id}")
+  public String showCarsAndLeases(@PathVariable("id") int id, HttpSession httpSession, Model model){
+    User user = (User) httpSession.getAttribute("user");
+    model.addAttribute("user",user);
+
+    CarsLeases carsLeases = carsLeasesRepository.findCarsLeasesByLeaseID(id);
+    Lease lease = leaseRepository.findLeaseByID(carsLeases.getLeaseID());
+    Car car = carRepository.findCarByID(carsLeases.getCarID());
+    Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
+
+    Lease checkEndDate = leaseRepository.showLeases();
+    Lease period = leaseRepository.showLeases();
+    model.addAttribute("period",period);
+    model.addAttribute("checkEndDate",checkEndDate);
+
+    model.addAttribute("carLeases",carsLeases);
+    model.addAttribute("lease",lease);
+    model.addAttribute("car",car);
+    model.addAttribute("employee",employee);
+
+
+    return controllerService.fundetretur(httpSession);
   }
 
 

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8">
+  <title>Register Fejl og Mangler</title>
+  <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+  <link rel="stylesheet" href="../static/CSS/main.css">
+  <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+  <link rel="stylesheet" href="../static/CSS/NavBar.css">
+</head>
+<body>
+<nav class="navi-section">
+  <div class="navbar" id="navbar">
+    <div class="logo-left-skade">
+      <a href="/findlease"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                src="../static/CSS/images/Logo-250x250.png"/></a>
+    </div>
+    <div class="name-logout">
+      <a href="../findretur" >Find tilbageleveringer</a>
+      <a href="../createcar" >Opret Køretøj</a>
+      <a href="../dashboard">Se KPI</a>
+      <a class="navi-username" th:text="${user.username}"></a>
+      <a href="../logout" class="login-button">Logud</a>
+    </div>
+  </div>
+</nav>
+<nav th:if="${user.type==4}" class="navi-section-admin">
+  <div class="navbar" id="navbar-admin">
+    <div class="logo-left-admin">
+
+    </div>
+    <div class="navigation">
+      <a th:if="${user.type==4}" href="../dashboard">Dashboard</a>
+      <a th:if="${user.type==4}" href="../opretlejeaftale" >Lejeaftaler</a>
+      <a th:if="${user.type==4}" href="../findlease" >Skadesrapport</a>
+      <a th:if="${user.type==4}" href="../opretbruger" >Håndter bruger </a>
+    </div>
+  </div>
+</nav>
+<div class="hero-backdrop">
+  <img th:src="@{../CSS/images/hero.png}" class="backdrop" alt="hero-backdrop"
+       src="../static/CSS/images/hero.png"/>
+</div>
+<div class="container-dashboard">
+  <h1>Skade og udbedring</h1>
+  <form
+          method="get"
+          th:action="@{/findretur/}">
+    <div class="container-form-big">
+      <input type="date" name="keyword" th:value="${keyword}" placeholder="Find dato" size="50">
+      <button class="submit-button-small" type="submit">Søg efter lejeaftale</button>
+    </div>
+
+  </form>
+
+  <div class="three-tables-container">
+    <table class="reverse">
+      <thead>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Lejeaftale ID
+        </th>
+        <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${lease.leaseID}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Kunde Fornavn
+        </th>
+        <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${lease.firstName}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Kunde Efternavn
+        </th>
+        <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${lease.lastName}">
+        </td>
+      </tr>
+      <tr>
+        <th class="th" scope="col">
+          Lejeaftale I dage
+        </th>
+        <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${period.subtractDates(lease.startDate,lease.endDate)}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Start Dato
+        </th>
+        <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${lease.startDate}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Slut Dato
+        </th>
+        <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${lease.endDate}">
+        </td>
+      </tr>
+
+      </thead>
+
+    </table>
+    <table class="reverse">
+      <thead>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Vognnummer
+        </th>
+        <td class="skade" th:text="${car.vognNummer}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Stelnummer
+        </th>
+        <td class="skade" th:text="${car.stelNummer}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Mærke
+        </th>
+        <td class="skade" th:text="${car.brand}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Model
+        </th>
+        <td class="skade" th:text="${car.model}">
+        </td>
+      </tr>
+      <tr class="tr">
+        <th class="th" scope="col">
+          Pris
+        </th>
+        <td class="skade" th:text="${car.price}">
+        </td>
+      </tr>
+
+      </thead>
+    </table>
+  </div>
+
+
+</div>
+</body>
+</html>

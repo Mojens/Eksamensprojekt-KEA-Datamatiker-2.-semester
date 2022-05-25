@@ -143,6 +143,34 @@ public class LeaseRepository {
 
     }
 
+    public List <Lease> findLeaseByDateAsList(LocalDate date){
+        List<Lease>  leases = new ArrayList<>();
+        final String SQL_SHOW_LEASES = "SELECT * FROM Leases WHERE endDate = '"+date+"'";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_SHOW_LEASES);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int leaseID = rs.getInt(1);
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+                int userID = rs.getInt(4);
+                LocalDate startDate = rs.getDate(5).toLocalDate();
+                LocalDate endDate = rs.getDate(6).toLocalDate();
+
+                leases.add(new Lease(leaseID,firstName, lastName,userID,startDate,endDate));
+
+            }
+            ps.close();
+        } catch (SQLException e) {
+            System.out.println("Kunne ikke finde den lease");
+            e.printStackTrace();
+        }
+        return leases;
+
+    }
+
     public boolean addLease(Lease lease){
         final String SQL_ADD_QUERY = "INSERT INTO Leases(leaseID,customerFirstName,customerLastName,UserLogin_userID,startDate,endDate) VALUES(?,?,?,?,?,?)";
 

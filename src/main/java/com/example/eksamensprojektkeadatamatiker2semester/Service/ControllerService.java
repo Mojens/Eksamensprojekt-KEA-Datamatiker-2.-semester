@@ -101,6 +101,21 @@ public class ControllerService {
     }
     return currentPage;
   }
+  public String fundetretur(HttpSession httpSession) {
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null) {
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
+        currentPage = "/fundetretur";
+      } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
+        currentPage = "/login";
+      }
+    } else if (httpSession.getAttribute("userName") == null) {
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
   public String findLease(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -108,6 +123,21 @@ public class ControllerService {
       System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
         currentPage = "/findlease";
+      } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
+        currentPage = "/login";
+      }
+    } else if (httpSession.getAttribute("userName") == null) {
+      currentPage = "/login";
+    }
+    return currentPage;
+  }
+  public String findRetur(HttpSession httpSession) {
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null) {
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
+        currentPage = "/findretur";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
         currentPage = "/login";
       }
