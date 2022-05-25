@@ -183,7 +183,7 @@
             <h2 class="header-kpi">Mest udlejet bil</h2>
 
                 <table class="popularCar" >
-                    <tr  class="one-row" th:each="bilModels : ${brandModel}" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 2 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 3 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 4}">
+                    <tr  class="one-row" th:each="bilModels : ${brandModel}" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 2 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 3 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 4}" >
                         <td colspan="2" class="td-popular"
                                 th:text="${bilModels.getBrand()}+' '+${bilModels.getModel()}">
                         </td>
