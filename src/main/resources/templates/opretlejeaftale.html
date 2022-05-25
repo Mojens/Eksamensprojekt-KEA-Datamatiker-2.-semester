@@ -48,6 +48,7 @@
 
     <form
             method="POST"
+            onsubmit="myFunction()"
             th:action="@{/opretlejeaftale}">
         <div class="container-form-big">
 
@@ -77,5 +78,11 @@
 
     </form>
 </div>
+<script>
+    function myFunction() {
+        firstName = document.forms[0].firstName.value;
+        alert("Leje aftalen er nu oprettet, for denne kunde: "+firstName);
+    }
+</script>
 </body>
 </html>

@@ -217,6 +217,7 @@
         <form
                 th:action="@{/fejl/{id}(id=${damageReport.damageReportID})}"
                 method="post"
+                onsubmit="myFunction()"
                 enctype="multipart/form-data"
                 class="form-control">
             <div class="container-form-small">
@@ -279,5 +280,11 @@
     </table>
 
 </div>
+<script>
+    function myFunction() {
+        title = document.forms[0].title.value;
+        alert(title+" er oprettet");
+    }
+</script>
 </body>
 </html>
