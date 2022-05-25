@@ -263,7 +263,7 @@ select{
     rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0) 0px 0px 0px 0px;
-    background-color: #EDFBFE;
+
 }
 
 .link {
@@ -503,6 +503,17 @@ input::-webkit-file-upload-button:hover {
     max-width: 530px;
     min-height: 222px;
 }
+.item-a:hover {
+    grid-area: first;
+    align-self: center;
+    background-color: #2D7BC6;
+    color: white!important;
+    transition-duration: .3s;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    max-width: 530px;
+    min-height: 222px;
+}
 
 .a-container {
     display: flex;
@@ -525,6 +536,19 @@ input::-webkit-file-upload-button:hover {
     min-height: 222px;
 
 }
+.item-b:hover {
+    grid-area: second;
+    align-self: center;
+    color: white!important;
+    background-color: #2D7BC6;
+    transition-duration: .3s;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    max-width: 530px;
+    max-height: 222px;
+    min-height: 222px;
+
+}
 
 .b-container {
     display: flex;
@@ -538,7 +562,20 @@ input::-webkit-file-upload-button:hover {
 .item-c {
     grid-area: third;
     align-self: center;
-    background-color: white;
+   background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    max-width: 530px;
+    max-height: 222px;
+    min-height: 222px;
+
+}
+.item-c:hover {
+    grid-area: third;
+    align-self: center;
+    background-color: #2D7BC6;
+    color: white!important;
+    transition-duration: .3s;
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     max-width: 530px;
@@ -561,6 +598,19 @@ input::-webkit-file-upload-button:hover {
     grid-area: fourth;
     align-self: center;
     background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    max-width: 530px;
+    max-height: 222px;
+    min-height: 222px;
+
+}
+.item-d:hover {
+    grid-area: fourth;
+    align-self: center;
+    background-color: #2D7BC6;
+    color: white!important;
+    transition-duration: .3s;
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     max-width: 530px;
@@ -659,7 +709,7 @@ input::-webkit-file-upload-button:hover {
     justify-content: center;
     text-align: center;
     font-size: 28px;
-    color: green;
+
 }
 .td-popular:nth-child(3):after{
     display: inline;
@@ -684,27 +734,22 @@ input::-webkit-file-upload-button:hover {
 }
 
 
-.one-row:nth-child(even) {
-    background-color:white;
-}
-.one-row:nth-child(odd) {
-    background-color:white;
 
-}
 .one-row:first-of-type{
     display: block;
 }
 .one-row{
     display: none;
+    background-color: inherit;
 }
-/*
+
 .one-row:first-child{
-    display: block;
+    background-color: inherit;
 }
 .one-row:last-child{
-    display: none;
+    background-color: inherit;
 }
-*/
+
 
 
 .big-header {
@@ -714,30 +759,35 @@ input::-webkit-file-upload-button:hover {
 .big-header-kpi{
     display: inline;
     font-size: 66px;
-    color: green;
+
 }
 .big-header-kpi::after{
     content: " DKK";
+    color: black;
+    opacity: 0.8;
     display: inline;
     font-size: 40px;
-    color: #1a1919;
+
 }
 .big-header-kpilevering{
     display: inline;
     font-size: 66px;
-    color: green;
+
 }
 .big-header-kpilevering::after{
     content: "biler";
     display: inline;
+    opacity: 0.8;
+    color: black;
+    margin-left: 4px;
     font-size: 40px;
-    color: #1a1919;
+
 }
 .small-header-kpi{
     margin:0;
     display: inline;
     font-size: 30px;
-    color: green;
+
 }
 .small-header-kpi:before{
     margin:0;
@@ -753,14 +803,14 @@ input::-webkit-file-upload-button:hover {
     opacity: 0.8;
     display: inline;
     font-size: 20px;
-    color: #1a1919;
+
 }
 
 .small-header-kpi-leveret{
     margin:0;
     display: inline;
     font-size: 30px;
-    color: green;
+
 }
 
 .small-header-kpi-leveret:before{
@@ -791,7 +841,7 @@ input::-webkit-file-upload-button:hover {
     opacity: 0.8;
     display: inline;
     font-size: 20px;
-    color: #1a1919;
+
 }
 
 .big-header-last {
