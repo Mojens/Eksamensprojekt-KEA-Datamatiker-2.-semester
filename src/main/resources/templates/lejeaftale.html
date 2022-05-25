@@ -80,6 +80,9 @@
             <th scope="col">
                 Slut Dato
             </th>
+            <th scope="col">
+                Status
+            </th>
             <th scope="col">Se rapporten</th>
         </tr>
         </thead>
@@ -96,6 +99,13 @@
             <td class="individual" th:text="${l.startDate}">
             </td>
             <td class="individual" th:text="${l.endDate}">
+            </td>
+            <td class="individual" th:if="${l.getStatus()==0}">
+                <button style="background-color: #B22727"></button>
+            </td>
+            <td class="individual" th:if="${l.getStatus()==1}">
+                <button style="background-color: #3c805c"></button>
+            </td>
             <td class="row-update"><a class="link-row link" th:href="@{/seaftale/{id}(id=${l.leaseID})}">Se lejeaftale</a>
             </td>
 
