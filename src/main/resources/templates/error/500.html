@@ -20,7 +20,8 @@
     <h1 class="error">500 - Fejl</h1>
     <h1 class="errormessage">Hov... Noget gik galt</h1>
     <h1 class="errormessage">Kontakt din leder</h1>
-    <a href="../"><button type="submit">Tilbage til forsiden</button></a>
+    <button onclick="history.back()">Tilbage til forrige side</button>
+    <a href="../"><button type="submit">tilbage til forsiden</button></a>
     <div class="hero-backdrop">
         <img th:src="@{../CSS/images/hero.png}" class="backdrop" alt="hero-backdrop"
              src="../../static/CSS/images/hero.png"/>
