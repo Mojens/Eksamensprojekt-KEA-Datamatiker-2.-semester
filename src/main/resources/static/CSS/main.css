@@ -184,8 +184,7 @@ a {
 
 
 th:hover {
-    opacity: 0.7;
-    border-radius: 8px;
+    opacity: 0.8;
     transition-duration: .3s;
 }
 
@@ -934,7 +933,6 @@ summary::marker{
 .summary-small:hover {
     color: white;
     opacity: 0.8;
-    border-radius: 10px;
     transition-duration: .3s;
 
 }
