@@ -70,6 +70,20 @@ public class DashboardService {
     return 0;
   }
 
+  public int percentageStatusForPriceBetweenLeasedAndNoneLeased(double allCars, double allLeasedCars) {
+
+    if (allLeasedCars * 100 / allCars <=25){
+      return 4;
+    }  else if (allLeasedCars * 100 / allCars > 25 && allLeasedCars * 100 / allCars  <= 50){
+      return 3;
+    } else if (allLeasedCars * 100 / allCars > 50 && allLeasedCars * 100 / allCars  <= 75){
+      return 2;
+    }else if ((allLeasedCars * 100 / allCars) > 75 && (allLeasedCars * 100 / allCars)  <= 100){
+      return 1;
+    }
+    return 0;
+  }
+
   }
 
 

@@ -52,8 +52,9 @@
         <div class="item-a">
             <div class="a-container">
                 <h2 class="header-kpi">Udlejet</h2>
-                <div class="inline-kpi">
-                    <h1 class="big-header" th:text="${amountOfLeasedCars}">Alle biler</h1>
+                <div class="inline-kpi" >
+                    <h1 class="big-header" th:classappend="${(colorPrice==1 ? 'bigheadergreen' : '') + (colorPrice==2 ? 'bigheaderyellow' : '')
+                    + (colorPrice==3 ? 'bigheaderorange': '') + (colorPrice==4 ? 'bigheaderred' : '')}"  th:text="${amountOfLeasedCars}">Alle biler</h1>
                     <h1 class="big-header-last" th:text="${allCars.size()}"></h1>
                 </div>
                 <div class="inline">
@@ -169,30 +170,29 @@
             <div class="b-container">
                 <h2 class="header-kpi">Pris på udlejet</h2>
                 <div class="inline-kpi">
-                    <h1 class="big-header-kpi" th:text="${#numbers.formatDecimal(totalPriceOfLeasedCars,0,0)}"></h1>
+                    <h1 class="big-header-kpi" th:classappend="${(colorPrice==1 ? 'bigheadergreen' : '') + (colorPrice==2 ? 'bigheaderyellow' : '')
+                    + (colorPrice==3 ? 'bigheaderorange': '') + (colorPrice==4 ? 'bigheaderred' : '')}"
+                        th:text="${#numbers.formatDecimal(totalPriceOfLeasedCars,0,0)}"></h1>
 
                 </div>
                 <h1 class="small-header-kpi" th:text="${#numbers.formatDecimal(totalPriceOfAllCars,0,0)}"></h1>
             </div>
         </div>
-        <div class="item-c" th:if="${color==1 || color==2}">
+        <div class="item-c" th:if="${color==1 || color==2 || color==3 || color==4}">
             <div class="c-container">
             <h2 class="header-kpi">Mest udlejet bil</h2>
 
                 <table class="popularCar" >
-                    <tr  class="one-row" th:each="bilModels : ${brandModel}" th:if="${color == 1 || color == 2} ">
+                    <tr  class="one-row" th:each="bilModels : ${brandModel}" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 2 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 3 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 4}">
                         <td colspan="2" class="td-popular"
                                 th:text="${bilModels.getBrand()}+' '+${bilModels.getModel()}">
                         </td>
-
-                        <td colspan="2" class="td-popular" th:classappend="${color==1} ? tdpopularred : tdpopularorange"
+                        <td colspan="2" class="td-popular" th:classappend="${(DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1 ? 'tdpopularred' : '') + (DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 2 ? 'tdpopularorange' : '') + (DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 3 ? 'tdpopularyellow' : '') + (DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 4 ? 'tdpopulargreen' : '')}"
                             th:text="${DashboardService.howManyPerModel(listOfLeasedCars,bilModels.getModel(),bilModels.getBrand())} + '/' +${DashboardService.howManyPerModel(allCars,bilModels.getModel(),bilModels.getBrand())} ">
                         </td>
-
                         <td class="td-popular"
                             th:text="${#numbers.formatDecimal(carRep.sumPriceLeasedCars(bilModels.getBrand(), bilModels.getModel()),0,0)}">
                         </td>
-
                     </tr>
                 </table>
 

@@ -506,8 +506,8 @@ input::-webkit-file-upload-button:hover {
 .item-a:hover {
     grid-area: first;
     align-self: center;
-    background-color: #2D7BC6;
-    color: white!important;
+    background-color: #f6f3f3;
+
     transition-duration: .3s;
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -539,8 +539,8 @@ input::-webkit-file-upload-button:hover {
 .item-b:hover {
     grid-area: second;
     align-self: center;
-    color: white!important;
-    background-color: #2D7BC6;
+
+    background-color: #f8f6f6;
     transition-duration: .3s;
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -573,8 +573,8 @@ input::-webkit-file-upload-button:hover {
 .item-c:hover {
     grid-area: third;
     align-self: center;
-    background-color: #2D7BC6;
-    color: white!important;
+    background-color: #f8f6f6;
+
     transition-duration: .3s;
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -608,8 +608,7 @@ input::-webkit-file-upload-button:hover {
 .item-d:hover {
     grid-area: fourth;
     align-self: center;
-    background-color: #2D7BC6;
-    color: white!important;
+    background-color: #f8f6f6;
     transition-duration: .3s;
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -654,13 +653,25 @@ input::-webkit-file-upload-button:hover {
     display: flex;
     justify-content: center;
     font-size: 56px;
-    color: red;
+    color: #B22727;
 }
 .tdpopularorange:nth-child(2){
     display: flex;
     justify-content: center;
     font-size: 56px;
-    color:orange;
+    color: #EE5007;
+}
+.tdpopularyellow:nth-child(2){
+    display: flex;
+    justify-content: center;
+    font-size: 56px;
+    color: #F8CB2E;
+}
+.tdpopulargreen:nth-child(2){
+    display: flex;
+    justify-content: center;
+    font-size: 56px;
+    color: #3c805c;
 }
 .td-popular:nth-child(3){
     display: flex;
@@ -691,8 +702,6 @@ input::-webkit-file-upload-button:hover {
 
 }
 
-
-
 .one-row:first-of-type{
     display: block;
 }
@@ -713,11 +722,33 @@ input::-webkit-file-upload-button:hover {
 .big-header {
     display: inline;
     font-size: 66px;
+
 }
 .big-header-kpi{
     display: inline;
     font-size: 66px;
+    font-weight: bold;
+}
+.bigheaderred{
+    display: inline;
+    font-size: 66px;
+    color: #B22727;
 
+}
+.bigheaderorange{
+    display: inline;
+    font-size: 66px;
+    color: #EE5007;
+}
+.bigheaderyellow{
+    display: inline;
+    font-size: 66px;
+    color: #F8CB2E;
+}
+.bigheadergreen{
+    display: inline;
+    font-size: 66px;
+    color: #3c805c;
 }
 .big-header-kpi::after{
     content: " DKK";
@@ -790,7 +821,6 @@ input::-webkit-file-upload-button:hover {
 
 .big-header-last {
     display: inline;
-    color: green;
     font-size: 66px;
 
 }
