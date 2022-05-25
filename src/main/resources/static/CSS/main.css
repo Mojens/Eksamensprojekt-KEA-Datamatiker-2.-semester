@@ -578,6 +578,48 @@ input::-webkit-file-upload-button:hover {
     margin-top: 15px;
     padding: 10px 5px 10px 5px;
 }
+.item-e {
+    grid-area: fifth;
+    align-self: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    max-width: 530px;
+    max-height: 222px;
+    min-height: 222px;
+
+}
+
+.e-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 10px 5px 10px 5px;
+}
+.item-f {
+    grid-area: sixth;
+    align-self: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    max-width: 530px;
+    max-height: 222px;
+    min-height: 222px;
+
+}
+
+.f-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 10px 5px 10px 5px;
+}
 
 .popularCar {
     table-layout: fixed;
@@ -729,7 +771,21 @@ input::-webkit-file-upload-button:hover {
     font-size:20px;
     content:"Dagens Dato: "
 }
+.small-header-kpi-maanedgennem{
+    margin:0;
+    display: inline;
+    font-size: 30px;
+    color: green;
+}
 
+.small-header-kpi-maanedgennem:before{
+    margin:0;
+    display: inline;
+    opacity: 0.8;
+    color: black;
+    font-size:20px;
+    content:"Måned: "
+}
 .small-header-kpi-leveret::after{
     margin:0;
     opacity: 0.8;

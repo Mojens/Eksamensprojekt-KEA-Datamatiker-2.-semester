@@ -289,4 +289,39 @@ public class CarRepository {
     return sum;
 
   }
-}
+
+  public List<Car> allCarsByID(int inputVognNummer){
+    List<Car> soldToday = new ArrayList<>();
+    Car car = new Car();
+    final String SQL_SHOW_CAR = "SELECT * FROM Cars WHERE vognNummer = '" + inputVognNummer + "'";
+
+    try {
+      PreparedStatement ps = connection.prepareStatement(SQL_SHOW_CAR);
+      ResultSet rs = ps.executeQuery();
+
+      while (rs.next()) {
+        int vognNummer = rs.getInt(1);
+        String stelNummer = rs.getString(2);
+        String brand = rs.getString(3);
+        String model = rs.getString(4);
+        double price = rs.getDouble(5);
+        int isLeased = rs.getInt(6);
+
+        car.setVognNummer(vognNummer);
+        car.setStelNummer(stelNummer);
+        car.setBrand(brand);
+        car.setModel(model);
+        car.setPrice(price);
+        car.setLeased(isLeased);
+      }
+      soldToday.add(car);
+      ps.close();
+    } catch (SQLException e) {
+      System.out.println("Kunne ikke finde bilen");
+      e.printStackTrace();
+    }
+    return soldToday;
+
+  }
+  }
+

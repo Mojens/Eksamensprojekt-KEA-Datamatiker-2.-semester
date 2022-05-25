@@ -207,6 +207,24 @@
                 <h1 class="small-header-kpi-leveret" th:text="${dagensDato}"></h1>
             </div>
         </div>
+        <div class="item-e">
+            <div class="f-container">
+                <h2 class="header-kpi">Dagens salg</h2>
+                <div class="inline-kpi">
+                    <h1 class="big-header-kpi" th:text="${todaysSale}"></h1>
+                </div>
+                <h1 class="small-header-kpi-leveret" th:text="${dagensDato}"></h1>
+            </div>
+        </div>
+        <div class="item-f">
+            <div class="f-container">
+                <h2 class="header-kpi">Gennemsnitlige salg for måned</h2>
+                <div class="inline-kpi">
+                    <h1 class="big-header-kpi" th:text="${returnstoday.size()}"></h1>
+                </div>
+                <h1 class="small-header-kpi-maanedgennem" th:text="${thismonth}"></h1>
+            </div>
+        </div>
     </div>
     <br>
     <br>
