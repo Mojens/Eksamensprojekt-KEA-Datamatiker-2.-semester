@@ -45,17 +45,20 @@ public class DashboardController {
     List<Car> leasedCars = dashboardRepository.addLeasedCarsToList();
     List<Car> allCars = carRepository.showAllCars();
     List<Car> brandModel = dashboardRepository.brandModelList();
-    List<Lease> returnsToday = leaseRepository.findAllCarsByEndDate(LocalDate.now());
+    List<Lease> returnsToday = leaseRepository.findAllLeasesByEndDate(LocalDate.now());
     Car car = carRepository.showAllCarsAsObject();
     int amountOfLeasedCars = dashboardService.howManyisLeased(leasedCars);
     double totalPriceOfLeasedCars = dashboardService.totalPriceLeasedCar(leasedCars);
     double totalPriceOfAllCars = dashboardService.totalPriceLeasedCar(allCars);
     int colorPrice = dashboardService.percentageStatusForPriceBetweenLeasedAndNoneLeased(totalPriceOfAllCars,totalPriceOfLeasedCars);
     int color = dashboardService.percentageStatus(allCars,leasedCars,car.getModel(),car.getBrand());
-    System.out.println(color + " Color Return");
+    double todaysSale = dashboardService.todaysSale();
+    String currentMonth = dashboardService.convertLocalToDanish(LocalDate.now().getMonth());
+    LocalDate currentDate = LocalDate.now();
     DashboardService dashboardServices1 = new DashboardService();
     CarRepository carRepository1 = new CarRepository();
-    model.addAttribute("dagensDato",LocalDate.now());
+    model.addAttribute("thismonth",currentMonth);
+    model.addAttribute("dagensDato",currentDate);
     model.addAttribute("color",color);
     model.addAttribute("DashboardService",dashboardServices1);
     model.addAttribute("carRep",carRepository1);
@@ -67,6 +70,7 @@ public class DashboardController {
     model.addAttribute("allCars", allCars);
     model.addAttribute("brandModel",brandModel);
     model.addAttribute("colorPrice",colorPrice);
+    model.addAttribute("todaysSale",todaysSale);
 
     return controllerService.dashboard(httpSession);
   }

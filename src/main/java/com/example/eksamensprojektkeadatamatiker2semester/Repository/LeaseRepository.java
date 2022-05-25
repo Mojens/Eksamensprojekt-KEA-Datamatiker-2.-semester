@@ -1,6 +1,5 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
-import com.example.eksamensprojektkeadatamatiker2semester.Model.CarsLeases;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionManager;
 import org.springframework.stereotype.Repository;
@@ -297,9 +296,37 @@ public class LeaseRepository {
 
     }
 
-    public List<Lease> findAllCarsByEndDate(LocalDate inputDate) {
+    public List<Lease> findAllLeasesByEndDate(LocalDate inputDate) {
         List<Lease> leases = new ArrayList<>();
         final String SQL_SHOW_REPORT = "SELECT * FROM Leases WHERE endDate = "+"'"+inputDate+"'";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_SHOW_REPORT);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int leaseID = rs.getInt(1);
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+                int userID = rs.getInt(4);
+                LocalDate startDate = rs.getDate(5).toLocalDate();
+                LocalDate endDate = rs.getDate(6).toLocalDate();
+
+
+                leases.add(new Lease(leaseID, firstName, lastName, userID, startDate, endDate));
+
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            System.out.println("Kunne ikke finde nogle skader");
+            e.printStackTrace();
+        }
+        return leases;
+    }
+    public List<Lease> findAllLeasesByStartDate(LocalDate inputDate) {
+        List<Lease> leases = new ArrayList<>();
+        final String SQL_SHOW_REPORT = "SELECT * FROM Leases WHERE startDate = "+"'"+inputDate+"'";
 
         try {
             PreparedStatement ps = connection.prepareStatement(SQL_SHOW_REPORT);

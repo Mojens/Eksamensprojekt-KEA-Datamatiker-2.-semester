@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Queue;
 
 @Repository
@@ -86,6 +88,33 @@ public class CarsLeasesRepository {
       e.printStackTrace();
     }
     return carsLeases;
+  }
+  public List<CarsLeases> findCarsLeasesByLeaseIDToday(int inputLeaseID){
+    List<CarsLeases> todayCarLeases = new ArrayList<>();
+    CarsLeases carsLeases = new CarsLeases();
+    final String QUERY = "SELECT * FROM CarsLeases WHERE Leases_leaseID = " + "'" + inputLeaseID + "'";
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
+      ResultSet resultSet = preparedStatement.executeQuery(QUERY);
+
+      while (resultSet.next()) {
+        int carLeasesID = resultSet.getInt(1);
+        int carID = resultSet.getInt(2);
+        int leaseID = resultSet.getInt(3);
+
+        carsLeases.setId(carLeasesID);
+        carsLeases.setCarID(carID);
+        carsLeases.setLeaseID(leaseID);
+
+      }
+      todayCarLeases.add(carsLeases);
+      preparedStatement.close();
+
+    } catch (SQLException e) {
+      System.out.println("Kunne ikke finde en medarbejde med denne ID");
+      e.printStackTrace();
+    }
+    return todayCarLeases;
   }
 
 }

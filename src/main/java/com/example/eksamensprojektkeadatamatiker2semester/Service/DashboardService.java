@@ -1,13 +1,20 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Service;
 
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
+import com.example.eksamensprojektkeadatamatiker2semester.Model.CarsLeases;
+import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
+import com.example.eksamensprojektkeadatamatiker2semester.Repository.CarRepository;
+import com.example.eksamensprojektkeadatamatiker2semester.Repository.CarsLeasesRepository;
+import com.example.eksamensprojektkeadatamatiker2semester.Repository.LeaseRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 @Service
 public class DashboardService {
+
 
   //Tjekker hvormange car objecter der er leased ud fra en liste
   public int howManyisLeased(List<Car> leasedCars) {
@@ -68,6 +75,56 @@ public class DashboardService {
       return 1;
     }
     return 0;
+  }
+
+  public String convertLocalToDanish(Month localDateMonth){
+    if (String.valueOf(localDateMonth).equalsIgnoreCase("January")){
+      return "Januar";
+    } else if (String.valueOf(localDateMonth).equalsIgnoreCase("February")) {
+      return "Februar";
+    }else if (String.valueOf(localDateMonth).equalsIgnoreCase("March")){
+      return "Marts";
+    } else if (String.valueOf(localDateMonth).equalsIgnoreCase("April")) {
+      return "April";
+    } else if (String.valueOf(localDateMonth).equalsIgnoreCase("May")) {
+      return "Maj";
+    }else if(String.valueOf(localDateMonth).equalsIgnoreCase("June")){
+      return "Juni";
+    }else if(String.valueOf(localDateMonth).equalsIgnoreCase("July")){
+      return "Juli";
+    }else if(String.valueOf(localDateMonth).equalsIgnoreCase("August")){
+      return "August";
+    }else if(String.valueOf(localDateMonth).equalsIgnoreCase("September")){
+      return "September";
+    }else if(String.valueOf(localDateMonth).equalsIgnoreCase("October")){
+      return "Oktober";
+    }else if(String.valueOf(localDateMonth).equalsIgnoreCase("November")){
+      return "November";
+    }else if(String.valueOf(localDateMonth).equalsIgnoreCase("December")){
+      return "December";
+    }
+    return "Cant read Month";
+  }
+
+  public double todaysSale(){
+    LeaseRepository leaseRepository = new LeaseRepository();
+    CarsLeasesRepository carsLeasesRepository = new CarsLeasesRepository();
+    CarRepository carRepository = new CarRepository();
+    List<Lease> todaysLeases;
+    List<CarsLeases> todaysCarleases;
+    List<Car> carsSoldToday;
+    double totalSale = 0.0;
+    todaysLeases = leaseRepository.findAllLeasesByStartDate(LocalDate.now());
+    for (Lease lease: todaysLeases) {
+      todaysCarleases = carsLeasesRepository.findCarsLeasesByLeaseIDToday(lease.getLeaseID());
+      for (CarsLeases carLease : todaysCarleases) {
+        carsSoldToday = carRepository.allCarsByID(carLease.getCarID());
+        for (Car car : carsSoldToday){
+          totalSale = totalSale+car.getPrice();
+        }
+      }
+    }
+    return totalSale;
   }
 
   public int percentageStatusForPriceBetweenLeasedAndNoneLeased(double allCars, double allLeasedCars) {
