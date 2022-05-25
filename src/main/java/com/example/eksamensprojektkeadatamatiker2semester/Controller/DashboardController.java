@@ -52,7 +52,6 @@ public class DashboardController {
     double totalPriceOfAllCars = dashboardService.totalPriceLeasedCar(allCars);
     int color = dashboardService.percentageStatus(allCars,leasedCars,car.getModel(),car.getBrand());
     double todaysSale = dashboardService.todaysSale();
-    System.out.println(todaysSale);
     String currentMonth = dashboardService.convertLocalToDanish(LocalDate.now().getMonth());
     LocalDate currentDate = LocalDate.now();
     DashboardService dashboardServices1 = new DashboardService();
