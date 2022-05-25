@@ -271,6 +271,27 @@ select{
     rgba(0, 0, 0, 0) 0px 0px 0px 0px;
 
 }
+.selectDate{
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing:0.8px;
+    line-height: 20px;
+    padding: 10px;
+    border-radius: 6px;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    background-color: #112844;
+}
+.selectDate option:hover{
+    background-color: white;
+    color: #112844;
+}
+
+
+
 
 .link {
     color: white;
@@ -497,7 +518,7 @@ input::-webkit-file-upload-button:hover {
     "third fourth"
     "fifth sixth";
     margin-top: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 .item-a {
@@ -693,7 +714,7 @@ input::-webkit-file-upload-button:hover {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     margin-top: 15px;
     padding: 10px 5px 10px 5px;
 }
@@ -884,7 +905,7 @@ input::-webkit-file-upload-button:hover {
     margin:0;
     display: inline;
     font-size: 30px;
-    color: green;
+
 }
 
 .small-header-kpi-maanedgennem:before{
@@ -928,7 +949,7 @@ input::-webkit-file-upload-button:hover {
 
 }
 summary::marker{
-    color: black;
+    color: white;
 
 }
 
@@ -957,6 +978,28 @@ summary::marker{
     transition-duration: .3s;
 
 }
+.summary-big{
+    font-family: OpenSans-normal, sans-serif;
+    text-align: center;
+    min-width: 180px;
+    max-width: 180px;
+    letter-spacing: 0.8px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+    background-color: #112844;
+    padding: 10px 10px 10px 10px;
+    border: 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.summary-big:hover{
+    color: white;
+    opacity: 0.8;
+    transition-duration: .3s;
+}
 
 details {
     display: inline;
@@ -977,6 +1020,10 @@ details {
 .inline-kpi {
     display: inline;
     margin-bottom: 15px;
+}
+.inline-kpi-dates {
+    display: inline;
+    margin-bottom: 2px;
 }
 
 form {

@@ -211,7 +211,7 @@
             <div class="f-container">
                 <h2 class="header-kpi">Dagens salg</h2>
                 <div class="inline-kpi">
-                    <h1 class="big-header-kpi" th:text="${todaysSale}"></h1>
+                    <h1 class="big-header-kpi" th:text="${#numbers.formatDecimal(todaysSale,0,0)}"></h1>
                 </div>
                 <h1 class="small-header-kpi-leveret" th:text="${dagensDato}"></h1>
             </div>
@@ -219,17 +219,17 @@
         <div class="item-f">
             <div class="f-container">
                 <h2 class="header-kpi">Total salg</h2>
-                <div class="inline-kpi">
+                <div class="inline-kpi-dates">
                     <h1 class="big-header-kpi" th:if="${monthlySales < 1}"
-                        th:text="${monthlySale}"></h1>
+                        th:text="${#numbers.formatDecimal(monthlySale,0,0)}"></h1>
                     <h1 class="big-header-kpi" th:if="${monthlySales > 1}"
-                        th:text="${monthlySales}"></h1>
+                        th:text="${#numbers.formatDecimal(monthlySales,0,0)}"></h1>
                 </div>
                 <h1 class="small-header-kpi-maanedgennem" th:if="${monthlySales < 1}"
                     th:text="${thismonth}"></h1>
                 <h1 class="small-header-kpi-maanedgennem" th:if="${monthlySales > 1}"
                     th:text="${selectedMonth}"></h1>
-                <select name="/dashboard" onchange="location = this.value">
+                <select class="selectDate" name="/dashboard" onchange="location = this.value">
                     <option>Vælg en måned</option>
                     <option value="/dashboard/1">Januar</option>
                     <option value="/dashboard/2">Februar</option>
@@ -247,11 +247,10 @@
             </div>
         </div>
     </div>
-    <br>
-    <br>
-        <h2>Udlejet pr enkelt bil</h2>
+
+        <h1>Udlejet pr enkelt bil</h1>
         <details>
-            <summary>Farvens betydelse</summary>
+            <summary class="summary-big">Farvens betydelse</summary>
             <h6>Hvis 75% eller over af den specifikke model er udlejet er status rød</h6>
             <button style="background-color: #B22727"></button>
             <h6>hvis 50% til 75% af den specifikke model er udlejet er status gul</h6>
