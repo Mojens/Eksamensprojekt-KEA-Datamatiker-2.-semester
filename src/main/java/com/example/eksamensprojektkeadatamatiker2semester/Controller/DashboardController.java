@@ -48,15 +48,18 @@ public class DashboardController {
     double totalPriceOfLeasedCars = dashboardService.totalPriceLeasedCar(leasedCars);
     double totalPriceOfAllCars = dashboardService.totalPriceLeasedCar(allCars);
     int color = dashboardService.percentageStatus(allCars,leasedCars,car.getModel(),car.getBrand());
+    int colorPrice = dashboardService.percentageStatusForPriceBetweenLeasedAndNoneLeased(totalPriceOfAllCars,totalPriceOfLeasedCars);
     double todaysSale = dashboardService.todaysSale();
     double monthlySale = dashboardService.currentMonthSale(LocalDate.now().getMonth().getValue());
     String currentMonth = dashboardService.convertLocalToDanish(LocalDate.now().getMonth());
+
     LocalDate currentDate = LocalDate.now();
     DashboardService dashboardServices1 = new DashboardService();
     CarRepository carRepository1 = new CarRepository();
     model.addAttribute("thismonth",currentMonth);
     model.addAttribute("dagensDato",currentDate);
     model.addAttribute("color",color);
+    model.addAttribute("colorPrice",colorPrice);
     model.addAttribute("DashboardService",dashboardServices1);
     model.addAttribute("carRep",carRepository1);
     model.addAttribute("listOfLeasedCars", leasedCars);
