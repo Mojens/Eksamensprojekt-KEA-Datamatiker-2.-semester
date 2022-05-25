@@ -8,7 +8,7 @@ import javax.servlet.http.HttpSession;
 @Service
 public class ControllerService {
 
-// Type 1
+  // Type 1
   public String opretLejeAftaler(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -24,6 +24,7 @@ public class ControllerService {
     }
     return currentPage;
   }
+
   public String alleLejeAftaler(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -39,6 +40,7 @@ public class ControllerService {
     }
     return currentPage;
   }
+
   public String aftaler(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -54,6 +56,7 @@ public class ControllerService {
     }
     return currentPage;
   }
+
   public String lejeAftaler(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -69,6 +72,7 @@ public class ControllerService {
     }
     return currentPage;
   }
+
   public String seAftale(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -101,6 +105,7 @@ public class ControllerService {
     }
     return currentPage;
   }
+
   public String fundetretur(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -116,6 +121,7 @@ public class ControllerService {
     }
     return currentPage;
   }
+
   public String findLease(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -131,6 +137,7 @@ public class ControllerService {
     }
     return currentPage;
   }
+
   public String findRetur(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -146,6 +153,7 @@ public class ControllerService {
     }
     return currentPage;
   }
+
   public String skader(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -161,6 +169,7 @@ public class ControllerService {
     }
     return currentPage;
   }
+
   public String registrerFejlOgMangler(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -176,6 +185,7 @@ public class ControllerService {
     }
     return currentPage;
   }
+
   public String skadeRapport(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -191,7 +201,8 @@ public class ControllerService {
     }
     return currentPage;
   }
-//Type 4
+
+  //Type 4
   public String opretBruger(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -207,6 +218,7 @@ public class ControllerService {
     }
     return currentPage;
   }
+
   public String skiftKode(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -222,6 +234,7 @@ public class ControllerService {
     }
     return currentPage;
   }
+
   public String sletBruger(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
@@ -272,5 +285,20 @@ public class ControllerService {
     return currentPage;
   }
 
-
+  public String ifLoggedReturn(HttpSession httpSession) {
+    User loggedUser = (User) httpSession.getAttribute("user");
+    if (loggedUser != null) {
+      if (loggedUser.getType() == 1) {
+        return "redirect:/opretlejeaftale";
+      } else if (loggedUser.getType() == 2) {
+        return "redirect:/findlease";
+      } else if (loggedUser.getType() == 3) {
+        return "redirect:/dashboard";
+      } else if (loggedUser.getType() == 4) {
+        return "redirect:/opretbruger";
+      }
+      return "redirect:/login";
+    }
+    return "/login";
+  }
 }

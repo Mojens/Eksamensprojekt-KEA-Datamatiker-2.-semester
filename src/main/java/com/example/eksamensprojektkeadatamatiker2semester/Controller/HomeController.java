@@ -58,13 +58,13 @@ public class HomeController {
   }
 
   @GetMapping("/login")
-  public String login(){
-    return "/login";
+  public String login(HttpSession httpSession){
+    return controllerService.ifLoggedReturn(httpSession);
   }
 
   @GetMapping("/")
-  public String index(){
-    return "/login";
+  public String index(HttpSession httpSession){
+    return controllerService.ifLoggedReturn(httpSession);
   }
 
 }
