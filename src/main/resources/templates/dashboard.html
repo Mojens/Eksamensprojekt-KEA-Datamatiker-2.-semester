@@ -61,11 +61,11 @@
 
                     <details>
 
-                        <SUMMARY>Udlejet biler</SUMMARY>
+                        <summary class="summary-small">Udlejet biler</summary>
                         <h6>Hvis bilen er udlejet er status rød</h6>
-                        <button style="background-color: red"></button>
+                        <button style="background-color: #B22727"></button>
                         <h6>Hvis bilen er tilgængelig er status grøn</h6>
-                        <button style="background-color: green"></button>
+                        <button style="background-color: #3c805c"></button>
                         <table class="allCars">
                             <thead>
                             <tr>
@@ -103,20 +103,20 @@
                                 <td class="td" th:text="${#numbers.formatDecimal(Car.getPrice(),0,0)}">
                                 </td>
                                 <td class="td" th:if="${Car.isLeased() == 1}">
-                                    <button style="background-color: red"></button>
+                                    <button style="background-color: #B22727"></button>
                                 </td>
                                 <td class="td" th:if="${Car.isLeased() == 0}">
-                                    <button style="background-color: green"></button>
+                                    <button style="background-color: #3c805c"></button>
                                 </td>
                             </tr>
                         </table>
                     </details>
                     <details>
-                        <summary>Alle biler</summary>
+                        <summary class="summary-small">Alle biler</summary>
                         <h6>Hvis bilen er udlejet er status rød</h6>
-                        <button style="background-color: red"></button>
+                        <button style="background-color: #B22727"></button>
                         <h6>Hvis bilen er tilgængelig er status grøn</h6>
-                        <button style="background-color: green"></button>
+                        <button style="background-color: #3c805c"></button>
                         <table class="allCars">
                             <thead>
                             <tr>
@@ -155,10 +155,10 @@
 
                                 </td>
                                 <td class="td" th:if="${Car.isLeased() == 1}">
-                                    <button style="background-color: red"></button>
+                                    <button style="background-color: #B22727"></button>
                                 </td>
                                 <td class="td" th:if="${Car.isLeased() == 0}">
-                                    <button style="background-color: green"></button>
+                                    <button style="background-color: #3c805c"></button>
                                 </td>
                             </tr>
                         </table>
@@ -253,13 +253,13 @@
         <details>
             <summary>Farvens betydelse</summary>
             <h6>Hvis 75% eller over af den specifikke model er udlejet er status rød</h6>
-            <button style="background-color: red"></button>
+            <button style="background-color: #B22727"></button>
             <h6>hvis 50% til 75% af den specifikke model er udlejet er status gul</h6>
-            <button style="background-color: yellow"></button>
+            <button style="background-color: #F8CB2E"></button>
             <h6>hvis 25% til 50% af den specifikke model er udlejet er status orange</h6>
-            <button style="background-color: orange"></button>
+            <button style="background-color: #EE5007"></button>
             <h6>Hvis 25% eller under af den specifikke model er udlejet er status grøn</h6>
-            <button style="background-color: green"></button>
+            <button style="background-color: #3c805c"></button>
         </details>
 
         <table class="allCars">
@@ -297,16 +297,16 @@
                 <td class="td" th:text="${#numbers.formatDecimal(carRep.sumPriceLeasedCars(brandModels.getBrand(), brandModels.getModel()),0,0)}">
                 </td>
                 <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 1}">
-                    <button style="background-color: red"></button>
+                    <button style="background-color: #B22727"></button>
                 </td>
                 <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 2}">
-                    <button style="background-color: orange"></button>
+                    <button style="background-color: #EE5007;"></button>
                 </td>
                 <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 3}">
-                    <button style="background-color: yellow"></button>
+                    <button style="background-color: #F8CB2E;"></button>
                 </td>
                 <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 4}">
-                    <button style="background-color: green"></button>
+                    <button style="background-color: #3c805c"></button>
                 </td>
             </tr>
         </table>
