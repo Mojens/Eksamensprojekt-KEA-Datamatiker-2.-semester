@@ -72,6 +72,7 @@ public class DashboardController {
   public String findReturn(HttpSession httpSession, Model model, String keyword){
     User user = (User) httpSession.getAttribute("user");
     model.addAttribute("user",user);
+
     if (keyword != null){
       List<Lease> list = leaseRepository.findLeaseByDateAsList(Date.valueOf(keyword).toLocalDate());
       Lease checkEndDate = leaseRepository.showLeases();
@@ -105,9 +106,9 @@ public class DashboardController {
 
     Lease checkEndDate = leaseRepository.showLeases();
     Lease period = leaseRepository.showLeases();
+
     model.addAttribute("period",period);
     model.addAttribute("checkEndDate",checkEndDate);
-
     model.addAttribute("carLeases",carsLeases);
     model.addAttribute("lease",lease);
     model.addAttribute("car",car);
