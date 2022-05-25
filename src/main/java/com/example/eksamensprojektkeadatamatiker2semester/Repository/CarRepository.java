@@ -52,6 +52,40 @@ public class CarRepository {
 
   }
 
+  public Car showAllCarsAsObject() {
+    Car car = new Car();
+    final String SQL_SHOW_CAR = "SELECT * FROM Cars";
+
+    try {
+      PreparedStatement ps = connection.prepareStatement(SQL_SHOW_CAR);
+      ResultSet rs = ps.executeQuery();
+
+      while (rs.next()) {
+        int vognNummer = rs.getInt(1);
+        String stelNummer = rs.getString(2);
+        String brand = rs.getString(3);
+        String model = rs.getString(4);
+        double price = rs.getDouble(5);
+        int isLeased = rs.getInt(6);
+
+
+        car.setVognNummer(vognNummer);
+        car.setStelNummer(stelNummer);
+        car.setBrand(brand);
+        car.setModel(model);
+        car.setPrice(price);
+        car.setLeased(isLeased);
+
+      }
+      ps.close();
+    } catch (SQLException e) {
+      System.out.println("Kunne ikke finde nogle biler");
+      e.printStackTrace();
+    }
+    return car;
+
+  }
+
   public List<Car> showAllAvaibleCars() {
     List<Car> carList = new ArrayList<>();
     final String SQL_SHOW_CAR = "SELECT * FROM Cars WHERE isLeased= '0'";
