@@ -483,12 +483,13 @@ input::-webkit-file-upload-button:hover {
 .parent {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 30px;
     grid-row-gap: 30px;
     grid-template-areas:
     "first second"
-    "third fourth";
+    "third fourth"
+    "fifth sixth";
     margin-top: 30px;
     margin-bottom: 50px;
 }
