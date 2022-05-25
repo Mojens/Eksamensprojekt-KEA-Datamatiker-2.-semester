@@ -680,6 +680,17 @@ input::-webkit-file-upload-button:hover {
     font-size: 40px;
     color: #1a1919;
 }
+.big-header-kpilevering{
+    display: inline;
+    font-size: 66px;
+    color: green;
+}
+.big-header-kpilevering::after{
+    content: "biler";
+    display: inline;
+    font-size: 40px;
+    color: #1a1919;
+}
 .small-header-kpi{
     margin:0;
     display: inline;
@@ -703,6 +714,29 @@ input::-webkit-file-upload-button:hover {
     color: #1a1919;
 }
 
+.small-header-kpi-leveret{
+    margin:0;
+    display: inline;
+    font-size: 30px;
+    color: green;
+}
+
+.small-header-kpi-leveret:before{
+    margin:0;
+    display: inline;
+    opacity: 0.8;
+    color: black;
+    font-size:20px;
+    content:"Dagens Dato: "
+}
+
+.small-header-kpi-leveret::after{
+    margin:0;
+    opacity: 0.8;
+    display: inline;
+    font-size: 20px;
+    color: #1a1919;
+}
 
 .big-header-last {
     display: inline;
