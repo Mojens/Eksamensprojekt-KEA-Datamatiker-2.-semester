@@ -49,7 +49,7 @@ public class DashboardController {
     double totalPriceOfAllCars = dashboardService.totalPriceLeasedCar(allCars);
     int color = dashboardService.percentageStatus(allCars,leasedCars,car.getModel(),car.getBrand());
     double todaysSale = dashboardService.todaysSale();
-    double monthlySale = 0.0;
+    double monthlySale = dashboardService.currentMonthSale(LocalDate.now().getMonth().getValue());
     String currentMonth = dashboardService.convertLocalToDanish(LocalDate.now().getMonth());
     LocalDate currentDate = LocalDate.now();
     DashboardService dashboardServices1 = new DashboardService();
@@ -108,7 +108,7 @@ public class DashboardController {
     model.addAttribute("brandModel",brandModel);
     model.addAttribute("colorPrice",colorPrice);
     model.addAttribute("todaysSale",todaysSale);
-    model.addAttribute("monthlySale",monthlySale);
+    model.addAttribute("monthlySales",monthlySale);
     model.addAttribute("selectedMonth",selectedMonth);
 
     return controllerService.dashboard(httpSession);

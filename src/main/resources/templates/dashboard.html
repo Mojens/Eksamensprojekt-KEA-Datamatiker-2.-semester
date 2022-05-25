@@ -220,9 +220,15 @@
             <div class="f-container">
                 <h2 class="header-kpi">Total salg</h2>
                 <div class="inline-kpi">
-                    <h1 class="big-header-kpi" th:text="${monthlySale}"></h1>
+                    <h1 class="big-header-kpi" th:if="${monthlySales < 1}"
+                        th:text="${monthlySale}"></h1>
+                    <h1 class="big-header-kpi" th:if="${monthlySales > 1}"
+                        th:text="${monthlySales}"></h1>
                 </div>
-                <h1 class="small-header-kpi-maanedgennem" th:text="${selectedMonth}"></h1>
+                <h1 class="small-header-kpi-maanedgennem" th:if="${monthlySales < 1}"
+                    th:text="${thismonth}"></h1>
+                <h1 class="small-header-kpi-maanedgennem" th:if="${monthlySales > 1}"
+                    th:text="${selectedMonth}"></h1>
                 <select name="/dashboard" onchange="location = this.value">
                     <option>Vælg en måned</option>
                     <option value="/dashboard/1">Januar</option>
