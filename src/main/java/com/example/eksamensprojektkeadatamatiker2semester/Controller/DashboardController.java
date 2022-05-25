@@ -31,6 +31,7 @@ public class DashboardController {
     this.carRepository = carRepository;
     this.leaseRepository = leaseRepository;
     this.controllerService = controllerService;
+
   }
 
   @GetMapping("/dashboard")
