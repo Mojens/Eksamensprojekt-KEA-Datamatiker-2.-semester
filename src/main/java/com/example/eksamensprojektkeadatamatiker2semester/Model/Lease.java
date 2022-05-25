@@ -122,4 +122,18 @@ public class Lease {
   public void setStatus(int status) {
     this.status = status;
   }
+
+  @Override
+  public String toString() {
+    return "Lease{" +
+        "leaseID=" + leaseID +
+        ", firstName='" + firstName + '\'' +
+        ", lastName='" + lastName + '\'' +
+        ", userID=" + userID +
+        ", startDate=" + startDate +
+        ", endDate=" + endDate +
+        ", today=" + today +
+        ", status=" + status +
+        '}';
+  }
 }

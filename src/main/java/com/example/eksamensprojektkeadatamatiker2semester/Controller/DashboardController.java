@@ -43,6 +43,7 @@ public class DashboardController {
     List<Car> leasedCars = dashboardRepository.addLeasedCarsToList();
     List<Car> allCars = carRepository.showAllCars();
     List<Car> brandModel = dashboardRepository.brandModelList();
+    List<Lease> returnsToday = leaseRepository.findAllCarsByEndDate(LocalDate.now());
     Car car = carRepository.showAllCarsAsObject();
     int amountOfLeasedCars = dashboardService.howManyisLeased(leasedCars);
     double totalPriceOfLeasedCars = dashboardService.totalPriceLeasedCar(leasedCars);
@@ -50,6 +51,7 @@ public class DashboardController {
     int color = dashboardService.percentageStatus(allCars,leasedCars,car.getModel(),car.getBrand());
     DashboardService dashboardServices1 = new DashboardService();
     CarRepository carRepository1 = new CarRepository();
+    model.addAttribute("dagensDato",LocalDate.now());
     model.addAttribute("color",color);
     model.addAttribute("DashboardService",dashboardServices1);
     model.addAttribute("carRep",carRepository1);
@@ -57,6 +59,7 @@ public class DashboardController {
     model.addAttribute("totalPriceOfLeasedCars", totalPriceOfLeasedCars);
     model.addAttribute("totalPriceOfAllCars",totalPriceOfAllCars);
     model.addAttribute("amountOfLeasedCars", amountOfLeasedCars);
+    model.addAttribute("returnstoday",returnsToday);
     model.addAttribute("allCars", allCars);
     model.addAttribute("brandModel",brandModel);
 

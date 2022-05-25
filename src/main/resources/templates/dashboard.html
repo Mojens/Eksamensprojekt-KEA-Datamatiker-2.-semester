@@ -198,14 +198,13 @@
 
             </div>
         </div>
-
-
         <div class="item-d">
             <div class="d-container">
                 <h2 class="header-kpi">Dagens tilbageleveringer</h2>
                 <div class="inline-kpi">
-                    <h1 class="big-header-kpi" th:text="${#numbers.formatDecimal(totalPriceOfLeasedCars,0,0)}"></h1>
+                    <h1 class="big-header-kpilevering" th:text="${returnstoday.size()}"></h1>
                 </div>
+                <h1 class="small-header-kpi-leveret" th:text="${dagensDato}"></h1>
             </div>
         </div>
     </div>
