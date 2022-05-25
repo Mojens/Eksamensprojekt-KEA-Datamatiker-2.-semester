@@ -82,20 +82,20 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="card" th:each="l : ${list}" th:field="${l}">
-            <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"  class="individual" th:text="${l.leaseID}">
+        <tr class="card" th:each="l : ${list}" th:field="${l}" th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1 || l.getStatus() == 0}">
+            <td class="individual" th:text="${l.leaseID}">
             </td>
-            <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual" th:text="${l.firstName}">
+            <td class="individual" th:text="${l.firstName}">
             </td>
-            <td  th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"  class="individual" th:text="${l.lastName}">
+            <td class="individual" th:text="${l.lastName}">
             </td>
-            <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual" th:text="${period.subtractDates(l.startDate,l.endDate)}">
+            <td class="individual" th:text="${period.subtractDates(l.startDate,l.endDate)}">
             </td>
-            <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual" th:text="${l.startDate}">
+            <td class="individual" th:text="${l.startDate}">
             </td>
-            <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual" th:text="${l.endDate}">
+            <td class="individual" th:text="${l.endDate}">
 
-            <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="row-update"><a class="link-row link" th:href="@{/udbedring/{id}(id=${l.leaseID})}">Opret rapport</a>
+            <td class="row-update"><a class="link-row link" th:href="@{/udbedring/{id}(id=${l.leaseID})}">Opret rapport</a>
             </td>
 
         </tr>
