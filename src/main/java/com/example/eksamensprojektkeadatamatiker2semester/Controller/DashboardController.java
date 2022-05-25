@@ -6,8 +6,7 @@ import com.example.eksamensprojektkeadatamatiker2semester.Service.ControllerServ
 import com.example.eksamensprojektkeadatamatiker2semester.Service.DashboardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
@@ -35,11 +34,47 @@ public class DashboardController {
     this.carsLeasesRepository = carsLeasesRepository;
     this.employeeRepository = employeeRepository;
   }
-
   @GetMapping("/dashboard")
   public String showKPI(Model model,
                         HttpSession httpSession) {
+    User user = (User) httpSession.getAttribute("user");
+    model.addAttribute("user",user);
+    List<Car> leasedCars = dashboardRepository.addLeasedCarsToList();
+    List<Car> allCars = carRepository.showAllCars();
+    List<Car> brandModel = dashboardRepository.brandModelList();
+    List<Lease> returnsToday = leaseRepository.findAllLeasesByEndDate(LocalDate.now());
+    Car car = carRepository.showAllCarsAsObject();
+    int amountOfLeasedCars = dashboardService.howManyisLeased(leasedCars);
+    double totalPriceOfLeasedCars = dashboardService.totalPriceLeasedCar(leasedCars);
+    double totalPriceOfAllCars = dashboardService.totalPriceLeasedCar(allCars);
+    int color = dashboardService.percentageStatus(allCars,leasedCars,car.getModel(),car.getBrand());
+    double todaysSale = dashboardService.todaysSale();
+    double monthlySale = 0.0;
+    String currentMonth = dashboardService.convertLocalToDanish(LocalDate.now().getMonth());
+    LocalDate currentDate = LocalDate.now();
+    DashboardService dashboardServices1 = new DashboardService();
+    CarRepository carRepository1 = new CarRepository();
+    model.addAttribute("thismonth",currentMonth);
+    model.addAttribute("dagensDato",currentDate);
+    model.addAttribute("color",color);
+    model.addAttribute("DashboardService",dashboardServices1);
+    model.addAttribute("carRep",carRepository1);
+    model.addAttribute("listOfLeasedCars", leasedCars);
+    model.addAttribute("totalPriceOfLeasedCars", totalPriceOfLeasedCars);
+    model.addAttribute("totalPriceOfAllCars",totalPriceOfAllCars);
+    model.addAttribute("amountOfLeasedCars", amountOfLeasedCars);
+    model.addAttribute("returnstoday",returnsToday);
+    model.addAttribute("allCars", allCars);
+    model.addAttribute("brandModel",brandModel);
+    model.addAttribute("todaysSale",todaysSale);
+    model.addAttribute("monthlySale",monthlySale);
 
+    return controllerService.dashboard(httpSession);
+  }
+  @GetMapping("/dashboard/{numberMonth}")
+  public String showKPI(@PathVariable("numberMonth") int chosenMonth,
+                        Model model,
+                        HttpSession httpSession) {
     User user = (User) httpSession.getAttribute("user");
     model.addAttribute("user",user);
     List<Car> leasedCars = dashboardRepository.addLeasedCarsToList();
@@ -53,7 +88,9 @@ public class DashboardController {
     int colorPrice = dashboardService.percentageStatusForPriceBetweenLeasedAndNoneLeased(totalPriceOfAllCars,totalPriceOfLeasedCars);
     int color = dashboardService.percentageStatus(allCars,leasedCars,car.getModel(),car.getBrand());
     double todaysSale = dashboardService.todaysSale();
+    double monthlySale = dashboardService.currentMonthSale(chosenMonth);
     String currentMonth = dashboardService.convertLocalToDanish(LocalDate.now().getMonth());
+    String selectedMonth = dashboardService.monthByNumber(chosenMonth);
     LocalDate currentDate = LocalDate.now();
     DashboardService dashboardServices1 = new DashboardService();
     CarRepository carRepository1 = new CarRepository();
@@ -71,6 +108,8 @@ public class DashboardController {
     model.addAttribute("brandModel",brandModel);
     model.addAttribute("colorPrice",colorPrice);
     model.addAttribute("todaysSale",todaysSale);
+    model.addAttribute("monthlySale",monthlySale);
+    model.addAttribute("selectedMonth",selectedMonth);
 
     return controllerService.dashboard(httpSession);
   }

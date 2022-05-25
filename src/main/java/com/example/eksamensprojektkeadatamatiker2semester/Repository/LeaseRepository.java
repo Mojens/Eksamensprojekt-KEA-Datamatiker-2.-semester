@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -343,6 +344,36 @@ public class LeaseRepository {
 
                 leases.add(new Lease(leaseID, firstName, lastName, userID, startDate, endDate));
 
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            System.out.println("Kunne ikke finde nogle skader");
+            e.printStackTrace();
+        }
+        return leases;
+    }
+
+    public List<Lease> findAllLeasesByCurrentMonth(int inputMonth) {
+        List<Lease> leases = new ArrayList<>();
+        final String SQL_SHOW_REPORT = "SELECT * FROM Leases WHERE MONTH(startDate) = "+inputMonth+" AND YEAR(startDate)=YEAR(now())";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(SQL_SHOW_REPORT);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int leaseID = rs.getInt(1);
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+                int userID = rs.getInt(4);
+                LocalDate startDate = rs.getDate(5).toLocalDate();
+                LocalDate endDate = rs.getDate(6).toLocalDate();
+
+
+                leases.add(new Lease(leaseID, firstName, lastName, userID, startDate, endDate));
+                Lease nyLease = new Lease(leaseID,firstName,lastName,userID,startDate,endDate);
+                System.out.println("Nyt lease indsat i liste "+ nyLease);
             }
             ps.close();
 

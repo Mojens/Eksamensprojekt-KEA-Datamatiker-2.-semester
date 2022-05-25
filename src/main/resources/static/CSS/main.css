@@ -865,7 +865,7 @@ input::-webkit-file-upload-button:hover {
     opacity: 0.8;
     color: black;
     font-size:20px;
-    content:"Måned: "
+    content:"Valgt måned: "
 }
 .small-header-kpi-leveret::after{
     margin:0;

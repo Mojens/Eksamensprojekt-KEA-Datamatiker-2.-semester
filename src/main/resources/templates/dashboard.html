@@ -218,11 +218,26 @@
         </div>
         <div class="item-f">
             <div class="f-container">
-                <h2 class="header-kpi">Gennemsnitlige salg for måned</h2>
+                <h2 class="header-kpi">Total salg</h2>
                 <div class="inline-kpi">
-                    <h1 class="big-header-kpi" th:text="${returnstoday.size()}"></h1>
+                    <h1 class="big-header-kpi" th:text="${monthlySale}"></h1>
                 </div>
-                <h1 class="small-header-kpi-maanedgennem" th:text="${thismonth}"></h1>
+                <h1 class="small-header-kpi-maanedgennem" th:text="${selectedMonth}"></h1>
+                <select name="/dashboard" onchange="location = this.value">
+                    <option>Vælg en måned</option>
+                    <option value="/dashboard/1">Januar</option>
+                    <option value="/dashboard/2">Februar</option>
+                    <option value="/dashboard/3">Marts</option>
+                    <option value="/dashboard/4">April</option>
+                    <option value="/dashboard/5">Maj</option>
+                    <option value="/dashboard/6">Juni</option>
+                    <option value="/dashboard/7">Juli</option>
+                    <option value="/dashboard/8">August</option>
+                    <option value="/dashboard/9">September</option>
+                    <option value="/dashboard/10">Oktober</option>
+                    <option value="/dashboard/11">November</option>
+                    <option value="/dashboard/12">December</option>
+                </select>
             </div>
         </div>
     </div>

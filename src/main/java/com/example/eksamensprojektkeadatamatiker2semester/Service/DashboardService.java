@@ -15,7 +15,6 @@ import java.util.List;
 @Service
 public class DashboardService {
 
-
   //Tjekker hvormange car objecter der er leased ud fra en liste
   public int howManyisLeased(List<Car> leasedCars) {
     int amountOfLeased = 0;
@@ -126,6 +125,27 @@ public class DashboardService {
     }
     return totalSale;
   }
+  public double currentMonthSale(int month){
+    LeaseRepository leaseRepository = new LeaseRepository();
+    CarsLeasesRepository carsLeasesRepository = new CarsLeasesRepository();
+    CarRepository carRepository = new CarRepository();
+    List<Lease> todaysLeases;
+    List<CarsLeases> todaysCarleases;
+    List<Car> carsSoldToday;
+    double totalSale = 0.0;
+    todaysLeases = leaseRepository.findAllLeasesByCurrentMonth(month);
+    System.out.println(todaysLeases);
+    for (Lease lease: todaysLeases) {
+      todaysCarleases = carsLeasesRepository.findCarsLeasesByLeaseIDToday(lease.getLeaseID());
+      for (CarsLeases carLease : todaysCarleases) {
+        carsSoldToday = carRepository.allCarsByID(carLease.getCarID());
+        for (Car car : carsSoldToday){
+          totalSale = totalSale+car.getPrice();
+        }
+      }
+    }
+    return totalSale;
+  }
 
   public int percentageStatusForPriceBetweenLeasedAndNoneLeased(double allCars, double allLeasedCars) {
 
@@ -141,6 +161,34 @@ public class DashboardService {
     return 0;
   }
 
+  public String monthByNumber(int month){
+    if (month == 1){
+      return "Januar";
+    } else if (month == 2) {
+      return "Februar";
+    }else if (month == 3){
+      return "Marts";
+    } else if (month == 4) {
+      return "April";
+    } else if (month == 5) {
+      return "Maj";
+    }else if(month == 6){
+      return "Juni";
+    }else if(month == 7){
+      return "Juli";
+    }else if(month == 8){
+      return "August";
+    }else if(month == 9){
+      return "September";
+    }else if(month == 10){
+      return "Oktober";
+    }else if(month == 11){
+      return "November";
+    }else if(month == 12){
+      return "December";
+    }
+    return "Cant read Month";
+  }
   }
 
 
