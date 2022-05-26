@@ -1,8 +1,10 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Controller;
 
 
+import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
+import com.example.eksamensprojektkeadatamatiker2semester.Repository.CarRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.EmployeeRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Service.ControllerService;
 import org.springframework.stereotype.Controller;
@@ -16,11 +18,14 @@ import java.util.List;
 public class HomeController {
   ControllerService controllerService;
   EmployeeRepository employeeRepository;
+  CarRepository carRepository;
 
   public HomeController(ControllerService controllerService,
-                        EmployeeRepository employeeRepository){
+                        EmployeeRepository employeeRepository,
+                        CarRepository carRepository){
     this.controllerService = controllerService;
     this.employeeRepository = employeeRepository;
+    this.carRepository = carRepository;
   }
 
   @GetMapping("/opretbruger")
@@ -66,5 +71,16 @@ public class HomeController {
   public String index(HttpSession httpSession){
     return controllerService.ifLoggedReturn(httpSession);
   }
+
+  @GetMapping("/lageroverblik")
+  public String lagerOverblik(HttpSession httpSession,
+                              Model model){
+    User user = (User) httpSession.getAttribute("user");
+    model.addAttribute("user",user);
+    List<Car> listOfAllCars = carRepository.showAllCars();
+    model.addAttribute("allCars",listOfAllCars);
+    return controllerService.lagerOverblik(httpSession);
+  }
+
 
 }

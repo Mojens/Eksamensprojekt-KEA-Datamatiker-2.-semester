@@ -301,4 +301,20 @@ public class ControllerService {
     }
     return "/login";
   }
+  public String lagerOverblik(HttpSession httpSession) {
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null) {
+      User loggedUser = (User) httpSession.getAttribute("user");
+      System.out.println(loggedUser.getType());
+      if (loggedUser.getType() <= 4) {
+        currentPage = "/lageroverblik";
+      }
+    }else if (httpSession.getAttribute("userName") == null) {
+        currentPage = "/login";
+      }
+      return currentPage;
+
+  }
+
+
 }

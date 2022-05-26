@@ -16,6 +16,7 @@
                                   src="../static/CSS/images/Logo-250x250.png"/></a>
         </div>
         <div class="name-logout">
+            <a th:if="${user.type==4}" href="../lageroverblik">Lageroverblik</a>
             <a th:if="${user.type==4}" href="../skiftkode" >Skift Kode </a>
             <a th:if="${user.type==4}" href="../sletbruger" >Slet Bruger </a>
             <a th:if="${user.type==4}" href="../opretbruger" >Opret Bruger </a>
