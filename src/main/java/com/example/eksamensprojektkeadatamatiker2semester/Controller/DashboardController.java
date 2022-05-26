@@ -1,5 +1,4 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Controller;
-
 import com.example.eksamensprojektkeadatamatiker2semester.Model.*;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.*;
 import com.example.eksamensprojektkeadatamatiker2semester.Service.ControllerService;
@@ -7,12 +6,12 @@ import com.example.eksamensprojektkeadatamatiker2semester.Service.DashboardServi
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
+/* Lavet af Mohammed og Malthe */
 @Controller
 public class DashboardController {
   DashboardRepository dashboardRepository;

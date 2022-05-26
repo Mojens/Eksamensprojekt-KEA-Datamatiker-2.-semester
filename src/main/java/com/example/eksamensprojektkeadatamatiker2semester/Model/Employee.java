@@ -1,6 +1,6 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
-/* Lavet Af Simon */
+/* Lavet Af Mohammed */
 public class Employee {
 
   private String firstName;

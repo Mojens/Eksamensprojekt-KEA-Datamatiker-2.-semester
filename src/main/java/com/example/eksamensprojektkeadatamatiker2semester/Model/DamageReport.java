@@ -1,5 +1,5 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
-/* Lavet Af Simon */
+/* Lavet Af Malthe */
 public class DamageReport {
   private int damageReportID;
   private int leaseID;
