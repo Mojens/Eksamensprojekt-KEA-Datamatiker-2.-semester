@@ -135,7 +135,7 @@
                 <th class="th" scope="col">
                     Pris
                 </th>
-                <td class="skade" th:text="${car.price}">
+                <td class="skade" th:text="${#numbers.formatDecimal(car.price,0,'POINT',0,'COMMA')}">
                 </td>
             </tr>
 
