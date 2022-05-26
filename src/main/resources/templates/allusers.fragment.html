@@ -1,4 +1,4 @@
-<nav th:fragment="allusers" class="navi-section">
+<nav th:fragment="lejeaftale" class="navi-section">
   <nav class="navi-section" th:if="${user.type==1 || user.type==4}">
     <div class="navbar" id="navbar">
       <div class="logo-left-nav">
@@ -16,4 +16,22 @@
 
     </div>
   </nav>
+</nav>
+<nav th:fragment="skade" class="navi-section">
+<nav class="navi-section" th:if="${user.type==2 || user.type == 4}">
+  <div class="navbar" id="navbar">
+    <div class="logo-left-skade">
+      <a href="/findlease"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                src="../static/CSS/images/Logo-250x250.png"/></a>
+    </div>
+    <div class="name-logout">
+      <a href="../lageroverblik">Lageroverblik</a>
+      <a href="../findretur" >Find tilbageleveringer</a>
+      <a href="../findlease">Opret SkadeRapport</a>
+      <a href="../skaderapport">Alle Skadesrapporter</a>
+      <a class="navi-username" th:text="${user.username}" ></a>
+      <a href="../logout" class="login-button">Logud</a>
+    </div>
+  </div>
+</nav>
 </nav>
