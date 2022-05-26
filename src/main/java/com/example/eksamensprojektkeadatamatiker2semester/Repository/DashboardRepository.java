@@ -47,7 +47,11 @@ public class DashboardRepository {
 
   public List<Car> brandModelList(){
     List<Car> brandModelList = new ArrayList<>();
-    final String QUERY = "SELECT DISTINCT brand,model From Cars";
+    final String QUERY = "SELECT brand,model, \n" +
+        "-100.0 * ((count(case when isLeased = 1 then 1 end))-(count(case when isLeased = 0 or isLeased = 1 then 1 end))) / (count(case when isLeased = 0 or isLeased = 1 then 1 end)) as 'Percentage'\n" +
+        "FROM Cars\n" +
+        "GROUP BY brand,model\n" +
+        "order by Percentage asc";
     try {
       PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
       ResultSet resultSet = preparedStatement.executeQuery(QUERY);
