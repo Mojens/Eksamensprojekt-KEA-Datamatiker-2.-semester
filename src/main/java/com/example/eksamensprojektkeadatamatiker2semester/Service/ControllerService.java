@@ -4,7 +4,7 @@ import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
-
+/* Lavet Af Malthe og Mohammed */
 @Service
 public class ControllerService {
 

@@ -1,5 +1,6 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
+/* Lavet Af Simon */
 public class Car {
   private int vognNummer;
   private String stelNummer;

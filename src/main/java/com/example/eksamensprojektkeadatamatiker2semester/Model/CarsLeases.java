@@ -1,5 +1,6 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
+/* Lavet Af Malthe */
 public class CarsLeases {
 
   private int id;

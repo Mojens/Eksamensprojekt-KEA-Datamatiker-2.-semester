@@ -23,6 +23,7 @@ public class DashboardController {
   CarsLeasesRepository carsLeasesRepository;
   EmployeeRepository employeeRepository;
 
+  /* Lavet Af Malthe og Mohammed */
   public DashboardController(DashboardRepository dashboardRepository, DashboardService dashboardService,
                              CarRepository carRepository, LeaseRepository leaseRepository, ControllerService controllerService,
                              CarsLeasesRepository carsLeasesRepository, EmployeeRepository employeeRepository) {

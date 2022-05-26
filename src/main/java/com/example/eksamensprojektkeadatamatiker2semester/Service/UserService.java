@@ -2,7 +2,7 @@ package com.example.eksamensprojektkeadatamatiker2semester.Service;
 
 import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import org.springframework.stereotype.Service;
-
+/* Lavet Af Mohammed */
 @Service
 public class UserService {
 

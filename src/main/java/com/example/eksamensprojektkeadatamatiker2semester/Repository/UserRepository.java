@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/* Lavet Af Mohammed og Simon */
 @Repository
 public class UserRepository {
   Connection connection;

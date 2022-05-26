@@ -1,3 +1,4 @@
+<!-- Lavet af Malthe, Simon og Mohammed -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
@@ -5,7 +6,8 @@
     <title>Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
     <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="../static/CSS/main.css">
     <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
@@ -27,9 +29,10 @@
         <div class="item-a">
             <div class="a-container">
                 <h2 class="header-kpi">Udlejet</h2>
-                <div class="inline-kpi" >
+                <div class="inline-kpi">
                     <h1 class="big-header" th:classappend="${(colorPrice==1 ? 'bigheadergreen' : '') + (colorPrice==2 ? 'bigheaderyellow' : '')
-                    + (colorPrice==3 ? 'bigheaderorange': '') + (colorPrice==4 ? 'bigheaderred' : '')}"  th:text="${amountOfLeasedCars}">Alle biler</h1>
+                    + (colorPrice==3 ? 'bigheaderorange': '') + (colorPrice==4 ? 'bigheaderred' : '')}"
+                        th:text="${amountOfLeasedCars}">Alle biler</h1>
                     <h1 class="big-header-last" th:text="${allCars.size()}"></h1>
                 </div>
                 <div class="inline">
@@ -150,19 +153,22 @@
                         th:text="${#numbers.formatDecimal(totalPriceOfLeasedCars,0,'POINT',0,'COMMA')}"></h1>
 
                 </div>
-                <h1 class="small-header-kpi" th:text="${#numbers.formatDecimal(totalPriceOfAllCars,0,'POINT',0,'COMMA')}"></h1>
+                <h1 class="small-header-kpi"
+                    th:text="${#numbers.formatDecimal(totalPriceOfAllCars,0,'POINT',0,'COMMA')}"></h1>
             </div>
         </div>
         <div class="item-c" th:if="${color==1 || color==2 || color==3 || color==4}">
             <div class="c-container">
-            <h2 class="header-kpi">Mest udlejet bil</h2>
+                <h2 class="header-kpi">Mest udlejet bil</h2>
 
-                <table class="popularCar" >
-                    <tr  class="one-row" th:each="bilModels : ${brandModel}" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 2 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 3 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 4}" >
+                <table class="popularCar">
+                    <tr class="one-row" th:each="bilModels : ${brandModel}"
+                        th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 2 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 3 || DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 4}">
                         <td colspan="2" class="td-popular"
-                                th:text="${bilModels.getBrand()}+' '+${bilModels.getModel()}">
+                            th:text="${bilModels.getBrand()}+' '+${bilModels.getModel()}">
                         </td>
-                        <td colspan="2" class="td-popular" th:classappend="${(DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1 ? 'tdpopularred' : '') + (DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 2 ? 'tdpopularorange' : '') + (DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 3 ? 'tdpopularyellow' : '') + (DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 4 ? 'tdpopulargreen' : '')}"
+                        <td colspan="2" class="td-popular"
+                            th:classappend="${(DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 1 ? 'tdpopularred' : '') + (DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 2 ? 'tdpopularorange' : '') + (DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 3 ? 'tdpopularyellow' : '') + (DashboardService.percentageStatus(allCars, listOfLeasedCars, bilModels.getModel(), bilModels.getBrand()) == 4 ? 'tdpopulargreen' : '')}"
                             th:text="${DashboardService.howManyPerModel(listOfLeasedCars,bilModels.getModel(),bilModels.getBrand())} + '/' +${DashboardService.howManyPerModel(allCars,bilModels.getModel(),bilModels.getBrand())} ">
                         </td>
                         <td class="td-popular"
@@ -186,7 +192,8 @@
             <div class="f-container">
                 <h2 class="header-kpi">Dagens salg</h2>
                 <div class="inline-kpi">
-                    <h1 class="big-header-kpi" th:classappend="${(colorForDaySale == 1 ? 'bigheaderred' : '') + (colorForDaySale == 2 ? 'bigheaderorange' : '') + (colorForDaySale == 3 ? 'bigheaderyellow' : '') + (colorForDaySale == 4 ? 'bigheadergreen' : '')}"
+                    <h1 class="big-header-kpi"
+                        th:classappend="${(colorForDaySale == 1 ? 'bigheaderred' : '') + (colorForDaySale == 2 ? 'bigheaderorange' : '') + (colorForDaySale == 3 ? 'bigheaderyellow' : '') + (colorForDaySale == 4 ? 'bigheadergreen' : '')}"
                         th:text="${#numbers.formatDecimal(todaysSale,0,'POINT',0,'COMMA')}"></h1>
                 </div>
                 <h1 class="small-header-kpi-leveret" th:text="${#temporals.format(dagensDato,'dd/MM-yy')}"></h1>
@@ -228,67 +235,74 @@
         </div>
     </div>
 
-        <h1>Udlejet pr enkelt bil</h1>
-        <details>
-            <summary class="summary-big">Farvens betydelse</summary>
-            <h6>Hvis 75% eller over af den specifikke model er udlejet er status rød</h6>
-            <button style="background-color: #B22727"></button>
-            <h6>hvis 50% til 75% af den specifikke model er udlejet er status gul</h6>
-            <button style="background-color: #F8CB2E"></button>
-            <h6>hvis 25% til 50% af den specifikke model er udlejet er status orange</h6>
-            <button style="background-color: #EE5007"></button>
-            <h6>Hvis 25% eller under af den specifikke model er udlejet er status grøn</h6>
-            <button style="background-color: #3c805c"></button>
-        </details>
+    <h1>Udlejet pr enkelt bil</h1>
+    <details>
+        <summary class="summary-big">Farvens betydelse</summary>
+        <h6>Hvis 75% eller over af den specifikke model er udlejet er status rød</h6>
+        <button style="background-color: #B22727"></button>
+        <h6>hvis 50% til 75% af den specifikke model er udlejet er status gul</h6>
+        <button style="background-color: #F8CB2E"></button>
+        <h6>hvis 25% til 50% af den specifikke model er udlejet er status orange</h6>
+        <button style="background-color: #EE5007"></button>
+        <h6>Hvis 25% eller under af den specifikke model er udlejet er status grøn</h6>
+        <button style="background-color: #3c805c"></button>
+    </details>
 
-        <table class="allCars">
-            <thead>
-            <tr>
-                <th class="th-header">
-                    Bil Mærke
-                </th>
-                <th class="th-header">
-                    Bil Model
-                </th>
-                <th class="th-header">
-                    Antal Udlejet
-                </th>
-                <th class="th-header">
-                    Antal biler
-                </th>
-                <th class="th-header">
-                  DKK. pr. md.
-                </th>
-                <th class="th-header">
-                    Status
-                </th>
-            </tr>
-            </thead>
-            <tr th:each="brandModels : ${brandModel}">
-                <td class="td" th:text="${brandModels.getBrand()}">
-                </td>
-                <td class="td" th:text="${brandModels.getModel()}">
-                </td>
-                <td class="td" th:text="${DashboardService.howManyPerModel(listOfLeasedCars,brandModels.getModel(),brandModels.getBrand())}">
-                </td>
-                <td class="td" th:text="${DashboardService.howManyPerModel(allCars,brandModels.getModel(),brandModels.getBrand())}">
-                </td>
-                <td class="td" th:text="${#numbers.formatDecimal(carRep.sumPriceLeasedCars(brandModels.getBrand(), brandModels.getModel()),0,'POINT',0,'COMMA')}">
-                </td>
-                <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 1}">
-                    <button style="background-color: #B22727"></button>
-                </td>
-                <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 2}">
-                    <button style="background-color: #EE5007;"></button>
-                </td>
-                <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 3}">
-                    <button style="background-color: #F8CB2E;"></button>
-                </td>
-                <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 4}">
-                    <button style="background-color: #3c805c"></button>
-                </td>
-            </tr>
-        </table>
+    <table class="allCars">
+        <thead>
+        <tr>
+            <th class="th-header">
+                Bil Mærke
+            </th>
+            <th class="th-header">
+                Bil Model
+            </th>
+            <th class="th-header">
+                Antal Udlejet
+            </th>
+            <th class="th-header">
+                Antal biler
+            </th>
+            <th class="th-header">
+                DKK. pr. md.
+            </th>
+            <th class="th-header">
+                Status
+            </th>
+        </tr>
+        </thead>
+        <tr th:each="brandModels : ${brandModel}">
+            <td class="td" th:text="${brandModels.getBrand()}">
+            </td>
+            <td class="td" th:text="${brandModels.getModel()}">
+            </td>
+            <td class="td"
+                th:text="${DashboardService.howManyPerModel(listOfLeasedCars,brandModels.getModel(),brandModels.getBrand())}">
+            </td>
+            <td class="td"
+                th:text="${DashboardService.howManyPerModel(allCars,brandModels.getModel(),brandModels.getBrand())}">
+            </td>
+            <td class="td"
+                th:text="${#numbers.formatDecimal(carRep.sumPriceLeasedCars(brandModels.getBrand(), brandModels.getModel()),0,'POINT',0,'COMMA')}">
+            </td>
+            <td class="td"
+                th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 1}">
+                <button style="background-color: #B22727"></button>
+            </td>
+            <td class="td"
+                th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 2}">
+                <button style="background-color: #EE5007;"></button>
+            </td>
+            <td class="td"
+                th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 3}">
+                <button style="background-color: #F8CB2E;"></button>
+            </td>
+            <td class="td"
+                th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 4}">
+                <button style="background-color: #3c805c"></button>
+            </td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>

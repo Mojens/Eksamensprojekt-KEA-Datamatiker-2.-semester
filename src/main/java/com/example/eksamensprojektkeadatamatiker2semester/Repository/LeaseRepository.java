@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
-
+/* Lavet Af Simon, Malthe og Mohammed */
 @Repository
 public class LeaseRepository {
     Connection connection;

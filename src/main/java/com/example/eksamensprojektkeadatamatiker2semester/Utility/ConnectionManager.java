@@ -2,7 +2,7 @@ package com.example.eksamensprojektkeadatamatiker2semester.Utility;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
+/* Lavet Af Simon */
 public abstract class ConnectionManager {
 
   private static Connection connection;

@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/* Lavet Af Malthe */
 @Repository
 public class DamageReportRepository {
   Connection connection;

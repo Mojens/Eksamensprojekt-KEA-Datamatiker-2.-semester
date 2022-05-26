@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
+/* Lavet Af Malthe */
 @Controller
 public class DamageReportController {
 

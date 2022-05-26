@@ -1,7 +1,7 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
-
 import java.beans.Transient;
 
+/* Lavet Af Malthe */
 public class SpecificDamage {
   private int damageID;
   private double price;
@@ -51,12 +51,6 @@ public class SpecificDamage {
   @Transient
   public String getPhotosImagePath() {
     if (picture == null || picture.isEmpty()) return "user-photos/" + "default.png";
-
-    /*  String newPicture = "";
-    if (picture.contains(" ")) {
-      newPicture = picture.replaceAll("\\s", "");
-      return "user-photos" + "/" + newPicture;
-    }*/
 
     return "user-photos" + "/" + picture;
   }

@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+/* Lavet Af Malthe og Mohammed*/
 @Repository
 public class CarRepository {
   Connection connection;

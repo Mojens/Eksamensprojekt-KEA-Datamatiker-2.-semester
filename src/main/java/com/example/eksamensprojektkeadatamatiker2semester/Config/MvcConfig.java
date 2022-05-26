@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+/* Lavet Af Malthe */
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 

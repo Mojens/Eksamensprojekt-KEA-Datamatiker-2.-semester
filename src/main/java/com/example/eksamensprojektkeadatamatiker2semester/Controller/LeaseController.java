@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
-
+/* Lavet Af Malthe og Mohammed */
 @Controller
 public class LeaseController {
 

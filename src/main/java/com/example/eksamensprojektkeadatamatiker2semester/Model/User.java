@@ -1,6 +1,6 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
-
+/* Lavet Af Mohammed */
 public class User {
 
   private int userID;

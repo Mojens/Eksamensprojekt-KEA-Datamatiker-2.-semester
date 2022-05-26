@@ -1,6 +1,7 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 import java.time.LocalDate;
 
+/* Lavet Af Malthe og Mohammed */
 public class Lease {
   private int leaseID;
   private String firstName;
