@@ -54,3 +54,21 @@
   </div>
 </nav>
 </nav>
+
+<nav th:fragment="adminnav">
+  <nav class="navi-section" th:if="${user.type==4}">
+    <div class="navbar" id="navbar">
+      <div class="logo-left-admin">
+        <a href="/opretbruger"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                    src="../static/CSS/images/Logo-250x250.png"/></a>
+      </div>
+      <div class="name-logout">
+        <a href="../skiftkode" >Skift Kode </a>
+        <a href="../sletbruger" >Slet Bruger </a>
+        <a href="../opretbruger" >Opret Bruger </a>
+        <a class="navi-username" th:text="${user.username}"></a>
+        <a href="../logout" class="login-button">Logud</a>
+      </div>
+    </div>
+  </nav>
+</nav>

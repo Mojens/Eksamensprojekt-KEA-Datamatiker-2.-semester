@@ -9,35 +9,8 @@
     <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
 <body>
-<nav class="navi-section">
-    <div class="navbar" id="navbar">
-        <div class="logo-left-admin">
-            <a href="/opretbruger"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
-                                  src="../static/CSS/images/Logo-250x250.png"/></a>
-        </div>
-        <div class="name-logout">
-            <a th:if="${user.type==4}" href="../lageroverblik">Lageroverblik</a>
-            <a th:if="${user.type==4}" href="../skiftkode" >Skift Kode </a>
-            <a th:if="${user.type==4}" href="../sletbruger" >Slet Bruger </a>
-            <a th:if="${user.type==4}" href="../opretbruger" >Opret Bruger </a>
-            <a class="navi-username" th:text="${user.username}"></a>
-            <a href="../logout" class="login-button">Logud</a>
-        </div>
-    </div>
-</nav>
-<nav th:if="${user.type==4}" class="navi-section-admin">
-    <div class="navbar" id="navbar-admin">
-        <div class="logo-left-admin">
-
-        </div>
-        <div class="navigation">
-            <a th:if="${user.type==4}" href="../dashboard">Dashboard</a>
-            <a th:if="${user.type==4}" href="../opretlejeaftale">Lejeaftaler</a>
-            <a th:if="${user.type==4}" href="../findlease">Skadesrapport</a>
-            <a th:if="${user.type==4}" href="../opretbruger" >Håndter bruger </a>
-        </div>
-    </div>
-</nav>
+<div th:replace="allusers.fragment :: adminnav"></div>
+<div th:replace="admin.fragment"></div>
 <div class="hero-backdrop">
     <img th:src="@{../CSS/images/hero.png}" class="backdrop" alt="hero-backdrop"
          src="../static/CSS/images/hero.png"/>
@@ -47,8 +20,7 @@
     <form
             action="/addEmployee"
             onsubmit="myFunction()"
-            method="post"
-    >
+            method="post">
         <div class="zindex">
             <label>Indtast Fornavn</label>
             <input type="text" placeholder="Fornavn" name="firstName">
