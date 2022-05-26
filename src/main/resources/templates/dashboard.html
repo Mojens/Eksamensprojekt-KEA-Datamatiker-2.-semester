@@ -100,7 +100,7 @@
                                 <td class="td" th:text="${Car.getModel()}">
 
                                 </td>
-                                <td class="td" th:text="${#numbers.formatDecimal(Car.getPrice(),0,0)}">
+                                <td class="td" th:text="${#numbers.formatDecimal(Car.getPrice(),0,'POINT',0,'COMMA')}">
                                 </td>
                                 <td class="td" th:if="${Car.isLeased() == 1}">
                                     <button style="background-color: #B22727"></button>
@@ -172,10 +172,10 @@
                 <div class="inline-kpi">
                     <h1 class="big-header-kpi" th:classappend="${(colorPrice==1 ? 'bigheadergreen' : '') + (colorPrice==2 ? 'bigheaderyellow' : '')
                     + (colorPrice==3 ? 'bigheaderorange': '') + (colorPrice==4 ? 'bigheaderred' : '')}"
-                        th:text="${#numbers.formatDecimal(totalPriceOfLeasedCars,0,0)}"></h1>
+                        th:text="${#numbers.formatDecimal(totalPriceOfLeasedCars,0,'POINT',0,'COMMA')}"></h1>
 
                 </div>
-                <h1 class="small-header-kpi" th:text="${#numbers.formatDecimal(totalPriceOfAllCars,0,0)}"></h1>
+                <h1 class="small-header-kpi" th:text="${#numbers.formatDecimal(totalPriceOfAllCars,0,'POINT',0,'COMMA')}"></h1>
             </div>
         </div>
         <div class="item-c" th:if="${color==1 || color==2 || color==3 || color==4}">
@@ -191,7 +191,7 @@
                             th:text="${DashboardService.howManyPerModel(listOfLeasedCars,bilModels.getModel(),bilModels.getBrand())} + '/' +${DashboardService.howManyPerModel(allCars,bilModels.getModel(),bilModels.getBrand())} ">
                         </td>
                         <td class="td-popular"
-                            th:text="${#numbers.formatDecimal(carRep.sumPriceLeasedCars(bilModels.getBrand(), bilModels.getModel()),0,0)}">
+                            th:text="${#numbers.formatDecimal(carRep.sumPriceLeasedCars(bilModels.getBrand(), bilModels.getModel()),0,'POINT',0,'COMMA')}">
                         </td>
                     </tr>
                 </table>
@@ -212,7 +212,7 @@
                 <h2 class="header-kpi">Dagens salg</h2>
                 <div class="inline-kpi">
                     <h1 class="big-header-kpi" th:classappend="${(colorForDaySale == 1 ? 'bigheaderred' : '') + (colorForDaySale == 2 ? 'bigheaderorange' : '') + (colorForDaySale == 3 ? 'bigheaderyellow' : '') + (colorForDaySale == 4 ? 'bigheadergreen' : '')}"
-                        th:text="${#numbers.formatDecimal(todaysSale,0,0)}"></h1>
+                        th:text="${#numbers.formatDecimal(todaysSale,0,'POINT',0,'COMMA')}"></h1>
                 </div>
                 <h1 class="small-header-kpi-leveret" th:text="${dagensDato}"></h1>
             </div>
@@ -224,11 +224,11 @@
 
                     <h1 class="big-header-kpi" th:if="${monthlySales < 1}"
                         th:classappend="${(colorMonthSale == 1 ? 'bigheaderred' : '') + (colorMonthSale == 2 ? 'bigheaderorange' : '') + (colorMonthSale == 3 ? 'bigheaderyellow' : '') + (colorMonthSale == 4 ? 'bigheadergreen' : '')}"
-                        th:text="${#numbers.formatDecimal(monthlySale,0,0)}"></h1>
+                        th:text="${#numbers.formatDecimal(monthlySale,0,'POINT',0,'COMMA')}"></h1>
 
                     <h1 class="big-header-kpi" th:if="${monthlySales > 1}"
                         th:classappend="${(colorMonthSale == 1 ? 'bigheaderred' : '') + (colorMonthSale == 2 ? 'bigheaderorange' : '') + (colorMonthSale == 3 ? 'bigheaderyellow' : '') + (colorMonthSale == 4 ? 'bigheadergreen' : '')}"
-                        th:text="${#numbers.formatDecimal(monthlySales,0,0)}"></h1>
+                        th:text="${#numbers.formatDecimal(monthlySales,0,'POINT',0)}"></h1>
                 </div>
                 <h1 class="small-header-kpi-maanedgennem" th:if="${monthlySales < 1}"
                     th:text="${thismonth}"></h1>
@@ -298,7 +298,7 @@
                 </td>
                 <td class="td" th:text="${DashboardService.howManyPerModel(allCars,brandModels.getModel(),brandModels.getBrand())}">
                 </td>
-                <td class="td" th:text="${#numbers.formatDecimal(carRep.sumPriceLeasedCars(brandModels.getBrand(), brandModels.getModel()),0,0)}">
+                <td class="td" th:text="${#numbers.formatDecimal(carRep.sumPriceLeasedCars(brandModels.getBrand(), brandModels.getModel()),0,'POINT',0,'COMMA')}">
                 </td>
                 <td class="td" th:if="${DashboardService.percentageStatus(allCars, listOfLeasedCars, brandModels.getModel(), brandModels.getBrand()) == 1}">
                     <button style="background-color: #B22727"></button>
