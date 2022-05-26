@@ -3,29 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>ERROR - 500</title>
-
-    <link th:href="@{/CSS/error.css}" rel="stylesheet"/>
-    <link rel="stylesheet" href="../../static/CSS/error.css">
-
     <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="../../static/CSS/NavBar.css">
-
-    <link th:href="@{/CSS/login.css}" rel="stylesheet"/>
-    <link rel="stylesheet" href="../../static/CSS/login.css">
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../static/CSS/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"/>
 </head>
 <body onload="document.getElementById('id01').style.display='block'">
 <div th:replace="nav.fragment"></div>
+<div class="hero-backdrop">
+    <img th:src="@{../CSS/images/hero.png}" class="backdrop" alt="hero-backdrop"
+         src="../../static/CSS/images/hero.png"/>
+</div>
 <div class="container-dashboard">
-    <h1 class="error">500 - Fejl</h1>
-    <h1 class="errormessage">Hov... Noget gik galt</h1>
-    <h1 class="errormessage">Kontakt din leder</h1>
-    <button onclick="history.back()">Tilbage til forrige side</button>
+    <h1>500 - Fejl</h1>
+    <h2 >Hov... Noget gik galt. Kontakt din leder</h2>
+    <button  onclick="history.back()">Tilbage til forrige side</button>
     <a href="../"><button type="submit">tilbage til forsiden</button></a>
-    <div class="hero-backdrop">
-        <img th:src="@{../CSS/images/hero.png}" class="backdrop" alt="hero-backdrop"
-             src="../../static/CSS/images/hero.png"/>
-    </div>
+
 </div>
 </body>
 </html>
