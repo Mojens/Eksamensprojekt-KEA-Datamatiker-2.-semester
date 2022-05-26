@@ -67,14 +67,16 @@ public class SpecificDamageController {
     String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
     specificDamage.setPicture(fileName);
 
+    String newPicture = "";
+    if (fileName.isEmpty()){
+      specificDamage.setPicture("default.png");
+    } else {
+      newPicture = fileName.replaceAll("\\s", "");
+      String uploadDir = "user-photos/";
+      FileUploadUtil.saveFile(uploadDir, newPicture, multipartFile);
+    }
 
-    String newPicture = fileName.replaceAll("\\s", "");
-
-
-    String uploadDir = "user-photos/";
-    FileUploadUtil.saveFile(uploadDir, newPicture, multipartFile);
     System.out.println(fileName);
-
 
     specificDamageRepository.addSpecificDamage(new SpecificDamage(price, description, newPicture, title, damageReport.getDamageReportID()));
 

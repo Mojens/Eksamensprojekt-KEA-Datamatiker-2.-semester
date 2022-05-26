@@ -50,13 +50,13 @@ public class SpecificDamage {
 
   @Transient
   public String getPhotosImagePath() {
-    if (picture == null || picture.isEmpty()) return "user-photos/" + "default.jpg";
+    if (picture == null || picture.isEmpty()) return "user-photos/" + "default.png";
 
-    String newPicture = "";
+    /*  String newPicture = "";
     if (picture.contains(" ")) {
       newPicture = picture.replaceAll("\\s", "");
       return "user-photos" + "/" + newPicture;
-    }
+    }*/
 
     return "user-photos" + "/" + picture;
   }
