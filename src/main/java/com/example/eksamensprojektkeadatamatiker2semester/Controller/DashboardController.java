@@ -51,6 +51,8 @@ public class DashboardController {
     int colorPrice = dashboardService.percentageStatusForPriceBetweenLeasedAndNoneLeased(totalPriceOfAllCars,totalPriceOfLeasedCars);
     double todaysSale = dashboardService.todaysSale();
     double monthlySale = dashboardService.currentMonthSale(LocalDate.now().getMonth().getValue());
+    int colorDaySale = dashboardService.percentAverageDay(todaysSale);
+    int colorMonthSale = dashboardService.percentAverageMonth(monthlySale);
     String currentMonth = dashboardService.convertLocalToDanish(LocalDate.now().getMonth());
 
     LocalDate currentDate = LocalDate.now();
@@ -71,6 +73,8 @@ public class DashboardController {
     model.addAttribute("brandModel",brandModel);
     model.addAttribute("todaysSale",todaysSale);
     model.addAttribute("monthlySale",monthlySale);
+    model.addAttribute("colorForDaySale",colorDaySale);
+    model.addAttribute("colorMonthSale",colorMonthSale);
 
     return controllerService.dashboard(httpSession);
   }
@@ -92,6 +96,8 @@ public class DashboardController {
     int color = dashboardService.percentageStatus(allCars,leasedCars,car.getModel(),car.getBrand());
     double todaysSale = dashboardService.todaysSale();
     double monthlySale = dashboardService.currentMonthSale(chosenMonth);
+    int colorDaySale = dashboardService.percentAverageDay(todaysSale);
+    int colorMonthSale = dashboardService.percentAverageMonth(monthlySale);
     String currentMonth = dashboardService.convertLocalToDanish(LocalDate.now().getMonth());
     String selectedMonth = dashboardService.monthByNumber(chosenMonth);
     LocalDate currentDate = LocalDate.now();
@@ -113,6 +119,8 @@ public class DashboardController {
     model.addAttribute("todaysSale",todaysSale);
     model.addAttribute("monthlySales",monthlySale);
     model.addAttribute("selectedMonth",selectedMonth);
+    model.addAttribute("colorForDaySale",colorDaySale);
+    model.addAttribute("colorMonthSale",colorMonthSale);
 
     return controllerService.dashboard(httpSession);
   }
