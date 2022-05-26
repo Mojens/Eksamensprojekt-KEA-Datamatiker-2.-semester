@@ -92,62 +92,49 @@
 </div>
 <div class="container-dashboard">
 
-    <h1>Alle Lejeaftaler</h1>
+    <h1>Lageroverblik</h1>
     <table>
         <thead>
         <tr>
             <th scope="col">
-                Lejeaftale ID
+                Vognnummer
             </th>
             <th scope="col">
-                Fornavn
+                Stelnummer
             </th>
             <th scope="col">
-                Efternavn
+                Brand
             </th>
             <th scope="col">
-                Lejeaftale periode
+                Model
             </th>
             <th scope="col">
-                Start Dato
+                Pris / md
             </th>
             <th scope="col">
-                Slut Dato
+                Status
             </th>
-            <th scope="col">Se rapporten</th>
-            <th scope="col">Slet rapporten</th>
         </tr>
         </thead>
         <tbody>
-        <tr class="card" th:each="leje : ${lease}" th:if="${leje.getStatus() == 1}">
-            <td>
-                <a th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" class="individual" th:text="${leje.leaseID}"
-                   target="_blank"></a>
+        <tr class="card" th:each="car : ${allCars}">
+            <td th:text="${car.getVognNummer()}">
             </td>
-            <td>
-                <a th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" class="individual" th:text="${leje.firstName}"
-                   target="_blank"></a>
+            <td th:text="${car.getStelNummer()}">
             </td>
-            <td>
-                <a th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" class="individual" th:text="${leje.lastName}"
-                   target="_blank"></a>
+            <td th:text="${car.getBrand()}">
             </td>
-            <td>
-                <a th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" class="individual"
-                   th:text="${period.subtractDates(leje.startDate,leje.endDate)}" target="_blank"></a>
+            <td th:text="${car.getModel()}">
             </td>
-            <td>
-                <a th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" class="individual" th:text="${leje.startDate}"
-                   target="_blank"></a>
+            <td th:text="${#numbers.formatDecimal(car.getPrice(),0,'POINT',0,'COMMA')}">
             </td>
-            <td>
-                <a th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" class="individual" th:text="${leje.endDate}"
-                   target="_blank"></a>
+            <td class="td" th:if="${car.isLeased() == 1}">
+                <button style="background-color: #B22727"></button>
             </td>
-            <td class="row-update"><a class="link-row link" th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}">Se
-                Lejeaftale</a></td>
-            <td class="row-update"><a class="link-row link" th:href="@{/sletaftale/{leaseID}(leaseID=${leje.leaseID})}" >Slet
-                Lejeaftale</a></td>
+            <td class="td" th:if="${car.isLeased() == 0}">
+                <button style="background-color: #3c805c"></button>
+            </td>
+
         </tr>
         </tbody>
 
