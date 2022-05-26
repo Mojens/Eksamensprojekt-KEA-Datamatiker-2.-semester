@@ -9,82 +9,9 @@
     <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
 <body>
-<nav class="navi-section">
-    <div class="navbar" id="navbar" th:if="${user.type==3}">
-        <div class="logo-left-kpi">
-            <a href="/dashboard"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
-                                      src="../static/CSS/images/Logo-250x250.png"/></a>
-        </div>
 
-        <div class="name-logout">
-            <a href="../lageroverblik">Lageroverblik</a>
-            <a href="../createcar" >Opret Køretøj</a>
-            <a href="../dashboard">Se KPI</a>
-            <a class="navi-username" th:text="${user.username}"></a>
-            <a href="../logout" class="login-button">Logud</a>
-        </div>
-
-    </div>
-</nav>
-<nav class="navi-section">
-    <div class="navbar" id="navbar" th:if="${user.type==2}">
-        <div class="logo-left-skade">
-            <a href="/findlease"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
-                                      src="../static/CSS/images/Logo-250x250.png"/></a>
-        </div>
-        <div class="name-logout">
-            <a href="../lageroverblik">Lageroverblik</a>
-            <a href="../findlease">Opret SkadeRapport</a>
-            <a href="../skaderapport">Alle Skadesrapporter</a>
-            <a class="navi-username" th:text="${user.username}" ></a>
-            <a href="../logout" class="login-button">Logud</a>
-        </div>
-    </div>
-</nav>
-<nav class="navi-section" th:if="${user.type==4}">
-    <div class="navbar" id="navbar">
-        <div class="logo-left-nav">
-            <a href="/opretbruger"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
-                                            src="../static/CSS/images/Logo-250x250.png"/></a>
-        </div>
-        <div class="name-logout">
-            <a href="../lageroverblik">Lageroverblik</a>
-            <a class="navi-username" th:text="${user.username}" ></a>
-            <a href="../logout" class="login-button">Logud</a>
-        </div>
-
-    </div>
-</nav>
-<nav class="navi-section" th:if="${user.type==1}">
-    <div class="navbar" id="navbar">
-        <div class="logo-left-nav">
-            <a href="/opretlejeaftale"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
-                                            src="../static/CSS/images/Logo-250x250.png"/></a>
-        </div>
-        <div class="name-logout">
-            <a href="../lageroverblik">Lageroverblik</a>
-            <a href="../opretlejeaftale">Opret Lejeaftale</a>
-            <a href="../allelejeaftaler">Alle Lejeaftaler</a>
-            <a href="../findlejeaftale" >Find Lejeaftale</a>
-            <a class="navi-username" th:text="${user.username}" ></a>
-            <a href="../logout" class="login-button">Logud</a>
-        </div>
-
-    </div>
-</nav>
-<nav th:if="${user.type==4}" class="navi-section-admin">
-    <div class="navbar" id="navbar-admin">
-        <div class="logo-left-admin">
-
-        </div>
-        <div class="navigation">
-            <a th:if="${user.type==4}" href="../dashboard">Dashboard</a>
-            <a th:if="${user.type==4}" href="../opretlejeaftale" >Lejeaftaler</a>
-            <a th:if="${user.type==4}" href="../findlease" >Skadesrapport</a>
-            <a th:if="${user.type==4}" href="../opretbruger" >Håndter bruger </a>
-        </div>
-    </div>
-</nav>
+<div th:replace="allusers.fragment :: lejeaftale"></div>
+<div th:replace="admin.fragment"></div>
 
 <div class="hero-backdrop">
     <img th:src="@{../CSS/images/hero.png}" class="backdrop" alt="hero-backdrop"

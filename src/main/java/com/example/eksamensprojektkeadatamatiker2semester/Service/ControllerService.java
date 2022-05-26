@@ -306,7 +306,7 @@ public class ControllerService {
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
       System.out.println(loggedUser.getType());
-      if (loggedUser.getType() <= 4) {
+      if (loggedUser.getType() == 4 || loggedUser.getType() == 1) {
         currentPage = "/lageroverblik";
       }
     }else if (httpSession.getAttribute("userName") == null) {
