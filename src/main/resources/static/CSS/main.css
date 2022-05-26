@@ -94,7 +94,7 @@ th {
     font-weight: 900;
     font-style: normal;
     letter-spacing: 0.8px;
-    font-size: 14px;
+    font-size: 12px;
     padding-top: 8px;
     padding-bottom: 8px;
     background-color: #317DAD;
@@ -105,7 +105,7 @@ th {
 
 
 td {
-    font-size: 12px;
+    font-size: 10px;
     border: none;
     padding: 1px 1px;
     font-weight: 700;
@@ -113,12 +113,12 @@ td {
 }
 
 h1 {
-    font-size: 36px;
+    font-size: 32px;
     margin-bottom: 20px;
     margin-top: 30px;
 }
 .h1 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 300;
     margin-bottom: 10px;
     margin-top: 10px;
@@ -126,7 +126,7 @@ h1 {
 }
 
 tr {
-    font-size: 14px;
+    font-size: 12px;
     width: 100%;
 }
 
@@ -178,7 +178,7 @@ table {
     text-transform: capitalize;
     border-radius: 3px;
     letter-spacing: 0.8px;
-    font-size: 14px;
+    font-size: 12px;
     text-align: left;
     padding: 8px;
     background-color: #317DAD;
@@ -215,7 +215,7 @@ td.individual{
 }
 
 .individual-big {
-    font-size: 18px;
+    font-size: 15px;
     text-align: start;
     padding-left: 35px;
 }
@@ -226,13 +226,13 @@ td.individual{
     justify-content: start;
 
     color: #2f2f2d;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1;
 }
 
 .row-update {
     color: #faf3f3;
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 0.8px;
     font-weight: 600;
     background-color: #112844;
@@ -257,11 +257,11 @@ td.individual{
     display: flex;
     justify-content: center;
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
 
 }
 select{
-    font-size: 16px;
+    font-size: 13px;
     line-height: 20px;
     padding: 6px 12px;
     width: 100%;
@@ -282,7 +282,7 @@ select{
 
 }
 .selectDate{
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing:0.8px;
     line-height: 20px;
@@ -376,7 +376,7 @@ select{
 .tag {
     background: #cccccc;
     border-radius: 2px;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: bold;
     margin-bottom: 8px;
     color: #fff;
@@ -400,14 +400,14 @@ select{
     display: inline;
     justify-content: start;
     color: #2f2f2d;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1;
     background-color: #FFD75E;
 }
 
 
 .card-body-big p {
-    font-size: 14px;
+    font-size: 12px;
     margin: 5px 0 auto;
 }
 
@@ -415,12 +415,12 @@ input::-webkit-file-upload-button {
     margin-top: 10px;
     margin-bottom: 10px;
     color: #000000;
-    font-size: 16px;
+    font-size: 13px;
     line-height: 1;
     background-color: #FFD75E;
     font-weight: bold;
     padding: 10px;
-    font-family: OpenSans, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     border: 0;
     cursor: pointer;
     border-radius: 5px;
@@ -437,7 +437,7 @@ input::-webkit-file-upload-button:hover {
 .button-small {
     background: #FFD75E;
     border-radius: 2px;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: bold;
     margin-bottom: 8px;
     color: #171616;
@@ -450,7 +450,7 @@ input::-webkit-file-upload-button:hover {
     margin-top: -10px;
     background: #e12b2b;
     border-radius: 2px;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: bold;
     margin-bottom: 8px;
     color: #fff;
@@ -468,7 +468,7 @@ input::-webkit-file-upload-button:hover {
     display: inline;
     justify-content: start;
     color: #2D7BC6;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1;
 }
 
@@ -477,7 +477,7 @@ input::-webkit-file-upload-button:hover {
     display: inline;
     justify-content: start;
     color: #2f2f2d;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1;
 }
 
@@ -504,7 +504,7 @@ input::-webkit-file-upload-button:hover {
 .before::before {
     content: "Rapport #";
     color: white;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1;
 }
 
@@ -540,7 +540,7 @@ input::-webkit-file-upload-button:hover {
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     max-width: 530px;
-    min-height: 222px;
+    min-height: 229px;
 }
 .item-a:hover {
     grid-area: first;
@@ -551,7 +551,7 @@ input::-webkit-file-upload-button:hover {
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     max-width: 530px;
-    min-height: 222px;
+    min-height: 229px;
 }
 
 .a-container {
@@ -571,8 +571,8 @@ input::-webkit-file-upload-button:hover {
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     max-width: 530px;
-    max-height: 222px;
-    min-height: 222px;
+    max-height: 229px;
+    min-height: 229px;
 
 }
 .item-b:hover {
@@ -584,8 +584,8 @@ input::-webkit-file-upload-button:hover {
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     max-width: 530px;
-    max-height: 222px;
-    min-height: 222px;
+    max-height: 229px;
+    min-height: 229px;
 
 }
 
@@ -605,8 +605,8 @@ input::-webkit-file-upload-button:hover {
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     max-width: 530px;
-    max-height: 222px;
-    min-height: 222px;
+    max-height: 229px;
+    min-height: 229px;
 
 }
 .item-c:hover {
@@ -618,8 +618,8 @@ input::-webkit-file-upload-button:hover {
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     max-width: 530px;
-    max-height: 222px;
-    min-height: 222px;
+    max-height: 229px;
+    min-height: 229px;
 
 }
 
@@ -640,8 +640,8 @@ input::-webkit-file-upload-button:hover {
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     max-width: 530px;
-    max-height: 222px;
-    min-height: 222px;
+    max-height: 229px;
+    min-height: 229px;
 
 }
 .item-d:hover {
@@ -652,8 +652,8 @@ input::-webkit-file-upload-button:hover {
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     max-width: 530px;
-    max-height: 222px;
-    min-height: 222px;
+    max-height: 229px;
+    min-height: 229px;
 
 }
 
@@ -673,8 +673,8 @@ input::-webkit-file-upload-button:hover {
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     max-width: 530px;
-    max-height: 222px;
-    min-height: 222px;
+    max-height: 229px;
+    min-height: 229px;
 
 }
 .item-e:hover{
@@ -685,8 +685,8 @@ input::-webkit-file-upload-button:hover {
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     max-width: 530px;
-    max-height: 222px;
-    min-height: 222px;
+    max-height: 229px;
+    min-height: 229px;
 }
 
 .e-container {
@@ -705,8 +705,8 @@ input::-webkit-file-upload-button:hover {
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     max-width: 530px;
-    max-height: 222px;
-    min-height: 222px;
+    max-height: 229px;
+    min-height: 229px;
 
 }
 .item-f:hover{
@@ -717,8 +717,8 @@ input::-webkit-file-upload-button:hover {
     border-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     max-width: 530px;
-    max-height: 222px;
-    min-height: 222px;
+    max-height: 229px;
+    min-height: 229px;
 }
 
 .f-container {
@@ -738,7 +738,7 @@ input::-webkit-file-upload-button:hover {
 }
 
 .td-popular {
-    font-size: 20px;
+    font-size: 17px;
     padding: 2px 4px;
 }
 .td-popular:nth-child(1){
@@ -750,67 +750,67 @@ input::-webkit-file-upload-button:hover {
 .td-popular:nth-child(2){
     display: flex;
     justify-content: center;
-    font-size: 56px;
+    font-size: 48px;
 }
 .tdpopularred:nth-child(2){
     display: flex;
     justify-content: center;
-    font-size: 56px;
+    font-size: 48px;
     color: #B22727;
 }
 .tdpopularorange:nth-child(2){
     display: flex;
     justify-content: center;
-    font-size: 56px;
+    font-size: 48px;
     color: #EE5007;
 }
 .tdpopularyellow:nth-child(2){
     display: flex;
     justify-content: center;
-    font-size: 56px;
+    font-size: 48px;
     color: #F8CB2E;
 }
 .tdpopulargreen:nth-child(2){
     display: flex;
     justify-content: center;
-    font-size: 56px;
+    font-size: 48px;
     color: #3c805c;
 }
 .tdpopularred:nth-child(3){
     display: flex;
     justify-content: center;
-    font-size: 56px;
+    font-size: 48px;
     color: #B22727;
 }
 .tdpopularorange:nth-child(3){
     display: flex;
     justify-content: center;
-    font-size: 56px;
+    font-size: 48px;
     color: #EE5007;
 }
 .tdpopularyellow:nth-child(3){
     display: flex;
     justify-content: center;
-    font-size: 56px;
+    font-size: 48px;
     color: #F8CB2E;
 }
 .tdpopulargreen:nth-child(3){
     display: flex;
     justify-content: center;
-    font-size: 56px;
+    font-size: 48px;
     color: #3c805c;
 }
 .td-popular:nth-child(3){
     display: flex;
     justify-content: center;
     text-align: center;
-    font-size: 28px;
+    font-size: 24px;
 
 }
 .td-popular:nth-child(3):after{
     display: inline;
     align-self: center;
-    font-size: 18px;
+    font-size: 15px;
     margin-left: 4px;
     margin-top: 7px;
     content: "DKK. pr. md.";
@@ -849,33 +849,33 @@ input::-webkit-file-upload-button:hover {
 
 .big-header {
     display: inline;
-    font-size: 66px;
+    font-size: 56px;
 
 }
 .big-header-kpi{
     display: inline;
-    font-size: 66px;
+    font-size: 56px;
     font-weight: bold;
 }
 .bigheaderred{
     display: inline;
-    font-size: 66px;
+    font-size: 56px;
     color: #B22727;
 
 }
 .bigheaderorange{
     display: inline;
-    font-size: 66px;
+    font-size: 56px;
     color: #EE5007;
 }
 .bigheaderyellow{
     display: inline;
-    font-size: 66px;
+    font-size: 56px;
     color: #F8CB2E;
 }
 .bigheadergreen{
     display: inline;
-    font-size: 66px;
+    font-size: 56px;
     color: #3c805c;
 }
 .big-header-kpi::after{
@@ -883,12 +883,12 @@ input::-webkit-file-upload-button:hover {
     color: black;
     opacity: 0.8;
     display: inline;
-    font-size: 40px;
+    font-size: 34px;
 
 }
 .big-header-kpilevering{
     display: inline;
-    font-size: 66px;
+    font-size: 56px;
 
 }
 .big-header-kpilevering::after{
@@ -897,13 +897,13 @@ input::-webkit-file-upload-button:hover {
     opacity: 0.8;
     color: black;
     margin-left: 4px;
-    font-size: 40px;
+    font-size: 34px;
 
 }
 .small-header-kpi{
     margin:0;
     display: inline;
-    font-size: 30px;
+    font-size: 26px;
 
 }
 .small-header-kpi:before{
@@ -911,7 +911,7 @@ input::-webkit-file-upload-button:hover {
     display: inline;
     opacity: 0.8;
     color: black;
-    font-size:20px;
+    font-size:17px;
     content:"Hvis fuldt udlejet "
 }
 .small-header-kpi::after{
@@ -919,14 +919,14 @@ input::-webkit-file-upload-button:hover {
     content: " DKK";
     opacity: 0.8;
     display: inline;
-    font-size: 20px;
+    font-size: 17px;
 
 }
 
 .small-header-kpi-leveret{
     margin:0;
     display: inline;
-    font-size: 30px;
+    font-size: 26px;
 
 }
 
@@ -935,13 +935,13 @@ input::-webkit-file-upload-button:hover {
     display: inline;
     opacity: 0.8;
     color: black;
-    font-size:20px;
+    font-size:17px;
     content:"Dagens Dato: "
 }
 .small-header-kpi-maanedgennem{
     margin:0;
     display: inline;
-    font-size: 30px;
+    font-size: 26px;
 
 }
 
@@ -950,32 +950,32 @@ input::-webkit-file-upload-button:hover {
     display: inline;
     opacity: 0.8;
     color: black;
-    font-size:20px;
+    font-size:17px;
     content:"Valgt måned: "
 }
 .small-header-kpi-leveret::after{
     margin:0;
     opacity: 0.8;
     display: inline;
-    font-size: 20px;
+    font-size: 17px;
 
 }
 
 .big-header-last {
     display: inline;
-    font-size: 66px;
+    font-size: 56px;
 
 }
 
 .big-header-last::before {
     content: "/";
     display: inline;
-    font-size: 66px;
+    font-size: 56px;
 }
 
 .header-kpi {
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -992,12 +992,12 @@ summary::marker{
 
 
 .summary-small {
-    font-family: OpenSans-normal, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-align: center;
     min-width: 130px;
     max-width: 130px;
     letter-spacing: 0.8px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -1016,12 +1016,12 @@ summary::marker{
 
 }
 .summary-big{
-    font-family: OpenSans-normal, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-align: center;
     min-width: 180px;
     max-width: 180px;
     letter-spacing: 0.8px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -1043,11 +1043,11 @@ details {
 }
 
 .th-header {
-    font-size: 11px;
+    font-size: 10px;
 }
 
 .td {
-    font-size: 12px;
+    font-size: 11px;
     color: black;
     text-align: center;
     width: 100%;
@@ -1075,7 +1075,7 @@ button {
     cursor: pointer;
     border-radius: 3px;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 0.8px;
 }
 button:hover{
@@ -1085,7 +1085,7 @@ button:hover{
 }
 
 input{
-    font-size: 16px;
+    font-size: 14px;
     line-height: 20px;
     padding: 6px 12px;
     width: 100%;

@@ -6,7 +6,7 @@
 
 body {
     background-color: #F2F2F2;
-    font-family: OpenSans-normal, sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 .hero-backdrop img {
     width: 100%;
@@ -27,7 +27,7 @@ body {
 .submit-button-login {
     margin-top: 30px;
     border-radius: 3px;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .modal {
@@ -48,7 +48,6 @@ body {
 .modal-content {
     background-color: #fefefe;
     margin: 5px auto; /* 15% from the top and centered */
-
     width: 22%; /* Could be more or less, depending on screen size */
     height: 70%;
     border-radius: 5px;
@@ -62,7 +61,7 @@ body {
     right: 25px;
     top: 0;
     color: #000;
-    font-size: 35px;
+    font-size: 32px;
     font-weight: bold;
 }
 
@@ -114,7 +113,7 @@ body {
     color: #01719f;
     text-decoration: none;
     opacity:1;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     padding-left:2px;
 }
@@ -175,7 +174,7 @@ button {
     border: none;
     cursor: pointer;
     width: 100%;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 /* Add a hover effect for buttons */
@@ -245,7 +244,7 @@ span.psw {
     align-items: center;
     padding: 15px 20px 10px;
     opacity: 0.8;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 /* hovering login taget fra:
@@ -259,7 +258,7 @@ https://dev.to/adrianbdesigns/let-s-create-a-floating-label-input-with-html-and-
     --input__border--hover: rgba(0, 0, 0, 0.62);
     --label__color: #222;
 
-    --font__size: 16px;
+    --font__size: 15px;
     --font__family: OpenSans-regular;
 }
 
@@ -325,7 +324,6 @@ https://dev.to/adrianbdesigns/let-s-create-a-floating-label-input-with-html-and-
 .floating__input:focus + .floating__label::after {
 
     color: var(--color__accent);
-    color: #02609d;
     background-color: #FFFFFF;
     padding-right:1px;
     padding-left: 1px;
@@ -343,24 +341,24 @@ https://dev.to/adrianbdesigns/let-s-create-a-floating-label-input-with-html-and-
 
 .floating__input:focus + .floating__label::before {
     color: var(--color__accent);
-    color: #02609d;
+
     background-color: #FFFFFF;
     padding-right:1px;
     padding-left: 1px;
 }
 .floating__input:focus + .floating__label{
     color: var(--color__accent);
-    color: #02609d;
+
     background-color: #FFFFFF;
     padding-right:1px;
     padding-left: 1px;
 
 }
 #input__username{
-    font-size:16px;
+    font-size:15px;
 }
 #input__password{
-    font-size:16px;
+    font-size:15px;
     position: relative;
     min-width: 100%;
 }
@@ -374,7 +372,7 @@ form i {
 }
 
 .floating{
-    font-size: 17px;
+    font-size: 16px;
     opacity: 0.85;
 
 }

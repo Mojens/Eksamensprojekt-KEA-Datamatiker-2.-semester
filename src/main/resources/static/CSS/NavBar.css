@@ -4,8 +4,8 @@
     overflow: hidden;
     text-decoration: none;
     color: #FFFFFF;
-    font-size: 17px;
-    font-family: OpenSans,sans-serif;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
     letter-spacing: 2px;
     align-items: center;
     display: flex;
@@ -41,7 +41,7 @@
     overflow: hidden;
     text-decoration: none;
     color: #1a1919;
-    font-size: 14px;
+    font-size: 13px;
     font-family: OpenSans,sans-serif;
     letter-spacing: 2px;
     align-items: end;
@@ -85,7 +85,7 @@
     justify-content: end;
 }
 a.navi-username {
-    font-size: 14px;
+    font-size: 13px;
     color: #022633;
 }
 
@@ -102,7 +102,7 @@ a.navi-username {
     justify-content: flex-start;
 }
 .login-button {
-    font-size: 14px;
+    font-size: 13px;
     color: #022633;
 }
 
