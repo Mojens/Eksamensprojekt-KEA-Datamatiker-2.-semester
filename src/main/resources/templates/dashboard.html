@@ -211,7 +211,8 @@
             <div class="f-container">
                 <h2 class="header-kpi">Dagens salg</h2>
                 <div class="inline-kpi">
-                    <h1 class="big-header-kpi" th:text="${#numbers.formatDecimal(todaysSale,0,0)}"></h1>
+                    <h1 class="big-header-kpi" th:classappend="${(colorForDaySale == 1 ? 'bigheaderred' : '') + (colorForDaySale == 2 ? 'bigheaderorange' : '') + (colorForDaySale == 3 ? 'bigheaderyellow' : '') + (colorForDaySale == 4 ? 'bigheadergreen' : '')}"
+                        th:text="${#numbers.formatDecimal(todaysSale,0,0)}"></h1>
                 </div>
                 <h1 class="small-header-kpi-leveret" th:text="${dagensDato}"></h1>
             </div>
@@ -220,9 +221,13 @@
             <div class="f-container">
                 <h2 class="header-kpi">Total salg</h2>
                 <div class="inline-kpi-dates">
+
                     <h1 class="big-header-kpi" th:if="${monthlySales < 1}"
+                        th:classappend="${(colorMonthSale == 1 ? 'bigheaderred' : '') + (colorMonthSale == 2 ? 'bigheaderorange' : '') + (colorMonthSale == 3 ? 'bigheaderyellow' : '') + (colorMonthSale == 4 ? 'bigheadergreen' : '')}"
                         th:text="${#numbers.formatDecimal(monthlySale,0,0)}"></h1>
+
                     <h1 class="big-header-kpi" th:if="${monthlySales > 1}"
+                        th:classappend="${(colorMonthSale == 1 ? 'bigheaderred' : '') + (colorMonthSale == 2 ? 'bigheaderorange' : '') + (colorMonthSale == 3 ? 'bigheaderyellow' : '') + (colorMonthSale == 4 ? 'bigheadergreen' : '')}"
                         th:text="${#numbers.formatDecimal(monthlySales,0,0)}"></h1>
                 </div>
                 <h1 class="small-header-kpi-maanedgennem" th:if="${monthlySales < 1}"

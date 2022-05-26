@@ -189,6 +189,31 @@ public class DashboardService {
     }
     return "Cant read Month";
   }
+  
+  public int percentAverageMonth(double thisMonthNumber){
+    if (thisMonthNumber * 100 / 500000 <=25){
+      return 1;
+    }  else if (thisMonthNumber * 100 / 500000 > 25 && thisMonthNumber * 100 / 500000  <= 50){
+      return 2;
+    } else if (thisMonthNumber * 100 / 500000 > 50 && thisMonthNumber * 100 / 500000  <= 75){
+      return 3;
+    }else if (thisMonthNumber * 100 / 500000 > 75 && thisMonthNumber * 100 / 500000  <= 100){
+      return 4;
+    }
+    return 0;
+  }
+  public int percentAverageDay(double thisDayNumber){
+    if (thisDayNumber * 100 / 15000 <=25){
+      return 1;
+    }  else if (thisDayNumber * 100 / 15000 > 25 && thisDayNumber * 100 / 15000  <= 50){
+      return 2;
+    } else if (thisDayNumber * 100 / 15000 > 50 && thisDayNumber * 100 / 15000  <= 75){
+      return 3;
+    }else if (thisDayNumber * 100 / 15000 > 75 && thisDayNumber * 100 / 15000  <= 100){
+      return 4;
+    }
+    return 0;
+  }
   }
 
 
