@@ -69,7 +69,7 @@ public class HomeController {
 
   @GetMapping("/")
   public String index(HttpSession httpSession){
-    return controllerService.ifLoggedReturn(httpSession);
+    return "/login";
   }
 
   @GetMapping("/lageroverblik")
