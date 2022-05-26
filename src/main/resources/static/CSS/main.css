@@ -217,7 +217,7 @@ td.individual{
 .individual-big {
     font-size: 18px;
     text-align: start;
-    padding-left: 30px;
+    padding-left: 35px;
 }
 
 .individual-big::before {

@@ -201,7 +201,7 @@
                         <span class="tag tag-teal" th:text="${damage.title}">title</span>
 
                     </div>
-                    <h4 class="h4-header" th:text="${damage.price}">DKK
+                    <h4 class="h4-header" th:text="${#numbers.formatDecimal(damage.price,0,0)}">DKK
                     </h4>
                     <p th:text="${damage.description}">
                     </p>
@@ -249,7 +249,7 @@
         <thead>
         <tr>
             <th>
-                Skade
+                Skade #
             </th>
             <th>
                 Title
@@ -265,7 +265,7 @@
             </td>
             <td class="individual" th:text="${skade.title}">
             </td>
-            <td class="individual" th:text="${skade.price}">
+            <td class="individual" th:text="${#numbers.formatDecimal(skade.price,0,0)}">
             </td>
 
         </tr>
@@ -273,7 +273,7 @@
         <tr>
             <th class="before" th:text="${damageReport.damageReportID}"></th>
             <th class="before-table">Total Pris</th>
-            <td class="individual-big" th:text="${sumTotal.sumTotal}"></td>
+            <td class="individual-big" th:text="${#numbers.formatDecimal(sumTotal.sumTotal,0,2)}"></td>
         </tr>
         </tbody>
     </table>
