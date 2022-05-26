@@ -7,7 +7,7 @@
     color: #FFFFFF;
     font-size: 16px;
     font-family: 'Open Sans', sans-serif;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -19,9 +19,10 @@
 
 #navbar a:hover {
     background-color: #F2F2F2;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
     color: #1a1919;
     transition-duration: .3s;
-    border-radius: 2px;
 }
 
 /* Navbar links */
@@ -43,22 +44,24 @@
     text-decoration: none;
     color: #1a1919;
     font-size: 13px;
-    font-family: OpenSans,sans-serif;
+    font-family: 'Open Sans', sans-serif;
     letter-spacing: 2px;
     align-items: end;
     display: flex;
     justify-content: end;
     box-sizing: border-box;
-    height: 50px;
+
     font-weight: Bold;
     width: 100%;
 }
 
 #navbar-admin a:hover {
-    background-color: #F2F2F2;
+    background-color: #ffffff;
     color: #052833;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
     transition-duration: .3s;
-    border-radius: 2px;
+
 }
 
 /* Navbar links */
@@ -89,6 +92,11 @@ a.navi-username {
     font-size: 13px;
     color: #022633;
 }
+a.navi-username:hover {
+    font-size: 13px;
+    background-color: #F2F2F2!important;
+    color: #022633;
+}
 
 
 /* Page content */
@@ -97,6 +105,13 @@ a.navi-username {
 }
 
 .small-nav-logo{
+    width: 350px;
+    float: left;
+    display: flex;
+    justify-content: flex-start;
+}
+.small-nav-logo:hover{
+    background-color: white!important;
     width: 350px;
     float: left;
     display: flex;
