@@ -204,7 +204,7 @@
                 <div class="inline-kpi">
                     <h1 class="big-header-kpilevering" th:text="${returnstoday.size()}"></h1>
                 </div>
-                <h1 class="small-header-kpi-leveret" th:text="${dagensDato}"></h1>
+                <h1 class="small-header-kpi-leveret" th:text="${#temporals.format(dagensDato,'dd/MM-yy')}"></h1>
             </div>
         </div>
         <div class="item-e">
@@ -214,7 +214,7 @@
                     <h1 class="big-header-kpi" th:classappend="${(colorForDaySale == 1 ? 'bigheaderred' : '') + (colorForDaySale == 2 ? 'bigheaderorange' : '') + (colorForDaySale == 3 ? 'bigheaderyellow' : '') + (colorForDaySale == 4 ? 'bigheadergreen' : '')}"
                         th:text="${#numbers.formatDecimal(todaysSale,0,'POINT',0,'COMMA')}"></h1>
                 </div>
-                <h1 class="small-header-kpi-leveret" th:text="${dagensDato}"></h1>
+                <h1 class="small-header-kpi-leveret" th:text="${#temporals.format(dagensDato,'dd/MM-yy')}"></h1>
             </div>
         </div>
         <div class="item-f">

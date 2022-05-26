@@ -96,9 +96,9 @@
             </td>
             <td class="individual" th:text="${period.subtractDates(l.startDate,l.endDate)}">
             </td>
-            <td class="individual" th:text="${l.startDate}">
+            <td class="individual" th:text="${#temporals.format(l.startDate,'dd/MM-yy')}">
             </td>
-            <td class="individual" th:text="${l.endDate}">
+            <td class="individual" th:text="${#temporals.format(l.endDate,'dd/MM-yy')}">
             </td>
             <td class="individual" th:if="${l.getStatus()==0}">
                 <button style="background-color: #B22727"></button>

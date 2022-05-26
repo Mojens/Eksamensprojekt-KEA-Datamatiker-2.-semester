@@ -88,14 +88,14 @@
                 <th class="th" scope="col">
                     Start Dato
                 </th>
-                <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${lease.startDate}">
+                <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${#temporals.format(lease.startDate,'dd/MM-yy')}">
                 </td>
             </tr>
             <tr class="tr">
                 <th class="th" scope="col">
                     Slut Dato
                 </th>
-                <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${lease.endDate}">
+                <td th:if="${checkEndDate.compareNowAndEndDate(lease.endDate)==1}" class="skade" th:text="${#temporals.format(lease.endDate,'dd/MM-yy')}">
                 </td>
             </tr>
 
