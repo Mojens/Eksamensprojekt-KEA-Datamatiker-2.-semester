@@ -129,9 +129,9 @@ public class LeaseController {
     @GetMapping("/opretlejeaftale")
     public String viewOpretlejeaftale(Model model, HttpSession httpSession){
         User user = (User) httpSession.getAttribute("user");
-        System.out.println(user);
+        //System.out.println(user);
         Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
-        System.out.println(employee);
+        //System.out.println(employee);
         List<Car> listOfAvaibleCars = carRepository.showAllAvaibleCars();
 
 
@@ -153,9 +153,9 @@ public class LeaseController {
 
 
         User user = (User) httpSession.getAttribute("user");
-        System.out.println(user);
+        //System.out.println(user);
         Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
-        System.out.println(employee);
+        //System.out.println(employee);
 
         LocalDate startDateLD = leaseService.convertToLocalDate(startDate);
         LocalDate endDateLD = leaseService.convertToLocalDate(endDate);
