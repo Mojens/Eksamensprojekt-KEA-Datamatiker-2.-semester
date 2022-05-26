@@ -94,14 +94,14 @@
                 <th class="th" scope="col">
                     Start Dato
                 </th>
-                <td class="skade" th:text="${lease.startDate}">
+                <td class="skade" th:text="${#temporals.format(lease.startDate,'dd/MM-yy')}">
                 </td>
             </tr>
             <tr class="tr">
                 <th class="th" scope="col">
                     Slut Dato
                 </th>
-                <td class="skade" th:text="${lease.endDate}">
+                <td class="skade" th:text="${#temporals.format(lease.endDate,'dd/MM-yy')}">
                 </td>
             </tr>
 
@@ -142,7 +142,7 @@
                 <th class="th" scope="col">
                     Pris
                 </th>
-                <td class="skade" th:text="${car.price}">
+                <td class="skade" th:text="${#numbers.formatDecimal(car.price,0,'POINT',0,'COMMA')}">
                 </td>
             </tr>
 

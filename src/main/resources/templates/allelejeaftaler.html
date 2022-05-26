@@ -93,11 +93,11 @@
                    th:text="${period.subtractDates(leje.startDate,leje.endDate)}" target="_blank"></a>
             </td>
             <td>
-                <a th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" class="individual" th:text="${leje.startDate}"
+                <a th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" class="individual" th:text="${#temporals.format(leje.startDate,'dd/MM-yy')}"
                    target="_blank"></a>
             </td>
             <td>
-                <a th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" class="individual" th:text="${leje.endDate}"
+                <a th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" class="individual" th:text="${#temporals.format(leje.endDate,'dd/MM-yy')}"
                    target="_blank"></a>
             </td>
             <td class="row-update"><a class="link-row link" th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}">Se
