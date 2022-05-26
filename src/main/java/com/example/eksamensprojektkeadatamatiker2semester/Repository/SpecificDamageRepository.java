@@ -104,6 +104,35 @@ public class SpecificDamageRepository {
 
   }
 
+  public List<SpecificDamage> findSpecificDamageID(int damageID) {
+    List<SpecificDamage> reportList = new ArrayList<>();
+    final String SQL_SHOW_DAMAGE = "SELECT * FROM SpecificDamage WHERE specificDamageID = '" + damageID + "'";
+
+    try {
+      PreparedStatement ps = connection.prepareStatement(SQL_SHOW_DAMAGE);
+      ResultSet rs = ps.executeQuery();
+
+      while (rs.next()) {
+        int specificDamageID = rs.getInt(1);
+        double price = rs.getDouble(2);
+        String description = rs.getString(3);
+        String picture = rs.getString(4);
+        String title = rs.getString(5);
+        int damageReportID = rs.getInt(6);
+
+
+        reportList.add(new SpecificDamage(specificDamageID, price, description, picture, title, damageReportID));
+      }
+      ps.close();
+
+    } catch (SQLException e) {
+      System.out.println("Kunne ikke finde nogle skader");
+      e.printStackTrace();
+    }
+    return reportList;
+
+  }
+
 
   public boolean addSpecificDamage(SpecificDamage specificDamage) {
     final String SQL_ADD_QUERY = "INSERT INTO SpecificDamage(specificDamageID,price,description,picture,title,DamageReport_damageReportID) VALUES(?,?,?,?,?,?)";

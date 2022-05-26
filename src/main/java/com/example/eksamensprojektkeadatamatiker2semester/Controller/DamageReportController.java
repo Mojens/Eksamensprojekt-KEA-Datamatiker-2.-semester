@@ -180,5 +180,13 @@ public class DamageReportController {
         return controllerService.skader(httpSession);
     }
 
+    @GetMapping("/skader/{id}/{skadeID}")
+    public String deleteSpecificDamage(@PathVariable("id") int id,@PathVariable("skadeID") int skadeID){
+
+        specificDamageRepository.deleteSpecificDamage(skadeID);
+
+        return "redirect:/skader/" + id;
+    }
+
 
 }

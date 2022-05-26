@@ -429,7 +429,7 @@ input::-webkit-file-upload-button {
 input::-webkit-file-upload-button:hover {
     transition-duration: 0.3s;
     color: #ffffff;
-    background-color: #2D7BC6;
+    opacity: 0.8;
     -ms-transform: scale(1.01);
     transform: scale(1.01);
 }
@@ -1079,7 +1079,7 @@ button {
     letter-spacing: 0.8px;
 }
 button:hover{
-
+    transition-duration: 0.3s;
     opacity: 0.8;
     color: white;
 }

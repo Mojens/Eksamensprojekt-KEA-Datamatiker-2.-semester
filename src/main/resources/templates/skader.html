@@ -205,11 +205,10 @@
                     </h4>
                     <p th:text="${damage.description}">
                     </p>
-                    <!-- <div class="button">
-                         <a th:href="@{/onsker/{wishListID}(wishListID=${onskelister.id})}"  class="button-small">SE ØNSKER</a>
-                         <a th:href="@{/sletonskeliste/{id}/{userID}(id=${onskelister.id},userID=${onskelister.userID})}" class="button-small-delete">SLET
-                             ØNSKELISTE</a>
-                     </div> -->
+                    <div class="button">
+                         <a th:href="@{/skader/{id}/{skadeID}(id=${damage.damageReportID},skadeID=${damage.damageID})}" class="button-small-delete">SLET
+                             SKADE</a>
+                     </div>
                 </div>
 
             </div>
