@@ -1,0 +1,19 @@
+<nav th:fragment="allusers" class="navi-section">
+  <nav class="navi-section" th:if="${user.type==1 || user.type==4}">
+    <div class="navbar" id="navbar">
+      <div class="logo-left-nav">
+        <a href="/opretlejeaftale"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                        src="../static/CSS/images/Logo-250x250.png"/></a>
+      </div>
+      <div class="name-logout">
+        <a href="../lageroverblik">Lageroverblik</a>
+        <a href="../opretlejeaftale">Opret Lejeaftale</a>
+        <a href="../allelejeaftaler">Alle Lejeaftaler</a>
+        <a href="../findlejeaftale" >Find Lejeaftale</a>
+        <a class="navi-username" th:text="${user.username}" ></a>
+        <a href="../logout" class="login-button">Logud</a>
+      </div>
+
+    </div>
+  </nav>
+</nav>
