@@ -25,7 +25,7 @@ public class CarRepository {
 
   public List<Car> showAllCars() {
     List<Car> carList = new ArrayList<>();
-    final String SQL_SHOW_CAR = "SELECT * FROM Cars";
+    final String SQL_SHOW_CAR = "SELECT * FROM Cars ORDER BY isLeased = 1";
 
     try {
       PreparedStatement ps = connection.prepareStatement(SQL_SHOW_CAR);
