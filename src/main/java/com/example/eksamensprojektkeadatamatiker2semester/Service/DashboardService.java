@@ -134,7 +134,7 @@ public class DashboardService {
     List<Car> carsSoldToday;
     double totalSale = 0.0;
     todaysLeases = leaseRepository.findAllLeasesByCurrentMonth(month);
-    System.out.println(todaysLeases);
+    //System.out.println(todaysLeases);
     for (Lease lease: todaysLeases) {
       todaysCarleases = carsLeasesRepository.findCarsLeasesByLeaseIDToday(lease.getLeaseID());
       for (CarsLeases carLease : todaysCarleases) {

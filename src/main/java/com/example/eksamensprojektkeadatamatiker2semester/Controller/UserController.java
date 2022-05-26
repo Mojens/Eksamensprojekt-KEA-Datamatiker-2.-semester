@@ -80,13 +80,13 @@ public class UserController {
   @PostMapping("/changePassword")
   public String changePassword(@RequestParam("employeeUserID") int employeeUserID,
                                @RequestParam("newPassword") String newPassword) {
-    System.out.println(employeeUserID);
+    //System.out.println(employeeUserID);
     Employee selectedEmployee = employeeRepository.findEmployeeByUserID(employeeUserID);
-    System.out.println(selectedEmployee);
+    //System.out.println(selectedEmployee);
     User selectedUser = userRepository.findUserByEmployee(selectedEmployee);
-    System.out.println(selectedUser);
+    //System.out.println(selectedUser);
     String bCryptPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
-    System.out.println(bCryptPassword);
+    //System.out.println(bCryptPassword);
     userRepository.changePassword(selectedUser.getUsername(), bCryptPassword, selectedUser);
     return "redirect:/skiftkode";
   }

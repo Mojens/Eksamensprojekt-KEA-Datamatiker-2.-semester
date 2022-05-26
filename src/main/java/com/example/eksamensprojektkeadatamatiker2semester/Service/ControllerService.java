@@ -13,7 +13,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
         currentPage = "/opretlejeaftale";
       } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
@@ -29,7 +29,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
         currentPage = "/allelejeaftaler";
       } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
@@ -45,7 +45,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
         currentPage = "/aftale";
       } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
@@ -61,7 +61,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
         currentPage = "/lejeaftale";
       } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
@@ -77,7 +77,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
         currentPage = "/seaftale";
       } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
@@ -94,7 +94,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
         currentPage = "/udbedring";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
@@ -110,7 +110,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
         currentPage = "/fundetretur";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
@@ -126,7 +126,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
         currentPage = "/findlease";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
@@ -142,7 +142,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
         currentPage = "/findretur";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
@@ -158,7 +158,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
         currentPage = "/skader";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
@@ -174,7 +174,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
         currentPage = "/registrerFejlOgMangel";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
@@ -190,7 +190,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
         currentPage = "/skaderapport";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
@@ -207,7 +207,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 4) {
         currentPage = "/opretbruger";
       } else if (loggedUser.getType() != 4) {
@@ -223,7 +223,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 4) {
         currentPage = "/skiftkode";
       } else if (loggedUser.getType() != 4) {
@@ -239,7 +239,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 4) {
         currentPage = "/sletbruger";
       } else if (loggedUser.getType() != 4) {
@@ -256,7 +256,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 3 || loggedUser.getType() == 4) {
         currentPage = "/dashboard";
       } else if (loggedUser.getType() != 3 || loggedUser.getType() != 4) {
@@ -273,7 +273,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 3 || loggedUser.getType() == 4) {
         currentPage = "/createcar";
       } else if (loggedUser.getType() != 3 || loggedUser.getType() != 4) {
@@ -305,7 +305,7 @@ public class ControllerService {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");
-      System.out.println(loggedUser.getType());
+      //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 4 || loggedUser.getType() == 1) {
         currentPage = "/lageroverblik";
       }

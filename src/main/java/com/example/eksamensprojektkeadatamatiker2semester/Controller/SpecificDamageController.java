@@ -76,7 +76,7 @@ public class SpecificDamageController {
       FileUploadUtil.saveFile(uploadDir, newPicture, multipartFile);
     }
 
-    System.out.println(fileName);
+    //System.out.println(fileName);
 
     specificDamageRepository.addSpecificDamage(new SpecificDamage(price, description, newPicture, title, damageReport.getDamageReportID()));
 

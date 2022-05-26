@@ -251,22 +251,6 @@ public class LeaseRepository {
         }
 
     }
-    /*
-    public void deleteLeaseID(int inputLeaseID) {
-        final String QUERYDELETE = "DELETE Leases,CarsLeases FROM Leases INNER JOIN CarsLeases ON Leases.leaseID =  CarsLeases.Leases_leaseID AND Leases_leaseID = "+"'"+inputLeaseID+"'";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(QUERYDELETE);
-            //Da vi har sat foreign key på update at den skal cascade og ikke restrict
-            preparedStatement.executeUpdate();
-            preparedStatement.close();
-
-        } catch (SQLException e) {
-            System.out.println("kunne ikke slette lease med denne ID");
-            e.printStackTrace();
-        }
-    }
-
-     */
     public void ChangeStatusLeaseByID(int leaseID) {
         final String QUERYDELETE = "UPDATE Leases SET Leases.status = 0 WHERE leaseID = "+"'"+leaseID+"'";
         try {
@@ -372,13 +356,13 @@ public class LeaseRepository {
 
 
                 leases.add(new Lease(leaseID, firstName, lastName, userID, startDate, endDate));
-                Lease nyLease = new Lease(leaseID,firstName,lastName,userID,startDate,endDate);
-                System.out.println("Nyt lease indsat i liste "+ nyLease);
+                //Lease nyLease = new Lease(leaseID,firstName,lastName,userID,startDate,endDate);
+                //System.out.println("Nyt lease indsat i liste "+ nyLease);
             }
             ps.close();
 
         } catch (SQLException e) {
-            System.out.println("Kunne ikke finde nogle skader");
+            System.out.println("Kunne ikke finde nogle leases for givende måned");
             e.printStackTrace();
         }
         return leases;
