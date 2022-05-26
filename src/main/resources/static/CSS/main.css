@@ -54,8 +54,8 @@ body,html{
     padding: 30px;
     min-height: 480px;
     max-height: 480px;
-    max-width: 530px;
-    min-width: 530px;
+    max-width: 500px;
+    min-width: 500px;
     background-color: #ffffff;
     margin: 10px 0 10px 10px;
     border-radius: 10px;
@@ -86,8 +86,8 @@ body,html{
     flex-direction: column;
     align-items: start;
     flex-wrap: nowrap;
-    max-width: 560px;
-    min-width: 560px;
+    max-width: 530px;
+    min-width: 530px;
 }
 
 th {
@@ -349,8 +349,8 @@ select{
 
 .card-header-big img {
     max-height: 300px;
-    max-width: 530px;
-    min-width: 530px;
+    max-width: 500px;
+    min-width: 500px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     object-fit: fill;
@@ -365,8 +365,8 @@ select{
     padding: 10px;
     min-height: 175px;
     max-height: 175px;
-    max-width: 530px;
-    min-width: 530px;
+    max-width: 500px;
+    min-width: 500px;
     background-color: #ffffff;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
