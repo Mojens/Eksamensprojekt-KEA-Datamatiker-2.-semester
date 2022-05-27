@@ -41,6 +41,9 @@ public class DashboardController {
     model.addAttribute("user",user);
     List<Car> leasedCars = dashboardRepository.addLeasedCarsToList();
     List<Car> allCars = carRepository.showAllCars();
+    if (allCars.isEmpty()){
+      return "createcar";
+    }
     List<Car> brandModel = dashboardRepository.brandModelList();
     List<Lease> returnsToday = leaseRepository.findAllLeasesByEndDate(LocalDate.now());
     Car car = carRepository.showAllCarsAsObject();
@@ -86,6 +89,9 @@ public class DashboardController {
     model.addAttribute("user",user);
     List<Car> leasedCars = dashboardRepository.addLeasedCarsToList();
     List<Car> allCars = carRepository.showAllCars();
+    if (allCars.isEmpty()){
+      return "createcar";
+    }
     List<Car> brandModel = dashboardRepository.brandModelList();
     List<Lease> returnsToday = leaseRepository.findAllLeasesByEndDate(LocalDate.now());
     Car car = carRepository.showAllCarsAsObject();
