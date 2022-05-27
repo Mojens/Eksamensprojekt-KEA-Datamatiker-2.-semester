@@ -51,24 +51,29 @@ public class UserController {
     User loggedUser = userRepository.findUserByUserName(userName);
     //Tjekker om det er en gyldig user ud fra brugernavn
     if (loggedUser != null) {
-      boolean isPasswordValid = userService.isPasswordValid(loggedUser, password);
-      //Checker for krypteret kode eller alm kode sammenligning
-      if (isPasswordValid) {
-        Cookie cookieUser = new Cookie("userName", userName);
-        httpSession.setAttribute("userName", cookieUser);
-        httpSession.setAttribute("user", loggedUser);
-        model.addAttribute("userID", loggedUser.getType());
-        return userService.checkTypeByUser(loggedUser.getType());
-      } else if (BCrypt.checkpw(password, loggedUser.getPassword())) {
-        Cookie cookieUser = new Cookie("userName", userName);
-        httpSession.setAttribute("userName", cookieUser);
-        httpSession.setAttribute("user", loggedUser);
-        model.addAttribute("userID", loggedUser.getType());
-        return userService.checkTypeByUser(loggedUser.getType());
-      } else {
-        model.addAttribute("FailedLogin", "Failed login");
-        return "redirect:login";
+      //Tjekker om status på denne user ud fra user
+      if (loggedUser.getStatus() != 0) {
+        boolean isPasswordValid = userService.isPasswordValid(loggedUser, password);
+        //Checker alm kode sammenligning
+        if (isPasswordValid) {
+          Cookie cookieUser = new Cookie("userName", userName);
+          httpSession.setAttribute("userName", cookieUser);
+          httpSession.setAttribute("user", loggedUser);
+          model.addAttribute("userID", loggedUser.getType());
+          return userService.checkTypeByUser(loggedUser.getType());
+        }//Checker for krypteret kode sammenligning
+        else if (BCrypt.checkpw(password, loggedUser.getPassword())) {
+          Cookie cookieUser = new Cookie("userName", userName);
+          httpSession.setAttribute("userName", cookieUser);
+          httpSession.setAttribute("user", loggedUser);
+          model.addAttribute("userID", loggedUser.getType());
+          return userService.checkTypeByUser(loggedUser.getType());
+        } else {
+          model.addAttribute("FailedLogin", "Failed login");
+          return "redirect:login";
+        }
       }
+      return "redirect:login";
     }
     return "redirect:login";
   }
