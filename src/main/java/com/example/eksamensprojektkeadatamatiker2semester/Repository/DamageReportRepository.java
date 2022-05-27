@@ -31,8 +31,9 @@ public class DamageReportRepository {
         int leaseID = rs.getInt(2);
         int vognNummer = rs.getInt(3);
         int employeeID = rs.getInt(4);
+        int status = rs.getInt(5);
 
-        reportList.add(new DamageReport(damageReportID, leaseID, vognNummer, employeeID));
+        reportList.add(new DamageReport(damageReportID, leaseID, vognNummer, employeeID,status));
 
       }
       ps.close();
@@ -64,6 +65,7 @@ public class DamageReportRepository {
         check.setVognNummer(vognNummer);
 
 
+
       }
       ps.close();
 
@@ -89,10 +91,12 @@ public class DamageReportRepository {
         int leaseID = rs.getInt(2);
         int vognNummer = rs.getInt(3);
         int employeeID = rs.getInt(4);
+        int status = rs.getInt(5);
         report.setDamageReportID(damageReportID);
         report.setEmployeeID(employeeID);
         report.setLeaseID(leaseID);
         report.setVognNummer(vognNummer);
+        report.setStatus(status);
 
       }
       ps.close();
@@ -117,8 +121,9 @@ public class DamageReportRepository {
         int leaseID = rs.getInt(2);
         int vognNummer = rs.getInt(3);
         int employeeID = rs.getInt(4);
+        int status = rs.getInt(5);
 
-        report.add(new DamageReport(damageReportID, leaseID, vognNummer, employeeID));
+        report.add(new DamageReport(damageReportID, leaseID, vognNummer, employeeID, status));
 
       }
       ps.close();
@@ -191,6 +196,23 @@ public class DamageReportRepository {
       e.printStackTrace();
       return false;
     }
+
+  }
+
+  public void ChangeStatusDamageReportID(int id) {
+
+    final String QUERYDELETE = "UPDATE DamageReport SET DamageReport.status = 0 WHERE damageReportID = "+"'"+id+"'";
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERYDELETE);
+      //Da vi har sat foreign key på update at den skal cascade og ikke restrict
+      preparedStatement.executeUpdate();
+      preparedStatement.close();
+
+    } catch (SQLException e) {
+      System.out.println("kunne ikke opdatere skadesrapporten til klar");
+      e.printStackTrace();
+    }
+
 
   }
 

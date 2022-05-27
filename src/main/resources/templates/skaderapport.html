@@ -36,28 +36,33 @@
                 Medarbejder ID
             </th>
             <th scope="col">Se rapporten</th>
+            <th scope="col">Skift status</th>
         </tr>
         </thead>
         <tbody>
-        <tr class="card" th:each="rapport : ${damageReports}">
-            <td>
+        <tr class="card" th:each="rapport : ${damageReports}" >
+            <td >
                 <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"
                    th:text="${rapport.damageReportID}" target="_blank"></a>
-            </td>
-            <td>
+            </td >
+            <td >
                 <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"
                    th:text="${rapport.leaseID}" target="_blank"></a>
             </td>
-            <td>
+            <td >
                 <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"
                    th:text="${rapport.vognNummer}" target="_blank"></a>
             </td>
-            <td>
+            <td >
                 <a th:href="@{/skader/{id}(id=${rapport.damageReportID})}" class="individual"
                    th:text="${rapport.employeeID}" target="_blank"></a>
             </td>
+
             <td class="row-update"><a class="link-row link" th:href="@{/skader/{id}(id=${rapport.damageReportID})}">Se
                 skadesrapport</a></td>
+            <td class="row-update" th:classappend="${rapport.status==1} ? updatered : updategreen">
+            <a class="link-row link" th:if="${rapport.status==0}" th:href="@{/changestatus/{drID}(drID=${rapport.damageReportID})}">Bilen er klar</a>
+            <a class="link-row link" th:if="${rapport.status==1}" th:href="@{/changestatus/{drID}(drID=${rapport.damageReportID})}">Ikke klar</a></td>
         </tr>
         </tbody>
 

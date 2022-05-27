@@ -44,9 +44,13 @@ public class DamageReportController {
     @GetMapping("/skaderapport")
     public String showAllDamageReports(HttpSession httpSession, Model model){
         User user = (User) httpSession.getAttribute("user");
+        DamageReport dr = new DamageReport();
         model.addAttribute("user",user);
         List <DamageReport> damageReports = damageReportRepository.showAllDamageReports();
+        DamageReport id = damageReportRepository.findReportByID(dr.getDamageReportID());
+        model.addAttribute("status",id.getStatus());
         model.addAttribute("damageReports",damageReports);
+
 
         return controllerService.skadeRapport(httpSession);
     }
@@ -110,6 +114,13 @@ public class DamageReportController {
         model.addAttribute("damageReports",damageReports);
 
         return controllerService.skadeRapport(httpSession);
+    }
+
+    @GetMapping("/changestatus/{drID}")
+    public String changeStatusForDamageReport(@PathVariable("drID")int drID, Model model){
+       damageReportRepository.ChangeStatusDamageReportID(drID);
+
+        return "redirect:/skaderapport";
     }
 
     @PostMapping("/skaderapport")

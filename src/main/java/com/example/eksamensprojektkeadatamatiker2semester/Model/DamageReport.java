@@ -5,6 +5,7 @@ public class DamageReport {
   private int leaseID;
   private int vognNummer;
   private int employeeID;
+  private int status;
 
 
   public DamageReport(int damageReportID, int leaseID, int vognNummer, int employeeID) {
@@ -18,6 +19,14 @@ public class DamageReport {
     this.leaseID = leaseID;
     this.vognNummer = vognNummer;
     this.employeeID = employeeID;
+  }
+
+  public DamageReport(int damageReportID, int leaseID, int vognNummer, int employeeID, int status) {
+    this.damageReportID = damageReportID;
+    this.leaseID = leaseID;
+    this.vognNummer = vognNummer;
+    this.employeeID = employeeID;
+    this.status = status;
   }
 
   public DamageReport() {
@@ -56,5 +65,11 @@ public class DamageReport {
     this.leaseID = leaseID;
   }
 
+  public int getStatus() {
+    return status;
+  }
 
+  public void setStatus(int status) {
+    this.status = status;
+  }
 }
