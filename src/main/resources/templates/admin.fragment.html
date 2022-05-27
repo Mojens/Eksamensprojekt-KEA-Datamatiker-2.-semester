@@ -1,15 +1,15 @@
 <!-- Lavet af Malthe -->
 <nav th:fragment="admin" class="navi-section">
-    <nav th:if="${user.type==4}" class="navi-section-admin">
+    <nav class="navi-section-admin">
         <div id="navbar-admin">
             <div class="logo-left-admin">
 
             </div>
             <div class="navigation">
-                <a th:if="${user.type==4}" href="../dashboard">Dashboard</a>
-                <a th:if="${user.type==4}" href="../opretlejeaftale" >Lejeaftaler</a>
-                <a th:if="${user.type==4}" href="../findlease" >Skadesrapport</a>
-                <a th:if="${user.type==4}" href="../opretbruger" >Håndter bruger </a>
+                <a href="../dashboard">Dashboard</a>
+                <a  href="../opretlejeaftale" >Lejeaftaler</a>
+                <a  href="../findlease" >Skadesrapport</a>
+                <a href="../opretbruger" >Håndter bruger </a>
             </div>
         </div>
     </nav>
