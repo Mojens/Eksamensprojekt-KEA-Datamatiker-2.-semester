@@ -185,7 +185,7 @@ public class DamageReportController {
 
         specificDamageRepository.deleteSpecificDamage(skadeID);
 
-        return "redirect:skader/" + id;
+        return "redirect:/skader/" + id;
     }
 
 

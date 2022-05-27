@@ -88,7 +88,7 @@ public class SpecificDamageController {
     model.addAttribute("specificDamage", specificDamage);
 
 
-    return "redirect:skader/" + id;
+    return "redirect:/skader/" + id;
     //return controllerService.registrerFejlOgMangel(httpSession);
   }
 
