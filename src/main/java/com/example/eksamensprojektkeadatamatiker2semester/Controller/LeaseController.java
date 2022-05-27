@@ -190,6 +190,6 @@ public class LeaseController {
         //Sletter fra Leases og CarLeases
         leaseRepository.ChangeStatusLeaseByID(leaseID);
 
-        return "redirect:allelejeaftaler";
+        return "redirect:/allelejeaftaler";
     }
 }
