@@ -57,7 +57,7 @@ public class UserController {
       httpSession.setAttribute("userName", cookieUser);
       httpSession.setAttribute("user", loggedUser);
       model.addAttribute("userID", loggedUser.getType());
-      return userService.checkTypeByUser(String.valueOf(loggedUser.getType()));
+      return userService.checkTypeByUser(loggedUser.getType());
     } else
       model.addAttribute("Failed Login", "Failed login");
     return "redirect:login";

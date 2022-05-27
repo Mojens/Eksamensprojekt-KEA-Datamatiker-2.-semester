@@ -16,14 +16,14 @@ public class UserService {
 
 
   //Check type by user for redirection after the login
-  public String checkTypeByUser(String type){
-    if (Integer.parseInt(type) == 1 ){
+  public String checkTypeByUser(int type){
+    if (type == 1 ){
       return "redirect:opretlejeaftale";
-    }else if (Integer.parseInt(type) == 2){
+    }else if (type == 2){
       return "redirect:findlease";
-    }else if (Integer.parseInt(type) == 3){
+    }else if (type == 3){
       return "redirect:dashboard";
-    }else if (Integer.parseInt(type) == 4){
+    }else if (type == 4){
       return "redirect:opretbruger";
     }
     return "login";
