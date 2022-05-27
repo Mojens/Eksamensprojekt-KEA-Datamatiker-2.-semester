@@ -289,15 +289,15 @@ public class ControllerService {
     User loggedUser = (User) httpSession.getAttribute("user");
     if (loggedUser != null) {
       if (loggedUser.getType() == 1) {
-        return "redirect:/opretlejeaftale";
+        return "redirect:opretlejeaftale";
       } else if (loggedUser.getType() == 2) {
-        return "redirect:/findlease";
+        return "redirect:findlease";
       } else if (loggedUser.getType() == 3) {
-        return "redirect:/dashboard";
+        return "redirect:dashboard";
       } else if (loggedUser.getType() == 4) {
-        return "redirect:/opretbruger";
+        return "redirect:opretbruger";
       }
-      return "redirect:/login";
+      return "redirect:login";
     }
     return "login";
   }
@@ -307,10 +307,10 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 4 || loggedUser.getType() == 1) {
-        currentPage = "/lageroverblik";
+        currentPage = "lageroverblik";
       }
     }else if (httpSession.getAttribute("userName") == null) {
-        currentPage = "/login";
+        currentPage = "login";
       }
       return currentPage;
 

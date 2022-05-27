@@ -29,7 +29,7 @@ public class EmployeeController {
   public String deleteEmployee(@RequestParam("userID") int userID) {
     employeeRepository.ChangeStatusEmployeeByID(userID);
     userRepository.ChangeStatusUserByID(userID);
-    return "redirect:/sletbruger";
+    return "redirect:sletbruger";
   }
 
   @PostMapping("/addEmployee")
