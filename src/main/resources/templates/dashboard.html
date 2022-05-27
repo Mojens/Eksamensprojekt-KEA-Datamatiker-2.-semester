@@ -208,7 +208,7 @@
 
                     <h1 class="big-header-kpi" th:if="${monthlySales > 1}"
                         th:classappend="${(colorMonthSale == 1 ? 'bigheaderred' : '') + (colorMonthSale == 2 ? 'bigheaderorange' : '') + (colorMonthSale == 3 ? 'bigheaderyellow' : '') + (colorMonthSale == 4 ? 'bigheadergreen' : '')}"
-                        th:text="${#numbers.formatDecimal(monthlySales,0,'POINT',0)}"></h1>
+                        th:text="${#numbers.formatDecimal(monthlySales,0,'POINT',0,'COMMA')}"></h1>
                 </div>
                 <h1 class="small-header-kpi-maanedgennem" th:if="${monthlySales < 1}"
                     th:text="${thismonth}"></h1>
