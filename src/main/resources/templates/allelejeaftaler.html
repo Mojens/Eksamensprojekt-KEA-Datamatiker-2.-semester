@@ -45,11 +45,11 @@
                 Slut Dato
             </th>
             <th scope="col">Se rapporten</th>
-            <th scope="col">Slet rapporten</th>
+            <th scope="col">Skift status</th>
         </tr>
         </thead>
         <tbody>
-        <tr class="card" th:each="leje : ${lease}" th:if="${leje.getStatus() == 1}">
+        <tr class="card" th:each="leje : ${lease}" th:if="${leje.getStatus() == 1 || leje.getStatus() == 0}">
             <td>
                 <a th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" class="individual" th:text="${leje.leaseID}"
                    target="_blank"></a>
@@ -76,8 +76,9 @@
             </td>
             <td class="row-update"><a class="link-row link" th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}">Se
                 Lejeaftale</a></td>
-            <td class="row-update"><a class="link-row link" th:href="@{/sletaftale/{leaseID}(leaseID=${leje.leaseID})}" >Slet
-                Lejeaftale</a></td>
+            <td class="row-update" th:classappend="${leje.status==1} ? updatered : updategreen">
+                <a class="link-row link" th:if="${leje.status==0}" th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" >Tilbageleveret</a>
+            <a class="link-row link" th:if="${leje.status==1}" th:href="@{/sletaftale/{leaseID}(leaseID=${leje.leaseID})}" >Ikke tilbageleveret</a></td>
         </tr>
         </tbody>
 
