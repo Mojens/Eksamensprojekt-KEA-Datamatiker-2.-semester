@@ -153,7 +153,6 @@ table {
     table-layout: fixed;
     width: 47.5%;
     margin-left: 10px;
-    margin-top: 20px;
     box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 
@@ -199,6 +198,18 @@ a.individual {
 td.individual{
 
     height: 40px;
+}
+
+.skader{
+    color: white;
+    padding: 12px 16px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.8px;
 }
 
 .individual {
