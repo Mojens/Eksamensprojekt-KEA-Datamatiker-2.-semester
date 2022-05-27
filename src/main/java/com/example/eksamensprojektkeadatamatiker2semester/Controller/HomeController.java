@@ -65,7 +65,7 @@ public class HomeController {
 
   @GetMapping("/login")
   public String login(HttpSession httpSession){
-    return "/login";
+    return controllerService.ifLoggedReturn(httpSession);
   }
 
   @GetMapping("/")
