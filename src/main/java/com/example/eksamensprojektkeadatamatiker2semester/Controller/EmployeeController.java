@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.security.crypto.bcrypt.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /* Lavet Af Mohammed */
 @Controller
@@ -63,4 +64,13 @@ public class EmployeeController {
     return controllerService.profile(httpSession);
   }
 
+  @GetMapping("/allemedarbejdere")
+  public String showWorkers(HttpSession httpSession,
+                            Model model){
+    User user = (User) httpSession.getAttribute("user");
+    model.addAttribute("user",user);
+    List<Employee> listOfEmployees = employeeRepository.showAllEmployees();
+    model.addAttribute("listOfEmployees",listOfEmployees);
+    return controllerService.alleMedarbejdere(httpSession);
+  }
 }
