@@ -49,17 +49,27 @@ public class UserController {
                                 HttpSession httpSession,
                                 Model model) {
     User loggedUser = userRepository.findUserByUserName(userName);
-    boolean isPasswordValid = userService.isPasswordValid(loggedUser, password);
-    //BCrypt.checkpw(password,loggedUser.getPassword() Dette skal indtastet når alle har lavet en bruger med krypt
-    if (isPasswordValid) {
-      Cookie cookieUser = new Cookie("userName", userName);
-      Cookie cookieType = new Cookie("user", String.valueOf(loggedUser));
-      httpSession.setAttribute("userName", cookieUser);
-      httpSession.setAttribute("user", loggedUser);
-      model.addAttribute("userID", loggedUser.getType());
-      return userService.checkTypeByUser(loggedUser.getType());
-    } else
-      model.addAttribute("Failed Login", "Failed login");
+    //Tjekker om det er en gyldig user ud fra brugernavn
+    if (loggedUser != null) {
+      boolean isPasswordValid = userService.isPasswordValid(loggedUser, password);
+      //Checker for krypteret kode eller alm kode sammenligning
+      if (isPasswordValid) {
+        Cookie cookieUser = new Cookie("userName", userName);
+        httpSession.setAttribute("userName", cookieUser);
+        httpSession.setAttribute("user", loggedUser);
+        model.addAttribute("userID", loggedUser.getType());
+        return userService.checkTypeByUser(loggedUser.getType());
+      } else if (BCrypt.checkpw(password, loggedUser.getPassword())) {
+        Cookie cookieUser = new Cookie("userName", userName);
+        httpSession.setAttribute("userName", cookieUser);
+        httpSession.setAttribute("user", loggedUser);
+        model.addAttribute("userID", loggedUser.getType());
+        return userService.checkTypeByUser(loggedUser.getType());
+      } else {
+        model.addAttribute("FailedLogin", "Failed login");
+        return "redirect:login";
+      }
+    }
     return "redirect:login";
   }
 
