@@ -50,7 +50,7 @@ body,html{
     background-color: #ffffff;
     margin: 10px 0 10px 10px;
     border-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 .container-form-big{
     margin-bottom: 40px;
@@ -133,19 +133,19 @@ tr:nth-child(odd) {
 table {
     table-layout: fixed;
     width: 100%;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 
 .allCars {
     table-layout: fixed;
     width: 100%;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 
 .reverse {
     table-layout: fixed;
     width: 33%;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     margin: 0;
 }
 
@@ -154,7 +154,7 @@ table {
     width: 47.5%;
     margin-left: 10px;
     margin-top: 20px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 
 .three-tables-container {
@@ -263,13 +263,13 @@ select{
     margin-top: 10px;
     outline-color: rgb(84 105 212 / 0.5);
     background-color: rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+    box-shadow: rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(60, 66, 87, 0.16) 0 0 0 1px,
+    rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(0, 0, 0, 0) 0 0 0 0;
 
 }
 .selectDate{
@@ -345,7 +345,7 @@ select{
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     object-fit: fill;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 
 
@@ -361,7 +361,7 @@ select{
     background-color: #ffffff;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 
 .tag {
@@ -529,7 +529,7 @@ input::-webkit-file-upload-button:hover {
     align-self: center;
     background-color: white;
     border-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     max-width: 530px;
     min-height: 229px;
 }
@@ -540,7 +540,7 @@ input::-webkit-file-upload-button:hover {
 
     transition-duration: .3s;
     border-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     max-width: 530px;
     min-height: 229px;
 }
@@ -560,7 +560,7 @@ input::-webkit-file-upload-button:hover {
     align-self: center;
     background-color: white;
     border-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     max-width: 530px;
     max-height: 229px;
     min-height: 229px;
@@ -573,7 +573,7 @@ input::-webkit-file-upload-button:hover {
     background-color: #f8f6f6;
     transition-duration: .3s;
     border-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     max-width: 530px;
     max-height: 229px;
     min-height: 229px;
@@ -594,7 +594,7 @@ input::-webkit-file-upload-button:hover {
     align-self: center;
    background-color: white;
     border-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     max-width: 530px;
     max-height: 229px;
     min-height: 229px;
@@ -607,7 +607,7 @@ input::-webkit-file-upload-button:hover {
 
     transition-duration: .3s;
     border-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     max-width: 530px;
     max-height: 229px;
     min-height: 229px;
@@ -629,7 +629,7 @@ input::-webkit-file-upload-button:hover {
     align-self: center;
     background-color: white;
     border-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     max-width: 530px;
     max-height: 229px;
     min-height: 229px;
@@ -641,7 +641,7 @@ input::-webkit-file-upload-button:hover {
     background-color: #f8f6f6;
     transition-duration: .3s;
     border-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     max-width: 530px;
     max-height: 229px;
     min-height: 229px;
@@ -662,7 +662,7 @@ input::-webkit-file-upload-button:hover {
     align-self: center;
     background-color: white;
     border-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     max-width: 530px;
     max-height: 229px;
     min-height: 229px;
@@ -674,7 +674,7 @@ input::-webkit-file-upload-button:hover {
     background-color: #f8f6f6;
     transition-duration: .3s;
     border-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     max-width: 530px;
     max-height: 229px;
     min-height: 229px;
@@ -694,7 +694,7 @@ input::-webkit-file-upload-button:hover {
     align-self: center;
     background-color: white;
     border-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     max-width: 530px;
     max-height: 229px;
     min-height: 229px;
@@ -706,7 +706,7 @@ input::-webkit-file-upload-button:hover {
     background-color: #f8f6f6;
     transition-duration: .3s;
     border-radius: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
     max-width: 530px;
     max-height: 229px;
     min-height: 229px;
@@ -1085,13 +1085,13 @@ input{
     margin-top: 10px;
     outline-color: rgb(84 105 212 / 0.5);
     background-color: rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+    box-shadow: rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(60, 66, 87, 0.16) 0 0 0 1px,
+    rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(0, 0, 0, 0) 0 0 0 0,
+    rgba(0, 0, 0, 0) 0 0 0 0;
 
 
 }
