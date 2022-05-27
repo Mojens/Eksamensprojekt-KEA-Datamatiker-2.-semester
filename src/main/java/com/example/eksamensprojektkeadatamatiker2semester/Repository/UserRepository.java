@@ -53,7 +53,8 @@ public class UserRepository {
         String userName = resultSet.getString(2);
         String password = resultSet.getString(3);
         int type = resultSet.getInt(4);
-        loginUser = new User(userID, userName, password, type);
+        int status = resultSet.getInt(5);
+        loginUser = new User(userID, userName, password, type, status);
       }
     } catch (SQLException e) {
       System.out.println("Could not find user");
