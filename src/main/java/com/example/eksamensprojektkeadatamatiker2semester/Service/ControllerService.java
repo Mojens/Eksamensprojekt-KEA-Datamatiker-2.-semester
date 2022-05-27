@@ -299,7 +299,7 @@ public class ControllerService {
       }
       return "redirect:/login";
     }
-    return "/login";
+    return "login";
   }
   public String lagerOverblik(HttpSession httpSession) {
     String currentPage = null;
