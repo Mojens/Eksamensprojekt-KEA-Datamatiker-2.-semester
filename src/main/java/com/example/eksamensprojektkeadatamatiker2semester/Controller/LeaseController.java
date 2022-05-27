@@ -177,7 +177,7 @@ public class LeaseController {
         model.addAttribute("user",user);
         model.addAttribute("employee",employee);
 
-        return "redirect:/allelejeaftaler";
+        return "redirect:allelejeaftaler";
 
     }
 
@@ -190,6 +190,6 @@ public class LeaseController {
         //Sletter fra Leases og CarLeases
         leaseRepository.ChangeStatusLeaseByID(leaseID);
 
-        return "redirect:/allelejeaftaler";
+        return "redirect:allelejeaftaler";
     }
 }

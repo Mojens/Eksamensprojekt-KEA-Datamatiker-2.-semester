@@ -60,7 +60,7 @@ public class UserController {
       return userService.checkTypeByUser(String.valueOf(loggedUser.getType()));
     } else
       model.addAttribute("Failed Login", "Failed login");
-    return "redirect:/login";
+    return "redirect:login";
   }
 
   @PostMapping("/createUser")
@@ -68,13 +68,13 @@ public class UserController {
                            @RequestParam("password") String password,
                            @RequestParam("Type") int type) {
     userRepository.createNewUser(new User(password, userName, type));
-    return "redirect:/admin";
+    return "redirect:admin";
   }
 
   @PostMapping("/logout")
   public String logOutFunction(HttpSession httpSession) {
     httpSession.removeAttribute("user");
-    return "redirect:/login";
+    return "redirect:login";
   }
 
   @PostMapping("/changePassword")
@@ -88,7 +88,7 @@ public class UserController {
     String bCryptPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
     //System.out.println(bCryptPassword);
     userRepository.changePassword(selectedUser.getUsername(), bCryptPassword, selectedUser);
-    return "redirect:/skiftkode";
+    return "redirect:skiftkode";
   }
 
   @GetMapping("/createcar")
@@ -108,7 +108,7 @@ public class UserController {
     Car createdCar = new Car(stelNummer,brand,model,price,0);
     carRepository.createNewCar(createdCar);
 
-    return "redirect:/createcar";
+    return "redirect:createcar";
   }
 
 }

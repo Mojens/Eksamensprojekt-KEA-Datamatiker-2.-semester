@@ -141,9 +141,9 @@ public class DamageReportController {
 
         model.addAttribute("employee",employee);
         if (checkIfExists.getDamageReportID()==0){
-            return "redirect:/skader/"+id;
+            return "redirect:skader/"+id;
         } else {
-            return "redirect:/skader/"+checkIfExists.getDamageReportID();
+            return "redirect:skader/"+checkIfExists.getDamageReportID();
         }
 
     }
@@ -185,7 +185,7 @@ public class DamageReportController {
 
         specificDamageRepository.deleteSpecificDamage(skadeID);
 
-        return "redirect:/skader/" + id;
+        return "redirect:skader/" + id;
     }
 
 
