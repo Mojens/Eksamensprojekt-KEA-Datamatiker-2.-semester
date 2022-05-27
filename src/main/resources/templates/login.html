@@ -8,9 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
-    <link rel="stylesheet" href="../static/CSS/NavBar.css">
     <link th:href="@{/CSS/login.css}" rel="stylesheet"/>
-    <link rel="stylesheet" href="../static/CSS/login.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
 </head>
@@ -29,7 +27,7 @@
           method="post">
 
         <div class="imgcontainer">
-            <img th:src="@{../CSS/images/logo-symbol_2_b9b3ka.png}" alt="Avatar" class="avatar">
+            <img th:src="@{../CSS/images/logo-symbol_2_b9b3ka.png}" alt="Avatar" class="avatar" src="">
         </div>
         <div class="header">
             <h1 class="h1">
@@ -44,14 +42,14 @@
             <div class="floating">
                 <input id="input__username" class="floating__input" name="userName" required type="text"
                        placeholder="Username"/>
-                <label for="input__username" class="floating__label" data-content="Brugernavn"/>
+                <label for="input__username" class="floating__label" data-content="Brugernavn"></label>
             </div>
             <div class="floating">
                 <i class="bi bi-eye-slash" id="togglePassword"></i>
                 <input id="input__password" class="floating__input" name="password" required type="password"
                        placeholder="Password"  />
 
-                <label for="input__password" class="floating__label" data-content="Adgangskode"/>
+                <label for="input__password" class="floating__label" data-content="Adgangskode"></label>
 
 
             </div>
