@@ -6,9 +6,15 @@ import com.example.eksamensprojektkeadatamatiker2semester.Repository.EmployeeRep
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.UserRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Service.ControllerService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.security.crypto.bcrypt.*;
+
+import javax.servlet.http.HttpSession;
+import java.util.List;
+
 /* Lavet Af Mohammed */
 @Controller
 public class EmployeeController {
@@ -48,5 +54,23 @@ public class EmployeeController {
     return "redirect:opretbruger";
   }
 
+  @GetMapping("/profile")
+  public String showProfile(Model model,
+                            HttpSession httpSession){
+    User user = (User) httpSession.getAttribute("user");
+    model.addAttribute("user",user);
+    Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
+    model.addAttribute("profile",employee);
+    return controllerService.profile(httpSession);
+  }
 
+  @GetMapping("/allemedarbejdere")
+  public String showWorkers(HttpSession httpSession,
+                            Model model){
+    User user = (User) httpSession.getAttribute("user");
+    model.addAttribute("user",user);
+    List<Employee> listOfEmployees = employeeRepository.showAllEmployees();
+    model.addAttribute("listOfEmployees",listOfEmployees);
+    return controllerService.alleMedarbejdere(httpSession);
+  }
 }

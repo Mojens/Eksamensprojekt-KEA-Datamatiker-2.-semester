@@ -1,0 +1,80 @@
+<!--Mohammed -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/main.css">
+    <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/NavBar.css">
+</head>
+<body>
+
+<div th:replace="profile.fragment"></div>
+
+<div class="hero-backdrop">
+    <img th:src="@{../CSS/images/hero.png}" class="backdrop" alt="hero-backdrop"
+         src="../static/CSS/images/hero.png"/>
+</div>
+<div class="container-dashboard">
+
+    <h1>Dine Informationer</h1>
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">
+                Medarbejder ID
+            </th>
+            <th scope="col">
+                Fornavn
+            </th>
+            <th scope="col">
+                Efternavn
+            </th>
+            <th scope="col">
+                Telefonnummer
+            </th>
+            <th scope="col">
+                E-mail
+            </th>
+            <th scope="col">
+                Bruger ID
+            </th>
+            <th scope="col">
+                Status
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="card">
+            <td th:text="${profile.employeeID}">
+            </td>
+            <td th:text="${profile.firstName}">
+            </td>
+            <td th:text="${profile.lastName}">
+            </td>
+            <td th:text="${profile.phoneNumber}">
+            </td>
+            <td th:text="${profile.eMail}">
+            </td>
+            <td th:text="${profile.userID}">
+            </td>
+            <td class="td" th:if="${profile.status == 0}">
+                <button style="background-color: #B22727"></button>
+            </td>
+            <td class="td" th:if="${profile.status == 1}">
+                <button style="background-color: #3c805c"></button>
+            </td>
+
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+</body>
+</html>
