@@ -15,12 +15,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
-        currentPage = "/opretlejeaftale";
+        currentPage = "opretlejeaftale";
       } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -31,12 +31,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
-        currentPage = "/allelejeaftaler";
+        currentPage = "allelejeaftaler";
       } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -47,12 +47,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
-        currentPage = "/aftale";
+        currentPage = "aftale";
       } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -63,12 +63,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
-        currentPage = "/lejeaftale";
+        currentPage = "lejeaftale";
       } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -79,12 +79,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 1 || loggedUser.getType() == 4) {
-        currentPage = "/seaftale";
+        currentPage = "seaftale";
       } else if (loggedUser.getType() != 1 || loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -96,12 +96,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
-        currentPage = "/udbedring";
+        currentPage = "udbedring";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -112,12 +112,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
-        currentPage = "/fundetretur";
+        currentPage = "fundetretur";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -128,12 +128,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
-        currentPage = "/findlease";
+        currentPage = "findlease";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -144,12 +144,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
-        currentPage = "/findretur";
+        currentPage = "findretur";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -160,12 +160,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
-        currentPage = "/skader";
+        currentPage = "skader";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -176,12 +176,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
-        currentPage = "/registrerFejlOgMangel";
+        currentPage = "registrerFejlOgMangel";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -192,12 +192,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
-        currentPage = "/skaderapport";
+        currentPage = "skaderapport";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -209,12 +209,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 4) {
-        currentPage = "/opretbruger";
+        currentPage = "opretbruger";
       } else if (loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -225,12 +225,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 4) {
-        currentPage = "/skiftkode";
+        currentPage = "skiftkode";
       } else if (loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -241,12 +241,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 4) {
-        currentPage = "/sletbruger";
+        currentPage = "sletbruger";
       } else if (loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -258,12 +258,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 3 || loggedUser.getType() == 4) {
-        currentPage = "/dashboard";
+        currentPage = "dashboard";
       } else if (loggedUser.getType() != 3 || loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }
@@ -275,12 +275,12 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 3 || loggedUser.getType() == 4) {
-        currentPage = "/createcar";
+        currentPage = "createcar";
       } else if (loggedUser.getType() != 3 || loggedUser.getType() != 4) {
-        currentPage = "/login";
+        currentPage = "login";
       }
     } else if (httpSession.getAttribute("userName") == null) {
-      currentPage = "/login";
+      currentPage = "login";
     }
     return currentPage;
   }

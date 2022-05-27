@@ -60,7 +60,7 @@ public class HomeController {
   @GetMapping("/logout")
   public String logOut(HttpSession httpSession){
     httpSession.removeAttribute("userName");
-    return "/login";
+    return "login";
   }
 
   @GetMapping("/login")
