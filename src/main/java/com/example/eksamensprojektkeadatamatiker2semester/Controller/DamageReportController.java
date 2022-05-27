@@ -57,12 +57,18 @@ public class DamageReportController {
 
     @GetMapping("/findlease")
     public String findLeaseToMakeDamageReport(HttpSession httpSession, Model model,String keyword){
+
+        DamageReport dr = new DamageReport();
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user",user);
+        DamageReport id = damageReportRepository.findReportByID(dr.getDamageReportID());
+        int statusRapport = id.getStatus();
+        model.addAttribute("statusRapport",statusRapport);
         if (keyword != null){
             List<Lease> list = leaseRepository.findLeaseByIDAsList(Integer.parseInt(keyword));
             Lease checkEndDate = leaseRepository.showLeases();
             Lease period = leaseRepository.showLeases();
+
             model.addAttribute("period",period);
             model.addAttribute("checkEndDate",checkEndDate);
             model.addAttribute("list",list);
