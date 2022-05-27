@@ -1,7 +1,7 @@
 <!-- Lavet af Malthe -->
 <nav th:fragment="lejeaftale" class="navi-section">
   <nav class="navi-section" th:if="${user.type==1 || user.type==4}">
-    <div class="navbar" id="navbar">
+    <div class="navbar">
       <div class="logo-left-nav">
         <a href="/opretlejeaftale"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
                                         src="../static/CSS/images/Logo-250x250.png"/></a>
@@ -20,7 +20,7 @@
 </nav>
 <nav th:fragment="skade" class="navi-section">
 <nav class="navi-section" th:if="${user.type==2 || user.type == 4}">
-  <div class="navbar" id="navbar">
+  <div class="navbar">
     <div class="logo-left-skade">
       <a href="/findlease"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
                                 src="../static/CSS/images/Logo-250x250.png"/></a>
@@ -37,7 +37,7 @@
 </nav>
 <nav th:fragment="dashboard" class="navi-section" >
 <nav class="navi-section" th:if="${user.type==3 || user.type==4}">
-  <div class="navbar" id="navbar">
+  <div class="navbar">
     <div class="logo-left-kpi">
       <a href="/dashboard"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
                                 src="../static/CSS/images/Logo-250x250.png"/></a>
@@ -56,7 +56,7 @@
 
 <nav th:fragment="adminnav">
   <nav class="navi-section" th:if="${user.type==4}">
-    <div class="navbar" id="navbar">
+    <div class="navbar">
       <div class="logo-left-admin">
         <a href="/opretbruger"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
                                     src="../static/CSS/images/Logo-250x250.png"/></a>
