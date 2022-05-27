@@ -26,7 +26,7 @@ public class UserService {
     }else if (Integer.parseInt(type) == 4){
       return "redirect:/opretbruger";
     }
-    return "login";
+    return "redirect:/login";
   }
 
 }
