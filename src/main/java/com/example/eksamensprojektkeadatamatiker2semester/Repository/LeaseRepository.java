@@ -130,8 +130,9 @@ public class LeaseRepository {
                 int userID = rs.getInt(4);
                 LocalDate startDate = rs.getDate(5).toLocalDate();
                 LocalDate endDate = rs.getDate(6).toLocalDate();
+                int status = rs.getInt(7);
 
-                leases.add(new Lease(leaseID,firstName, lastName,userID,startDate,endDate));
+                leases.add(new Lease(leaseID,firstName, lastName,userID,startDate,endDate,status));
 
             }
             ps.close();
