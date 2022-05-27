@@ -45,7 +45,7 @@ public class EmployeeController {
     User createdUser = userRepository.findUserByUserName(userName);
     employeeRepository.addNewEmployee(new Employee(firstName, lastName, phoneNumber, eMail, createdUser.getUserID(),1));
 
-    return "redirect:/opretbruger";
+    return "redirect:opretbruger";
   }
 
 
