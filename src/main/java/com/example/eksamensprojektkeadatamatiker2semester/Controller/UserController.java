@@ -60,7 +60,7 @@ public class UserController {
       return userService.checkTypeByUser(String.valueOf(loggedUser.getType()));
     } else
       model.addAttribute("Failed Login", "Failed login");
-    return "redirect:/login";
+    return "redirect:login";
   }
 
   @PostMapping("/createUser")
