@@ -176,7 +176,7 @@ public class ControllerService {
       User loggedUser = (User) httpSession.getAttribute("user");
       //System.out.println(loggedUser.getType());
       if (loggedUser.getType() == 2 || loggedUser.getType() == 4) {
-        currentPage = "registrerFejlOgMangel";
+        currentPage = "skader";
       } else if (loggedUser.getType() != 2 || loggedUser.getType() != 4) {
         currentPage = "login";
       }
