@@ -61,7 +61,7 @@
             <td class="row-update"><a class="link-row link" th:href="@{/skader/{id}(id=${rapport.damageReportID})}">Se
                 skadesrapport</a></td>
             <td class="row-update" th:classappend="${rapport.status==1} ? updatered : updategreen">
-            <a class="link-row link" th:if="${rapport.status==0}" th:href="@{/changestatus/{drID}(drID=${rapport.damageReportID})}">Bilen er klar</a>
+            <a class="link-row link" th:if="${rapport.status==0}" th:href="@{/changestatustoone/{drID}(drID=${rapport.damageReportID})}">Bilen er klar</a>
             <a class="link-row link" th:if="${rapport.status==1}" th:href="@{/changestatus/{drID}(drID=${rapport.damageReportID})}">Ikke klar</a></td>
         </tr>
         </tbody>

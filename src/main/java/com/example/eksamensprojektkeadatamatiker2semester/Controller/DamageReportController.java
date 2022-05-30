@@ -123,8 +123,15 @@ public class DamageReportController {
     }
 
     @GetMapping("/changestatus/{drID}")
-    public String changeStatusForDamageReport(@PathVariable("drID")int drID, Model model){
+    public String changeStatusForDamageReport(@PathVariable("drID")int drID){
        damageReportRepository.ChangeStatusDamageReportID(drID);
+
+        return "redirect:/skaderapport";
+    }
+
+    @GetMapping("/changestatustoone/{drID}")
+    public String changeStatusForDamageReportToOne(@PathVariable("drID")int drID){
+        damageReportRepository.ChangeStatusDamageReportIDToOne(drID);
 
         return "redirect:/skaderapport";
     }

@@ -77,7 +77,7 @@
             <td class="row-update"><a class="link-row link" th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}">Se
                 Lejeaftale</a></td>
             <td class="row-update" th:classappend="${leje.status==1} ? updatered : updategreen">
-                <a class="link-row link" th:if="${leje.status==0}" th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}" >Tilbageleveret</a>
+                <a class="link-row link" th:if="${leje.status==0}" th:href="@{/opdater/{leaseID}(leaseID=${leje.leaseID})}" >Tilbageleveret</a>
             <a class="link-row link" th:if="${leje.status==1}" th:href="@{/sletaftale/{leaseID}(leaseID=${leje.leaseID})}" >Ikke tilbageleveret</a></td>
         </tr>
         </tbody>

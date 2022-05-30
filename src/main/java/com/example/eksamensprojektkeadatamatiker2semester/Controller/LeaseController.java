@@ -182,13 +182,25 @@ public class LeaseController {
     }
 
     @GetMapping("/sletaftale/{leaseID}")
-    public String deleteEmployee(@PathVariable("leaseID") int leaseID) {
+    public String changeStatusToZero(@PathVariable("leaseID") int leaseID) {
         CarsLeases selectedCarLease;
         //Skifter status på car fra 1 til 0
         selectedCarLease = carsLeasesRepository.findCarsLeasesByLeaseID(leaseID);
         carsLeasesRepository.isNotLeased(selectedCarLease.getCarID());
         //Sletter fra Leases og CarLeases
         leaseRepository.ChangeStatusLeaseByID(leaseID);
+
+        return "redirect:/allelejeaftaler";
+    }
+
+    @GetMapping("/opdater/{leaseID}")
+    public String changeStatusToOne(@PathVariable("leaseID") int leaseID) {
+        CarsLeases selectedCarLease;
+        //Skifter status på car fra 1 til 0
+        selectedCarLease = carsLeasesRepository.findCarsLeasesByLeaseID(leaseID);
+        carsLeasesRepository.isNotLeased(selectedCarLease.getCarID());
+        //Sletter fra Leases og CarLeases
+        leaseRepository.changeStatusLeaseByIDToOne(leaseID);
 
         return "redirect:/allelejeaftaler";
     }

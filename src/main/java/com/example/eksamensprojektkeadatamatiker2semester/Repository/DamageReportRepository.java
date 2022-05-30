@@ -216,4 +216,21 @@ public class DamageReportRepository {
 
   }
 
+  public void ChangeStatusDamageReportIDToOne(int id) {
+
+    final String QUERYDELETE = "UPDATE DamageReport SET DamageReport.status = 1 WHERE damageReportID = "+"'"+id+"'";
+    try {
+      PreparedStatement preparedStatement = connection.prepareStatement(QUERYDELETE);
+      //Da vi har sat foreign key på update at den skal cascade og ikke restrict
+      preparedStatement.executeUpdate();
+      preparedStatement.close();
+
+    } catch (SQLException e) {
+      System.out.println("kunne ikke opdatere skadesrapporten til klar");
+      e.printStackTrace();
+    }
+
+
+  }
+
 }
