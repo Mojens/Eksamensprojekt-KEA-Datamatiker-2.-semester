@@ -38,7 +38,7 @@ public class Lease {
     this.endDate = endDate;
   }
 
-  public Lease(String firstName, String lastName, int userID, LocalDate startDate, LocalDate endDate,int status) {
+    public Lease(String firstName, String lastName, int userID, LocalDate startDate, LocalDate endDate,int status) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.userID = userID;

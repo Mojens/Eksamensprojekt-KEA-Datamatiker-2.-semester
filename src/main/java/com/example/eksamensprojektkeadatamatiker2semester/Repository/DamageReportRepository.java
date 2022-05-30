@@ -78,8 +78,8 @@ public class DamageReportRepository {
   }
 
 
-  public DamageReport findReportByID(int reportID) {
-    DamageReport report = new DamageReport();
+  public DamageReport  findReportByID(int reportID) {
+    DamageReport report =     new DamageReport();
     final String SQL_SHOW_REPORT = "SELECT * FROM DamageReport WHERE damageReportID = '" + reportID + "'";
 
     try {
