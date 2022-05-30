@@ -16,7 +16,7 @@ public class LeaseService {
   }
 
   public LocalDate convertToLocalDate(String startDate) {
-    // String format = 1999-22-03
+
     Scanner scanner = new Scanner(startDate);
     scanner.useDelimiter("-");
 
