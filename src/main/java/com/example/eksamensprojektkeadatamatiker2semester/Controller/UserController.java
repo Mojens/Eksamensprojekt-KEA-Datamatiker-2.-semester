@@ -69,12 +69,14 @@ public class UserController {
           model.addAttribute("userID", loggedUser.getType());
           return userService.checkTypeByUser(loggedUser.getType());
         } else {
-          model.addAttribute("FailedLogin", "Failed login");
+          model.addAttribute("wrongPWD", "Forkert adgangskode");
           return "redirect:login";
         }
       }
+      model.addAttribute("notActive", "Dette er ikke en aktiv bruger");
       return "redirect:login";
     }
+    model.addAttribute("noUser", "Kunne ikke finde en bruger");
     return "redirect:login";
   }
 
