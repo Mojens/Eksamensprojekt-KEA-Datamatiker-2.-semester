@@ -24,7 +24,7 @@
 
         <button th:if="${damageReport.status==0}" class="skader" th:classappend="${damageReport.status==1} ? updatered : updategreen"><a th:if="${damageReport.status==0}" th:href="@{/skader/{drID}(drID=${damageReport.damageReportID})}">Bilen er klar</a></button>
         <button th:if="${damageReport.status==1}" class="skader" th:classappend="${damageReport.status==1} ? updatered : updategreen"><a th:if="${damageReport.status==1}" th:href="@{/changestatus/{drID}(drID=${damageReport.damageReportID})}">Ikke klar</a></button>
-    <button type="button" class="btn btn-default">Gem Skadesrapporten</button>
+    <button type="button" class="btn btn-default" onclick="canvas">Gem Skadesrapporten</button>
     <div class="damageReport">
 
         <h1 class="inline">Skadesrapport #</h1>
