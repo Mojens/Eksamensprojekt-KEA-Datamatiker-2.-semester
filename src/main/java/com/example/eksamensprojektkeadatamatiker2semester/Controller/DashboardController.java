@@ -35,7 +35,7 @@ public class DashboardController {
     this.employeeRepository = employeeRepository;
   }
   @GetMapping("/dashboard")
-  public String showKPI(Model model,
+    public String showKPI(Model model,
                         HttpSession httpSession) {
     User user = (User) httpSession.getAttribute("user");
     model.addAttribute("user",user);

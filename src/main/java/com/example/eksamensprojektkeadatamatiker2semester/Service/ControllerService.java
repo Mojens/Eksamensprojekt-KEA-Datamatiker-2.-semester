@@ -219,7 +219,7 @@ public class ControllerService {
     return currentPage;
   }
 
-  public String skiftKode(HttpSession httpSession) {
+  public String skift Kode(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
       User loggedUser = (User) httpSession.getAttribute("user");

@@ -42,44 +42,44 @@ public class DamageReportController {
     }
 
     @GetMapping("/skaderapport")
-    public String showAllDamageReports(HttpSession httpSession, Model model){
+    public String showAllDamageReports(HttpSession httpSession, Model model) {
         User user = (User) httpSession.getAttribute("user");
         DamageReport dr = new DamageReport();
-        model.addAttribute("user",user);
-        List <DamageReport> damageReports = damageReportRepository.showAllDamageReports();
+        model.addAttribute("user", user);
+        List<DamageReport> damageReports = damageReportRepository.showAllDamageReports();
         DamageReport id = damageReportRepository.findReportByID(dr.getDamageReportID());
-        model.addAttribute("status",id.getStatus());
-        model.addAttribute("damageReports",damageReports);
+        model.addAttribute("status", id.getStatus());
+        model.addAttribute("damageReports", damageReports);
 
 
         return controllerService.skadeRapport(httpSession);
     }
 
     @GetMapping("/findlease")
-    public String findLeaseToMakeDamageReport(HttpSession httpSession, Model model,String keyword){
+    public String findLeaseToMakeDamageReport(HttpSession httpSession, Model model, String keyword) {
 
         DamageReport dr = new DamageReport();
         User user = (User) httpSession.getAttribute("user");
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         DamageReport id = damageReportRepository.findReportByID(dr.getDamageReportID());
         int statusRapport = id.getStatus();
-        model.addAttribute("statusRapport",statusRapport);
-        if (keyword != null){
+        model.addAttribute("statusRapport", statusRapport);
+        if (keyword != null) {
             List<Lease> list = leaseRepository.findLeaseByIDAsList(Integer.parseInt(keyword));
             Lease checkEndDate = leaseRepository.showLeases();
             Lease period = leaseRepository.showLeases();
 
-            model.addAttribute("period",period);
-            model.addAttribute("checkEndDate",checkEndDate);
-            model.addAttribute("list",list);
+            model.addAttribute("period", period);
+            model.addAttribute("checkEndDate", checkEndDate);
+            model.addAttribute("list", list);
 
         } else {
             List<Lease> list = leaseRepository.showAllLeases();
             Lease checkEndDate = leaseRepository.showLeases();
             Lease period = leaseRepository.showLeases();
-            model.addAttribute("period",period);
-            model.addAttribute("checkEndDate",checkEndDate);
-            model.addAttribute("list",list);
+            model.addAttribute("period", period);
+            model.addAttribute("checkEndDate", checkEndDate);
+            model.addAttribute("list", list);
 
         }
 
@@ -87,9 +87,9 @@ public class DamageReportController {
     }
 
     @GetMapping("/udbedring/{id}")
-    public String showCarsAndLeases(@PathVariable("id") int id, HttpSession httpSession, Model model){
+    public String showCarsAndLeases(@PathVariable("id") int id, HttpSession httpSession, Model model) {
         User user = (User) httpSession.getAttribute("user");
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
 
         CarsLeases carsLeases = carsLeasesRepository.findCarsLeasesByLeaseID(id);
         Lease lease = leaseRepository.findLeaseByID(carsLeases.getLeaseID());
@@ -98,39 +98,39 @@ public class DamageReportController {
 
         Lease checkEndDate = leaseRepository.showLeases();
         Lease period = leaseRepository.showLeases();
-        model.addAttribute("period",period);
-        model.addAttribute("checkEndDate",checkEndDate);
+        model.addAttribute("period", period);
+        model.addAttribute("checkEndDate", checkEndDate);
 
-        model.addAttribute("carLeases",carsLeases);
-        model.addAttribute("lease",lease);
-        model.addAttribute("car",car);
-        model.addAttribute("employee",employee);
+        model.addAttribute("carLeases", carsLeases);
+        model.addAttribute("lease", lease);
+        model.addAttribute("car", car);
+        model.addAttribute("employee", employee);
 
 
         return controllerService.udbedring(httpSession);
     }
 
     @GetMapping("/skaderapport/{id}")
-    public String showOneDamageReport(@PathVariable("id") int id, Model model,HttpSession httpSession){
+    public String showOneDamageReport(@PathVariable("id") int id, Model model, HttpSession httpSession) {
         User user = (User) httpSession.getAttribute("user");
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         DamageReport damageReports = damageReportRepository.findReportByID(id);
         Lease period = leaseRepository.showLeases();
-        model.addAttribute("period",period);
-        model.addAttribute("damageReports",damageReports);
+        model.addAttribute("period", period);
+        model.addAttribute("damageReports", damageReports);
 
         return controllerService.skadeRapport(httpSession);
     }
 
     @GetMapping("/changestatus/{drID}")
-    public String changeStatusForDamageReport(@PathVariable("drID")int drID){
-       damageReportRepository.ChangeStatusDamageReportID(drID);
+    public String changeStatusForDamageReport(@PathVariable("drID") int drID) {
+        damageReportRepository.ChangeStatusDamageReportID(drID);
 
         return "redirect:/skaderapport";
     }
 
     @GetMapping("/changestatustoone/{drID}")
-    public String changeStatusForDamageReportToOne(@PathVariable("drID")int drID){
+    public String changeStatusForDamageReportToOne(@PathVariable("drID") int drID) {
         damageReportRepository.ChangeStatusDamageReportIDToOne(drID);
 
         return "redirect:/skaderapport";
@@ -138,9 +138,9 @@ public class DamageReportController {
 
     @PostMapping("/skaderapport")
     public String addDamageReport(@RequestParam("lejeaftaleID") int lejeaftaleID,
-                                  @RequestParam("vognNummer")int vognNummer,
-                                  @RequestParam("employeeID")int employeeID,
-                                  Model model,HttpSession httpSession) {
+                                  @RequestParam("vognNummer") int vognNummer,
+                                  @RequestParam("employeeID") int employeeID,
+                                  Model model, HttpSession httpSession) {
 
         DamageReport dr = new DamageReport();
         DamageReport damageReport = damageReportRepository.findReportByID(dr.getDamageReportID());
@@ -149,32 +149,32 @@ public class DamageReportController {
         Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
 
 
-        DamageReport checkIfExists = damageReportRepository.checkIfExists(lejeaftaleID,vognNummer);
+        DamageReport checkIfExists = damageReportRepository.checkIfExists(lejeaftaleID, vognNummer);
 
-        if (checkIfExists.getDamageReportID()==0){
-            damageReportRepository.addDamageReport(new DamageReport(lejeaftaleID,vognNummer,employeeID));
+        if (checkIfExists.getDamageReportID() == 0) {
+            damageReportRepository.addDamageReport(new DamageReport(lejeaftaleID, vognNummer, employeeID));
         }
 
-        List <DamageReport> createdDamageReport = damageReportRepository.findReportByLast();
+        List<DamageReport> createdDamageReport = damageReportRepository.findReportByLast();
 
         int id = createdDamageReport.get(0).getDamageReportID();
 
-        model.addAttribute("car",car);
-        model.addAttribute("lease",lease);
-        model.addAttribute("damageReport",damageReport);
+        model.addAttribute("car", car);
+        model.addAttribute("lease", lease);
+        model.addAttribute("damageReport", damageReport);
 
-        model.addAttribute("employee",employee);
-        if (checkIfExists.getDamageReportID()==0){
-            return "redirect:skader/"+id;
+        model.addAttribute("employee", employee);
+        if (checkIfExists.getDamageReportID() == 0) {
+            return "redirect:skader/" + id;
         } else {
-            return "redirect:skader/"+checkIfExists.getDamageReportID();
+            return "redirect:skader/" + checkIfExists.getDamageReportID();
         }
 
     }
 
 
     @GetMapping("/skader/{id}")
-    public String showDamageReportID(@PathVariable("id") int id, Model model, HttpSession httpSession){
+    public String showDamageReportID(@PathVariable("id") int id, Model model, HttpSession httpSession) {
 
         DamageReport damageReport = damageReportRepository.findReportByID(id);
 
@@ -189,23 +189,23 @@ public class DamageReportController {
 
         SpecificDamage sum = specificDamageRepository.sumPriceSpecificDamagesByID(id);
         Lease period = leaseRepository.showLeases();
-        model.addAttribute("period",period);
+        model.addAttribute("period", period);
         User user = (User) httpSession.getAttribute("user");
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
 
-        model.addAttribute("car",car);
-        model.addAttribute("lease",lease);
-        model.addAttribute("damageReport",damageReport);
-        model.addAttribute("employee",employee);
-        model.addAttribute("specificDamage",specificDamage);
-        model.addAttribute("sumTotal",sum);
-        model.addAttribute("damageReportID",id);
+        model.addAttribute("car", car);
+        model.addAttribute("lease", lease);
+        model.addAttribute("damageReport", damageReport);
+        model.addAttribute("employee", employee);
+        model.addAttribute("specificDamage", specificDamage);
+        model.addAttribute("sumTotal", sum);
+        model.addAttribute("damageReportID", id);
 
         return controllerService.skader(httpSession);
     }
 
     @GetMapping("/skader/{id}/{skadeID}")
-    public String deleteSpecificDamage(@PathVariable("id") int id,@PathVariable("skadeID") int skadeID){
+    public String deleteSpecificDamage(@PathVariable("id") int id, @PathVariable("skadeID") int skadeID) {
 
         specificDamageRepository.deleteSpecificDamage(skadeID);
 
