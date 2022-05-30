@@ -53,7 +53,7 @@ public class UserController {
     if (loggedUser != null) {
       //Tjekker om status på denne user ud fra user
       if (loggedUser.getStatus() != 0) {
-       /* boolean isPasswordValid = userService.isPasswordValid(loggedUser, password);
+       boolean isPasswordValid = userService.isPasswordValid(loggedUser, password);
         //Checker alm kode sammenligning
         if (isPasswordValid) {
           Cookie cookieUser = new Cookie("userName", userName);
