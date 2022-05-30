@@ -352,6 +352,9 @@ select {
 
 .link {
     color: white;
+    display: block;
+    overflow: auto;
+    padding: 10px 0;
 
 }
 
