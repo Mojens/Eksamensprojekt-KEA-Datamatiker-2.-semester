@@ -58,7 +58,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="card" th:each="l : ${list}" th:field="${l}">
+        <tr class="card" th:each="l : ${list}" th:field="${l}" th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}">
             <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"  class="individual" th:text="${l.leaseID}">
             </td>
             <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual" th:text="${l.firstName}">
