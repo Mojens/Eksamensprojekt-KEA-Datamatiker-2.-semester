@@ -3,7 +3,6 @@ package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import org.junit.jupiter.api.Test;
-
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -56,15 +55,6 @@ class UserRepositoryTest {
 
     }
 
-    /* Bliver ikke brugt, SLET hvis den ikke bliver brugt inden vi aflevere
-    @Test
-    void findUserByID() {
-    }*/
-
-    /* Bliver ikke brugt, SLET hvis den ikke bliver brugt inden vi aflevere
-    @Test
-    void showAllUsers() {
-    }*/
 
     @Test
     void changePasswordOfUser() {

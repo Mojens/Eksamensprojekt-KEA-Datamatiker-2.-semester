@@ -2,9 +2,7 @@ package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class DashboardRepositoryTest {

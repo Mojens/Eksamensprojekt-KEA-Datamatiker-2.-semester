@@ -1,11 +1,7 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
-import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
-import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
-import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;

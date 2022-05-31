@@ -17,7 +17,7 @@ class LeaseTest {
 
         LocalDate today = LocalDate.now();
         LocalDate earlierThanToday = LocalDate.parse("2022-01-12", DateTimeFormatter.ISO_LOCAL_DATE);
-        LocalDate laterThanToday = LocalDate.parse("2022-05-25", DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate laterThanToday = LocalDate.parse("2022-09-25", DateTimeFormatter.ISO_LOCAL_DATE);
         Lease lease = new Lease();
 
         assertEquals(1,lease.compareNowAndEndDate(today));

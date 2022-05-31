@@ -1,8 +1,6 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
-import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.CarsLeases;
-import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
