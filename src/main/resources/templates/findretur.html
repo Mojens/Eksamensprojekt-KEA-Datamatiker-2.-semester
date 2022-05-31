@@ -70,7 +70,7 @@
             <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual" th:text="${#temporals.format(l.startDate,'dd/MM-yy')}">
             </td>
             <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="individual" th:text="${#temporals.format(l.endDate,'dd/MM-yy')}">
-
+            </td>
             <td th:if="${checkEndDate.compareNowAndEndDate(l.endDate)==1}"   class="row-update"><a class="link-row link" th:href="@{/udbedring/{id}(id=${l.leaseID})}">Opret rapport</a>
             </td>
 
