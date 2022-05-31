@@ -44,8 +44,8 @@ public class DamageReportController {
     @GetMapping("/skaderapport")
     public String showAllDamageReports(HttpSession httpSession, Model model) {
         User user = (User) httpSession.getAttribute("user");
-        DamageReport dr = new DamageReport();
         model.addAttribute("user", user);
+        DamageReport dr = new DamageReport();
         List<DamageReport> damageReports = damageReportRepository.showAllDamageReports();
         DamageReport id = damageReportRepository.findReportByID(dr.getDamageReportID());
         model.addAttribute("status", id.getStatus());

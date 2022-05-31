@@ -21,11 +21,12 @@ public class DashboardController {
   ControllerService controllerService;
   CarsLeasesRepository carsLeasesRepository;
   EmployeeRepository employeeRepository;
+  DamageReportRepository damageReportRepository;
 
   /* Lavet Af Malthe og Mohammed */
   public DashboardController(DashboardRepository dashboardRepository, DashboardService dashboardService,
                              CarRepository carRepository, LeaseRepository leaseRepository, ControllerService controllerService,
-                             CarsLeasesRepository carsLeasesRepository, EmployeeRepository employeeRepository) {
+                             CarsLeasesRepository carsLeasesRepository, EmployeeRepository employeeRepository, DamageReportRepository damageReportRepository) {
     this.dashboardRepository = dashboardRepository;
     this.dashboardService = dashboardService;
     this.carRepository = carRepository;
@@ -33,6 +34,7 @@ public class DashboardController {
     this.controllerService = controllerService;
     this.carsLeasesRepository = carsLeasesRepository;
     this.employeeRepository = employeeRepository;
+    this.damageReportRepository = damageReportRepository;
   }
   @GetMapping("/dashboard")
     public String showKPI(Model model,
@@ -44,6 +46,9 @@ public class DashboardController {
     if (allCars.isEmpty()){
       return "createcar";
     }
+    DamageReport dr = new DamageReport();
+    List<DamageReport> damageReports = damageReportRepository.showAllDamageReports();
+    DamageReport id = damageReportRepository.findReportByID(dr.getDamageReportID());
     List<Car> brandModel = dashboardRepository.brandModelList();
     List<Lease> returnsToday = leaseRepository.findAllLeasesByEndDate(LocalDate.now());
     Car car = carRepository.showAllCarsAsObject();
@@ -78,6 +83,8 @@ public class DashboardController {
     model.addAttribute("monthlySale",monthlySale);
     model.addAttribute("colorForDaySale",colorDaySale);
     model.addAttribute("colorMonthSale",colorMonthSale);
+    model.addAttribute("status", id.getStatus());
+    model.addAttribute("damageReports", damageReports);
 
     return controllerService.dashboard(httpSession);
   }
@@ -92,6 +99,9 @@ public class DashboardController {
     if (allCars.isEmpty()){
       return "createcar";
     }
+    DamageReport dr = new DamageReport();
+    List<DamageReport> damageReports = damageReportRepository.showAllDamageReports();
+    DamageReport id = damageReportRepository.findReportByID(dr.getDamageReportID());
     List<Car> brandModel = dashboardRepository.brandModelList();
     List<Lease> returnsToday = leaseRepository.findAllLeasesByEndDate(LocalDate.now());
     Car car = carRepository.showAllCarsAsObject();
@@ -127,6 +137,8 @@ public class DashboardController {
     model.addAttribute("selectedMonth",selectedMonth);
     model.addAttribute("colorForDaySale",colorDaySale);
     model.addAttribute("colorMonthSale",colorMonthSale);
+    model.addAttribute("status", id.getStatus());
+    model.addAttribute("damageReports", damageReports);
 
     return controllerService.dashboard(httpSession);
   }
