@@ -53,8 +53,8 @@ public class UserController {
     if (loggedUser != null) {
       //Tjekker om status på denne user ud fra user
       if (loggedUser.getStatus() != 0) {
-       boolean isPasswordValid = userService.isPasswordValid(loggedUser, password);
-        //Checker alm kode sammenligning
+       /*boolean isPasswordValid = userService.isPasswordValid(loggedUser, password);
+        //Checker alm kode sammenligning for testning
         if (isPasswordValid) {
           Cookie cookieUser = new Cookie("userName", userName);
           httpSession.setAttribute("userName", cookieUser);
@@ -69,12 +69,14 @@ public class UserController {
           model.addAttribute("userID", loggedUser.getType());
           return userService.checkTypeByUser(loggedUser.getType());
         } else {
-          model.addAttribute("FailedLogin", "Failed login");
+          model.addAttribute("wrongPWD", "Forkert adgangskode");
           return "redirect:login";
         }
       }
+      model.addAttribute("notActive", "Dette er ikke en aktiv bruger");
       return "redirect:login";
     }
+    model.addAttribute("noUser", "Kunne ikke finde en bruger");
     return "redirect:login";
   }
 
