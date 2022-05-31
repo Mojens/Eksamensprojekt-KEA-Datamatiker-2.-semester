@@ -144,6 +144,7 @@ table {
 .allCars {
     table-layout: fixed;
     width: 100%;
+    margin-bottom: 90px;
     box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 
