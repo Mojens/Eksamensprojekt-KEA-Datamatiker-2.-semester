@@ -38,6 +38,8 @@
     position: relative;
 
 }
+
+
 #navbar-admin {
     background-color: #F2F2F2;
     overflow: hidden;
@@ -121,6 +123,7 @@ a.navi-username:hover {
     font-size: 13px;
     color: #022633;
 }
+
 
 
 
