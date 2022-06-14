@@ -112,7 +112,7 @@ public class EmployeeRepository {
     }
 
   }
-
+//Denne metoder tilføjer en ny employee til tabellen
   public boolean addNewEmployee(Employee employee) {
     final String QUERY = "INSERT INTO Employee (EmployeeID, firstName, lastName, phoneNumber, eMail, UserLogin_userID) VALUES (?, ?, ?, ?, ?, ?)";
     try {
