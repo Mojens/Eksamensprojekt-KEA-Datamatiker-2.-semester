@@ -17,12 +17,15 @@ import java.util.List;
 /* Lavet Af Malthe og Mohammed*/
 @Repository
 public class CarRepository {
+  //Laver en instance af connection i scope
   Connection connection;
 
+  //Definer connectionens værdi som er i vores ConnectionManager
   public CarRepository() {
     connection = ConnectionManager.getConnection();
   }
 
+  //Henter alle biler der er i tabellen som er udlejet og tilføjer dem til en arrayliste
   public List<Car> showAllCars() {
     List<Car> carList = new ArrayList<>();
     final String SQL_SHOW_CAR = "SELECT * FROM Cars ORDER BY isLeased = 1";
@@ -52,6 +55,7 @@ public class CarRepository {
 
   }
 
+  //Henter alle biler men som specifikke objekter istedet for en liste
   public Car showAllCarsAsObject() {
     Car car = new Car();
     final String SQL_SHOW_CAR = "SELECT * FROM Cars";
@@ -86,6 +90,7 @@ public class CarRepository {
 
   }
 
+  //Henter alle biler der er i tabellen som ikke er udlejet og tilføjer dem til en arrayliste
   public List<Car> showAllAvaibleCars() {
     List<Car> carList = new ArrayList<>();
     final String SQL_SHOW_CAR = "SELECT * FROM Cars WHERE isLeased= '0'";
@@ -115,6 +120,7 @@ public class CarRepository {
 
   }
 
+  //Finder specifik bil ud fra dens primary key som er id
   public Car findCarByID(int id) {
     Car car = new Car();
     final String SQL_SHOW_CAR = "SELECT * FROM Cars WHERE vognNummer = '" + id + "'";
@@ -148,6 +154,7 @@ public class CarRepository {
 
   }
 
+  //Henter alle biler og putter dem ind i arraylist men hvor det starter med dem der er flest af og så går det længere ned
   public List<Car> findCarByLast(){
     List <Car> car = new ArrayList<>();
     final String SQL_SHOW_REPORT = "SELECT * FROM Cars ORDER BY vognNummer desc";
@@ -177,6 +184,7 @@ public class CarRepository {
     return car;
   }
 
+  //Denne metoder gør så man kan tilføje en car ind i tabellen
   public boolean addCar(Car car) {
     final String SQL_ADD_QUERY = "INSERT INTO Cars(vognNummer,stelNummer,brand,model,price,isLeased) VALUES(?,?,?,?,?,?)";
 
@@ -202,6 +210,7 @@ public class CarRepository {
 
   }
 
+  //Denne metoder bliver ikke brugt
   public boolean deleteCar(int id) {
     final String SQL_DELETE = "DELETE FROM Cars WHERE vognNummer = ?";
 
@@ -220,6 +229,7 @@ public class CarRepository {
     }
   }
 
+  //Denne metode gør at man kan ændre i en specifik bil
   public boolean editCar(Car car, int id) {
     final String SQL_EDIT = "UPDATE Cars SET brand = ?, model = ?, price = ?, isLeased = ? WHERE vognNummer = '"+id+"'";
 
@@ -242,6 +252,7 @@ public class CarRepository {
 
   }
 
+  //Denne metode opretter en bil og sætter ind i tabellen
   public boolean createNewCar(Car car) {
     final String QUERY = "INSERT INTO Cars (vognNummer, stelNummer, brand, model, price, isLeased) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -266,6 +277,7 @@ public class CarRepository {
 
   }
 
+  //Denne metode finder summen på bil med specifik model og brand og at den skal være leased
   public double sumPriceLeasedCars(String brandInput, String modelInput) {
     double sum = 0;
     final String SQL_SHOW_DAMAGE = "SELECT SUM(price) FROM Cars WHERE brand = "+"'"+brandInput+"'"+" AND model = "+"'"+modelInput+"'"+" AND isLeased = 1";
@@ -290,6 +302,7 @@ public class CarRepository {
 
   }
 
+  //Finder alle biler med specifik vognnummer
   public List<Car> allCarsByID(int inputVognNummer){
     List<Car> soldToday = new ArrayList<>();
     Car car = new Car();
