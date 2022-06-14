@@ -20,6 +20,7 @@ public class LeaseRepository {
         connection = ConnectionManager.getConnection();
     }
 
+    //Denne metoder henter alle lease aftaler og putter dem ind i en arrayListe
     public List<Lease> showAllLeases(){
         List<Lease> leasesList = new ArrayList<>();
         final String SQL_SHOW_LEASES = "SELECT * FROM Leases";
@@ -49,6 +50,7 @@ public class LeaseRepository {
 
     }
 
+    //Denne henter alle leases men som objekter
     public Lease showLeases(){
         Lease leases = new Lease();
         final String SQL_SHOW_LEASES = "SELECT * FROM Leases";
@@ -82,6 +84,7 @@ public class LeaseRepository {
 
     }
 
+    //Denne metoder finder en specifik lease ud fra dens id
     public Lease findLeaseByID(int id){
         Lease leases = new Lease();
         final String SQL_SHOW_LEASES = "SELECT * FROM Leases WHERE leaseID = '"+id+"'";
@@ -117,6 +120,7 @@ public class LeaseRepository {
 
     }
 
+    //Denne finder specifik lease ud fra id men i en arrayListe
     public List <Lease> findLeaseByIDAsList(int id){
         List<Lease>  leases = new ArrayList<>();
         final String SQL_SHOW_LEASES = "SELECT * FROM Leases WHERE leaseID = '"+id+"'";
@@ -146,6 +150,7 @@ public class LeaseRepository {
 
     }
 
+    //denne metode finder alle leases med en specifik slutdato og putter dem ind i en liste
     public List <Lease> findLeaseByDateAsList(LocalDate date){
         List<Lease>  leases = new ArrayList<>();
         final String SQL_SHOW_LEASES = "SELECT * FROM Leases WHERE endDate = '"+date+"'";
@@ -174,6 +179,7 @@ public class LeaseRepository {
 
     }
 
+    //Denne metode tilføjer en lease ind i tabellen
     public boolean addLease(Lease lease){
         final String SQL_ADD_QUERY = "INSERT INTO Leases(leaseID,customerFirstName,customerLastName,UserLogin_userID,startDate,endDate) VALUES(?,?,?,?,?,?)";
 
@@ -200,6 +206,7 @@ public class LeaseRepository {
 
     }
 
+    //Denne metode finder alle leases og putter dem ind i en arrayListe
     public List<Lease> findLeaseByLast(){
         List <Lease> leases = new ArrayList<>();
         final String SQL_SHOW_REPORT = "SELECT * FROM Leases ORDER BY leaseID desc";
@@ -229,6 +236,7 @@ public class LeaseRepository {
         return leases;
     }
 
+    //Denne metode gør at man kan ændre i en specifik lease
     public boolean editLease(Lease lease, int id){
         final String SQL_EDIT = "UPDATE Leases SET customerFirstName = ?, customerLastName = ?, UserLogin_userID = ?, startDate = ?, endDate = ?, status = ? WHERE leaseID = '"+id+"'";
 
@@ -254,6 +262,8 @@ public class LeaseRepository {
         }
 
     }
+
+    //Denne metode ændre status på en specifik lease til 0 som er "Ikke aktiv" og det gør den ud fra en specifik leaseID
     public void ChangeStatusLeaseByID(int leaseID) {
         final String QUERYDELETE = "UPDATE Leases SET Leases.status = 0 WHERE leaseID = "+"'"+leaseID+"'";
         try {
@@ -269,6 +279,7 @@ public class LeaseRepository {
 
     }
 
+    //Denne metode ændre status på en specifik lease til 1 som er "aktiv" og det gør den ud fra en specifik leaseID
     public void changeStatusLeaseByIDToOne(int leaseID) {
         final String QUERYDELETE = "UPDATE Leases SET Leases.status = 1 WHERE leaseID = "+"'"+leaseID+"'";
         try {
@@ -284,6 +295,7 @@ public class LeaseRepository {
 
     }
 
+    //Denne metode finder alle leases ud fra specifik slutdato og putter dem ind i en ArrayListe
     public List<Lease> findAllLeasesByEndDate(LocalDate inputDate) {
         List<Lease> leases = new ArrayList<>();
         final String SQL_SHOW_REPORT = "SELECT * FROM Leases WHERE endDate = "+"'"+inputDate+"'";
@@ -312,6 +324,8 @@ public class LeaseRepository {
         }
         return leases;
     }
+
+    //Denne metode finder alle leases med specifik startdato og putter dem ind i en ArrayListe
     public List<Lease> findAllLeasesByStartDate(LocalDate inputDate) {
         List<Lease> leases = new ArrayList<>();
         final String SQL_SHOW_REPORT = "SELECT * FROM Leases WHERE startDate = "+"'"+inputDate+"'";
@@ -341,6 +355,7 @@ public class LeaseRepository {
         return leases;
     }
 
+    //Denne metode finder alle leases ud fra specifik måned
     public List<Lease> findAllLeasesByCurrentMonth(int inputMonth) {
         List<Lease> leases = new ArrayList<>();
         final String SQL_SHOW_REPORT = "SELECT * FROM Leases WHERE MONTH(startDate) = "+inputMonth+" AND YEAR(startDate)=YEAR(now())";
