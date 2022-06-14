@@ -82,7 +82,7 @@ public class EmployeeRepository {
     return employee;
   }
 
-  //Delete employee from employee table and userLogin table with inner join
+  //Denne metode ændrer status på specifik employee ud fra valgt user til 0 "Altså ikke aktiv"
   public void ChangeStatusEmployeeByID(int inputUserID) {
     final String QUERYDELETE = "UPDATE Employee SET Employee.status = 0 WHERE UserLogin_userID = "+"'"+inputUserID+"'";
     try {
@@ -97,7 +97,7 @@ public class EmployeeRepository {
     }
 
   }
-
+  //Denne metode ændrer status på specifik employee ud fra valgt user til 1 "Altså aktiv"
   public void changeStatusEmployeeByIDToOne(int inputUserID) {
     final String QUERYDELETE = "UPDATE Employee SET Employee.status = 1 WHERE UserLogin_userID = "+"'"+inputUserID+"'";
     try {
