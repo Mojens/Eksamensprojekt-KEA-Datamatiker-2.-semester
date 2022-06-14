@@ -13,13 +13,15 @@ import java.util.List;
 /* Lavet Af Mohammed */
 @Repository
 public class EmployeeRepository {
+  //Laver en instance af connection i scope
   Connection connection;
 
+  //Definer connectionens værdi som er i vores ConnectionManager
   public EmployeeRepository() {
     connection = ConnectionManager.getConnection();
   }
 
-  //Show current Employees
+  //Henter alle employees der er i tabellen og tilføjer dem til en arrayliste
   public List<Employee> showAllEmployees() {
     ArrayList<Employee> listOfEmployees = new ArrayList<>();
     final String QUERY = "SELECT * FROM Employee";
@@ -47,7 +49,7 @@ public class EmployeeRepository {
     return listOfEmployees;
   }
 
-  //find specific employee by user ID
+  //Finder employee objekt ud fra dens foreign key
   public Employee findEmployeeByUserID(int inputUserID) {
     Employee employee = new Employee();
     final String QUERY = "SELECT * FROM Employee WHERE UserLogin_userID = " + "'" + inputUserID + "'";
