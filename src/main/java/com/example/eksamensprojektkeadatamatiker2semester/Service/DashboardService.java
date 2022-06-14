@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class DashboardService {
 
-  //Tjekker hvormange car objecter der er leased ud fra en liste
+  // Denne metode tæller hvor mange car objekter der i listen
   public int howManyisLeased(List<Car> leasedCars) {
     int amountOfLeased = 0;
     for (Car c :
@@ -26,6 +26,7 @@ public class DashboardService {
     return amountOfLeased;
   }
 
+  //Denne metode henter totale pris for alle biler i en liste
   public double totalPriceLeasedCar(List<Car> leasedCars) {
     double totalPrice = 0;
     for (Car c :
@@ -35,6 +36,7 @@ public class DashboardService {
     return totalPrice;
   }
 
+  //Denne metoder fortæller hvor mange der er af specifik brand og model
   public int howManyPerModel(List<Car> allCars, String model, String brand) {
     int counter = 0;
     for (Car c : allCars) {
@@ -47,7 +49,9 @@ public class DashboardService {
     return counter;
   }
 
+
   public int percentageStatus(List<Car> allCars, List<Car> allLeasedCars, String model, String brand) {
+    //Denne metoder tæller hvor mange biler der er ud fra specifik model og brand
     int carCounter = 0;
     for (Car allCar : allCars) {
       if (allCar.getModel().equalsIgnoreCase(model.toLowerCase())) {
@@ -56,6 +60,7 @@ public class DashboardService {
         }
       }
     }
+    //Denne metode tæller hvor mange bilder der er ud fra specifik model og brand og som er leased
     int countLeased = 0;
     for (Car leasedCar : allLeasedCars) {
       if (leasedCar.getModel().equalsIgnoreCase(model.toLowerCase())) {
@@ -64,6 +69,7 @@ public class DashboardService {
         }
       }
     }
+    //Så regner vi procent og returner tal emllem 1 og 4, dette gør vi så vi kan bruge disse tal til at vise og lave farver i vores html
     if (countLeased * 100 / carCounter <=25){
       return 4;
     }  else if (countLeased * 100 / carCounter > 25 && countLeased * 100 / carCounter  <= 50){
@@ -76,6 +82,7 @@ public class DashboardService {
     return 0;
   }
 
+  //Denne metode ændrer de engelske måneder til danske
   public String convertLocalToDanish(Month localDateMonth){
     if (String.valueOf(localDateMonth).equalsIgnoreCase("January")){
       return "Januar";
@@ -105,6 +112,7 @@ public class DashboardService {
     return "Cant read Month";
   }
 
+  //Denne metode viser dagens salg
   public double todaysSale(){
     LeaseRepository leaseRepository = new LeaseRepository();
     CarsLeasesRepository carsLeasesRepository = new CarsLeasesRepository();
@@ -113,19 +121,26 @@ public class DashboardService {
     List<CarsLeases> todaysCarleases;
     List<Car> carsSoldToday;
     double totalSale = 0.0;
+    //Først finder vi alle leases for dagensdato
     todaysLeases = leaseRepository.findAllLeasesByStartDate(LocalDate.now());
     for (Lease lease: todaysLeases) {
+      // Den finder ethvert leases som startede idag og udfra leases der er i todaysleases
       todaysCarleases = carsLeasesRepository.findCarsLeasesByLeaseIDToday(lease.getLeaseID());
       for (CarsLeases carLease : todaysCarleases) {
+        //Den finder ethvery car der er solgt i dag ud fra carleases car id og putter dem ind i listen
         carsSoldToday = carRepository.allCarsByID(carLease.getCarID());
         for (Car car : carsSoldToday){
+          //Så regner den totale pris
           totalSale = totalSale+car.getPrice();
         }
       }
     }
     return totalSale;
   }
+
+  //Viser måneds salgs
   public double currentMonthSale(int month){
+    //Alt dette der sker her er det samme som den tidligere metode som er dagens salg
     LeaseRepository leaseRepository = new LeaseRepository();
     CarsLeasesRepository carsLeasesRepository = new CarsLeasesRepository();
     CarRepository carRepository = new CarRepository();
@@ -147,8 +162,9 @@ public class DashboardService {
     return totalSale;
   }
 
+  //Denne metode sammenligner leased med ikke leased biler og regner procenter og returner tal
   public int percentageStatusForPriceBetweenLeasedAndNoneLeased(double allCars, double allLeasedCars) {
-
+//Så regner vi procent og returner tal emllem 1 og 4, dette gør vi så vi kan bruge disse tal til at vise og lave farver i vores html
     if (allLeasedCars * 100 / allCars <=25){
       return 4;
     }  else if (allLeasedCars * 100 / allCars > 25 && allLeasedCars * 100 / allCars  <= 50){
@@ -161,6 +177,7 @@ public class DashboardService {
     return 0;
   }
 
+  // Ændrer måneds tal til måned navn
   public String monthByNumber(int month){
     if (month == 1){
       return "Januar";
@@ -189,8 +206,10 @@ public class DashboardService {
     }
     return "Cant read Month";
   }
-  
+
+  //Denne metode regner om måneds salg er procentmæssigt tæt på målet
   public int percentAverageMonth(double thisMonthNumber){
+    //Så regner vi procent og returner tal emllem 1 og 4, dette gør vi så vi kan bruge disse tal til at vise og lave farver i vores html
     if (thisMonthNumber * 100 / 500000 <=25){
       return 1;
     }  else if (thisMonthNumber * 100 / 500000 > 25 && thisMonthNumber * 100 / 500000  <= 50){
@@ -202,6 +221,8 @@ public class DashboardService {
     }
     return 0;
   }
+
+  //Denne metode regner om man har ramt dags budgettet
   public int percentAverageDay(double thisDayNumber){
     if (thisDayNumber * 100 / 15000 <=25){
       return 1;
