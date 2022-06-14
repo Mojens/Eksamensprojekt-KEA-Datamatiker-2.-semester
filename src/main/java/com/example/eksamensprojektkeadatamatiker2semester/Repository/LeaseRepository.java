@@ -12,8 +12,10 @@ import java.util.List;
 /* Lavet Af Simon, Malthe og Mohammed */
 @Repository
 public class LeaseRepository {
+    //Laver en instance af connection i scope
     Connection connection;
 
+    //Definer connectionens værdi som er i vores ConnectionManager
     public LeaseRepository() {
         connection = ConnectionManager.getConnection();
     }
