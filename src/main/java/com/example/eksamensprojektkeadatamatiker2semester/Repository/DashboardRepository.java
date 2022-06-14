@@ -13,8 +13,10 @@ import java.util.List;
 /* Lavet Af Mohammed */
 @Repository
 public class DashboardRepository {
+  //Laver en instance af connection i scope
   Connection connection;
 
+  //Definer connectionens værdi som er i vores ConnectionManager
   public DashboardRepository() {
     connection = ConnectionManager.getConnection();
   }
@@ -45,6 +47,7 @@ public class DashboardRepository {
     return leasedCars;
   }
 
+  //Denne metode finder den brand og model som er udlejet mest og sætter den øverst i listen
   public List<Car> brandModelList(){
     List<Car> brandModelList = new ArrayList<>();
     final String QUERY = "SELECT brand,model, \n" +
