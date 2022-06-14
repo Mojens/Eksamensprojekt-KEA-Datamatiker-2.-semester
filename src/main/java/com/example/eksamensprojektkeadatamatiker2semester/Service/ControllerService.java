@@ -8,7 +8,14 @@ import javax.servlet.http.HttpSession;
 @Service
 public class ControllerService {
 
-  // Type 1
+  /*
+          Denne process kører igennem hver metode som er i denne klasse
+  // Denne metode checker på session om der er en userName gemt
+  // hvis der er, så laver den en  user objekt
+  // så tjekker den typen på useren, og hvis den har den rigitge type så ændrer den currentpage
+  // hvis man ikke har den rigtige type bliver smidt tilbage til login og currentpage ændrer sig
+  // hvis den ikke kunne finder userName fra session så bliver du også smidt til login
+   */
   public String opretLejeAftaler(HttpSession httpSession) {
     String currentPage = null;
     if (httpSession.getAttribute("userName") != null) {
