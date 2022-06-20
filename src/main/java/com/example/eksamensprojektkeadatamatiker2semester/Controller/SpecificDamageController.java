@@ -74,6 +74,7 @@ public class SpecificDamageController {
 
     // Variablen tager imod bruger input via en @RequestParam, String fileName er navnet på filen brugeren uploader
     String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+    // her gør vi så den ikke længere er midlertidig gemt som et MultipartFile objekt, den kan nu blive gemt i databasen
     specificDamage.setPicture(fileName);
 
     String newPicture = "";
