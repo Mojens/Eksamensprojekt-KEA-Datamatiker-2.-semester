@@ -1,0 +1,54 @@
+  En samling af metoder og annotationer vi bruger rundt omkring på diverse html sider.
+
+  // betyder en kommentar.
+  EX: Er et eksempel på hvordan man gør og hvordan det bliver brugt.
+
+
+  // th:text gør så man kan vise tekst fra en Model fra en Controller.
+  EX: <h1 class="inline" th:text="${lease.leaseID}"></h1>
+
+  // Her tager vi en Model fra en Controller (period) og bruger en metode (subtractDates) til at udregne lejeaftale perioden i dage.
+  EX: <td class="skade" th:text="${period.subtractDates(lease.startDate,lease.endDate)}">
+
+  //  Her formatere vi en dato (startDate) til at være dag/måned/år
+  EX: <td class="skade" th:text="${#temporals.format(lease.startDate,'dd/MM-yy')}">
+
+  // Her formatere vi en double (price) til at have et punktum som tusind divider og komma som decimal divider.
+  EX: <td class="skade" th:text="${#numbers.formatDecimal(car.price,0,'POINT',0,'COMMA')}">
+
+  // Et th:each bliver brugt ligesom en forloop. Så man tager en Model fra en controller, hvor model er en Liste.
+  // og for at få hver element ud fra listen bruger man en th:text
+  EX: th:each="leje : ${lease}"
+
+  // Forsat fra ovenstående.. For at få de individuelle elementer ud fra en Liste.
+  EX: th:text="${leje.leaseID}"
+
+  // Dette et link, så hvis man trykker på linket bliver man redirectet hen til denne side. {id} kommer fra en @PathVariable
+  // (id=${leje.leaseID} gør så man laver id = leaseID man har fundet fra Listen man lavede i eksemplet ovenstående.
+  // hele metoden kommer fra LeaseController og metoden showSpecificLease. Hvor den ser sådan her ud: @GetMapping("/lejeaftale/{id}")
+  EX: <a th:href="@{/lejeaftale/{id}(id=${leje.leaseID})}"</a>
+
+  //  Dette er bare en normal if statement. I dette tilfælde viser den kun html elementet hvis status er enten == 1 eller 0.
+  EX: th:if="${leje.getStatus() == 1 || leje.getStatus() == 0}"
+
+  //  th:classappend fungere lidt som en if statement. Hvis status er == 1 så tilføjer den CSS klassen updatered,
+      hvis den ikke er 1, så tilføjer den CSS klassen updategreen.
+      td class hvis den er true(altså 1) hedde class="row-update updatered" så den ville have begge to. Og omvendt hvis den var false.
+      Altså updategreen istedet for updatered.
+  EX: <td class="row-update" th:classappend="${leje.status==1} ? updatered : updategreen">
+
+  // Denne metoden bruges til at vise de billeder brugeren har uploadet.
+  EX: <img th:src="@{${'../'+damage.photosImagePath}}" alt="billed"/>
+
+  // Under den specifikke form hvor brugeren uploader et billed, så findes der en enctype="multipart/form-data"
+     Denne gør at man tillader brugeren at uploade filer.
+  EX: enctype="multipart/form-data"
+
+  // Under den specifikke form hvor brugeren uploader et billed, så findes der en "accept"
+     Den fortæller hvilke typer filer man tillader brugeren at uploade.
+  EX: <input type="file" name="image" accept="image/png, image/jpeg, image/jpg"/>
+
+  // type specifere hvilken type input det er og hvordan den ser ud på frontend. checkbox er slef en checkbox xD
+  EX: <input class="checkbox" type="checkbox" required>
+
+
