@@ -12,12 +12,15 @@ import java.util.List;
 /* Lavet Af Malthe */
 @Repository
 public class DamageReportRepository {
+  //Laver en instance af connection i scope
   Connection connection;
 
+  //Definer connectionens værdi som er i vores ConnectionManager
   public DamageReportRepository() {
     connection = ConnectionManager.getConnection();
   }
 
+  // Metoden viser alle skadesrapporter som en Liste
   public List<DamageReport> showAllDamageReports() {
     List<DamageReport> reportList = new ArrayList<>();
     final String SQL_SHOW_REPORT = "SELECT * FROM DamageReport";
@@ -45,7 +48,7 @@ public class DamageReportRepository {
     return reportList;
 
   }
-
+  // Metoden checker om en skadesrapport allerede eksistere, bliver brugt når man opretter en skadesrapport
   public DamageReport checkIfExists(int lease, int car) {
     DamageReport check = new DamageReport();
     final String SQL_SHOW_REPORT = "SELECT DamageReportID, Leases_leaseID, Cars_vognNummer FROM DamageReport WHERE Leases_leaseID = '" + lease + "'" +
@@ -77,8 +80,8 @@ public class DamageReportRepository {
 
   }
 
-
-  public DamageReport  findReportByID(int reportID) {
+  // Metoden finder en skadesrapport fra et ID
+  public DamageReport findReportByID(int reportID) {
     DamageReport report =     new DamageReport();
     final String SQL_SHOW_REPORT = "SELECT * FROM DamageReport WHERE damageReportID = '" + reportID + "'";
 
@@ -108,6 +111,8 @@ public class DamageReportRepository {
     return report;
   }
 
+  // Metoden finder den sidste skadesrapport der blev oprettet,
+  // bliver brugt når man opretter en skadesrapport så man bliver redirectet tilbage til den ny oprettet skadesrapport
   public List<DamageReport> findReportByLast() {
     List<DamageReport> report = new ArrayList<>();
     final String SQL_SHOW_REPORT = "SELECT * FROM DamageReport ORDER BY damageReportID desc";
@@ -135,7 +140,7 @@ public class DamageReportRepository {
     return report;
   }
 
-
+  // Metoden opretter en ny skadesrapport
   public boolean addDamageReport(DamageReport damageReport) {
 
     final String SQL_ADD_QUERY = "INSERT INTO DamageReport(DamageReportID,Leases_leaseID,Cars_vognNummer,Employee_employeeID) VALUES(?,?,?,?)";
@@ -157,7 +162,7 @@ public class DamageReportRepository {
     }
 
   }
-
+  // Metoden sletter en skadesrapport ud fra et specifikt ID
   public boolean deleteDamageReport(int reportID) {
     final String SQL_DELETE = "DELETE FROM DamageReport WHERE damageReportID = ?";
 
@@ -199,6 +204,7 @@ public class DamageReportRepository {
 
   }
 
+  // Metoden skifter en skadesrapports status til 0, som betyder den er klar igen
   public void ChangeStatusDamageReportID(int id) {
 
     final String QUERYDELETE = "UPDATE DamageReport SET DamageReport.status = 0 WHERE damageReportID = "+"'"+id+"'";
@@ -215,7 +221,7 @@ public class DamageReportRepository {
 
 
   }
-
+  // Metoden skifter en skadesrapports status til 1, som betyder den er ikke klar
   public void ChangeStatusDamageReportIDToOne(int id) {
 
     final String QUERYDELETE = "UPDATE DamageReport SET DamageReport.status = 1 WHERE damageReportID = "+"'"+id+"'";

@@ -209,7 +209,7 @@ public class DashboardService {
 
   //Denne metode regner om måneds salg er procentmæssigt tæt på målet
   public int percentAverageMonth(double thisMonthNumber){
-    //Så regner vi procent og returner tal emllem 1 og 4, dette gør vi så vi kan bruge disse tal til at vise og lave farver i vores html
+    //Så regner vi procent og returner tal mellem 1 og 4, dette gør vi så vi kan bruge disse tal til at vise og lave farver i vores html
     if (thisMonthNumber * 100 / 500000 <=25){
       return 1;
     }  else if (thisMonthNumber * 100 / 500000 > 25 && thisMonthNumber * 100 / 500000  <= 50){
