@@ -164,7 +164,7 @@ public class DashboardService {
 
   //Denne metode sammenligner leased med ikke leased biler og regner procenter og returner tal
   public int percentageStatusForPriceBetweenLeasedAndNoneLeased(double allCars, double allLeasedCars) {
-//Så regner vi procent og returner tal emllem 1 og 4, dette gør vi så vi kan bruge disse tal til at vise og lave farver i vores html
+//Så regner vi procent og returner tal mellem 1 og 4, dette gør vi så vi kan bruge disse tal til at vise og lave farver i vores html
     if (allLeasedCars * 100 / allCars <=25){
       return 4;
     }  else if (allLeasedCars * 100 / allCars > 25 && allLeasedCars * 100 / allCars  <= 50){
