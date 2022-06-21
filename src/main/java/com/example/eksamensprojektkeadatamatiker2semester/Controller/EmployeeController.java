@@ -31,6 +31,9 @@ public class EmployeeController {
   }
 
 
+  //Denne metode henter parameteren user id fra html siden og benytter sig af metoden Change status for både employee og user.
+  //Her ændre den status for user ud fra dens primary key
+  //Den ændre status for employee ved dens foreign key
   @PostMapping("/deleteEmployee")
   public String deleteEmployee(@RequestParam("userID") int userID) {
     employeeRepository.ChangeStatusEmployeeByID(userID);
@@ -38,6 +41,7 @@ public class EmployeeController {
     return "redirect:sletbruger";
   }
 
+  //Vi henter alle nødvendige oplysninger for at oprette en user og en employee
   @PostMapping("/addEmployee")
   public String addEmployee(@RequestParam("userName") String userName,
                             @RequestParam("password") String password,
@@ -46,29 +50,38 @@ public class EmployeeController {
                             @RequestParam("lastName") String lastName,
                             @RequestParam("phoneNumber") String phoneNumber,
                             @RequestParam("eMail") String eMail) {
+    //Her så krypter vi den kode som er blevet indtastet
     String bCryptPassword = BCrypt.hashpw(password, BCrypt.gensalt());
     userRepository.createNewUser(new User(bCryptPassword, userName, type,1));
+    //Laver et user objekt ud fra den bruger der lige er oprettet
     User createdUser = userRepository.findUserByUserName(userName);
+    //Her laver vi en employee og bruger users id som foreign key
+    //Status er automatisk 1 da den er aktiv når man opretter den
     employeeRepository.addNewEmployee(new Employee(firstName, lastName, phoneNumber, eMail, createdUser.getUserID(),1));
 
     return "redirect:opretbruger";
   }
 
+  //Dette er for at vide profil siden,
   @GetMapping("/profile")
   public String showProfile(Model model,
                             HttpSession httpSession){
+    //Vi henter den user objekt der er logget ind lige nu
     User user = (User) httpSession.getAttribute("user");
     model.addAttribute("user",user);
+    //Vi finder medarbejderen info fra userens id
     Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
     model.addAttribute("profile",employee);
     return controllerService.profile(httpSession);
   }
 
+  //Denne metode viser siden alle medarbejdere
   @GetMapping("/allemedarbejdere")
   public String showWorkers(HttpSession httpSession,
                             Model model){
     User user = (User) httpSession.getAttribute("user");
     model.addAttribute("user",user);
+    //Henter en liste med alle medarbejder objekter, så vi kan tilføje dem til html
     List<Employee> listOfEmployees = employeeRepository.showAllEmployees();
     model.addAttribute("listOfEmployees",listOfEmployees);
     return controllerService.alleMedarbejdere(httpSession);
