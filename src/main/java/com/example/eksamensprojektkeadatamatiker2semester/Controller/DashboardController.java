@@ -13,6 +13,7 @@ import java.util.List;
 
 /* Lavet af Mohammed og Malthe */
 @Controller
+//Dependency Injection - Constructor Injection
 public class DashboardController {
   DashboardRepository dashboardRepository;
   DashboardService dashboardService;
@@ -24,6 +25,7 @@ public class DashboardController {
   DamageReportRepository damageReportRepository;
 
   /* Lavet Af Malthe og Mohammed */
+  //Dependency Injection - Constructor Injection
   public DashboardController(DashboardRepository dashboardRepository, DashboardService dashboardService,
                              CarRepository carRepository, LeaseRepository leaseRepository, ControllerService controllerService,
                              CarsLeasesRepository carsLeasesRepository, EmployeeRepository employeeRepository, DamageReportRepository damageReportRepository) {
