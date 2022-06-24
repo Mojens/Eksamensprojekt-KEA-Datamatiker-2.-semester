@@ -279,7 +279,7 @@ td.individual {
     letter-spacing: 0.8px;
     font-weight: 600;
     background-color: #B22727;
-    margin-top: 30px;
+    margin-top: 5px;
     cursor: pointer;
 
 }
@@ -298,7 +298,7 @@ td.individual {
     letter-spacing: 0.8px;
     font-weight: 600;
     background-color: #3c805c;
-    margin-top: 30px;
+    margin-top: 5px;
     cursor: pointer;
 
 }
@@ -521,6 +521,9 @@ input::-webkit-file-upload-button:hover {
     padding: 3px 6px;
     text-transform: uppercase;
     cursor: pointer;
+}
+.button-small-delete:hover {
+    opacity:0.8;
 }
 
 .button {

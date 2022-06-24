@@ -55,7 +55,7 @@ public class UserController {
     if (loggedUser != null) {
       //Tjekker om status på denne user ud fra user
       if (loggedUser.getStatus() != 0) {
-       /*boolean isPasswordValid = userService.isPasswordValid(loggedUser, password);
+       boolean isPasswordValid = userService.isPasswordValid(loggedUser, password);
         //Checker alm kode sammenligning for testning
         if (isPasswordValid) {
           Cookie cookieUser = new Cookie("userName", userName);
@@ -63,7 +63,7 @@ public class UserController {
           httpSession.setAttribute("user", loggedUser);
           model.addAttribute("userID", loggedUser.getType());
           return userService.checkTypeByUser(loggedUser.getType());
-        }*/
+        }
         //Checker for krypteret kode sammenligning
         if (BCrypt.checkpw(password, loggedUser.getPassword())) {
           //hvis koden er rigtig så laver vi en cookie ud fra brugernavnet
