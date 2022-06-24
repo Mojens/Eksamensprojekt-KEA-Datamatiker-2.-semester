@@ -41,6 +41,11 @@ public class DamageReportController {
         this.carsLeasesRepository = carsLeasesRepository;
     }
 
+    //Metoden henter og viser alle skadesrapporter, ikke selve skaderne.
+    // Først henter den en user session, og så bliver den session tilføjet til en Model så den er tilgængelig på html siden.
+    // Derefter henter den alle skadesrapporter fra damageReportReposi..
+    // Tilsidst finder den individuelles skadesrapport status.
+    // Både status og damageReports bliver tilføjet til en Model så det bliver tilgængelig på html siden.
     @GetMapping("/skaderapport")
     public String showAllDamageReports(HttpSession httpSession, Model model) {
         User user = (User) httpSession.getAttribute("user");
@@ -54,6 +59,15 @@ public class DamageReportController {
 
         return controllerService.skadeRapport(httpSession);
     }
+
+    // Metoden finder en bestem lejeaftale som skal bruges til at lave en damageReport,
+    // den har også en søgefunktion, hvor man kan søge efter en lejeaftale ID og derefter lave en damageReport af denne
+    // 1. Den henter en user session, og så bliver den session tilføjet til en Model så den er tilgængelig på html siden.
+    // 2. Den finder en damageReport ID
+    // 3. Den finder status ud fra dette ID
+    // 4. Alle lejeaftaler bliver vist hvor der ikke allerede er blevet lavet en DamageReport.
+    // 5. If statement: Den viser den bruger søgte ID
+    // 6. Hvis der ikke bliver søgt vise den alle lejeaftaler
 
     @GetMapping("/findlease")
     public String findLeaseToMakeDamageReport(HttpSession httpSession, Model model, String keyword) {
@@ -85,6 +99,13 @@ public class DamageReportController {
 
         return controllerService.findLease(httpSession);
     }
+    // Metoden viser en bestemt lejeaftale med alt lejeaftale information, samt information på bilen der tilknyttet til denne lejeaftale.
+    // 1. Den henter en user session, og så bliver den session tilføjet til en Model så den er tilgængelig på html siden.
+    // 2. Den henter derefter carsLeases, altså den tabel der har information fra både Cars og Leases.
+    // 3. Herefter henter den lease ID med hjælp fra carsLeases
+    // 4. Henter den carID med hjælp fra carsLeases.
+    // 5. Henter den employeeID fra et lease objekt.
+    // Til sidst bliver alt tilføjet i en Model så det bliver tilgængeligt på bestemt html side.
 
     @GetMapping("/udbedring/{id}")
     public String showCarsAndLeases(@PathVariable("id") int id, HttpSession httpSession, Model model) {
@@ -110,6 +131,8 @@ public class DamageReportController {
         return controllerService.udbedring(httpSession);
     }
 
+    // Metoden viser en bestemt skadesrapport, altså uden skader i.
+
     @GetMapping("/skaderapport/{id}")
     public String showOneDamageReport(@PathVariable("id") int id, Model model, HttpSession httpSession) {
         User user = (User) httpSession.getAttribute("user");
@@ -122,13 +145,14 @@ public class DamageReportController {
         return controllerService.skadeRapport(httpSession);
     }
 
+    // Metoden skifter status på en skadesrapport, altså hvis bilen er klar igen til brug efter den er blevet fixet.
     @GetMapping("/changestatus/{drID}")
     public String changeStatusForDamageReport(@PathVariable("drID") int drID) {
         damageReportRepository.ChangeStatusDamageReportID(drID);
 
         return "redirect:/skaderapport";
     }
-
+    // Metoden skifter status på en skadesrapport, skifter status tilbage til den er "ikke klar".
     @GetMapping("/changestatustoone/{drID}")
     public String changeStatusForDamageReportToOne(@PathVariable("drID") int drID) {
         damageReportRepository.ChangeStatusDamageReportIDToOne(drID);
@@ -136,6 +160,15 @@ public class DamageReportController {
         return "redirect:/skaderapport";
     }
 
+    // Metoden opretter en ny skadesrapport, altså kun selve skadesrapporten uden skader.
+    // Først finder den henholdsvis damageReportID, så leaseID, så carID og til sidst finder den employeeID
+    // Derefter checker den om der allerede findes in damageReport med samme lejeaftaleID og vognNummer,
+    // hvis der findes en bliver der ikke opretet en ny skadesrapport,
+    // men man bliver redirectet til den allerede oprettet skadesrapport med samme lejeaftaleID og vognNummer
+    // Hvis der ikke findes en skadesrapport med denne lejeaftaleID og vognNummer bliver der oprettet en ny skadesRapport
+    // Man bliver til sidst redirectet til den rigtige damageReport ID efter man opretter/prøver at oprette den.
+
+    // @RequestParam's bliver brugt til at binde en brugers input fra en form til en variable som derefter kan blive brugt i en metode.
     @PostMapping("/skaderapport")
     public String addDamageReport(@RequestParam("lejeaftaleID") int lejeaftaleID,
                                   @RequestParam("vognNummer") int vognNummer,
@@ -172,7 +205,11 @@ public class DamageReportController {
 
     }
 
-
+    // Metoden gør så man kan se en hel skadesrapport med alle skader og hvor man kan tilføje skader.
+    // Først finder den henholdsvis damageReportID, så leaseID, så carID og til sidst finder den employeeID
+    // Derefter finder den listen af skader tilknyttet til den bestemte skadesRapport ID
+    // Derefter udregner den total prisen fra alle skader, altså summen.
+    // Lease period henter alle leases, den bliver brugt på siden skader.html til at udregne lejeaftale perioden i alt i dage.
     @GetMapping("/skader/{id}")
     public String showDamageReportID(@PathVariable("id") int id, Model model, HttpSession httpSession) {
 
@@ -204,6 +241,7 @@ public class DamageReportController {
         return controllerService.skader(httpSession);
     }
 
+    // Metoden sletter en specifik skade og retunere derefter samme side.
     @GetMapping("/skader/{id}/{skadeID}")
     public String deleteSpecificDamage(@PathVariable("id") int id, @PathVariable("skadeID") int skadeID) {
 

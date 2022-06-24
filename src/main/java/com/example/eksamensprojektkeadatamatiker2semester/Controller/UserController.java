@@ -43,11 +43,13 @@ public class UserController {
     this.carRepository = carRepository;
   }
 
+  //Denne metode bliver kaldt på når man klikker på login
   @PostMapping("/login")
   public String loginValidation(@RequestParam("userName") String userName,
                                 @RequestParam("password") String password,
                                 HttpSession httpSession,
                                 Model model) {
+    //Først laver vi en user objekt ud fra det username der bliver indtastet
     User loggedUser = userRepository.findUserByUserName(userName);
     //Tjekker om det er en gyldig user ud fra brugernavn
     if (loggedUser != null) {
@@ -61,12 +63,17 @@ public class UserController {
           httpSession.setAttribute("user", loggedUser);
           model.addAttribute("userID", loggedUser.getType());
           return userService.checkTypeByUser(loggedUser.getType());
-        }//Checker for krypteret kode sammenligning*/
+        }*/
+        //Checker for krypteret kode sammenligning
         if (BCrypt.checkpw(password, loggedUser.getPassword())) {
+          //hvis koden er rigtig så laver vi en cookie ud fra brugernavnet
           Cookie cookieUser = new Cookie("userName", userName);
+          //Vi starter så en session der hedder userName ud fra den cookie
           httpSession.setAttribute("userName", cookieUser);
+          //Så laver vi en session med user objktet så det er gemt
           httpSession.setAttribute("user", loggedUser);
           model.addAttribute("userID", loggedUser.getType());
+          //Den bruger denne return da, det varier fra hvilken type useren har.
           return userService.checkTypeByUser(loggedUser.getType());
         } else {
           model.addAttribute("wrongPWD", "Forkert adgangskode");
@@ -80,6 +87,7 @@ public class UserController {
     return "redirect:login";
   }
 
+  //Denne metode bliver sat i brug når man klikker på opret bruger
   @PostMapping("/createUser")
   public String createUser(@RequestParam("userName") String userName,
                            @RequestParam("password") String password,
@@ -88,26 +96,35 @@ public class UserController {
     return "redirect:admin";
   }
 
+  //Denne metoder bliver brugt når man logger ud, så den fjerner den session man har
   @PostMapping("/logout")
   public String logOutFunction(HttpSession httpSession) {
     httpSession.removeAttribute("user");
     return "redirect:login";
   }
 
+  //Denne metode bliver sat i gang når man klikker på knappen skift kode
   @PostMapping("/changePassword")
   public String changePassword(@RequestParam("employeeUserID") int employeeUserID,
                                @RequestParam("newPassword") String newPassword) {
+    //Først så laver vi employee objektet ud fra dens primary key
     //System.out.println(employeeUserID);
     Employee selectedEmployee = employeeRepository.findEmployeeByUserID(employeeUserID);
     //System.out.println(selectedEmployee);
+    //Derefter finder vi den user ud fra valgte employee
     User selectedUser = userRepository.findUserByEmployee(selectedEmployee);
     //System.out.println(selectedUser);
+    //Så krypter vi den nye kode
     String bCryptPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
     //System.out.println(bCryptPassword);
+    //Så skifter vi adgangskoden med denne metode
     userRepository.changePassword(selectedUser.getUsername(), bCryptPassword, selectedUser);
     return "redirect:skiftkode";
   }
 
+
+  /* Dette for neden skulle have været i en anden controller!!!*/
+  //Denne metode gør man kan komme ind på siden create car
   @GetMapping("/createcar")
   public String viewCreateCar(HttpSession httpSession,
                               Model model){
@@ -116,12 +133,14 @@ public class UserController {
     return controllerService.createCar(httpSession);
   }
 
+  //Denne metode opretter et bil objekt når man klikker på opret bil
   @PostMapping("/createnewcar")
   public String createCar(@RequestParam("stelnummer") String stelNummer,
                           @RequestParam("brand") String brand,
                           @RequestParam("model") String model,
                           @RequestParam("price") double price){
 
+    //Variablen isLeased starter med at være 0 lige meget hvad, da det sekund man opretter en bil så er den ledig.
     Car createdCar = new Car(stelNummer,brand,model,price,0);
     carRepository.createNewCar(createdCar);
 

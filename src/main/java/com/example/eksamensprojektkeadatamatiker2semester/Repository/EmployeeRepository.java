@@ -13,13 +13,15 @@ import java.util.List;
 /* Lavet Af Mohammed */
 @Repository
 public class EmployeeRepository {
+  //Laver en instance af connection i scope
   Connection connection;
 
+  //Definer connectionens værdi som er i vores ConnectionManager
   public EmployeeRepository() {
     connection = ConnectionManager.getConnection();
   }
 
-  //Show current Employees
+  //Henter alle employees der er i tabellen og tilføjer dem til en arrayliste
   public List<Employee> showAllEmployees() {
     ArrayList<Employee> listOfEmployees = new ArrayList<>();
     final String QUERY = "SELECT * FROM Employee";
@@ -47,7 +49,7 @@ public class EmployeeRepository {
     return listOfEmployees;
   }
 
-  //find specific employee by user ID
+  //Finder employee objekt ud fra dens foreign key
   public Employee findEmployeeByUserID(int inputUserID) {
     Employee employee = new Employee();
     final String QUERY = "SELECT * FROM Employee WHERE UserLogin_userID = " + "'" + inputUserID + "'";
@@ -82,7 +84,7 @@ public class EmployeeRepository {
     return employee;
   }
 
-  //Delete employee from employee table and userLogin table with inner join
+  //Denne metode ændrer status på specifik employee ud fra valgt user til 0 "Altså ikke aktiv"
   public void ChangeStatusEmployeeByID(int inputUserID) {
     final String QUERYDELETE = "UPDATE Employee SET Employee.status = 0 WHERE UserLogin_userID = "+"'"+inputUserID+"'";
     try {
@@ -97,7 +99,7 @@ public class EmployeeRepository {
     }
 
   }
-
+  //Denne metode ændrer status på specifik employee ud fra valgt user til 1 "Altså aktiv"
   public void changeStatusEmployeeByIDToOne(int inputUserID) {
     final String QUERYDELETE = "UPDATE Employee SET Employee.status = 1 WHERE UserLogin_userID = "+"'"+inputUserID+"'";
     try {
@@ -112,7 +114,7 @@ public class EmployeeRepository {
     }
 
   }
-
+//Denne metoder tilføjer en ny employee til tabellen
   public boolean addNewEmployee(Employee employee) {
     final String QUERY = "INSERT INTO Employee (EmployeeID, firstName, lastName, phoneNumber, eMail, UserLogin_userID) VALUES (?, ?, ?, ?, ?, ?)";
     try {

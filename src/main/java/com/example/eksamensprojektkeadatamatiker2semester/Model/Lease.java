@@ -98,6 +98,16 @@ public class Lease {
     this.endDate = endDate;
   }
 
+  public int getStatus() {
+    return status;
+  }
+
+  public void setStatus(int status) {
+    this.status = status;
+  }
+
+  //Metoden sammenligner dagens dato og endDate. Den retunere henholdsvis 1 hvis lejeperioden er overstået
+  // eller lejeperiodens overståelse er i dag. Den retunere 0 hvis lejeperioden ikke er overstået.
   public int compareNowAndEndDate(LocalDate date){
     int compareValue = today.compareTo(date);
 
@@ -111,18 +121,15 @@ public class Lease {
     }
   }
 
+  //Metoden har 2 parameter, henholdvist startDate og endDate. Den regner forskellen ud mellem endDate og startDate.
+  // Altså Dage i mellem disse 2 datoer.
+  // Den bliver brugt til at udregne hvor mange dage en lejeaftale er i alt.
   public long subtractDates(LocalDate startDate, LocalDate endDate){
 
     return endDate.compareTo(startDate);
   }
 
-  public int getStatus() {
-    return status;
-  }
 
-  public void setStatus(int status) {
-    this.status = status;
-  }
 
   @Override
   public String toString() {
