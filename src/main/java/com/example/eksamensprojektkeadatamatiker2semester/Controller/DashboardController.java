@@ -110,6 +110,7 @@ public class DashboardController {
     model.addAttribute("colorMonthSale",colorMonthSale);
     model.addAttribute("status", id.getStatus());
     model.addAttribute("damageReports", damageReports);
+    model.addAttribute("pagetitle","Dashboard");
 
     return controllerService.dashboard(httpSession);
   }
@@ -166,6 +167,7 @@ public class DashboardController {
     model.addAttribute("colorMonthSale",colorMonthSale);
     model.addAttribute("status", id.getStatus());
     model.addAttribute("damageReports", damageReports);
+    model.addAttribute("pagetitle","Dashboard");
 
     return controllerService.dashboard(httpSession);
   }
@@ -199,7 +201,7 @@ public class DashboardController {
       model.addAttribute("list",list);
 
     }
-
+    model.addAttribute("pagetitle","Find Tilbageleveringer");
     return controllerService.findRetur(httpSession);
   }
 

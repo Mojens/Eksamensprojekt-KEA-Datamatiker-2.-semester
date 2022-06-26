@@ -55,7 +55,7 @@ public class DamageReportController {
         DamageReport id = damageReportRepository.findReportByID(dr.getDamageReportID());
         model.addAttribute("status", id.getStatus());
         model.addAttribute("damageReports", damageReports);
-
+        model.addAttribute("pagetitle","Skadesrapport");
 
         return controllerService.skadeRapport(httpSession);
     }
@@ -96,7 +96,7 @@ public class DamageReportController {
             model.addAttribute("list", list);
 
         }
-
+        model.addAttribute("pagetitle","Opret Skadesrapport");
         return controllerService.findLease(httpSession);
     }
     // Metoden viser en bestemt lejeaftale med alt lejeaftale information, samt information på bilen der tilknyttet til denne lejeaftale.
@@ -126,7 +126,7 @@ public class DamageReportController {
         model.addAttribute("lease", lease);
         model.addAttribute("car", car);
         model.addAttribute("employee", employee);
-
+        model.addAttribute("pagetitle","Opret Skadesrapport");
 
         return controllerService.udbedring(httpSession);
     }
@@ -237,7 +237,7 @@ public class DamageReportController {
         model.addAttribute("specificDamage", specificDamage);
         model.addAttribute("sumTotal", sum);
         model.addAttribute("damageReportID", id);
-
+        model.addAttribute("pagetitle","Skadesrapport");
         return controllerService.skader(httpSession);
     }
 

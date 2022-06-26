@@ -130,6 +130,7 @@ public class UserController {
                               Model model){
     User user = (User) httpSession.getAttribute("user");
     model.addAttribute("user",user);
+    model.addAttribute("pagetitle","Opret Køretøj");
     return controllerService.createCar(httpSession);
   }
 

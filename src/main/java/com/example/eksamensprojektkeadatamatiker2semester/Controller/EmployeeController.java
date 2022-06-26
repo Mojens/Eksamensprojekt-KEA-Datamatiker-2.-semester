@@ -72,6 +72,7 @@ public class EmployeeController {
     //Vi finder medarbejderen info fra userens id
     Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
     model.addAttribute("profile",employee);
+
     return controllerService.profile(httpSession);
   }
 
@@ -84,6 +85,7 @@ public class EmployeeController {
     //Henter en liste med alle medarbejder objekter, så vi kan tilføje dem til html
     List<Employee> listOfEmployees = employeeRepository.showAllEmployees();
     model.addAttribute("listOfEmployees",listOfEmployees);
+    model.addAttribute("pagetitle","Alle Medarbejdere");
     return controllerService.alleMedarbejdere(httpSession);
   }
 }

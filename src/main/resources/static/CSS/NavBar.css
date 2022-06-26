@@ -38,6 +38,30 @@
     position: relative;
 
 }
+.activenav{
+    background-color: #F2F2F2!important;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    color: #1a1919;
+    transition-duration: .3s;
+}
+.a{
+    float: right;
+    display: flex;
+    justify-content: flex-end;
+    color: black;
+    text-align: center;
+    padding: 35px 30px 35px 30px;
+    text-decoration: none;
+    position: relative;
+}
+.a:hover{
+    background-color: #F2F2F2;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    color: #1a1919;
+    transition-duration: .3s;
+}
 
 
 #navbar-admin {

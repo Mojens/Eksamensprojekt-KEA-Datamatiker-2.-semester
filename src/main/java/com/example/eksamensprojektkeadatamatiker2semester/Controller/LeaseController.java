@@ -54,7 +54,7 @@ public class LeaseController {
         model.addAttribute("lease",lease);
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user",user);
-
+        model.addAttribute("pagetitle","Alle Lejeaftaler");
         return controllerService.alleLejeAftaler(httpSession);
     }
 
@@ -76,7 +76,7 @@ public class LeaseController {
 
         model.addAttribute("car",car);
         model.addAttribute("lease",lease);
-
+        model.addAttribute("pagetitle","Alle Lejeaftaler");
 
        return controllerService.aftaler(httpSession);
     }
@@ -88,7 +88,7 @@ public class LeaseController {
         model.addAttribute("user",user);
         Lease period = leaseRepository.showLeases();
         model.addAttribute("period",period);
-
+        model.addAttribute("pagetitle","Alle Lejeaftaler");
         if (keyword!=null){
             List<Lease> list = leaseRepository.findLeaseByIDAsList(Integer.parseInt(keyword));
 
@@ -99,7 +99,7 @@ public class LeaseController {
             model.addAttribute("list",list);
 
         }
-
+        model.addAttribute("pagetitle","Find Lejeaftale");
         return controllerService.lejeAftaler(httpSession);
     }
 
@@ -116,7 +116,7 @@ public class LeaseController {
         Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
         Lease period = leaseRepository.showLeases();
         model.addAttribute("period",period);
-
+        model.addAttribute("pagetitle","Alle Lejeaftaler");
         model.addAttribute("carLeases",carsLeases);
         model.addAttribute("lease",lease);
         model.addAttribute("car",car);
@@ -135,10 +135,10 @@ public class LeaseController {
         List<Car> listOfAvaibleCars = carRepository.showAllAvaibleCars();
 
 
-
+        model.addAttribute("pagetitle","Alle Lejeaftaler");
         model.addAttribute("user",user);
         model.addAttribute("listOfAvaibleCars",listOfAvaibleCars);
-
+        model.addAttribute("pagetitle","Opret Lejeaftale");
         return controllerService.opretLejeAftaler(httpSession);
     }
 
