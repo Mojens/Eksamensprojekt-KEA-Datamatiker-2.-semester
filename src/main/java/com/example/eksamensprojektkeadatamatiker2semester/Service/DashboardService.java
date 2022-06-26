@@ -43,7 +43,7 @@ public class DashboardService {
     for (Car c :
             leasedCars) {
       for (Lease l : leases) {
-       pricePrDay = c.getPrice()*l.subtractDates(l.getStartDate(),l.getEndDate())/30.41;
+       pricePrDay = c.getPrice()*l.subtractDates(l.getStartDate(),l.getEndDate())/30.42;
         totalPrice = totalPrice + pricePrDay;
       }
 
