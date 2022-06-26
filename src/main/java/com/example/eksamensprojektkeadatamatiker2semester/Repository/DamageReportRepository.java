@@ -48,6 +48,34 @@ public class DamageReportRepository {
     return reportList;
 
   }
+
+  public List<DamageReport> showAllDamageReportsWhichNeedsHandling() {
+    List<DamageReport> reportList = new ArrayList<>();
+    final String SQL_SHOW_REPORT = "SELECT * FROM DamageReport WHERE status = 1";
+
+    try {
+      PreparedStatement ps = connection.prepareStatement(SQL_SHOW_REPORT);
+      ResultSet rs = ps.executeQuery();
+
+      while (rs.next()) {
+        int damageReportID = rs.getInt(1);
+        int leaseID = rs.getInt(2);
+        int vognNummer = rs.getInt(3);
+        int employeeID = rs.getInt(4);
+        int status = rs.getInt(5);
+
+        reportList.add(new DamageReport(damageReportID, leaseID, vognNummer, employeeID,status));
+
+      }
+      ps.close();
+
+    } catch (SQLException e) {
+      System.out.println("Kunne ikke finde nogle skader");
+      e.printStackTrace();
+    }
+    return reportList;
+
+  }
   // Metoden checker om en skadesrapport allerede eksistere, bliver brugt når man opretter en skadesrapport
   public DamageReport checkIfExists(int lease, int car) {
     DamageReport check = new DamageReport();

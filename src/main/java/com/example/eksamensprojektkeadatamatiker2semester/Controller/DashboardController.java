@@ -70,6 +70,7 @@ public class DashboardController {
     List<CarsLeases> carLeasesList = carsLeasesRepository.showAllCarLeases();
     // Denne metode tæller hvor mange car objekter der i listen
     int amountOfLeasedCars = dashboardService.howManyisLeased(leasedCars);
+
     // Denne metode henter total pris for alle biler i en liste
     double totalPriceOfLeasedCars = dashboardService.totalPriceLeasedCars(leasedCars,leaseList,carLeasesList);
     // Denne metode henter totale pris for alle biler i en liste
@@ -93,7 +94,7 @@ public class DashboardController {
     int colorMonthSale = dashboardService.percentAverageMonth(monthlySale);
     //Denne metode ændrer de engelske måneder til danske
     String currentMonth = dashboardService.convertLocalToDanish(LocalDate.now().getMonth());
-
+    List<DamageReport> missingHandling = damageReportRepository.showAllDamageReportsWhichNeedsHandling();
     LocalDate currentDate = LocalDate.now();
     DashboardService dashboardServices1 = new DashboardService();
     CarRepository carRepository1 = new CarRepository();
@@ -117,6 +118,7 @@ public class DashboardController {
     model.addAttribute("colorMonthSale",colorMonthSale);
     model.addAttribute("status", id.getStatus());
     model.addAttribute("damageReports", damageReports);
+    model.addAttribute("missingHandling",missingHandling);
     model.addAttribute("pagetitle","Dashboard");
 
     return controllerService.dashboard(httpSession);
@@ -156,6 +158,7 @@ public class DashboardController {
     int colorMonthSale = dashboardService.percentAverageMonth(monthlySale);
     String currentMonth = dashboardService.convertLocalToDanish(LocalDate.now().getMonth());
     String selectedMonth = dashboardService.monthByNumber(chosenMonth);
+    List<DamageReport> missingHandling = damageReportRepository.showAllDamageReportsWhichNeedsHandling();
     LocalDate currentDate = LocalDate.now();
     DashboardService dashboardServices1 = new DashboardService();
     CarRepository carRepository1 = new CarRepository();
@@ -180,6 +183,7 @@ public class DashboardController {
     model.addAttribute("colorMonthSale",colorMonthSale);
     model.addAttribute("status", id.getStatus());
     model.addAttribute("damageReports", damageReports);
+    model.addAttribute("missingHandling",missingHandling);
     model.addAttribute("pagetitle","Dashboard");
 
     return controllerService.dashboard(httpSession);
