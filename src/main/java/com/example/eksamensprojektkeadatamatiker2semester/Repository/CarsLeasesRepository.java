@@ -1,5 +1,6 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Repository;
 
+import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.CarsLeases;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
 import com.example.eksamensprojektkeadatamatiker2semester.Utility.ConnectionManager;
@@ -123,6 +124,31 @@ public class CarsLeasesRepository {
       e.printStackTrace();
     }
     return todayCarLeases;
+  }
+
+  public List<CarsLeases> showAllCarLeases(){
+    List<CarsLeases> list = new ArrayList<>();
+    final String SQL_SHOW_CAR = "SELECT * FROM CarsLeases";
+
+    try {
+      PreparedStatement ps = connection.prepareStatement(SQL_SHOW_CAR);
+      ResultSet rs = ps.executeQuery();
+
+      while (rs.next()) {
+        int carLeasesID = rs.getInt(1);
+        int carID = rs.getInt(2);
+        int leaseID = rs.getInt(3);
+
+
+        list.add(new CarsLeases(carLeasesID, carID, leaseID));
+
+      }
+      ps.close();
+    } catch (SQLException e) {
+      System.out.println("Kunne ikke finde nogle leases og biler");
+      e.printStackTrace();
+    }
+    return list;
   }
 
 }
