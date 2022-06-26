@@ -65,13 +65,13 @@ public class UserController {
           return userService.checkTypeByUser(loggedUser.getType());
         }
      //Checker for krypteret kode sammenligning*/
-        if (BCrypt.checkpw(password, loggedUser.getPassword())) {
+        /*if (BCrypt.checkpw(password, loggedUser.getPassword())) {
           Cookie cookieUser = new Cookie("userName", userName);
           httpSession.setAttribute("userName", cookieUser);
           httpSession.setAttribute("user", loggedUser);
           model.addAttribute("userID", loggedUser.getType());
           return userService.checkTypeByUser(loggedUser.getType());
-        } else {
+        } */else {
           model.addFlashAttribute("wrongPWD", "Forkert adgangskode");
           return "redirect:login";
         }
