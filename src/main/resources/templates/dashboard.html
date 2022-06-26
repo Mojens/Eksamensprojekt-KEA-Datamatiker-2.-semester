@@ -320,10 +320,10 @@
             </td>
         </tr>
     </table>
-    <div th:if="${damageReportStatus.status==0}">
+    <div th:if="${missingHandling.size()==0}">
         <h1>Alle skader er håndteret</h1>
     </div>
-    <div th:if="${damageReportStatus.status==1}">
+    <div th:if="${missingHandling.size()>=1}">
 
     <h1>Manglende Håndteringer</h1>
     <table id="ManglendeHaanteringer" >
