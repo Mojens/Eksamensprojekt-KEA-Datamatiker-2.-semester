@@ -6,11 +6,13 @@ import com.example.eksamensprojektkeadatamatiker2semester.Model.Lease;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.CarRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.CarsLeasesRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.LeaseRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+
 /* Lavet Af Malthe og Mohammed */
 @Service
 public class DashboardService {
@@ -36,21 +38,18 @@ public class DashboardService {
     return totalPrice;
   }
 
-  public double totalPriceLeasedCars(List<Car> leasedCars, List<Lease> leases) {
-    int leasePeriod = 0;
-    for (Lease l : leases){
-
-    }
+  public double totalPriceLeasedCars(List<Car> leasedCars, List<Lease> leases, List<CarsLeases> carsLeases) {
     double totalPrice = 0;
     double pricePrDay = 0;
-
-    for (Car c :
-            leasedCars) {
-      for (Lease l : leases) {
-       pricePrDay = c.getPrice()*l.subtractDates(l.getStartDate(),l.getEndDate())/30.42;
-        totalPrice = totalPrice + pricePrDay;
+    for (CarsLeases cl : carsLeases) {
+      for (Car c :
+          leasedCars) {
+        for (Lease l : leases) {
+          if (c.getVognNummer() == cl.getCarID() && cl.getLeaseID() == l.getLeaseID())
+            pricePrDay = c.getPrice() / 30.42;
+          totalPrice = pricePrDay * l.subtractDates(l.getStartDate(), l.getEndDate());
+        }
       }
-
     }
     return totalPrice;
   }
@@ -89,50 +88,50 @@ public class DashboardService {
       }
     }
     //Så regner vi procent og returner tal emllem 1 og 4, dette gør vi så vi kan bruge disse tal til at vise og lave farver i vores html
-    if (countLeased * 100 / carCounter <=25){
+    if (countLeased * 100 / carCounter <= 25) {
       return 4;
-    }  else if (countLeased * 100 / carCounter > 25 && countLeased * 100 / carCounter  <= 50){
+    } else if (countLeased * 100 / carCounter > 25 && countLeased * 100 / carCounter <= 50) {
       return 3;
-    } else if (countLeased * 100 / carCounter > 50 && countLeased * 100 / carCounter  <= 75){
+    } else if (countLeased * 100 / carCounter > 50 && countLeased * 100 / carCounter <= 75) {
       return 2;
-    }else if (countLeased * 100 / carCounter > 75 && countLeased * 100 / carCounter  <= 100){
+    } else if (countLeased * 100 / carCounter > 75 && countLeased * 100 / carCounter <= 100) {
       return 1;
     }
     return 0;
   }
 
   //Denne metode ændrer de engelske måneder til danske
-  public String convertLocalToDanish(Month localDateMonth){
-    if (String.valueOf(localDateMonth).equalsIgnoreCase("January")){
+  public String convertLocalToDanish(Month localDateMonth) {
+    if (String.valueOf(localDateMonth).equalsIgnoreCase("January")) {
       return "Januar";
     } else if (String.valueOf(localDateMonth).equalsIgnoreCase("February")) {
       return "Februar";
-    }else if (String.valueOf(localDateMonth).equalsIgnoreCase("March")){
+    } else if (String.valueOf(localDateMonth).equalsIgnoreCase("March")) {
       return "Marts";
     } else if (String.valueOf(localDateMonth).equalsIgnoreCase("April")) {
       return "April";
     } else if (String.valueOf(localDateMonth).equalsIgnoreCase("May")) {
       return "Maj";
-    }else if(String.valueOf(localDateMonth).equalsIgnoreCase("June")){
+    } else if (String.valueOf(localDateMonth).equalsIgnoreCase("June")) {
       return "Juni";
-    }else if(String.valueOf(localDateMonth).equalsIgnoreCase("July")){
+    } else if (String.valueOf(localDateMonth).equalsIgnoreCase("July")) {
       return "Juli";
-    }else if(String.valueOf(localDateMonth).equalsIgnoreCase("August")){
+    } else if (String.valueOf(localDateMonth).equalsIgnoreCase("August")) {
       return "August";
-    }else if(String.valueOf(localDateMonth).equalsIgnoreCase("September")){
+    } else if (String.valueOf(localDateMonth).equalsIgnoreCase("September")) {
       return "September";
-    }else if(String.valueOf(localDateMonth).equalsIgnoreCase("October")){
+    } else if (String.valueOf(localDateMonth).equalsIgnoreCase("October")) {
       return "Oktober";
-    }else if(String.valueOf(localDateMonth).equalsIgnoreCase("November")){
+    } else if (String.valueOf(localDateMonth).equalsIgnoreCase("November")) {
       return "November";
-    }else if(String.valueOf(localDateMonth).equalsIgnoreCase("December")){
+    } else if (String.valueOf(localDateMonth).equalsIgnoreCase("December")) {
       return "December";
     }
     return "Cant read Month";
   }
 
   //Denne metode viser dagens salg
-  public double todaysSale(){
+  public double todaysSale() {
     LeaseRepository leaseRepository = new LeaseRepository();
     CarsLeasesRepository carsLeasesRepository = new CarsLeasesRepository();
     CarRepository carRepository = new CarRepository();
@@ -142,15 +141,15 @@ public class DashboardService {
     double totalSale = 0.0;
     //Først finder vi alle leases for dagensdato
     todaysLeases = leaseRepository.findAllLeasesByStartDate(LocalDate.now());
-    for (Lease lease: todaysLeases) {
+    for (Lease lease : todaysLeases) {
       // Den finder ethvert leases som startede idag og udfra leases der er i todaysleases
       todaysCarleases = carsLeasesRepository.findCarsLeasesByLeaseIDToday(lease.getLeaseID());
       for (CarsLeases carLease : todaysCarleases) {
         //Den finder ethvery car der er solgt i dag ud fra carleases car id og putter dem ind i listen
         carsSoldToday = carRepository.allCarsByID(carLease.getCarID());
-        for (Car car : carsSoldToday){
+        for (Car car : carsSoldToday) {
           //Så regner den totale pris
-          totalSale = totalSale+car.getPrice();
+          totalSale = totalSale + car.getPrice();
         }
       }
     }
@@ -158,7 +157,7 @@ public class DashboardService {
   }
 
   //Viser måneds salgs
-  public double currentMonthSale(int month){
+  public double currentMonthSale(int month) {
     //Alt dette der sker her er det samme som den tidligere metode som er dagens salg
     LeaseRepository leaseRepository = new LeaseRepository();
     CarsLeasesRepository carsLeasesRepository = new CarsLeasesRepository();
@@ -169,12 +168,12 @@ public class DashboardService {
     double totalSale = 0.0;
     todaysLeases = leaseRepository.findAllLeasesByCurrentMonth(month);
     //System.out.println(todaysLeases);
-    for (Lease lease: todaysLeases) {
+    for (Lease lease : todaysLeases) {
       todaysCarleases = carsLeasesRepository.findCarsLeasesByLeaseIDToday(lease.getLeaseID());
       for (CarsLeases carLease : todaysCarleases) {
         carsSoldToday = carRepository.allCarsByID(carLease.getCarID());
-        for (Car car : carsSoldToday){
-          totalSale = totalSale+car.getPrice();
+        for (Car car : carsSoldToday) {
+          totalSale = totalSale + car.getPrice();
         }
       }
     }
@@ -184,76 +183,76 @@ public class DashboardService {
   //Denne metode sammenligner leased med ikke leased biler og regner procenter og returner tal
   public int percentageStatusForPriceBetweenLeasedAndNoneLeased(double allCars, double allLeasedCars) {
 //Så regner vi procent og returner tal mellem 1 og 4, dette gør vi så vi kan bruge disse tal til at vise og lave farver i vores html
-    if (allLeasedCars * 100 / allCars <=25){
+    if (allLeasedCars * 100 / allCars <= 25) {
       return 4;
-    }  else if (allLeasedCars * 100 / allCars > 25 && allLeasedCars * 100 / allCars  <= 50){
+    } else if (allLeasedCars * 100 / allCars > 25 && allLeasedCars * 100 / allCars <= 50) {
       return 3;
-    } else if (allLeasedCars * 100 / allCars > 50 && allLeasedCars * 100 / allCars  <= 75){
+    } else if (allLeasedCars * 100 / allCars > 50 && allLeasedCars * 100 / allCars <= 75) {
       return 2;
-    }else if ((allLeasedCars * 100 / allCars) > 75 && (allLeasedCars * 100 / allCars)  <= 100){
+    } else if ((allLeasedCars * 100 / allCars) > 75 && (allLeasedCars * 100 / allCars) <= 100) {
       return 1;
     }
     return 0;
   }
 
   // Ændrer måneds tal til måned navn
-  public String monthByNumber(int month){
-    if (month == 1){
+  public String monthByNumber(int month) {
+    if (month == 1) {
       return "Januar";
     } else if (month == 2) {
       return "Februar";
-    }else if (month == 3){
+    } else if (month == 3) {
       return "Marts";
     } else if (month == 4) {
       return "April";
     } else if (month == 5) {
       return "Maj";
-    }else if(month == 6){
+    } else if (month == 6) {
       return "Juni";
-    }else if(month == 7){
+    } else if (month == 7) {
       return "Juli";
-    }else if(month == 8){
+    } else if (month == 8) {
       return "August";
-    }else if(month == 9){
+    } else if (month == 9) {
       return "September";
-    }else if(month == 10){
+    } else if (month == 10) {
       return "Oktober";
-    }else if(month == 11){
+    } else if (month == 11) {
       return "November";
-    }else if(month == 12){
+    } else if (month == 12) {
       return "December";
     }
     return "Cant read Month";
   }
 
   //Denne metode regner om måneds salg er procentmæssigt tæt på målet
-  public int percentAverageMonth(double thisMonthNumber){
+  public int percentAverageMonth(double thisMonthNumber) {
     //Så regner vi procent og returner tal mellem 1 og 4, dette gør vi så vi kan bruge disse tal til at vise og lave farver i vores html
-    if (thisMonthNumber * 100 / 500000 <=25){
+    if (thisMonthNumber * 100 / 500000 <= 25) {
       return 1;
-    }  else if (thisMonthNumber * 100 / 500000 > 25 && thisMonthNumber * 100 / 500000  <= 50){
+    } else if (thisMonthNumber * 100 / 500000 > 25 && thisMonthNumber * 100 / 500000 <= 50) {
       return 2;
-    } else if (thisMonthNumber * 100 / 500000 > 50 && thisMonthNumber * 100 / 500000  <= 75){
+    } else if (thisMonthNumber * 100 / 500000 > 50 && thisMonthNumber * 100 / 500000 <= 75) {
       return 3;
-    }else if (thisMonthNumber * 100 / 500000 > 75 && thisMonthNumber * 100 / 500000  <= 100){
+    } else if (thisMonthNumber * 100 / 500000 > 75 && thisMonthNumber * 100 / 500000 <= 100) {
       return 4;
     }
     return 0;
   }
 
   //Denne metode regner om man har ramt dags budgettet
-  public int percentAverageDay(double thisDayNumber){
-    if (thisDayNumber * 100 / 15000 <=25){
+  public int percentAverageDay(double thisDayNumber) {
+    if (thisDayNumber * 100 / 15000 <= 25) {
       return 1;
-    }  else if (thisDayNumber * 100 / 15000 > 25 && thisDayNumber * 100 / 15000  <= 50){
+    } else if (thisDayNumber * 100 / 15000 > 25 && thisDayNumber * 100 / 15000 <= 50) {
       return 2;
-    } else if (thisDayNumber * 100 / 15000 > 50 && thisDayNumber * 100 / 15000  <= 75){
+    } else if (thisDayNumber * 100 / 15000 > 50 && thisDayNumber * 100 / 15000 <= 75) {
       return 3;
-    }else if (thisDayNumber * 100 / 15000 > 75 && thisDayNumber * 100 / 15000  <= 100){
+    } else if (thisDayNumber * 100 / 15000 > 75 && thisDayNumber * 100 / 15000 <= 100) {
       return 4;
     }
     return 0;
   }
-  }
+}
 
 
