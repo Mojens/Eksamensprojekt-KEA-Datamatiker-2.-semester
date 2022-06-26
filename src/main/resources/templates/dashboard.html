@@ -185,7 +185,7 @@
             </div>
         </div>
         <div class="item-e">
-            <div class="f-container">
+            <div class="e-container">
                 <h2 class="header-kpi">Dagens salg</h2>
                 <div class="inline-kpi">
                     <h1 class="big-header-kpi"
@@ -227,6 +227,28 @@
                     <option value="/dashboard/11">November</option>
                     <option value="/dashboard/12">December</option>
                 </select>
+            </div>
+        </div>
+        <div class="item-g">
+            <div class="g-container">
+                <h2 class="header-kpi">Manglende Håndteringer</h2>
+                <div class="inline-kpi">
+                    <h1 class="big-header-damage"
+                        th:classappend="${(missingHandling.size() >= 3 ? 'bigheaderred' : '') + (missingHandling.size() == 2 ? 'bigheaderorange' : '') + (missingHandling.size() == 1 ? 'bigheaderyellow' : '') + (missingHandling.size() == 0 ? 'bigheadergreen' : '')}"
+                        th:text="${missingHandling.size()}"></h1>
+                </div>
+                <a href="#ManglendeHaanteringer"><button th:each="rapport : ${damageReports}" th:if="${rapport.status==1}" class="summary-small">Se listen</button></a>
+            </div>
+        </div>
+        <div class="item-h">
+            <div class="h-container">
+                <h2 class="header-kpi">Gennemsnits lejeperiode</h2>
+                <div class="inline-kpi">
+                    <h1 class="big-header-kpi"
+                        th:classappend="${(colorForDaySale == 1 ? 'bigheaderred' : '') + (colorForDaySale == 2 ? 'bigheaderorange' : '') + (colorForDaySale == 3 ? 'bigheaderyellow' : '') + (colorForDaySale == 4 ? 'bigheadergreen' : '')}"
+                        th:text="${#numbers.formatDecimal(todaysSale,0,'POINT',0,'COMMA')}"></h1>
+                </div>
+                <h1 class="small-header-kpi-leveret" th:text="${#temporals.format(dagensDato,'dd/MM-yy')}"></h1>
             </div>
         </div>
     </div>
@@ -299,8 +321,13 @@
             </td>
         </tr>
     </table>
+    <div th:each="rapport : ${damageReports}" th:if="${rapport.status==0}">
+        <h1>Alle skader er håndteret</h1>
+    </div>
+    <div th:each="rapport : ${damageReports}" th:if="${rapport.status==1}">
+
     <h1>Manglende Håndteringer</h1>
-    <table>
+    <table id="ManglendeHaanteringer" >
         <thead>
         <tr>
             <th scope="col">
@@ -343,7 +370,7 @@
         </tbody>
 
     </table>
-
+    </div>
 </div>
 
 </body>

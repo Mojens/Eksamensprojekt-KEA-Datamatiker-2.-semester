@@ -17,7 +17,7 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-
+    scroll-behavior: smooth;
 
 }
 
@@ -589,13 +589,14 @@ input::-webkit-file-upload-button:hover {
 .parent {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     grid-column-gap: 30px;
     grid-row-gap: 30px;
     grid-template-areas:
     "first second"
     "third fourth"
-    "fifth sixth";
+    "fifth sixth"
+    "seven eight";
     margin-top: 30px;
     margin-bottom: 100px;
 
@@ -673,7 +674,7 @@ input::-webkit-file-upload-button:hover {
 }
 
 .item-c {
-    grid-area: third;
+    grid-area: seven;
     align-self: center;
     background-color: white;
     border-radius: 10px;
@@ -685,7 +686,7 @@ input::-webkit-file-upload-button:hover {
 }
 
 .item-c:hover {
-    grid-area: third;
+    grid-area: seven;
     align-self: center;
     background-color: #f8f6f6;
 
@@ -710,7 +711,7 @@ input::-webkit-file-upload-button:hover {
 }
 
 .item-d {
-    grid-area: fourth;
+    grid-area: eight;
     align-self: center;
     background-color: white;
     border-radius: 10px;
@@ -722,7 +723,7 @@ input::-webkit-file-upload-button:hover {
 }
 
 .item-d:hover {
-    grid-area: fourth;
+    grid-area: eight;
     align-self: center;
     background-color: #f8f6f6;
     transition-duration: .3s;
@@ -808,6 +809,72 @@ input::-webkit-file-upload-button:hover {
     align-items: center;
     flex-direction: column;
     margin-bottom: 5px;
+    margin-top: 15px;
+    padding: 10px 5px 10px 5px;
+}
+.item-g {
+    grid-area: third;
+    align-self: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+    max-width: 530px;
+    max-height: 229px;
+    min-height: 229px;
+
+}
+
+.item-g:hover {
+    grid-area: third;
+    align-self: center;
+    background-color: #f8f6f6;
+    transition-duration: .3s;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+    max-width: 530px;
+    max-height: 229px;
+    min-height: 229px;
+}
+
+.g-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 10px 5px 10px 5px;
+}
+.item-h {
+    grid-area: fourth;
+    align-self: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+    max-width: 530px;
+    max-height: 229px;
+    min-height: 229px;
+
+}
+
+.item-h:hover {
+    grid-area: fourth;
+    align-self: center;
+    background-color: #f8f6f6;
+    transition-duration: .3s;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+    max-width: 530px;
+    max-height: 229px;
+    min-height: 229px;
+}
+
+.h-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 15px;
     margin-top: 15px;
     padding: 10px 5px 10px 5px;
 }
@@ -951,6 +1018,11 @@ input::-webkit-file-upload-button:hover {
     font-size: 56px;
     font-weight: bold;
 }
+.big-header-damage {
+    display: inline;
+    font-size: 56px;
+    font-weight: bold;
+}
 
 .bigheaderred {
     display: inline;
@@ -977,6 +1049,14 @@ input::-webkit-file-upload-button:hover {
     color: #3c805c;
 }
 
+.big-header-damage::after {
+    content: " Skader";
+    color: black;
+    opacity: 0.8;
+    display: inline;
+    font-size: 34px;
+}
+
 .big-header-kpi::after {
     content: " DKK";
     color: black;
@@ -990,6 +1070,9 @@ input::-webkit-file-upload-button:hover {
     display: inline;
     font-size: 56px;
 
+}
+#ManglendeHaanteringer{
+    scroll-behavior: smooth;
 }
 
 .big-header-kpilevering::after {
