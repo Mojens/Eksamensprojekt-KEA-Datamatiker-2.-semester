@@ -74,7 +74,7 @@ public class DashboardController {
     double totalPriceOfLeasedCars = dashboardService.totalPriceLeasedCars(leasedCars,leaseList,carLeasesList);
     // Denne metode henter totale pris for alle biler i en liste
     double totalPriceOfAllCars = dashboardService.totalPriceLeasedCar(allCars);
-    double totalPriceOfAllCar = dashboardService.totalPriceAllCars(availableCars);
+    double totalPriceOfAllCar = dashboardService.totalPriceAllCars(availableCars,leaseList);
     // Denne metode tæller hvor mange bilder der er ud fra specifik model og brand og som er leased
     // Så regner vi procent og returner tal mellem 1 og 4, dette gør vi så vi kan bruge disse tal til at vise og lave farver i vores html
 
@@ -140,12 +140,14 @@ public class DashboardController {
     List<Car> brandModel = dashboardRepository.brandModelList();
     List<Lease> returnsToday = leaseRepository.findAllLeasesByEndDate(LocalDate.now());
     Car car = carRepository.showAllCarsAsObject();
+    List<Car> availableCars = carRepository.showAllAvaibleCars();
     List<Lease> leaseList = leaseRepository.showAllLeases();
     List<CarsLeases> carLeasesList = carsLeasesRepository.showAllCarLeases();
     int amountOfLeasedCars = dashboardService.howManyisLeased(leasedCars);
     double totalPriceOfLeasedCars = dashboardService.totalPriceLeasedCars(leasedCars,leaseList,carLeasesList);
     double totalPriceLeasedCarsForColorOnly = dashboardService.totalPriceLeasedCar(leasedCars);
     double totalPriceOfAllCars = dashboardService.totalPriceLeasedCar(allCars);
+    double totalPriceOfAllCar = dashboardService.totalPriceAllCars(availableCars,leaseList);
     int colorPrice = dashboardService.percentageStatusForPriceBetweenLeasedAndNoneLeased(totalPriceOfAllCars,totalPriceLeasedCarsForColorOnly);
     int color = dashboardService.percentageStatus(allCars,leasedCars,car.getModel(),car.getBrand());
     double todaysSale = dashboardService.todaysSale();
@@ -165,6 +167,7 @@ public class DashboardController {
     model.addAttribute("listOfLeasedCars", leasedCars);
     model.addAttribute("totalPriceOfLeasedCars", totalPriceOfLeasedCars);
     model.addAttribute("totalPriceOfAllCars",totalPriceOfAllCars);
+    model.addAttribute("totalPriceOfAllCar",totalPriceOfAllCar);
     model.addAttribute("amountOfLeasedCars", amountOfLeasedCars);
     model.addAttribute("returnstoday",returnsToday);
     model.addAttribute("allCars", allCars);

@@ -58,18 +58,38 @@ public class DashboardService {
         return totalPrice;
     }
 
-    public double totalPriceAllCars(List<Car> notLeasedCars) {
+    public double totalPriceAllCars(List<Car> notLeasedCars,List<Lease> leases) {
         double totalPrice = 0;
         double pricePrDay = 0;
         double fullPrice = 0;
+
+        double averageLeasingPeriodInDays = averageLeasingPeriodInDays(leases);
+
         for (Car c :
                 notLeasedCars) {
             pricePrDay = c.getPrice() / 30.42;
-            fullPrice = pricePrDay * 120;
+            fullPrice = pricePrDay * averageLeasingPeriodInDays;
             totalPrice = totalPrice + fullPrice;
         }
         return totalPrice;
 
+    }
+
+    public double averageLeasingPeriodInDays(List<Lease> leases) {
+
+        double leasePeriodPrCar = 0;
+        double fullLeasePeriod = 0;
+        double averagePeriodInDays = 0;
+
+
+        for (Lease l : leases) {
+
+            leasePeriodPrCar = l.subtractDates(l.getStartDate(),l.getEndDate());
+            fullLeasePeriod = fullLeasePeriod + leasePeriodPrCar;
+        }
+        averagePeriodInDays = fullLeasePeriod / leases.size();
+
+        return averagePeriodInDays;
     }
 
     //Denne metoder fortæller hvor mange der er af specifik brand og model
