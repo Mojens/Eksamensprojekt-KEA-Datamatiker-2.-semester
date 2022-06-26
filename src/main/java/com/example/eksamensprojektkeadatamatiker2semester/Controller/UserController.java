@@ -55,6 +55,15 @@ public class UserController {
     if (loggedUser != null) {
       //Tjekker om status på denne user ud fra user
       if (loggedUser.getStatus() != 0) {
+        boolean isPasswordValid = userService.isPasswordValid(loggedUser, password);
+        //Checker alm kode sammenligning for testning
+        if (isPasswordValid) {
+          Cookie cookieUser = new Cookie("userName", userName);
+          httpSession.setAttribute("userName", cookieUser);
+          httpSession.setAttribute("user", loggedUser);
+          model.addAttribute("userID", loggedUser.getType());
+          return userService.checkTypeByUser(loggedUser.getType());
+        }
      //Checker for krypteret kode sammenligning*/
         if (BCrypt.checkpw(password, loggedUser.getPassword())) {
           Cookie cookieUser = new Cookie("userName", userName);
@@ -100,6 +109,26 @@ public class UserController {
     //System.out.println(bCryptPassword);
     userRepository.changePassword(selectedUser.getUsername(), bCryptPassword, selectedUser);
     return "redirect:skiftkode";
+  }
+
+  @GetMapping("/createcar")
+  public String viewCreateCar(HttpSession httpSession,
+                              Model model){
+    User user = (User) httpSession.getAttribute("user");
+    model.addAttribute("user",user);
+    return controllerService.createCar(httpSession);
+  }
+
+  @PostMapping("/createnewcar")
+  public String createCar(@RequestParam("stelnummer") String stelNummer,
+                          @RequestParam("brand") String brand,
+                          @RequestParam("model") String model,
+                          @RequestParam("price") double price){
+
+    Car createdCar = new Car(stelNummer,brand,model,price,0);
+    carRepository.createNewCar(createdCar);
+
+    return "redirect:createcar";
   }
 
 }
