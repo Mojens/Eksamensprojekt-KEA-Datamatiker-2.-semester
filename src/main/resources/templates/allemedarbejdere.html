@@ -61,7 +61,8 @@
             </td>
             <td th:text="${profile.lastName}">
             </td>
-            <td th:text="${profile.phoneNumber}">
+            <td>
+            <a th:href="'tel:' + ${profile.phoneNumber}" th:text="${profile.phoneNumber}" style="color: black"></a>
             </td>
             <td th:text="${profile.eMail}">
             </td>

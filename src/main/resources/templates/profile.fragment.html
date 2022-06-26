@@ -1,8 +1,75 @@
 <!-- Mohammad -->
-<div class="navbar">
-  <div class="logo-left">
-    <a href="/login"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
-                          src="../static/CSS/images/Logo-250x250.png"/></a>
-  </div>
-  <button onclick="history.back()">Gå Tilbage</button>
-</div>
+<!-- Lavet af Malthe -->
+<nav th:fragment="lejeaftale">
+  <nav class="navi-section" th:if="${user.type==1}">
+    <div class="navbar">
+      <div class="logo-left-nav">
+        <a href="/opretlejeaftale"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                        src="../static/CSS/images/Logo-250x250.png"/></a>
+      </div>
+      <div class="name-logout">
+        <a class="a" th:classappend="${pagetitle=='Opret Lejeaftale'} ? activenav : ''" href="../opretlejeaftale">Opret Lejeaftale</a>
+        <a class="a" th:classappend="${pagetitle=='Lageroverblik'} ? activenav : ''" href="../lageroverblik">Lageroverblik</a>
+        <a class="a" th:classappend="${pagetitle=='Alle Lejeaftaler'} ? activenav : ''" href="../allelejeaftaler">Alle Lejeaftaler</a>
+        <a class="a" th:classappend="${pagetitle=='Find Lejeaftale'} ? activenav : ''" href="../findlejeaftale" >Find Lejeaftale</a>
+        <a href="../profile" class="navi-username" th:text="${user.username}" ></a>
+        <a href="../logout" class="login-button">Logud</a>
+      </div>
+
+    </div>
+  </nav>
+</nav>
+<nav th:fragment="skade" class="navi-section">
+  <nav class="navi-section" th:if="${user.type==2}">
+    <div class="navbar">
+      <div class="logo-left-skade">
+        <a href="/findlease"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                  src="../static/CSS/images/Logo-250x250.png"/></a>
+      </div>
+      <div class="name-logout">
+        <a class="a" th:classappend="${pagetitle=='Opret Skadesrapport'} ? activenav : ''" href="../findlease">Opret Skadesrapport</a>
+        <a class="a" th:classappend="${pagetitle=='Find Tilbageleveringer'} ? activenav : ''" href="../findretur" >Find Tilbageleveringer</a>
+        <a class="a" th:classappend="${pagetitle=='Skadesrapport'} ? activenav : ''" href="../skaderapport">Alle Skadesrapporter</a>
+        <a href="../profile" class="navi-username" th:text="${user.username}" ></a>
+        <a href="../logout" class="login-button">Logud</a>
+      </div>
+    </div>
+  </nav>
+</nav>
+<nav th:fragment="dashboard" class="navi-section" >
+  <nav class="navi-section" th:if="${user.type==3}">
+    <div class="navbar">
+      <div class="logo-left-kpi">
+        <a href="/dashboard"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                  src="../static/CSS/images/Logo-250x250.png"/></a>
+      </div>
+
+      <div class="name-logout">
+        <a class="a" th:classappend="${pagetitle=='Opret Køretøj'} ? activenav : ''" href="../createcar" >Opret Køretøj</a>
+        <a class="a" th:classappend="${pagetitle=='Dashboard'} ? activenav : ''" href="../dashboard">Dashboard</a>
+        <a href="../profile" class="navi-username" th:text="${user.username}"></a>
+        <a href="../logout" class="login-button">Logud</a>
+      </div>
+
+    </div>
+  </nav>
+</nav>
+
+<nav th:fragment="adminnav">
+  <nav class="navi-section" th:if="${user.type==4}">
+    <div class="navbar">
+      <div class="logo-left-admin">
+        <a href="/opretbruger"><img th:src="@{../CSS/images/Logo-250x250.png}" class="small-nav-logo" alt="logo"
+                                    src="../static/CSS/images/Logo-250x250.png"/></a>
+      </div>
+      <div class="name-logout">
+        <a class="a" th:classappend="${pagetitle=='Opret Bruger'} ? activenav : ''" href="../opretbruger" >Opret Bruger </a>
+        <a class="a" th:classappend="${pagetitle=='Skift Kode'} ? activenav : ''" href="../skiftkode" >Skift Kode </a>
+        <a class="a" th:classappend="${pagetitle=='Slet Bruger'} ? activenav : ''" href="../sletbruger" >Slet Bruger </a>
+        <a class="a" th:classappend="${pagetitle=='Alle Medarbejdere'} ? activenav : ''" href="../allemedarbejdere" >Alle medarbejdere </a>
+        <a href="../profile" class="navi-username" th:text="${user.username}"></a>
+        <a href="../logout" class="login-button">Logud</a>
+      </div>
+    </div>
+  </nav>
+</nav>

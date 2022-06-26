@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${profile.firstName}"></title>
+    <title th:text="${'Rediger' + profile.firstName}"></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" type="image/png" th:href="@{../favicon.png}"/>
@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <link th:href="@{/CSS/profile.css}" rel="stylesheet"/>
     <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js}"></script>
 </head>
 <body>
 <div th:if="${profile.type == 1}" th:replace="profile.fragment :: lejeaftale"></div>
@@ -48,11 +51,11 @@
             <br>
             <div class="sidenav-url">
                 <div class="url">
-                    <a href="/profile" class="active">Profil</a>
+                    <a href="/profile">Profil</a>
                     <hr align="center">
                 </div>
                 <div class="url">
-                    <a href="/profileedit">Ændre profil</a>
+                    <a href="/profileedit" class="active">Ændre profil</a>
                     <hr align="center">
                 </div>
             </div>
@@ -62,52 +65,43 @@
 
     <!-- Main -->
     <div class="main">
-        <h2>Informationer</h2>
+        <h2>Opdater dine oplysninger</h2>
         <div class="card">
             <div class="card-body">
-                <table>
-                    <tbody>
-                    <tr>
-                        <td>Fornavn</td>
-                        <td th:text="${profile.firstName}">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Efternavn</td>
-                        <td th:text="${profile.lastName}">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Telefonnummer</td>
-                        <td th:text="${profile.phoneNumber}">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>E-mail</td>
-                        <td th:text="${profile.eMail}">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Bruger ID</td>
-                        <td th:text="${profile.employeeID}">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Status</td>
-                        <td class="td" th:if="${profile.status == 0}">
-                            <button style="background-color: #B22727"></button>
-                        </td>
-                        <td class="td" th:if="${profile.status == 1}">
-                            <button style="background-color: #3c805c"></button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <form action="/profileedit"
+                      method="post"
+                      style="margin-right:10%">
+                    <div class="info">
+                        <label>Fornavn</label>
+                        <input class="fname" type="text" th:value="${profile.firstName}" readonly>
+                        <label>Efternavn</label>
+                        <input class="fname" type="text" th:value="${profile.lastName}" readonly>
+                        <label>Telefonnummer</label>
+                        <input type="tel" name="phoneNumber"  id="phone" th:placeholder="${profile.phoneNumber}" required>
+                        <label style="margin-top: 3%">E-mail</label>
+                        <input type="email" name="eMail" th:placeholder="${profile.eMail}" required>
+                        <label>Type medarbejder</label>
+                        <input th:if="${user.type == 4}" class="fname" type="text" value="Administrator" readonly>
+                        <input th:if="${user.type == 3}" class="fname" type="text" value="Forretningsudvikler" readonly>
+                        <input th:if="${user.type == 2}" class="fname" type="text" value="Dataregistrerings medarbejder for fejl og mangler" readonly>
+                        <input th:if="${user.type == 1}" class="fname" type="text" value="Dataregistrerings medarbejder for nye lejeaftaler" readonly>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="checkbox" required/><span>Er du sikker?</span>
+                    </div>
+                    <button type="submit">Opdater Oplysninger</button>
+                </form>
             </div>
         </div>
-
 
     </div>
 </div>
 </body>
+<script>
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+</script>
 </html>

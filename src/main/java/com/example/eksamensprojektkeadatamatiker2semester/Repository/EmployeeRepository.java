@@ -135,6 +135,19 @@ public class EmployeeRepository {
       e.printStackTrace();
       return false;
     }
+  }
+
+  public void updateEmailPhoneNumber(int inputID, String phoneNumber, String eMail){
+    final String UPDATE_QUERY = "UPDATE Employee SET phoneNumber = "+"'"+phoneNumber+"'"+", eMail = "+"'"+eMail+"'"+" WHERE UserLogin_userID = "+inputID;
+
+    try{
+      PreparedStatement preparedStatementUpdateRow = connection.prepareStatement(UPDATE_QUERY);
+      preparedStatementUpdateRow.executeUpdate();
+
+    }catch (SQLException e){
+      System.out.println("Kunne ikke opdater medarbejderen:"+"\n fejlen siger således: \n");
+      System.out.println(e);
+    }
 
   }
 }

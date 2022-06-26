@@ -88,4 +88,25 @@ public class EmployeeController {
     model.addAttribute("pagetitle","Alle Medarbejdere");
     return controllerService.alleMedarbejdere(httpSession);
   }
+  @GetMapping("/profileedit")
+  public String showProfileEdit(Model model,
+                                HttpSession httpSession){
+    //Vi henter den user objekt der er logget ind lige nu
+    User user = (User) httpSession.getAttribute("user");
+    model.addAttribute("user",user);
+    //Vi finder medarbejderen info fra userens id
+    Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
+    model.addAttribute("profile",employee);
+
+    return controllerService.profileEdit(httpSession);
+  }
+  @PostMapping("/profileedit")
+  public String ProfileEdit(HttpSession httpSession,
+                            @RequestParam("eMail") String eMail,
+                            @RequestParam("phoneNumber") String phoneNumber){
+    //Vi henter den user objekt der er logget ind lige nu
+    User user = (User) httpSession.getAttribute("user");
+    employeeRepository.updateEmailPhoneNumber(user.getUserID(),phoneNumber,eMail);
+    return "redirect:profile";
+  }
 }
