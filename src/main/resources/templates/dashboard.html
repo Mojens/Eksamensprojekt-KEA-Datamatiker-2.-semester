@@ -237,7 +237,7 @@
                         th:classappend="${(missingHandling.size() >= 3 ? 'bigheaderred' : '') + (missingHandling.size() == 2 ? 'bigheaderorange' : '') + (missingHandling.size() == 1 ? 'bigheaderyellow' : '') + (missingHandling.size() == 0 ? 'bigheadergreen' : '')}"
                         th:text="${missingHandling.size()}"></h1>
                 </div>
-                <a href="#ManglendeHaanteringer"><button th:each="rapport : ${damageReports}" th:if="${rapport.status==1}" class="summary-small">Se listen</button></a>
+                <a th:each="rapport : ${damageReports}" href="#ManglendeHaanteringer"><button  th:if="${rapport.status==1}" class="summary-small">Se listen</button></a>
             </div>
         </div>
         <div class="item-h">
@@ -248,7 +248,7 @@
                         th:classappend="${(colorForDaySale == 1 ? 'bigheaderred' : '') + (colorForDaySale == 2 ? 'bigheaderorange' : '') + (colorForDaySale == 3 ? 'bigheaderyellow' : '') + (colorForDaySale == 4 ? 'bigheadergreen' : '')}"
                         th:text="${#numbers.formatDecimal(averagePeriodDays,0,'POINT',0,'COMMA')}"></h1>
                 </div>
-
+                <h1 class="small-header-kpi-leveret" th:text="${#temporals.format(dagensDato,'dd/MM-yy')}"></h1>
             </div>
         </div>
     </div>
