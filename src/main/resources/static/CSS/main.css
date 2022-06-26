@@ -1138,6 +1138,31 @@ input::-webkit-file-upload-button:hover {
     content: "Dagens Dato: "
 }
 
+.small-header-kpi-highest {
+    margin: 0;
+    display: inline;
+    font-size: 26px;
+
+}
+
+.small-header-kpi-highest:before {
+    margin: 0;
+    display: inline;
+    opacity: 0.8;
+    color: black;
+    font-size: 17px;
+    content: "Længeste lejeperiode: "
+}
+
+.small-header-kpi-highest::after {
+    margin: 0;
+    display: inline;
+    opacity: 0.8;
+    color: black;
+    font-size: 17px;
+    content: " Dage"
+}
+
 .small-header-kpi-maanedgennem {
     margin: 0;
     display: inline;

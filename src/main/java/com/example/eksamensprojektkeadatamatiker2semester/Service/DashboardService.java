@@ -95,19 +95,21 @@ public class DashboardService {
     public double highestLeasePeriod(List<Lease> leases) {
 
         double leasePeriodPrCar = 0;
-        double fullLeasePeriod = 0;
-        double averagePeriodInDays = 0;
+        double currentHighest = 0;
+        double highestPeriod = 0;
 
 
         for (Lease l : leases) {
 
             leasePeriodPrCar = l.subtractDates(l.getStartDate(),l.getEndDate());
-
-            fullLeasePeriod = fullLeasePeriod + leasePeriodPrCar;
+            if (leasePeriodPrCar>currentHighest){
+                currentHighest = leasePeriodPrCar;
+            }
+            highestPeriod = currentHighest;
         }
-        averagePeriodInDays = fullLeasePeriod / leases.size();
 
-        return averagePeriodInDays;
+
+        return highestPeriod;
     }
 
     //Denne metoder fortæller hvor mange der er af specifik brand og model

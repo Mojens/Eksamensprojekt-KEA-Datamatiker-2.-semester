@@ -245,10 +245,9 @@
                 <h2 class="header-kpi">Gennemsnits lejeperiode</h2>
                 <div class="inline-kpi">
                     <h1 class="big-header-days"
-                        th:classappend="${(colorForDaySale == 1 ? 'bigheaderred' : '') + (colorForDaySale == 2 ? 'bigheaderorange' : '') + (colorForDaySale == 3 ? 'bigheaderyellow' : '') + (colorForDaySale == 4 ? 'bigheadergreen' : '')}"
                         th:text="${#numbers.formatDecimal(averagePeriodDays,0,'POINT',0,'COMMA')}"></h1>
                 </div>
-                <h1 class="small-header-kpi-leveret" th:text="${#temporals.format(dagensDato,'dd/MM-yy')}"></h1>
+                <h1 class="small-header-kpi-highest" th:text="${#numbers.formatDecimal(highestLeasingPeriodInDays,0,'POINT',0,'COMMA')}"></h1>
             </div>
         </div>
     </div>

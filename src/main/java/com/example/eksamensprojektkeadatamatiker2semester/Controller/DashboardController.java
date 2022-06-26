@@ -98,6 +98,7 @@ public class DashboardController {
     List<DamageReport> missingHandling = damageReportRepository.showAllDamageReportsWhichNeedsHandling();
     DamageReport damageReportStatus = damageReportRepository.showAllDamageReportsAsObject();
     double averageLeasingPeriodInDays = dashboardService.averageLeasingPeriodInDays(leaseList);
+    double highestLeasingPeriodInDays = dashboardService.highestLeasePeriod(leaseList);
     LocalDate currentDate = LocalDate.now();
     DashboardService dashboardServices1 = new DashboardService();
     CarRepository carRepository1 = new CarRepository();
@@ -124,6 +125,7 @@ public class DashboardController {
     model.addAttribute("missingHandling",missingHandling);
     model.addAttribute("averagePeriodDays",averageLeasingPeriodInDays);
     model.addAttribute("damageReportStatus",damageReportStatus);
+    model.addAttribute("highestLeasingPeriodInDays",highestLeasingPeriodInDays);
     model.addAttribute("pagetitle","Dashboard");
 
     return controllerService.dashboard(httpSession);
@@ -165,6 +167,7 @@ public class DashboardController {
     String selectedMonth = dashboardService.monthByNumber(chosenMonth);
     List<DamageReport> missingHandling = damageReportRepository.showAllDamageReportsWhichNeedsHandling();
     double averageLeasingPeriodInDays = dashboardService.averageLeasingPeriodInDays(leaseList);
+    double highestLeasingPeriodInDays = dashboardService.highestLeasePeriod(leaseList);
     LocalDate currentDate = LocalDate.now();
     DashboardService dashboardServices1 = new DashboardService();
     CarRepository carRepository1 = new CarRepository();
@@ -191,6 +194,7 @@ public class DashboardController {
     model.addAttribute("damageReports", damageReports);
     model.addAttribute("missingHandling",missingHandling);
     model.addAttribute("averagePeriodDays",averageLeasingPeriodInDays);
+    model.addAttribute("highestLeasingPeriodInDays",highestLeasingPeriodInDays);
     model.addAttribute("pagetitle","Dashboard");
 
     return controllerService.dashboard(httpSession);
