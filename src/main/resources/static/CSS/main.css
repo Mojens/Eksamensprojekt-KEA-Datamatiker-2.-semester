@@ -674,7 +674,7 @@ input::-webkit-file-upload-button:hover {
 }
 
 .item-c {
-    grid-area: seven;
+    grid-area: fifth;
     align-self: center;
     background-color: white;
     border-radius: 10px;
@@ -686,7 +686,7 @@ input::-webkit-file-upload-button:hover {
 }
 
 .item-c:hover {
-    grid-area: seven;
+    grid-area: fifth;
     align-self: center;
     background-color: #f8f6f6;
 
@@ -711,7 +711,7 @@ input::-webkit-file-upload-button:hover {
 }
 
 .item-d {
-    grid-area: eight;
+    grid-area: fourth;
     align-self: center;
     background-color: white;
     border-radius: 10px;
@@ -723,7 +723,7 @@ input::-webkit-file-upload-button:hover {
 }
 
 .item-d:hover {
-    grid-area: eight;
+    grid-area: fourth;
     align-self: center;
     background-color: #f8f6f6;
     transition-duration: .3s;
@@ -746,7 +746,7 @@ input::-webkit-file-upload-button:hover {
 }
 
 .item-e {
-    grid-area: fifth;
+    grid-area: seven;
     align-self: center;
     background-color: white;
     border-radius: 10px;
@@ -758,7 +758,7 @@ input::-webkit-file-upload-button:hover {
 }
 
 .item-e:hover {
-    grid-area: fifth;
+    grid-area: seven;
     align-self: center;
     background-color: #f8f6f6;
     transition-duration: .3s;
@@ -780,7 +780,7 @@ input::-webkit-file-upload-button:hover {
 }
 
 .item-f {
-    grid-area: sixth;
+    grid-area: eight;
     align-self: center;
     background-color: white;
     border-radius: 10px;
@@ -792,7 +792,7 @@ input::-webkit-file-upload-button:hover {
 }
 
 .item-f:hover {
-    grid-area: sixth;
+    grid-area: eight;
     align-self: center;
     background-color: #f8f6f6;
     transition-duration: .3s;
@@ -846,7 +846,7 @@ input::-webkit-file-upload-button:hover {
     padding: 10px 5px 10px 5px;
 }
 .item-h {
-    grid-area: fourth;
+    grid-area: sixth;
     align-self: center;
     background-color: white;
     border-radius: 10px;
@@ -858,7 +858,7 @@ input::-webkit-file-upload-button:hover {
 }
 
 .item-h:hover {
-    grid-area: fourth;
+    grid-area: sixth;
     align-self: center;
     background-color: #f8f6f6;
     transition-duration: .3s;
@@ -1018,6 +1018,11 @@ input::-webkit-file-upload-button:hover {
     font-size: 56px;
     font-weight: bold;
 }
+.big-header-days {
+    display: inline;
+    font-size: 56px;
+    font-weight: bold;
+}
 .big-header-damage {
     display: inline;
     font-size: 56px;
@@ -1051,6 +1056,13 @@ input::-webkit-file-upload-button:hover {
 
 .big-header-damage::after {
     content: " Skader";
+    color: black;
+    opacity: 0.8;
+    display: inline;
+    font-size: 34px;
+}
+.big-header-days::after {
+    content: " Dage";
     color: black;
     opacity: 0.8;
     display: inline;

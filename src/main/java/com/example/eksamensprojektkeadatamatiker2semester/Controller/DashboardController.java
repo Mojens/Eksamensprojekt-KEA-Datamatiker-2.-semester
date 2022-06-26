@@ -95,6 +95,7 @@ public class DashboardController {
     //Denne metode ændrer de engelske måneder til danske
     String currentMonth = dashboardService.convertLocalToDanish(LocalDate.now().getMonth());
     List<DamageReport> missingHandling = damageReportRepository.showAllDamageReportsWhichNeedsHandling();
+    double averageLeasingPeriodInDays = dashboardService.averageLeasingPeriodInDays(leaseList);
     LocalDate currentDate = LocalDate.now();
     DashboardService dashboardServices1 = new DashboardService();
     CarRepository carRepository1 = new CarRepository();
@@ -119,6 +120,7 @@ public class DashboardController {
     model.addAttribute("status", id.getStatus());
     model.addAttribute("damageReports", damageReports);
     model.addAttribute("missingHandling",missingHandling);
+    model.addAttribute("averagePeriodDays",averageLeasingPeriodInDays);
     model.addAttribute("pagetitle","Dashboard");
 
     return controllerService.dashboard(httpSession);
@@ -159,6 +161,7 @@ public class DashboardController {
     String currentMonth = dashboardService.convertLocalToDanish(LocalDate.now().getMonth());
     String selectedMonth = dashboardService.monthByNumber(chosenMonth);
     List<DamageReport> missingHandling = damageReportRepository.showAllDamageReportsWhichNeedsHandling();
+    double averageLeasingPeriodInDays = dashboardService.averageLeasingPeriodInDays(leaseList);
     LocalDate currentDate = LocalDate.now();
     DashboardService dashboardServices1 = new DashboardService();
     CarRepository carRepository1 = new CarRepository();
@@ -184,6 +187,7 @@ public class DashboardController {
     model.addAttribute("status", id.getStatus());
     model.addAttribute("damageReports", damageReports);
     model.addAttribute("missingHandling",missingHandling);
+    model.addAttribute("averagePeriodDays",averageLeasingPeriodInDays);
     model.addAttribute("pagetitle","Dashboard");
 
     return controllerService.dashboard(httpSession);
