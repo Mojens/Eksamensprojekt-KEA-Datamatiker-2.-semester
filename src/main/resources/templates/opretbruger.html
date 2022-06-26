@@ -16,29 +16,29 @@
 <div th:replace="admin.fragment"></div>
 
 <div class="form-container">
-    <h1>Opret medarbejder</h1>
+    <h1>Opret ny medarbejder med bruger log-ind</h1>
     <form
             action="/addEmployee"
             onsubmit="myFunction()"
             method="post">
         <div class="zindex">
-            <label>Indtast Fornavn</label>
-            <input type="text" required placeholder="Fornavn" name="firstName">
+            <label>Fornavn</label>
+            <input type="text" required placeholder="Morten" name="firstName">
 
-            <label>Indtast Efternavn</label>
-            <input type="text" required placeholder="Indtast her" name="lastName">
+            <label>Efternavn</label>
+            <input type="text" required placeholder="Johansen" name="lastName">
 
-            <label>Indtast E-Mail</label>
-            <input type="text" required placeholder="test@mail.dk" name="eMail">
+            <label>E-Mail</label>
+            <input type="text" required placeholder="morten@bilabonnement.dk" name="eMail">
 
-            <label>Indtast Telefonnummer</label>
-            <input type="text" required placeholder="+45 34323336" name="phoneNumber">
+            <label>Telefonnummer</label>
+            <input type="text" required placeholder="34323336" name="phoneNumber">
 
-            <label>Indtast Brugernavn</label>
-            <input type="text" required placeholder="Moha135h" name="userName">
+            <label>Brugernavn</label>
+            <input type="text" required placeholder="Morten135h" name="userName">
 
-            <label>Indtast Adgangskode</label>
-            <input type="text" required placeholder="TestKode123" name="password">
+            <label>Adgangskode</label>
+            <input type="text" required placeholder="Mort9911EN" name="password">
 
             <label>Vælg type medarbejder</label>
             <select name="type" required>
