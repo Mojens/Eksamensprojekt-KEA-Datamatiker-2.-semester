@@ -48,6 +48,10 @@
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         <strong>Kunne ikke finde en bruger med dette brugernavn</strong>
                     </div>
+                    <div th:if="${notActive}" class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        <strong>Denne bruger er ikke aktiv</strong>
+                    </div>
                 </div>
                 <div class="floating">
                     <i class="bi bi-eye-slash" id="togglePassword"></i>
@@ -67,10 +71,6 @@
                 </div>
                 <button class="submit-button-login" type="submit">Log ind</button>
 
-                <div th:if="${notActive}" class="alert">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                    <strong>Forkert Adgangskode</strong>
-                </div>
             </div>
         </form>
     </div>
