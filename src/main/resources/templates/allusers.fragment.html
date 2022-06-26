@@ -7,10 +7,10 @@
                                         src="../static/CSS/images/Logo-250x250.png"/></a>
       </div>
       <div class="name-logout">
-        <a href="../opretlejeaftale">Opret Lejeaftale</a>
-        <a href="../lageroverblik">Lageroverblik</a>
-        <a href="../allelejeaftaler">Alle Lejeaftaler</a>
-        <a href="../findlejeaftale" >Find Lejeaftale</a>
+        <a class="a" th:classappend="${pagetitle=='Opret Lejeaftale'} ? activenav : ''" href="../opretlejeaftale">Opret Lejeaftale</a>
+        <a class="a" th:classappend="${pagetitle=='Lageroverblik'} ? activenav : ''" href="../lageroverblik">Lageroverblik</a>
+        <a class="a" th:classappend="${pagetitle=='Alle Lejeaftaler'} ? activenav : ''" href="../allelejeaftaler">Alle Lejeaftaler</a>
+        <a class="a" th:classappend="${pagetitle=='Find Lejeaftale'} ? activenav : ''" href="../findlejeaftale" >Find Lejeaftale</a>
         <a href="../profile" class="navi-username" th:text="${user.username}" ></a>
         <a href="../logout" class="login-button">Logud</a>
       </div>
@@ -26,9 +26,9 @@
                                 src="../static/CSS/images/Logo-250x250.png"/></a>
     </div>
     <div class="name-logout">
-      <a href="../findlease">Opret Skadesrapport</a>
-      <a href="../findretur" >Find Tilbageleveringer</a>
-      <a href="../skaderapport">Alle Skadesrapporter</a>
+      <a class="a" th:classappend="${pagetitle=='Opret Skadesrapport'} ? activenav : ''" href="../findlease">Opret Skadesrapport</a>
+      <a class="a" th:classappend="${pagetitle=='Find Tilbageleveringer'} ? activenav : ''" href="../findretur" >Find Tilbageleveringer</a>
+      <a class="a" th:classappend="${pagetitle=='Skadesrapport'} ? activenav : ''" href="../skaderapport">Alle Skadesrapporter</a>
       <a href="../profile" class="navi-username" th:text="${user.username}" ></a>
       <a href="../logout" class="login-button">Logud</a>
     </div>
@@ -44,8 +44,8 @@
     </div>
 
     <div class="name-logout">
-      <a href="../createcar" >Opret Køretøj</a>
-      <a href="../dashboard">Dashboard</a>
+      <a class="a" th:classappend="${pagetitle=='Opret Køretøj'} ? activenav : ''" href="../createcar" >Opret Køretøj</a>
+      <a class="a" th:classappend="${pagetitle=='Dashboard'} ? activenav : ''" href="../dashboard">Dashboard</a>
       <a href="../profile" class="navi-username" th:text="${user.username}"></a>
       <a href="../logout" class="login-button">Logud</a>
     </div>
@@ -62,10 +62,10 @@
                                     src="../static/CSS/images/Logo-250x250.png"/></a>
       </div>
       <div class="name-logout">
-        <a href="../skiftkode" >Skift Kode </a>
-        <a href="../sletbruger" >Slet Bruger </a>
-        <a href="../opretbruger" >Opret Bruger </a>
-        <a href="../allemedarbejdere" >Alle medarbejdere </a>
+        <a class="a" th:classappend="${pagetitle=='Opret Bruger'} ? activenav : ''" href="../opretbruger" >Opret Bruger </a>
+        <a class="a" th:classappend="${pagetitle=='Skift Kode'} ? activenav : ''" href="../skiftkode" >Skift Kode </a>
+        <a class="a" th:classappend="${pagetitle=='Slet Bruger'} ? activenav : ''" href="../sletbruger" >Slet Bruger </a>
+        <a class="a" th:classappend="${pagetitle=='Alle Medarbejdere'} ? activenav : ''" href="../allemedarbejdere" >Alle medarbejdere </a>
         <a href="../profile" class="navi-username" th:text="${user.username}"></a>
         <a href="../logout" class="login-button">Logud</a>
       </div>

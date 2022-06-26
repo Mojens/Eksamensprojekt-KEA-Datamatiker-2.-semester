@@ -11,14 +11,15 @@ import java.util.List;
 /* Lavet Af Mohammed og Simon */
 @Repository
 public class UserRepository {
+  //Laver en instance af connection i scope
   Connection connection;
 
+  //Definer connectionens værdi som er i vores ConnectionManager
   public UserRepository() {
     connection = ConnectionManager.getConnection();
   }
 
-  //Create a new user to the system from admin site
-  //We made it return a User Object beacuse to create a employee we need the auto created id as a foreign key in the other table
+  //Denne metoder opretter en user inde i tabellen
   public boolean createNewUser(User user) {
     final String QUERY = "INSERT INTO UserLogin (userID, userName, password, userType) VALUES (?, ?, ?, ?)";
     try {
@@ -39,7 +40,7 @@ public class UserRepository {
     }
   }
 
-  //Find specific user object by input
+  //Finder specifik user objekt ud fra input som er brugernavnet
   public User findUserByUserName(String inputUserName) {
 
     final String QUERY = "SELECT * FROM UserLogin WHERE userName = '" + inputUserName + "'";
@@ -63,6 +64,7 @@ public class UserRepository {
     return loginUser;
   }
 
+  //Denne metoder finder en user objekt ud fra et employee objekt
   public User findUserByEmployee(Employee employee) {
 
     final String QUERY = "SELECT * FROM UserLogin WHERE userID = '" + employee.getUserID() + "'";
@@ -85,6 +87,7 @@ public class UserRepository {
     return loginUser;
   }
 
+  //Denne metode finder et user objekt ud fra id
   public User findUserByID(int id) {
 
     final String QUERY = "SELECT * FROM UserLogin WHERE userID = '" + id + "'";
@@ -108,7 +111,7 @@ public class UserRepository {
     return loginUser;
   }
 
-  //Show all the created users in DB
+  //Denne metode henter alle users der er i tabellen og putter dem ind i en liste
   public List<User> showAllUsers() {
     List<User> userList = new ArrayList<>();
     final String QUERY = "SELECT * FROM UserLogin";
@@ -132,6 +135,7 @@ public class UserRepository {
     return userList;
   }
 
+  //Denne metode bruges til at ændre en adgangskode
   public void changePassword(String inputUserName, String newPassword, User user) {
     final String QUERY = "UPDATE UserLogin SET password = " + "'" + newPassword + "'" + " WHERE userName = " + "'" + inputUserName + "'";
     try {
@@ -144,6 +148,7 @@ public class UserRepository {
     }
   }
 
+  //Denne metode ændre status på user til 0 så den ikke er aktiv
   public void ChangeStatusUserByID(int inputUserID) {
     final String QUERYDELETE = "UPDATE UserLogin SET UserLogin.status = 0 WHERE userID = "+"'"+inputUserID+"'";
     try {
@@ -158,6 +163,8 @@ public class UserRepository {
     }
 
   }
+
+  //Denne metode ændre status for user til 1 så den er aktiv
   public void changeStatusForUserByIDToOne(int inputUserID) {
     final String QUERYDELETE = "UPDATE UserLogin SET UserLogin.status = 1 WHERE userID = "+"'"+inputUserID+"'";
     try {

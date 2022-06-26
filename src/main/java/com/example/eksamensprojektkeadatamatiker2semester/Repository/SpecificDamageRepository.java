@@ -14,13 +14,16 @@ import java.util.List;
 /* Lavet Af Malthe */
 @Repository
 public class SpecificDamageRepository {
+  //Laver en instance af connection i scope
   Connection connection;
 
+  //Definer connectionens værdi som er i vores ConnectionManager
   public SpecificDamageRepository() {
     connection = ConnectionManager.getConnection();
 
   }
 
+  //Denne metode henter alle specifikke damages og putter dem ind i en liste
   public List<SpecificDamage> showAllSpecificDamages() {
     List<SpecificDamage> specificDamageList = new ArrayList<>();
     final String SQL_SHOW_DAMAGE = "SELECT * FROM SpecificDamage";
@@ -51,6 +54,7 @@ public class SpecificDamageRepository {
 
   }
 
+  //Denne metode henter summen for alle skader der er fra et specifik reportID
   public SpecificDamage sumPriceSpecificDamagesByID(int reportID) {
     SpecificDamage sum = new SpecificDamage();
     final String SQL_SHOW_DAMAGE = "SELECT SUM(price) FROM SpecificDamage WHERE DamageReport_damageReportID = '" + reportID + "'";
@@ -75,6 +79,7 @@ public class SpecificDamageRepository {
 
   }
 
+  //Denne metode henter specifikke damages ud fra en reportID og putter dem ind i en arrayListe
   public List<SpecificDamage> findSpecificDamageByReportID(int reportID) {
     List<SpecificDamage> reportList = new ArrayList<>();
     final String SQL_SHOW_DAMAGE = "SELECT * FROM SpecificDamage WHERE DamageReport_damageReportID = '" + reportID + "'";
@@ -104,6 +109,7 @@ public class SpecificDamageRepository {
 
   }
 
+  //Denne metode finder du specifik damage ud fra dens id
   public List<SpecificDamage> findSpecificDamageID(int damageID) {
     List<SpecificDamage> reportList = new ArrayList<>();
     final String SQL_SHOW_DAMAGE = "SELECT * FROM SpecificDamage WHERE specificDamageID = '" + damageID + "'";
@@ -134,6 +140,7 @@ public class SpecificDamageRepository {
   }
 
 
+  //Denne metoder tilføker en specifik damage til tabellen
   public boolean addSpecificDamage(SpecificDamage specificDamage) {
     final String SQL_ADD_QUERY = "INSERT INTO SpecificDamage(specificDamageID,price,description,picture,title,DamageReport_damageReportID) VALUES(?,?,?,?,?,?)";
 
@@ -159,6 +166,7 @@ public class SpecificDamageRepository {
 
   }
 
+  //Denne metode sletter en specifik damage
   public void deleteSpecificDamage(int damageID) {
     final String SQL_DELETE = "DELETE FROM SpecificDamage WHERE specificDamageID = ?";
 
@@ -176,6 +184,7 @@ public class SpecificDamageRepository {
 
   }
 
+  //Denne metode gør så man kan ændrer i en specifik damage
   public boolean editSpecificDamage(SpecificDamage sd, int id) {
     final String SQL_EDIT = "UPDATE SpecificDamage SET price = ?, description = ?, picture = ?, title = ?, DamageReport_damageReportID = ? WHERE specificDamageID = '" + id + "'";
 

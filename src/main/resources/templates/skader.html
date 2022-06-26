@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>SkadeRapport</title>
+    <title th:text="${pagetitle}"></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://html2canvas.hertzen.com/">
     <link href="https://github.com/SuperAL/canvas2image">
@@ -22,7 +22,7 @@
 
 <div class="container-skader" id="pdf">
 
-
+        <h4>Skift Status</h4>
         <button th:if="${damageReport.status==0}" class="skader" th:classappend="${damageReport.status==1} ? updatered : updategreen"><a th:if="${damageReport.status==0}" th:href="@{/changestatustoone/{drID}(drID=${damageReport.damageReportID})}">Bilen er klar</a></button>
         <button th:if="${damageReport.status==1}" class="skader" th:classappend="${damageReport.status==1} ? updatered : updategreen"><a th:if="${damageReport.status==1}" th:href="@{/changestatus/{drID}(drID=${damageReport.damageReportID})}">Ikke klar</a></button>
     <button onclick="printDiv('pdf','Title')">Print Skadesrapport</button>
@@ -208,16 +208,16 @@
             <div class="container-form-small">
 
 
-                <label class="label-header">Fejl Og Mangler</label>
-                <input type="text" placeholder="title" name="title">
+                <label class="label-header">Titel på fejlen</label>
+                <input type="text" required placeholder="Olielækage" name="title">
 
                 <label class="label-header">Beskrivelse</label>
-                <input type="text" placeholder="Beskrivelse" name="description">
+                <input type="text" required placeholder="Bilen spilder olie fra motorrummet " name="description">
 
-                <label class="label-header">Indtast Pris</label>
-                <input type="text" placeholder="pris pr skade" name="price">
+                <label class="label-header">Pris på skaden</label>
+                <input type="number" required placeholder="5500" th:min="0" th:max="1000000" name="price">
 
-                <label class="label-header">Billed - Max 2mb</label>
+                <label class="label-header">Billed - Max 10mb</label>
                 <input type="file" name="image" accept="image/png, image/jpeg, image/jpg"/>
 
                 <button class="submit-button-small" type="submit">Opret skade</button>

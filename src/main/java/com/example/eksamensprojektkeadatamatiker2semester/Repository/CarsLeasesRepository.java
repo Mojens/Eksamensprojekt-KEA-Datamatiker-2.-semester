@@ -16,12 +16,15 @@ import java.util.Queue;
 /* Lavet Af Mohammed */
 @Repository
 public class CarsLeasesRepository {
+  //Laver en instance af connection i scope
   Connection connection;
 
+  //Definer connectionens værdi som er i vores ConnectionManager
   public CarsLeasesRepository() {
     connection = ConnectionManager.getConnection();
   }
 
+  //Denne metode tilføjer en carleases ind i tabellen
   public void addCarsLease(CarsLeases carsLeases) {
     final String QUERY = "INSERT INTO  CarsLeases (id, Cars_vognNummer, Leases_leaseID) VALUES (?, ?, ?)";
     try {
@@ -40,6 +43,7 @@ public class CarsLeasesRepository {
     }
   }
 
+  //Denne metoder ændre status på en car til at den er leased
   public void isLeased(int inputVognNummer) {
     final String QUERY = "UPDATE Cars SET isLeased = 1 WHERE vognNummer = " + "'" + inputVognNummer + "'";
     try {
@@ -53,6 +57,7 @@ public class CarsLeasesRepository {
 
   }
 
+  //Denne metoder ændre status på en car til at den ikke er leased
   public void isNotLeased(int inputVognNummer) {
     final String QUERY = "UPDATE Cars SET isLeased = 0 WHERE vognNummer = " + "'" + inputVognNummer + "'";
     try {
@@ -65,6 +70,7 @@ public class CarsLeasesRepository {
     }
   }
 
+  //Denne metode finder en carslease ud fra en en leaseID
   public CarsLeases findCarsLeasesByLeaseID(int inputLeaseID){
     CarsLeases carsLeases = new CarsLeases();
     final String QUERY = "SELECT * FROM CarsLeases WHERE Leases_leaseID = " + "'" + inputLeaseID + "'";
@@ -90,6 +96,7 @@ public class CarsLeasesRepository {
     }
     return carsLeases;
   }
+  //Denne metode finder alle carleases med en specifik leaseid og putter dem ind i en liste
   public List<CarsLeases> findCarsLeasesByLeaseIDToday(int inputLeaseID){
     List<CarsLeases> todayCarLeases = new ArrayList<>();
     CarsLeases carsLeases = new CarsLeases();

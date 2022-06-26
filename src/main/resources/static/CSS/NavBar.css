@@ -18,10 +18,10 @@
 }
 
 .navbar a:hover {
-    background-color: #F2F2F2;
+    background-color: #FFFFFF;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
-    color: #1a1919;
+    color: #0d78a2;
     transition-duration: .3s;
 }
 
@@ -37,6 +37,30 @@
     text-decoration: none;
     position: relative;
 
+}
+.activenav{
+    background-color: #F2F2F2!important;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    color: #0d78a2!important;
+    transition-duration: .3s;
+}
+.a{
+    float: right;
+    display: flex;
+    justify-content: flex-end;
+    color: black;
+    text-align: center;
+    padding: 35px 30px 35px 30px;
+    text-decoration: none;
+    position: relative;
+}
+.a:hover{
+    background-color: #FFFFFF;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    color: #0d78a2;
+    transition-duration: .3s;
 }
 
 
@@ -57,9 +81,9 @@
     width: 100%;
 }
 
-#navbar-admin a:hover {
-    background-color: #ffffff;
-    color: #052833;
+#navbar-admin .admin:hover {
+    background-color: #F2F2F2;
+    color: #0d78a2;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     transition-duration: .3s;
@@ -67,7 +91,7 @@
 }
 
 /* Navbar links */
-#navbar-admin a {
+#navbar-admin .admin {
     background-color: #F2F2F2;
     float: left;
     display: flex;
@@ -78,6 +102,14 @@
     position: relative;
 
 }
+.adminnav{
+    background-color: #F2F2F2;
+    color: #0d78a2!important;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    transition-duration: .3s;
+}
+
 
 
 
@@ -96,8 +128,8 @@ a.navi-username {
 }
 a.navi-username:hover {
     font-size: 13px;
-    background-color: #F2F2F2!important;
-    color: #022633;
+    background-color: #FFFFFF!important;
+    color: #0d78a2!important;
 }
 
 

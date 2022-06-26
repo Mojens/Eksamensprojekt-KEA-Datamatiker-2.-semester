@@ -48,6 +48,11 @@ public class SpecificDamage {
     this.sumTotal = sumTotal;
   }
 
+  // Metoden bliver brugt når et billed skal vises på en html side(/skader).
+  // Hvis der ikke er nogen fil gemt i databasen bliver default.png vist
+  // Hvis der er en fil gemt i databasen, bliver billed vist.
+  // Denne metode bliver kun brugt på html siden skader når man skal vise et billed, nedenunder vises hvordan den bliver brugt.
+  // <img th:src="@{${'../'+damage.photosImagePath}}" alt="billed"/>
   @Transient
   public String getPhotosImagePath() {
     if (picture == null || picture.isEmpty()) return "user-photos/" + "default.png";

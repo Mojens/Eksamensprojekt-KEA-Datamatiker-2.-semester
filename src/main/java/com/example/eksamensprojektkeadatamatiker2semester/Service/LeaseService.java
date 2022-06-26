@@ -9,12 +9,16 @@ import java.util.Scanner;
 @Service
 public class LeaseService {
 
+  //Laver en instance af leaseRepository i scope
   LeaseRepository leaseRepository;
 
+  //Definer leaseRepository værdi som er i vores scope ind i vores constructor
   public LeaseService(LeaseRepository leaseRepository) {
     this.leaseRepository = leaseRepository;
   }
 
+  //denne metode tager en dato som en string og deler den op, så sætter vi den sammen igen.
+  //Dette gør vi så der kan kommunikeres mellem databasens dato og javas dato.
   public LocalDate convertToLocalDate(String startDate) {
 
     Scanner scanner = new Scanner(startDate);

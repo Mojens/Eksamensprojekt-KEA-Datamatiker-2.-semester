@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Registrer ny køretøj</title>
+    <title th:text="${pagetitle}"></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" type="image/png" th:href="@{../favicon.png}"/>
@@ -17,26 +17,26 @@
 <div th:replace="admin.fragment"></div>
 
 <div class="form-container">
-    <h1>Registrer ny køretøj</h1>
+    <h1>Registrer ny bil</h1>
     <form
             action="/createnewcar"
             onsubmit="myFunction()"
             method="post"
     >
         <div class="zindex">
-            <label>Indtast stelnummer</label>
-            <input type="text" placeholder="GYTH234M" name="stelnummer">
+            <label>Stelnummer</label>
+            <input type="text" required placeholder="GYTH234M" name="stelnummer">
 
-            <label>Indtast Brand</label>
-            <input type="text" placeholder="fx. BMW, Mercedes, Opel" name="brand">
+            <label>Brand</label>
+            <input type="text" required placeholder="BMW, Mercedes, Opel" name="brand">
 
-            <label>Indtast Model</label>
-            <input type="text" placeholder="X5, C63 AMG" name="model">
+            <label>Model</label>
+            <input type="text" required placeholder="X5, C63 AMG" name="model">
 
-            <label>Indtast prisen</label>
-            <input type="text" placeholder="4995" name="price">
+            <label>Pris pr måned</label>
+            <input type="text" required placeholder="4995" name="price">
 
-            <button type="submit">Registrer ny bil</button>
+            <button type="submit">Opret ny bil</button>
         </div>
     </form>
 </div>

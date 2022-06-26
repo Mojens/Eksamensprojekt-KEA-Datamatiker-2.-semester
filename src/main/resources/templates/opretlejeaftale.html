@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Opret Leje Aftale</title>
+    <title th:text="${pagetitle}"></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" type="image/png" th:href="@{../favicon.png}"/>
@@ -26,16 +26,16 @@
 
 
             <label class="label-header">Fornavn</label>
-            <input type="text" placeholder="Erik" name="firstName">
+            <input type="text" required placeholder="Erik" name="firstName">
 
             <label class="label-header">Efternavn</label>
-            <input type="text" placeholder="Hansen" name="lastName">
+            <input type="text" required placeholder="Hansen" name="lastName">
 
             <label class="label-header">Start Dato</label>
-            <input type="date" placeholder="start dato" name="startDate">
+            <input type="date" required placeholder="start dato" name="startDate">
 
             <label class="label-header">Slut Dato</label>
-            <input type="date" placeholder="slut dato" name="endDate">
+            <input type="date" required placeholder="slut dato" name="endDate">
 
             <label class="label-header">Tilgængelige biler</label>
             <select name="vognNummer">

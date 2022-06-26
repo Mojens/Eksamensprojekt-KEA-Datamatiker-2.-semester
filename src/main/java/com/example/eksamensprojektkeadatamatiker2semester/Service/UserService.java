@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-  /*
+
   //Checks password
   public boolean isPasswordValid(User user, String inputPassword){
     if (inputPassword.equals(user.getPassword())){
@@ -14,10 +14,10 @@ public class UserService {
     }else
     return false;
   }
-   */
 
 
-  //Check type by user for redirection after the login
+
+  //Tjekker typen og redirecter til den rigtige side
   public String checkTypeByUser(int type){
     if (type == 1 ){
       return "redirect:opretlejeaftale";
