@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../static/CSS/main.css">
     <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="../static/CSS/NavBar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet"/>
 </head>
 <body>
 
@@ -46,6 +48,9 @@
             <th scope="col">
                 Status
             </th>
+            <th scope="col">
+                Send en mail
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -68,7 +73,9 @@
             <td class="td" th:if="${profile.status == 1}">
                 <button style="background-color: #3c805c"></button>
             </td>
-
+            <td>
+                <a th:href="'mailto:' + ${profile.eMail}"><button><i class="fa fa-envelope"></i></button></a>
+            </td>
         </tr>
         </tbody>
 
