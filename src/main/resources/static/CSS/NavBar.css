@@ -18,10 +18,10 @@
 }
 
 .navbar a:hover {
-    background-color: #F2F2F2;
+    background-color: #FFFFFF;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
-    color: #1a1919;
+    color: #0d78a2;
     transition-duration: .3s;
 }
 
@@ -42,7 +42,7 @@
     background-color: #F2F2F2!important;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
-    color: #1a1919;
+    color: #0d78a2!important;
     transition-duration: .3s;
 }
 .a{
@@ -56,10 +56,10 @@
     position: relative;
 }
 .a:hover{
-    background-color: #F2F2F2;
+    background-color: #FFFFFF;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
-    color: #1a1919;
+    color: #0d78a2;
     transition-duration: .3s;
 }
 
@@ -128,8 +128,8 @@ a.navi-username {
 }
 a.navi-username:hover {
     font-size: 13px;
-    background-color: #F2F2F2!important;
-    color: #022633;
+    background-color: #FFFFFF!important;
+    color: #0d78a2!important;
 }
 
 
