@@ -237,7 +237,7 @@
                         th:classappend="${(missingHandling.size() >= 3 ? 'bigheaderred' : '') + (missingHandling.size() == 2 ? 'bigheaderorange' : '') + (missingHandling.size() == 1 ? 'bigheaderyellow' : '') + (missingHandling.size() == 0 ? 'bigheadergreen' : '')}"
                         th:text="${missingHandling.size()}"></h1>
                 </div>
-               <!-- <a th:each="rapport : ${damageReports}" href="#ManglendeHaanteringer"><button  th:if="${rapport.status==1}" class="summary-small">Se listen</button></a> -->
+                <a href="#ManglendeHaanteringer"><button  th:if="${damageReportStatus.status==1}" class="summary-small">Se listen</button></a>
             </div>
         </div>
         <div class="item-h">
@@ -321,10 +321,10 @@
             </td>
         </tr>
     </table>
-    <div th:each="rapport : ${damageReports}" th:if="${rapport.status==0}">
+    <div th:if="${damageReportStatus.status==0}">
         <h1>Alle skader er håndteret</h1>
     </div>
-    <div th:each="rapport : ${damageReports}" th:if="${rapport.status==1}">
+    <div th:if="${damageReportStatus.status==1}">
 
     <h1>Manglende Håndteringer</h1>
     <table id="ManglendeHaanteringer" >

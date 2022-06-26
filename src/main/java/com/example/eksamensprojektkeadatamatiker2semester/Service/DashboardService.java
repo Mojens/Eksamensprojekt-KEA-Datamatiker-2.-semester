@@ -92,6 +92,24 @@ public class DashboardService {
         return averagePeriodInDays;
     }
 
+    public double highestLeasePeriod(List<Lease> leases) {
+
+        double leasePeriodPrCar = 0;
+        double fullLeasePeriod = 0;
+        double averagePeriodInDays = 0;
+
+
+        for (Lease l : leases) {
+
+            leasePeriodPrCar = l.subtractDates(l.getStartDate(),l.getEndDate());
+
+            fullLeasePeriod = fullLeasePeriod + leasePeriodPrCar;
+        }
+        averagePeriodInDays = fullLeasePeriod / leases.size();
+
+        return averagePeriodInDays;
+    }
+
     //Denne metoder fortæller hvor mange der er af specifik brand og model
     public int howManyPerModel(List<Car> allCars, String model, String brand) {
         int counter = 0;

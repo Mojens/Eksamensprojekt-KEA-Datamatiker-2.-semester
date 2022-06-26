@@ -49,6 +49,38 @@ public class DamageReportRepository {
 
   }
 
+  public DamageReport showAllDamageReportsAsObject() {
+    DamageReport reportList = new DamageReport();
+    final String SQL_SHOW_REPORT = "SELECT * FROM DamageReport";
+
+    try {
+      PreparedStatement ps = connection.prepareStatement(SQL_SHOW_REPORT);
+      ResultSet rs = ps.executeQuery();
+
+      while (rs.next()) {
+        int damageReportID = rs.getInt(1);
+        int leaseID = rs.getInt(2);
+        int vognNummer = rs.getInt(3);
+        int employeeID = rs.getInt(4);
+        int status = rs.getInt(5);
+
+        reportList.setDamageReportID(damageReportID);
+        reportList.setLeaseID(leaseID);
+        reportList.setVognNummer(vognNummer);
+        reportList.setEmployeeID(employeeID);
+        reportList.setStatus(status);
+
+      }
+      ps.close();
+
+    } catch (SQLException e) {
+      System.out.println("Kunne ikke finde nogle skader");
+      e.printStackTrace();
+    }
+    return reportList;
+
+  }
+
   public List<DamageReport> showAllDamageReportsWhichNeedsHandling() {
     List<DamageReport> reportList = new ArrayList<>();
     final String SQL_SHOW_REPORT = "SELECT * FROM DamageReport WHERE status = 1";
