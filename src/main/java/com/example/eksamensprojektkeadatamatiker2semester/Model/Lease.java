@@ -1,5 +1,6 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 /* Lavet Af Malthe og Mohammed */
 public class Lease {
@@ -125,11 +126,8 @@ public class Lease {
   // Altså Dage i mellem disse 2 datoer.
   // Den bliver brugt til at udregne hvor mange dage en lejeaftale er i alt.
   public long subtractDates(LocalDate startDate, LocalDate endDate){
-
-    return endDate.compareTo(startDate);
+    return startDate.until(endDate, ChronoUnit.DAYS);
   }
-
-
 
   @Override
   public String toString() {
