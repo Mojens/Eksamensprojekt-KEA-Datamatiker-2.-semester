@@ -26,6 +26,7 @@
         <button th:if="${damageReport.status==0}" class="skader" th:classappend="${damageReport.status==1} ? updatered : updategreen"><a th:if="${damageReport.status==0}" th:href="@{/changestatustoone/{drID}(drID=${damageReport.damageReportID})}">Bilen er klar</a></button>
         <button th:if="${damageReport.status==1}" class="skader" th:classappend="${damageReport.status==1} ? updatered : updategreen"><a th:if="${damageReport.status==1}" th:href="@{/changestatus/{drID}(drID=${damageReport.damageReportID})}">Ikke klar</a></button>
     <button onclick="printDiv('pdf','Title')">Print Skadesrapport</button>
+    <button onclick="generatePDF()">Download Skadesrapport</button>
 
     <div class="damageReport">
 
