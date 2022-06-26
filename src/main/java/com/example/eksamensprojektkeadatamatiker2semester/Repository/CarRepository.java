@@ -210,24 +210,6 @@ public class CarRepository {
 
   }
 
-  //Denne metoder bliver ikke brugt
-  public boolean deleteCar(int id) {
-    final String SQL_DELETE = "DELETE FROM Cars WHERE vognNummer = ?";
-
-    try {
-      PreparedStatement ps = connection.prepareStatement(SQL_DELETE);
-
-      ps.setInt(1, id);
-
-      ps.executeUpdate();
-      return true;
-
-    } catch (SQLException e) {
-      System.out.println("Kunne ikke slette bilen");
-      e.printStackTrace();
-      return false;
-    }
-  }
 
   //Denne metode gør at man kan ændre i en specifik bil
   public boolean editCar(Car car, int id) {
