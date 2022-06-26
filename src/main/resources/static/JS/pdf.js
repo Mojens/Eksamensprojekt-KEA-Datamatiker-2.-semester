@@ -1,5 +1,5 @@
 function generatePDF(){
-    const element = document.getElementById("CV");
+    const element = document.getElementById("pdf");
     const opt = {
         filename:     'SkadeRapport.pdf',
         image:        { type: 'jpeg', quality: 1.50},
@@ -9,5 +9,4 @@ function generatePDF(){
         .set(opt)
         .from(element)
         .save();
-
 }
