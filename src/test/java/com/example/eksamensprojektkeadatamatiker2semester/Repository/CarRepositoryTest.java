@@ -102,7 +102,7 @@ class CarRepositoryTest {
                 i = i + 1;
                 firstCheck.get(s).setVognNummer(i);
             } else if (carRepository.findCarByID(i).getVognNummer() > 5) {
-                carRepository.deleteCar(i);
+
                 break;
             }
         }
@@ -147,7 +147,7 @@ class CarRepositoryTest {
                 i = i + 1;
                 firstCheck.get(s).setVognNummer(i);
             } else if (carRepository.findCarByID(i).getVognNummer() > 2) {
-                carRepository.deleteCar(i);
+
                 break;
             }
         }
