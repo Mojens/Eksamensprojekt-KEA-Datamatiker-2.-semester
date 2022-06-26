@@ -63,6 +63,7 @@ public class DashboardController {
     List<Car> brandModel = dashboardRepository.brandModelList();
     // Denne metode finder alle leases ud fra specifik slutdato og putter dem ind i en ArrayListe
     List<Lease> returnsToday = leaseRepository.findAllLeasesByEndDate(LocalDate.now());
+    List<Car> availableCars = carRepository.showAllAvaibleCars();
     // Henter alle biler men som specifikke objekter istedet for en liste
     Car car = carRepository.showAllCarsAsObject();
     List<Lease> leaseList = leaseRepository.showAllLeases();
@@ -73,12 +74,15 @@ public class DashboardController {
     double totalPriceOfLeasedCars = dashboardService.totalPriceLeasedCars(leasedCars,leaseList,carLeasesList);
     // Denne metode henter totale pris for alle biler i en liste
     double totalPriceOfAllCars = dashboardService.totalPriceLeasedCar(allCars);
+    double totalPriceOfAllCar = dashboardService.totalPriceAllCars(availableCars);
     // Denne metode tæller hvor mange bilder der er ud fra specifik model og brand og som er leased
     // Så regner vi procent og returner tal mellem 1 og 4, dette gør vi så vi kan bruge disse tal til at vise og lave farver i vores html
+
     int color = dashboardService.percentageStatus(allCars,leasedCars,car.getModel(),car.getBrand());
+    double totalPriceLeasedCarsForColorOnly = dashboardService.totalPriceLeasedCar(leasedCars);
     // Denne metode sammenligner leased med ikke leased biler og regner procenter og returner tal
     // Så regner vi procent og returner tal mellem 1 og 4, dette gør vi så vi kan bruge disse tal til at vise og lave farver i vores html
-    int colorPrice = dashboardService.percentageStatusForPriceBetweenLeasedAndNoneLeased(totalPriceOfAllCars,totalPriceOfLeasedCars);
+    int colorPrice = dashboardService.percentageStatusForPriceBetweenLeasedAndNoneLeased(totalPriceOfAllCars,totalPriceLeasedCarsForColorOnly);
     //Denne metode viser dagens salg
     double todaysSale = dashboardService.todaysSale();
     //Viser måneds salgs
@@ -102,6 +106,7 @@ public class DashboardController {
     model.addAttribute("listOfLeasedCars", leasedCars);
     model.addAttribute("totalPriceOfLeasedCars", totalPriceOfLeasedCars);
     model.addAttribute("totalPriceOfAllCars",totalPriceOfAllCars);
+    model.addAttribute("totalPriceOfAllCar",totalPriceOfAllCar);
     model.addAttribute("amountOfLeasedCars", amountOfLeasedCars);
     model.addAttribute("returnstoday",returnsToday);
     model.addAttribute("allCars", allCars);
@@ -139,8 +144,9 @@ public class DashboardController {
     List<CarsLeases> carLeasesList = carsLeasesRepository.showAllCarLeases();
     int amountOfLeasedCars = dashboardService.howManyisLeased(leasedCars);
     double totalPriceOfLeasedCars = dashboardService.totalPriceLeasedCars(leasedCars,leaseList,carLeasesList);
+    double totalPriceLeasedCarsForColorOnly = dashboardService.totalPriceLeasedCar(leasedCars);
     double totalPriceOfAllCars = dashboardService.totalPriceLeasedCar(allCars);
-    int colorPrice = dashboardService.percentageStatusForPriceBetweenLeasedAndNoneLeased(totalPriceOfAllCars,totalPriceOfLeasedCars);
+    int colorPrice = dashboardService.percentageStatusForPriceBetweenLeasedAndNoneLeased(totalPriceOfAllCars,totalPriceLeasedCarsForColorOnly);
     int color = dashboardService.percentageStatus(allCars,leasedCars,car.getModel(),car.getBrand());
     double todaysSale = dashboardService.todaysSale();
     double monthlySale = dashboardService.currentMonthSale(chosenMonth);
