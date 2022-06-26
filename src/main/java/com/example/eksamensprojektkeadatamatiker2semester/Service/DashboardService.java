@@ -36,6 +36,21 @@ public class DashboardService {
     return totalPrice;
   }
 
+  public double totalPriceLeasedCars(List<Car> leasedCars, List<Lease> leases) {
+    double totalPrice = 0;
+    double pricePrDay = 0;
+
+    for (Car c :
+            leasedCars) {
+      for (Lease l : leases) {
+       pricePrDay = c.getPrice()*l.subtractDates(l.getStartDate(),l.getEndDate())/30.41;
+        totalPrice = totalPrice + pricePrDay;
+      }
+
+    }
+    return totalPrice;
+  }
+
   //Denne metoder fortæller hvor mange der er af specifik brand og model
   public int howManyPerModel(List<Car> allCars, String model, String brand) {
     int counter = 0;
