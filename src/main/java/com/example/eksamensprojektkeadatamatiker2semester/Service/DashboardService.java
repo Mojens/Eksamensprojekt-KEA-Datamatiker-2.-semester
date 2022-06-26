@@ -37,6 +37,10 @@ public class DashboardService {
   }
 
   public double totalPriceLeasedCars(List<Car> leasedCars, List<Lease> leases) {
+    int leasePeriod = 0;
+    for (Lease l : leases){
+
+    }
     double totalPrice = 0;
     double pricePrDay = 0;
 
