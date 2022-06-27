@@ -232,6 +232,18 @@ td.individual {
     font-size: 12px;
     letter-spacing: 0.8px;
 }
+.phoneNumber .id .email .username {
+    color: white;
+    padding: 12px 16px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+}
+
 
 .individual {
     text-align: center;
