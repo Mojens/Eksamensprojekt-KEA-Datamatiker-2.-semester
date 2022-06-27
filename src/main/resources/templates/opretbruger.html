@@ -20,7 +20,8 @@
     <form
             action="/addEmployee"
             onsubmit="myFunction()"
-            method="post">
+            method="post"
+            enctype="multipart/form-data">
         <div class="zindex">
             <label>Fornavn</label>
             <input type="text" required placeholder="Morten" name="firstName">
@@ -39,6 +40,9 @@
 
             <label>Adgangskode</label>
             <input type="text" required placeholder="Mort9911EN" name="password">
+
+            <label class="label-header">Billed - Max 10mb</label>
+            <input class="picture-upload" type="file" name="image" accept="image/png, image/jpeg, image/jpg"/>
 
             <label>Vælg type medarbejder</label>
             <select name="type" required>

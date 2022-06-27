@@ -1,5 +1,7 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Model;
 
+import java.beans.Transient;
+
 /* Lavet Af Mohammed */
 public class Employee {
 
@@ -9,8 +11,10 @@ public class Employee {
   private int employeeID;
   private String eMail;
   private int userID;
-
   private int status;
+  private String picture;
+
+
 
   public Employee(String firstName, String lastName, String phoneNumber, int employeeID, String eMail, int userID) {
     this.firstName = firstName;
@@ -48,8 +52,30 @@ public class Employee {
     this.status = status;
   }
 
+  public Employee(String firstName, String lastName, String phoneNumber, int employeeID, String eMail, int userID, int status, String picture) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.phoneNumber = phoneNumber;
+    this.employeeID = employeeID;
+    this.eMail = eMail;
+    this.userID = userID;
+    this.status = status;
+    this.picture = picture;
+  }
+  public Employee(String firstName, String lastName, String phoneNumber, String eMail, int userID, String picture,int status) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.phoneNumber = phoneNumber;
+    this.eMail = eMail;
+    this.userID = userID;
+    this.picture = picture;
+    this.status = status;
+  }
+
   public Employee() {
   }
+
+
 
   public String getFirstName() {
     return firstName;
@@ -105,6 +131,21 @@ public class Employee {
 
   public void setStatus(int status) {
     this.status = status;
+  }
+
+  public String getPicture() {
+    return picture;
+  }
+
+  public void setPicture(String picture) {
+    this.picture = picture;
+  }
+
+  @Transient
+  public String getPhotosImagePath() {
+    if (picture == null || picture.isEmpty()) return "profile-photos/" + "profiledefault.png";
+
+    return "profile-photos" + "/" + picture;
   }
 
   @Override

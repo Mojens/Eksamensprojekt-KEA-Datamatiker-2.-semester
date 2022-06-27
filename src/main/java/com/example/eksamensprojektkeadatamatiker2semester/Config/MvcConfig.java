@@ -15,7 +15,9 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         exposeDirectory("user-photos", registry);
+        exposeDirectory("profile-photos",registry);
     }
+
 
 
     // Vi er nødt til at expose den mappe, der indeholder de uploadede filer, så klienterne (webbrowsere) kan få adgang til denne mappe.

@@ -236,10 +236,11 @@ option {
     border: none;
     box-shadow: none;
     width: 10%;
-    margin-top: 10px;
+    margin-bottom:5px;
     min-height: 30px;
 
 }
+
 
 .checkbox a {
     color: #26a9e0;

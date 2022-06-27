@@ -3,7 +3,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${'Rediger' + profile.firstName}"></title>
+    <title th:text="${pagetitle}"></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" type="image/png" th:href="@{../favicon.png}"/>
@@ -36,7 +36,7 @@
     <div class="card-container">
         <span class="pro" th:if="${profile.status == 0}">Passiv</span>
         <span class="pro" th:if="${profile.status == 1}">Aktiv</span>
-        <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+        <img class="round" th:src="@{${'../'+profile.photosImagePath}}" alt="billed"/>
         <div class="name" th:text="${profile.firstName + ' ' + profile.lastName}">
         </div>
         <div class="job" th:if="${user.type == 1}">
@@ -72,7 +72,7 @@
             <ul>
                 <form action="/profileedit"
                       method="post"
-                      style="margin-right:10%">
+                      enctype="multipart/form-data">
                     <div class="info">
                         <label>Fornavn</label>
                         <input class="fname" type="text" th:value="${profile.firstName}" readonly>
@@ -83,14 +83,18 @@
                         <label style="margin-top: 3%">E-mail</label>
                         <input type="email" name="eMail" th:placeholder="${profile.eMail}" required>
                         <label>Type medarbejder</label>
+
                         <input th:if="${user.type == 4}" class="fname" type="text" value="Administrator" readonly>
                         <input th:if="${user.type == 3}" class="fname" type="text" value="Forretningsudvikler" readonly>
                         <input th:if="${user.type == 2}" class="fname" type="text" value="Dataregistrerings medarbejder for fejl og mangler" readonly>
                         <input th:if="${user.type == 1}" class="fname" type="text" value="Dataregistrerings medarbejder for nye lejeaftaler" readonly>
+                        <label class="label-header">Billed - Max 10mb</label>
+                        <input class="picture-upload" type="file" name="image" accept="image/png, image/jpeg, image/jpg"/>
                     </div>
                     <div class="checkbox">
                         <h5>Er du Sikker?</h5>
-                        <input type="checkbox" name="checkbox" required/>
+                        <input class="box" type="checkbox" name="checkbox" required/>
+
                     </div>
                     <button class="profile-button" type="submit">Opdater Oplysninger</button>
                 </form>

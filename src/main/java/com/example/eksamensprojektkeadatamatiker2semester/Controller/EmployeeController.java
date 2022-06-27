@@ -5,15 +5,20 @@ import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.EmployeeRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.UserRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Service.ControllerService;
+import com.example.eksamensprojektkeadatamatiker2semester.Utility.FileUploadUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.security.crypto.bcrypt.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 /* Lavet Af Mohammed */
 @Controller
@@ -49,7 +54,8 @@ public class EmployeeController {
                             @RequestParam("firstName") String firstName,
                             @RequestParam("lastName") String lastName,
                             @RequestParam("phoneNumber") String phoneNumber,
-                            @RequestParam("eMail") String eMail) {
+                            @RequestParam("eMail") String eMail,
+                            @RequestParam(value = "image", required = false)MultipartFile multipartFile) throws IOException {
     //Her så krypter vi den kode som er blevet indtastet
     String bCryptPassword = BCrypt.hashpw(password, BCrypt.gensalt());
     userRepository.createNewUser(new User(bCryptPassword, userName, type,1));
@@ -57,7 +63,20 @@ public class EmployeeController {
     User createdUser = userRepository.findUserByUserName(userName);
     //Her laver vi en employee og bruger users id som foreign key
     //Status er automatisk 1 da den er aktiv når man opretter den
-    employeeRepository.addNewEmployee(new Employee(firstName, lastName, phoneNumber, eMail, createdUser.getUserID(),1));
+    String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+
+    Employee employee = new Employee();
+    employee.setPicture(fileName);
+    String newPicture = "";
+
+    if (fileName.isEmpty()){
+      employee.setPicture("profiledefault.png");
+    } else {
+      newPicture = fileName.replaceAll("\\s", "");
+      String uploadDir = "profile-photos/";
+      FileUploadUtil.saveFile(uploadDir, newPicture, multipartFile);
+    }
+    employeeRepository.addNewEmployee(new Employee(firstName, lastName, phoneNumber, eMail, createdUser.getUserID(),newPicture,1));
 
     return "redirect:opretbruger";
   }
@@ -72,7 +91,7 @@ public class EmployeeController {
     //Vi finder medarbejderen info fra userens id
     Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
     model.addAttribute("profile",employee);
-
+    model.addAttribute("pagetitle","Profil");
     return controllerService.profile(httpSession);
   }
 
@@ -97,16 +116,30 @@ public class EmployeeController {
     //Vi finder medarbejderen info fra userens id
     Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
     model.addAttribute("profile",employee);
-
+    model.addAttribute("pagetitle","Profil");
     return controllerService.profileEdit(httpSession);
   }
   @PostMapping("/profileedit")
   public String ProfileEdit(HttpSession httpSession,
                             @RequestParam("eMail") String eMail,
-                            @RequestParam("phoneNumber") String phoneNumber){
+                            @RequestParam("phoneNumber") String phoneNumber,
+                            @RequestParam(value = "image", required = false) MultipartFile multipartFile)throws IOException {
     //Vi henter den user objekt der er logget ind lige nu
     User user = (User) httpSession.getAttribute("user");
-    employeeRepository.updateEmailPhoneNumber(user.getUserID(),phoneNumber,eMail);
+    String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+
+    Employee employee = new Employee();
+    employee.setPicture(fileName);
+    String newPicture = "";
+
+    if (fileName.isEmpty()){
+      employee.setPicture("profiledefault.png");
+    } else {
+      newPicture = fileName.replaceAll("\\s", "");
+      String uploadDir = "profile-photos/";
+      FileUploadUtil.saveFile(uploadDir, newPicture, multipartFile);
+    }
+    employeeRepository.updateEmailPhoneNumber(user.getUserID(),phoneNumber,eMail,newPicture);
     return "redirect:profile";
   }
 }

@@ -37,8 +37,9 @@ public class EmployeeRepository {
         String eMail = resultSet.getString(5);
         int userID = resultSet.getInt(6);
         int status = resultSet.getInt(7);
+        String photos = resultSet.getString(8);
 
-        listOfEmployees.add(new Employee(firstName, lastName, phoneNumber, employeeID, eMail, userID,status));
+        listOfEmployees.add(new Employee(firstName, lastName, phoneNumber, employeeID, eMail, userID,status,photos));
 
       }
       preparedStatement.close();
@@ -65,6 +66,7 @@ public class EmployeeRepository {
         String eMail = resultSet.getString(5);
         int userID = resultSet.getInt(6);
         int status = resultSet.getInt(7);
+        String photos = resultSet.getString(8);
 
         employee.setEmployeeID(employeeID);
         employee.setFirstName(firstName);
@@ -73,6 +75,7 @@ public class EmployeeRepository {
         employee.seteMail(eMail);
         employee.setUserID(userID);
         employee.setStatus(status);
+        employee.setPicture(photos);
 
       }
       preparedStatement.close();
@@ -116,7 +119,7 @@ public class EmployeeRepository {
   }
 //Denne metoder tilføjer en ny employee til tabellen
   public boolean addNewEmployee(Employee employee) {
-    final String QUERY = "INSERT INTO Employee (EmployeeID, firstName, lastName, phoneNumber, eMail, UserLogin_userID) VALUES (?, ?, ?, ?, ?, ?)";
+    final String QUERY = "INSERT INTO Employee (EmployeeID, firstName, lastName, phoneNumber, eMail, UserLogin_userID, picture) VALUES (?, ?, ?, ?, ?, ?, ?)";
     try {
       PreparedStatement preparedStatement = connection.prepareStatement(QUERY);
 
@@ -126,7 +129,7 @@ public class EmployeeRepository {
       preparedStatement.setString(4, employee.getPhoneNumber());
       preparedStatement.setString(5, employee.geteMail());
       preparedStatement.setInt(6, employee.getUserID());
-
+      preparedStatement.setString(7,employee.getPicture());
       preparedStatement.executeUpdate();
       return true;
 
@@ -137,8 +140,8 @@ public class EmployeeRepository {
     }
   }
 
-  public void updateEmailPhoneNumber(int inputID, String phoneNumber, String eMail){
-    final String UPDATE_QUERY = "UPDATE Employee SET phoneNumber = "+"'"+phoneNumber+"'"+", eMail = "+"'"+eMail+"'"+" WHERE UserLogin_userID = "+inputID;
+  public void updateEmailPhoneNumber(int inputID, String phoneNumber, String eMail, String image){
+    final String UPDATE_QUERY = "UPDATE Employee SET phoneNumber = "+"'"+phoneNumber+"'"+", eMail = "+"'"+eMail+"'"+",picture = "+"'"+image+"'"+"  WHERE UserLogin_userID = "+inputID;
 
     try{
       PreparedStatement preparedStatementUpdateRow = connection.prepareStatement(UPDATE_QUERY);

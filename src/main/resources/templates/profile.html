@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title th:text="${profile.firstName}"></title>
+    <title th:text="${pagetitle}"></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" type="image/png" th:href="@{../favicon.png}"/>
@@ -36,7 +36,7 @@
     <div class="card-container">
         <span class="pro" th:if="${profile.status == 0}">Passiv</span>
         <span class="pro" th:if="${profile.status == 1}">Aktiv</span>
-        <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+        <img class="round" th:src="@{${'../'+profile.photosImagePath}}" alt="billed"/>
         <div class="name" th:text="${profile.firstName + ' ' + profile.lastName}">
         </div>
         <div class="job" th:if="${user.type == 1}">

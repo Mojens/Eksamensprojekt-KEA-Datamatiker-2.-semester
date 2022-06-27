@@ -12,7 +12,7 @@
         <a class="a" th:classappend="${pagetitle=='Lageroverblik'} ? activenav : ''" href="../lageroverblik">Lageroverblik</a>
         <a class="a" th:classappend="${pagetitle=='Alle Lejeaftaler'} ? activenav : ''" href="../allelejeaftaler">Alle Lejeaftaler</a>
         <a class="a" th:classappend="${pagetitle=='Find Lejeaftale'} ? activenav : ''" href="../findlejeaftale" >Find Lejeaftale</a>
-        <a href="../profile" class="navi-username" th:text="${user.username}" ></a>
+        <a class="a navi-username" th:classappend="${pagetitle=='Profil'} ? activenav : ''" href="../profile" th:text="${user.username}" ></a>
         <a href="../logout" class="login-button">Logud</a>
       </div>
 
@@ -30,7 +30,7 @@
         <a class="a" th:classappend="${pagetitle=='Opret Skadesrapport'} ? activenav : ''" href="../findlease">Opret Skadesrapport</a>
         <a class="a" th:classappend="${pagetitle=='Find Tilbageleveringer'} ? activenav : ''" href="../findretur" >Find Tilbageleveringer</a>
         <a class="a" th:classappend="${pagetitle=='Skadesrapport'} ? activenav : ''" href="../skaderapport">Alle Skadesrapporter</a>
-        <a href="../profile" class="navi-username" th:text="${user.username}" ></a>
+        <a th:classappend="${pagetitle=='Profil'} ? activenav : ''" href="../profile" class="a navi-username" th:text="${user.username}" ></a>
         <a href="../logout" class="login-button">Logud</a>
       </div>
     </div>
@@ -47,7 +47,7 @@
       <div class="name-logout">
         <a class="a" th:classappend="${pagetitle=='Opret Køretøj'} ? activenav : ''" href="../createcar" >Opret Køretøj</a>
         <a class="a" th:classappend="${pagetitle=='Dashboard'} ? activenav : ''" href="../dashboard">Dashboard</a>
-        <a href="../profile" class="navi-username" th:text="${user.username}"></a>
+        <a th:classappend="${pagetitle=='Profil'} ? activenav : ''" href="../profile" class="a navi-username" th:text="${user.username}"></a>
         <a href="../logout" class="login-button">Logud</a>
       </div>
 
@@ -67,7 +67,7 @@
         <a class="a" th:classappend="${pagetitle=='Skift Kode'} ? activenav : ''" href="../skiftkode" >Skift Kode </a>
         <a class="a" th:classappend="${pagetitle=='Slet Bruger'} ? activenav : ''" href="../sletbruger" >Slet Bruger </a>
         <a class="a" th:classappend="${pagetitle=='Alle Medarbejdere'} ? activenav : ''" href="../allemedarbejdere" >Alle medarbejdere </a>
-        <a href="../profile" class="navi-username" th:text="${user.username}"></a>
+        <a th:classappend="${pagetitle=='Profil'} ? activenav : ''" href="../profile" class="a navi-username" th:text="${user.username}"></a>
         <a href="../logout" class="login-button">Logud</a>
       </div>
     </div>
