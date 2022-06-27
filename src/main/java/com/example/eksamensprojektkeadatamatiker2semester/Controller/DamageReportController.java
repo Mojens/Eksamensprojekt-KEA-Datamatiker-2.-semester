@@ -53,6 +53,8 @@ public class DamageReportController {
         DamageReport dr = new DamageReport();
         List<DamageReport> damageReports = damageReportRepository.showAllDamageReports();
         DamageReport id = damageReportRepository.findReportByID(dr.getDamageReportID());
+        Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
+        model.addAttribute("profile",employee);
         model.addAttribute("status", id.getStatus());
         model.addAttribute("damageReports", damageReports);
         model.addAttribute("pagetitle","Skadesrapport");
@@ -96,6 +98,8 @@ public class DamageReportController {
             model.addAttribute("list", list);
 
         }
+        Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
+        model.addAttribute("profile",employee);
         model.addAttribute("pagetitle","Opret Skadesrapport");
         return controllerService.findLease(httpSession);
     }
@@ -119,6 +123,8 @@ public class DamageReportController {
 
         Lease checkEndDate = leaseRepository.showLeases();
         Lease period = leaseRepository.showLeases();
+        Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+        model.addAttribute("profile",employeePic);
         model.addAttribute("period", period);
         model.addAttribute("checkEndDate", checkEndDate);
 
@@ -139,6 +145,8 @@ public class DamageReportController {
         model.addAttribute("user", user);
         DamageReport damageReports = damageReportRepository.findReportByID(id);
         Lease period = leaseRepository.showLeases();
+        Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
+        model.addAttribute("profile",employee);
         model.addAttribute("period", period);
         model.addAttribute("damageReports", damageReports);
 
@@ -226,9 +234,12 @@ public class DamageReportController {
 
         SpecificDamage sum = specificDamageRepository.sumPriceSpecificDamagesByID(id);
         Lease period = leaseRepository.showLeases();
-        model.addAttribute("period", period);
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user", user);
+
+        Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+        model.addAttribute("profile",employeePic);
+        model.addAttribute("period", period);
 
         model.addAttribute("car", car);
         model.addAttribute("lease", lease);

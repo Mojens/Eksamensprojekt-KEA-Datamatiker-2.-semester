@@ -103,6 +103,8 @@ public class EmployeeController {
     model.addAttribute("user",user);
     //Henter en liste med alle medarbejder objekter, så vi kan tilføje dem til html
     List<Employee> listOfEmployees = employeeRepository.showAllEmployees();
+    Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
+    model.addAttribute("profile",employee);
     model.addAttribute("listOfEmployees",listOfEmployees);
     model.addAttribute("pagetitle","Alle Medarbejdere");
     return controllerService.alleMedarbejdere(httpSession);
@@ -115,6 +117,7 @@ public class EmployeeController {
     model.addAttribute("user",user);
     //Vi finder medarbejderen info fra userens id
     Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
+
     model.addAttribute("profile",employee);
     model.addAttribute("pagetitle","Profil");
     return controllerService.profileEdit(httpSession);

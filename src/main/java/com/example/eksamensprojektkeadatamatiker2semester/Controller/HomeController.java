@@ -37,6 +37,8 @@ public class HomeController {
     model.addAttribute("user",user);
     //Henter en liste med alle medarbejdere så de kan vises i html
     List<Employee> listOfEmployees = employeeRepository.showAllEmployees();
+    Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+    model.addAttribute("profile",employeePic);
     model.addAttribute("listOfEmployees", listOfEmployees);
     model.addAttribute("pagetitle","Opret Bruger");
     return controllerService.opretBruger(httpSession);
@@ -49,6 +51,8 @@ public class HomeController {
     model.addAttribute("user",user);
     List<Employee> listOfEmployees = employeeRepository.showAllEmployees();
     //Henter en liste med alle medarbejdere så de kan vises i html
+    Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+    model.addAttribute("profile",employeePic);
     model.addAttribute("listOfEmployees", listOfEmployees);
     model.addAttribute("pagetitle","Skift Kode");
     return controllerService.skiftKode(httpSession);
@@ -61,6 +65,8 @@ public class HomeController {
     model.addAttribute("user",user);
     //Henter en liste med alle medarbejdere så de kan vises i html
     List<Employee> listOfEmployees = employeeRepository.showAllEmployees();
+    Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+    model.addAttribute("profile",employeePic);
     model.addAttribute("listOfEmployees", listOfEmployees);
     model.addAttribute("pagetitle","Slet Bruger");
     return controllerService.sletBruger(httpSession);
@@ -96,6 +102,8 @@ public class HomeController {
     model.addAttribute("user",user);
     //Henter en liste med alle bilerne
     List<Car> listOfAllCars = carRepository.showAllCars();
+    Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+    model.addAttribute("profile",employeePic);
     model.addAttribute("allCars",listOfAllCars);
     model.addAttribute("pagetitle","Lageroverblik");
     return controllerService.lagerOverblik(httpSession);

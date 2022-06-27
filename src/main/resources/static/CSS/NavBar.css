@@ -30,12 +30,13 @@
     background-color: #FFFFFF;
     float: right;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     color: black;
     text-align: center;
     padding: 35px 30px 35px 30px;
     text-decoration: none;
     position: relative;
+    flex-direction: column;
 
 }
 .activenav{
@@ -55,6 +56,24 @@
     text-decoration: none;
     position: relative;
 }
+.navbar .b{
+    float: right;
+    display: flex;
+    justify-content: flex-end;
+    color: black;
+    text-align: center;
+    padding: 35px 20px 35px 0;
+    text-decoration: none;
+    position: relative;
+}
+.b:hover{
+    background-color: #FFFFFF;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    color: #0d78a2;
+    transition-duration: .3s;
+}
+
 .a:hover{
     background-color: #FFFFFF;
     border-top-right-radius: 25px;
@@ -125,6 +144,7 @@
 a.navi-username {
     font-size: 13px;
     color: #022633;
+    padding: 35px 15px 35px 30px;
 }
 a.navi-username:hover {
     font-size: 13px;

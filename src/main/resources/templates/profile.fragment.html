@@ -13,6 +13,7 @@
         <a class="a" th:classappend="${pagetitle=='Alle Lejeaftaler'} ? activenav : ''" href="../allelejeaftaler">Alle Lejeaftaler</a>
         <a class="a" th:classappend="${pagetitle=='Find Lejeaftale'} ? activenav : ''" href="../findlejeaftale" >Find Lejeaftale</a>
         <a class="a navi-username" th:classappend="${pagetitle=='Profil'} ? activenav : ''" href="../profile" th:text="${user.username}" ></a>
+        <a th:classappend="${pagetitle=='Profil'} ? activenav : ''" href="../profile" class="b"> <img class="nav-photo" th:src="@{${'../'+profile.photosImagePath}}" alt="billed"/></a>
         <a href="../logout" class="login-button">Logud</a>
       </div>
 
@@ -31,6 +32,7 @@
         <a class="a" th:classappend="${pagetitle=='Find Tilbageleveringer'} ? activenav : ''" href="../findretur" >Find Tilbageleveringer</a>
         <a class="a" th:classappend="${pagetitle=='Skadesrapport'} ? activenav : ''" href="../skaderapport">Alle Skadesrapporter</a>
         <a th:classappend="${pagetitle=='Profil'} ? activenav : ''" href="../profile" class="a navi-username" th:text="${user.username}" ></a>
+        <a th:classappend="${pagetitle=='Profil'} ? activenav : ''" href="../profile" class="b"> <img class="nav-photo" th:src="@{${'../'+profile.photosImagePath}}" alt="billed"/></a>
         <a href="../logout" class="login-button">Logud</a>
       </div>
     </div>
@@ -48,6 +50,7 @@
         <a class="a" th:classappend="${pagetitle=='Opret Køretøj'} ? activenav : ''" href="../createcar" >Opret Køretøj</a>
         <a class="a" th:classappend="${pagetitle=='Dashboard'} ? activenav : ''" href="../dashboard">Dashboard</a>
         <a th:classappend="${pagetitle=='Profil'} ? activenav : ''" href="../profile" class="a navi-username" th:text="${user.username}"></a>
+        <a th:classappend="${pagetitle=='Profil'} ? activenav : ''" href="../profile" class="b"> <img class="nav-photo" th:src="@{${'../'+profile.photosImagePath}}" alt="billed"/></a>
         <a href="../logout" class="login-button">Logud</a>
       </div>
 
@@ -68,6 +71,7 @@
         <a class="a" th:classappend="${pagetitle=='Slet Bruger'} ? activenav : ''" href="../sletbruger" >Slet Bruger </a>
         <a class="a" th:classappend="${pagetitle=='Alle Medarbejdere'} ? activenav : ''" href="../allemedarbejdere" >Alle medarbejdere </a>
         <a th:classappend="${pagetitle=='Profil'} ? activenav : ''" href="../profile" class="a navi-username" th:text="${user.username}"></a>
+        <a th:classappend="${pagetitle=='Profil'} ? activenav : ''" href="../profile" class="b"> <img class="nav-photo" th:src="@{${'../'+profile.photosImagePath}}" alt="billed"/></a>
         <a href="../logout" class="login-button">Logud</a>
       </div>
     </div>

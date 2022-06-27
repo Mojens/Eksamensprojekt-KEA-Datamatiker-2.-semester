@@ -1,8 +1,10 @@
 package com.example.eksamensprojektkeadatamatiker2semester.Controller;
 
 import com.example.eksamensprojektkeadatamatiker2semester.Model.Car;
+import com.example.eksamensprojektkeadatamatiker2semester.Model.Employee;
 import com.example.eksamensprojektkeadatamatiker2semester.Model.User;
 import com.example.eksamensprojektkeadatamatiker2semester.Repository.CarRepository;
+import com.example.eksamensprojektkeadatamatiker2semester.Repository.EmployeeRepository;
 import com.example.eksamensprojektkeadatamatiker2semester.Service.ControllerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,25 +19,21 @@ public class CarController {
 
 CarRepository carRepository;
 ControllerService controllerService;
+EmployeeRepository employeeRepository;
 
 
-
-  public CarController(CarRepository carRepository,
-                       ControllerService controllerService){
-
+  public CarController(CarRepository carRepository, ControllerService controllerService, EmployeeRepository employeeRepository) {
     this.carRepository = carRepository;
     this.controllerService = controllerService;
+    this.employeeRepository = employeeRepository;
   }
-
-
-
-
-
 
   @GetMapping("/createcar")
   public String viewCreateCar(HttpSession httpSession,
                               Model model){
     User user = (User) httpSession.getAttribute("user");
+    Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
+    model.addAttribute("profile",employee);
     model.addAttribute("user",user);
     model.addAttribute("pagetitle","Opret Køretøj");
     return controllerService.createCar(httpSession);
@@ -52,9 +50,5 @@ ControllerService controllerService;
 
     return "redirect:createcar";
   }
-
-
-
-
 
 }

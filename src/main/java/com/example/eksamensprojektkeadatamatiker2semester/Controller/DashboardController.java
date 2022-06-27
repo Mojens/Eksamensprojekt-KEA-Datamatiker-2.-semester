@@ -102,6 +102,8 @@ public class DashboardController {
     LocalDate currentDate = LocalDate.now();
     DashboardService dashboardServices1 = new DashboardService();
     CarRepository carRepository1 = new CarRepository();
+    Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+    model.addAttribute("profile",employeePic);
     model.addAttribute("thismonth",currentMonth);
     model.addAttribute("dagensDato",currentDate);
     model.addAttribute("color",color);
@@ -171,6 +173,8 @@ public class DashboardController {
     LocalDate currentDate = LocalDate.now();
     DashboardService dashboardServices1 = new DashboardService();
     CarRepository carRepository1 = new CarRepository();
+    Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+    model.addAttribute("profile",employeePic);
     model.addAttribute("thismonth",currentMonth);
     model.addAttribute("dagensDato",currentDate);
     model.addAttribute("color",color);
@@ -229,6 +233,8 @@ public class DashboardController {
       model.addAttribute("list",list);
 
     }
+    Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+    model.addAttribute("profile",employeePic);
     model.addAttribute("pagetitle","Find Tilbageleveringer");
     return controllerService.findRetur(httpSession);
   }
@@ -251,7 +257,8 @@ public class DashboardController {
     Lease checkEndDate = leaseRepository.showLeases();
     //Denne henter alle leases men som objekter, bliver brugt til at kunne udregne lejeaftale periode i alt i dage
     Lease period = leaseRepository.showLeases();
-
+    Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+    model.addAttribute("profile",employeePic);
     model.addAttribute("period",period);
     model.addAttribute("checkEndDate",checkEndDate);
     model.addAttribute("carLeases",carsLeases);

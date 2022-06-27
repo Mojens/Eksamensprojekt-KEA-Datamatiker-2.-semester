@@ -54,6 +54,8 @@ public class LeaseController {
         model.addAttribute("lease",lease);
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user",user);
+        Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+        model.addAttribute("profile",employeePic);
         model.addAttribute("pagetitle","Alle Lejeaftaler");
         return controllerService.alleLejeAftaler(httpSession);
     }
@@ -73,7 +75,8 @@ public class LeaseController {
         model.addAttribute("period",period);
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user",user);
-
+        Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+        model.addAttribute("profile",employeePic);
         model.addAttribute("car",car);
         model.addAttribute("lease",lease);
         model.addAttribute("pagetitle","Alle Lejeaftaler");
@@ -99,6 +102,8 @@ public class LeaseController {
             model.addAttribute("list",list);
 
         }
+        Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+        model.addAttribute("profile",employeePic);
         model.addAttribute("pagetitle","Find Lejeaftale");
         return controllerService.lejeAftaler(httpSession);
     }
@@ -115,6 +120,8 @@ public class LeaseController {
         Car car = carRepository.findCarByID(carsLeases.getCarID());
         Employee employee = employeeRepository.findEmployeeByUserID(lease.getUserID());
         Lease period = leaseRepository.showLeases();
+        Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+        model.addAttribute("profile",employeePic);
         model.addAttribute("period",period);
         model.addAttribute("pagetitle","Alle Lejeaftaler");
         model.addAttribute("carLeases",carsLeases);
@@ -134,7 +141,8 @@ public class LeaseController {
         //System.out.println(employee);
         List<Car> listOfAvaibleCars = carRepository.showAllAvaibleCars();
 
-
+        Employee employeePic = employeeRepository.findEmployeeByUserID(user.getUserID());
+        model.addAttribute("profile",employeePic);
         model.addAttribute("pagetitle","Alle Lejeaftaler");
         model.addAttribute("user",user);
         model.addAttribute("listOfAvaibleCars",listOfAvaibleCars);

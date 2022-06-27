@@ -450,6 +450,16 @@ select {
     border-bottom-right-radius: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
+.nav-photo{
+    min-width:40px;
+    max-width: 40px;
+    min-height:40px;
+    max-height:40px;
+    object-fit: fill;
+
+    border-radius: 50%;
+
+}
 
 .tag {
     background: #cccccc;
