@@ -1,10 +1,21 @@
 /* Import Font Dancing Script */
-@import url(https://fonts.googleapis.com/css?family=Dancing+Script);
-body {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body, html {
     background-color: #F2F2F2;
     font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
+    height: 100vh;
+    background-image: url("../CSS/images/hero.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    scroll-behavior: smooth;
 
 }
 
