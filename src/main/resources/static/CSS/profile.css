@@ -115,9 +115,7 @@ body {
 
 .url a:hover, .url .active {
     background-color: #112844;
-    border-radius: 28px;
     color: #ffffff;
-    opacity: 0.8;
     -ms-transform: scale(1.35);
     transition-duration: 0.3s;
 }
