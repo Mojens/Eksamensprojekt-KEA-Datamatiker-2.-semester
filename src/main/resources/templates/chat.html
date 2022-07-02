@@ -4,17 +4,23 @@
 <head>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title th:text="${'Medarbejder Chat - ' + user.username}"></title>
+    <title th:text="${pagetitle}"></title>
     <link rel="stylesheet" href="../static/CSS/chat.css" />
     <link rel="stylesheet" th:href="@{/CSS/chat.css}">
     <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="../static/CSS/main.css" />
+    <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/NavBar.css">
 </head>
-<body background="18.jpg"
-      style="background-position: center; background-repeat: no-repeat; background-size: cover;">
+<body>
 <noscript>
     <h2>Undskyld! Din browser undersøtter ikke Javascript</h2>
 </noscript>
+<div th:if="${profile.type == 1}" th:replace="profile.fragment :: lejeaftale"></div>
+<div th:if="${profile.type == 2}" th:replace="profile.fragment :: skade"></div>
+<div th:if="${profile.type == 3}" th:replace="profile.fragment :: dashboard"></div>
+<div th:if="${profile.type == 4}" th:replace="profile.fragment :: adminnav"></div>
+<div th:replace="admin.fragment"></div>
 
 <div id="username-page">
     <div class="username-page-container">
