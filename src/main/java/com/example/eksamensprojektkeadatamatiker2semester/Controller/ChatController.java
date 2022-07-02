@@ -9,6 +9,7 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpSession;
@@ -17,16 +18,18 @@ import javax.servlet.http.HttpSession;
 public class ChatController {
 
   @GetMapping("/chat")
-  public String index(){
-    return "index";
+  public String index(HttpSession httpSession,
+                      Model model){
+    User user = (User) httpSession.getAttribute("user");
+    model.addAttribute("user",user);
+    return "chat";
   }
 
 
   @MessageMapping("/chat.register")
   @SendTo("/topic/public")
   public ChatMessage register(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor, HttpSession httpSession) {
-    User loggedUser = (User) httpSession.getAttribute("user");
-    headerAccessor.getSessionAttributes().put(loggedUser.getUsername(), chatMessage.getSender());
+    headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
     return chatMessage;
   }
 

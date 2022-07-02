@@ -1,30 +1,32 @@
-<!-- Lavet af Simon -->
+<!-- Lavet af Mohammad -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Spring Boot WebSocket Chat Application | CalliCoder</title>
+    <title th:text="${'Medarbejder Chat - ' + user.username}"></title>
     <link rel="stylesheet" href="../static/CSS/chat.css" />
     <link rel="stylesheet" th:href="@{/CSS/chat.css}">
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/main.css" />
 </head>
 <body background="18.jpg"
       style="background-position: center; background-repeat: no-repeat; background-size: cover;">
 <noscript>
-    <h2>Sorry! Your browser doesn't support Javascript</h2>
+    <h2>Undskyld! Din browser undersøtter ikke Javascript</h2>
 </noscript>
 
 <div id="username-page">
     <div class="username-page-container">
-        <h1 class="title">Type your username</h1>
+        <h1 class="title" th:text="${'Du er logget ind som: '+user.username}"></h1>
         <form id="usernameForm" name="usernameForm">
             <div class="form-group">
                 <input type="text" id="name" placeholder="Username"
-                       autocomplete="off" class="form-control" />
+                       autocomplete="off" class="form-control" th:value="${user.username}"
+                       style="display: none"  value="userName" readonly/>
             </div>
             <div class="form-group">
-                <button type="submit" class="accent username-submit">Start
-                    Chatting</button>
+                <button type="submit" class="accent username-submit">Hop ind i samtalen</button>
             </div>
         </form>
     </div>
@@ -33,16 +35,16 @@
 <div id="chat-page" class="hidden">
     <div class="chat-container">
         <div class="chat-header">
-            <h2>JavaTechie Global Chat Box</h2>
+            <h2>Bilabonnement - portalen Medarbejder Chat</h2>
         </div>
-        <div class="connecting">Connecting...</div>
+        <div class="connecting">Forbinder...</div>
         <ul id="messageArea">
 
         </ul>
         <form id="messageForm" name="messageForm" nameForm="messageForm">
             <div class="form-group">
                 <div class="input-group clearfix">
-                    <input type="text" id="message" placeholder="Type a message..."
+                    <input type="text" id="message" placeholder="Skriv en besked..."
                            autocomplete="off" class="form-control" />
                     <button type="submit" class="primary">Send</button>
                 </div>
