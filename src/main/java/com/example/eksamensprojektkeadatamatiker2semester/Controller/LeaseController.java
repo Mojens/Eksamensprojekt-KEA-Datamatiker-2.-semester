@@ -147,6 +147,8 @@ public class LeaseController {
         model.addAttribute("user",user);
         model.addAttribute("listOfAvaibleCars",listOfAvaibleCars);
         model.addAttribute("pagetitle","Opret Lejeaftale");
+        LocalDate currentDate = LocalDate.now();
+        model.addAttribute("now",currentDate);
         return controllerService.opretLejeAftaler(httpSession);
     }
 

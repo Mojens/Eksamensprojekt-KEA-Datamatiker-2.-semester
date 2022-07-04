@@ -32,7 +32,7 @@
             <input type="text" required placeholder="Hansen" name="lastName">
 
             <label class="label-header">Start Dato</label>
-            <input type="date" required placeholder="start dato" name="startDate">
+            <input type="date" required placeholder="start dato" name="startDate" th:attr="min=${now}">
 
             <label class="label-header">Slut Dato</label>
             <input type="date" required placeholder="slut dato" name="endDate">
