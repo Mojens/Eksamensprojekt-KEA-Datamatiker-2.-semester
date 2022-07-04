@@ -6,6 +6,8 @@ import com.example.eksamensprojektkeadatamatiker2semester.Service.DashboardServi
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -53,6 +55,11 @@ public class DashboardController {
     List<Car> allCars = carRepository.showAllCars();
     if (allCars.isEmpty()){
       return "createcar";
+    }
+    if (leasedCars.size() == allCars.size()){
+      System.out.println("Alle leased biler: " + leasedCars.size());
+      System.out.println("Antal biler: "+allCars.size());
+      model.addAttribute("noCar","Alle biler er lejet ud");
     }
     DamageReport dr = new DamageReport();
     // Metoden viser alle skadesrapporter som en Liste
@@ -137,13 +144,19 @@ public class DashboardController {
   @GetMapping("/dashboard/{numberMonth}")
   public String showKPI(@PathVariable("numberMonth") int chosenMonth,
                         Model model,
-                        HttpSession httpSession) {
+                        HttpSession httpSession,
+                        RedirectAttributes alert) {
     User user = (User) httpSession.getAttribute("user");
     model.addAttribute("user",user);
     List<Car> leasedCars = dashboardRepository.addLeasedCarsToList();
     List<Car> allCars = carRepository.showAllCars();
     if (allCars.isEmpty()){
       return "createcar";
+    }
+    if (leasedCars.size() == allCars.size()){
+    System.out.println("Alle leased biler: " + leasedCars.size());
+    System.out.println("Antal biler: "+allCars.size());
+      model.addAttribute("noCar","Alle biler er lejet ud");
     }
     DamageReport dr = new DamageReport();
     List<DamageReport> damageReports = damageReportRepository.showAllDamageReports();
