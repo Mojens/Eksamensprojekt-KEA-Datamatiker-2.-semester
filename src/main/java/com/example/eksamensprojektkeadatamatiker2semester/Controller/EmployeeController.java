@@ -145,4 +145,15 @@ public class EmployeeController {
     employeeRepository.updateEmailPhoneNumber(user.getUserID(),phoneNumber,eMail,newPicture);
     return "redirect:profile";
   }
+
+  @GetMapping("/nyheder")
+  public String nyheder(HttpSession httpSession,
+                        Model model){
+    User user = (User) httpSession.getAttribute("user");
+    model.addAttribute("user",user);
+    Employee employee = employeeRepository.findEmployeeByUserID(user.getUserID());
+    model.addAttribute("profile",employee);
+
+    return controllerService.nyheder(httpSession);
+  }
 }

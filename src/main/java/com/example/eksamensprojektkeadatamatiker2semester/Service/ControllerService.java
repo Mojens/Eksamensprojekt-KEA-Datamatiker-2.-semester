@@ -368,4 +368,20 @@ public class ControllerService {
     return currentPage;
   }
 
+  public String nyheder(HttpSession httpSession) {
+    String currentPage = null;
+    if (httpSession.getAttribute("userName") != null) {
+      User loggedUser = (User) httpSession.getAttribute("user");
+      //System.out.println(loggedUser.getType());
+      if (loggedUser.getType() == 1 || loggedUser.getType() == 2 || loggedUser.getType() == 3 || loggedUser.getType() == 4) {
+        currentPage = "nyheder";
+      } else if (loggedUser.getType() != 1 || loggedUser.getType() != 2 || loggedUser.getType() != 3 || loggedUser.getType() != 4) {
+        currentPage = "login";
+      }
+    } else if (httpSession.getAttribute("userName") == null) {
+      currentPage = "login";
+    }
+    return currentPage;
+  }
+
 }

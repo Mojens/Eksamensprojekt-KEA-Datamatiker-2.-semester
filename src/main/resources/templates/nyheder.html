@@ -1,0 +1,66 @@
+<!--Mohammed -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pagetitle}"></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" type="image/png" th:href="@{../favicon.png}"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+    <link th:href="@{/CSS/main.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/main.css">
+    <link th:href="@{/CSS/NavBar.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="../static/CSS/NavBar.css">
+    <link rel="stylesheet" href="../static/CSS/nyheder.css">
+    <link th:href="@{/CSS/nyheder.css}" rel="stylesheet"/>
+
+</head>
+
+<body>
+<div th:if="${profile.type == 1}" th:replace="profile.fragment :: lejeaftale"></div>
+<div th:if="${profile.type == 2}" th:replace="profile.fragment :: skade"></div>
+<div th:if="${profile.type == 3}" th:replace="profile.fragment :: dashboard"></div>
+<div th:if="${profile.type == 4}" th:replace="profile.fragment :: adminnav"></div>
+<div th:replace="admin.fragment"></div>
+
+<div class="form-popup" id="myForm" style="display: none">
+    <form action="/opretNyhed"
+          method="post"
+          class="form-container">
+        <h1>Skriv et post</h1>
+        <label><b>Emne</b></label>
+        <input type="text" placeholder="Emne" name="title" required>
+
+        <label><b>Beskrivelse</b></label><br>
+        <textarea rows="5" cols="60" name="description" style="width: 100%" placeholder="Beskrivelse">
+    </textarea>
+        <button type="button" class="btn cancel" onclick="closeForm()">Anullerer</button>
+        <button type="submit" class="btn">Del</button>
+    </form>
+</div>
+<div class="container-dashboard">
+    <button class="open-button" onclick="openForm()" th:if="${profile.type == 4}">Skriv en nyhed</button>
+    <h1>Nyheder</h1>
+    <div class="post" th:each="">
+        <div class="picture">
+            <img class="nav-photo" th:src="@{${'../'+profile.photosImagePath}}" alt="billed" width="132" height="132" src="profile-photos/profiledefault.png"/>
+        </div>
+        <div class="info-text">
+            <h1> Titel</h1>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+</script>
+</html>
